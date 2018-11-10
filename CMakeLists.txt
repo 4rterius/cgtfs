@@ -11,7 +11,7 @@ project(cgtfs VERSION 0.1.0)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 set(sources
- 
+  "src/haversine.c"
 )
 
 set(include_dirs
@@ -24,5 +24,5 @@ include_directories(${include_dirs})
 ## Library
 ## -----------------------------------------------------------------
 
-add_library(cgtfs STATIC ${sources})
+add_library(cgtfs SHARED ${sources})
 set_target_properties(cgtfs PROPERTIES VERSION ${PROJECT_VERSION})
