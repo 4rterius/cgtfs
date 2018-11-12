@@ -1,3 +1,6 @@
+#ifndef CGTFS_FREQUENCY_H
+#define CGTFS_FREQUENCY_H
+
 typedef enum ExactTimes {
     NOT_EXACT,
     EXACT
@@ -10,3 +13,5 @@ typedef struct Frequency {
     int headway_secs;
     exact_times_t exact_times;
 } frequency_t;
+
+#endif

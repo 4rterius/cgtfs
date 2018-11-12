@@ -1,3 +1,6 @@
+#ifndef CGTFS_ROUTE_H
+#define CGTFS_ROUTE_H
+
 typedef enum RouteType {
     STREET_LEVEL,
     UNDERGROUND,
@@ -21,3 +24,5 @@ typedef struct Route {
     char text_color[6];
     unsigned int sort_order;
 } route_t;
+
+#endif

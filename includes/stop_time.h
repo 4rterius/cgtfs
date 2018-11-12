@@ -1,3 +1,6 @@
+#ifndef CGTFS_STOP_TIME_H
+#define CGTFS_STOP_TIME_H
+
 typedef enum StopType {
     REGULAR,
     NOT_AVAILABLE,
@@ -22,3 +25,5 @@ typedef struct StopTime {
     double shape_dist_traveled;
     timepoint_precision_t timepoint;
 } stop_time_t;
+
+#endif

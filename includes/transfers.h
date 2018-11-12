@@ -1,3 +1,6 @@
+#ifndef CGTFS_TRANSFERS_H
+#define CGTFS_TRANSFERS_H
+
 typedef enum TransferType {
     RECOMMENDED,
     TIMED,
@@ -11,3 +14,5 @@ typedef struct Transfer {
     transfer_type_t transfer_type;
     unsigned int min_transfer_time;
 } transfer_t;
+
+#endif

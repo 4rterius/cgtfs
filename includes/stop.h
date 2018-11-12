@@ -1,3 +1,6 @@
+#ifndef CGTFS_STOP_H
+#define CGTFS_STOP_H
+
 typedef enum LocationType {
     STOP,
     STATION,
@@ -24,3 +27,5 @@ typedef struct Stop {
     char timezone[64];
     wheelchair_boarding_t wheelchair_boarding;
 } stop_t;
+
+#endif

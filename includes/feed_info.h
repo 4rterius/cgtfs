@@ -1,3 +1,6 @@
+#ifndef CGTFS_FEED_INFO_H
+#define CGTFS_FEED_INFO_H
+
 typedef struct FeedInfo {
     char publisher_name[64];
     char publisher_url[128];
@@ -8,3 +11,5 @@ typedef struct FeedInfo {
     char feed_contact_email[64];
     char feed_contact_url[128];
 } feed_info_t;
+
+#endif

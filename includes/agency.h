@@ -1,4 +1,7 @@
-struct agency {
+#ifndef CGTFS_AGENCY_H
+#define CGTFS_AGENCY_H
+
+typedef struct Agency {
     char id[64];
     char name[64];
     char url[128];
@@ -7,4 +10,6 @@ struct agency {
     char phone[64];
     char fare_url[128];
     char email[64];
-};
+} agency_t;
+
+#endif

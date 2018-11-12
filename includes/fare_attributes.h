@@ -1,3 +1,6 @@
+#ifndef CGTFS_FARE_ATTRIBUTES_H
+#define CGTFS_FARE_ATTRIBUTES_H
+
 typedef enum PaymentMethod {
     ON_BOARD,
     BEFOREHAND
@@ -19,3 +22,5 @@ typedef struct FareAttribute {
     char agency_id[64];
     int transfer_duration;
 } fare_attribute_t;
+
+#endif

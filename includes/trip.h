@@ -1,3 +1,6 @@
+#ifndef CGTFS_TRIP_H
+#define CGTFS_TRIP_H
+
 typedef enum WheelchairAccessible {
     UNKNOWN,
     POSSIBLE,
@@ -22,3 +25,5 @@ typedef struct Trip {
     wheelchair_accessible_t wheelchair_accessible;
     bikes_allowed_t bikes_allowed;
 } trip_t;
+
+#endif
