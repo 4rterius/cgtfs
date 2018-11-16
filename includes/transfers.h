@@ -2,10 +2,10 @@
 #define CGTFS_TRANSFERS_H
 
 typedef enum TransferType {
-    RECOMMENDED,
-    TIMED,
-    TIME_REQUIRED,
-    NOT_POSSIBLE
+    TT_RECOMMENDED,
+    TT_TIMED,
+    TT_TIME_REQUIRED,
+    TT_NOT_POSSIBLE
 } transfer_type_t;
 
 typedef struct Transfer {

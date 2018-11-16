@@ -2,15 +2,15 @@
 #define CGTFS_STOP_H
 
 typedef enum LocationType {
-    STOP,
-    STATION,
-    STATION_ENTRANCE_EXIT
+    LT_STOP,
+    LT_STATION,
+    LT_STATION_ENTRANCE_EXIT
 } location_type_t;
 
 typedef enum WheelchairBoarding {
-    UNKNOWN,
-    SOME,
-    NOT_POSSIBLE
+    WB_UNKNOWN,
+    WB_SOME,
+    WB_NOT_POSSIBLE
 } wheelchair_boarding_t;
 
 typedef struct Stop {

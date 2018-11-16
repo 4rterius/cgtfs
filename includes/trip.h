@@ -2,15 +2,15 @@
 #define CGTFS_TRIP_H
 
 typedef enum WheelchairAccessible {
-    UNKNOWN,
-    POSSIBLE,
-    NOT_POSSIBLE
+    WA_UNKNOWN,
+    WA_POSSIBLE,
+    WA_NOT_POSSIBLE
 } wheelchair_accessible_t;
 
 typedef enum BikesAllowed {
-    UNKNOWN,
-    POSSIBLE,
-    NOT_POSSIBLE
+    BA_UNKNOWN,
+    BA_POSSIBLE,
+    BA_NOT_POSSIBLE
 } bikes_allowed_t;
 
 typedef struct Trip {

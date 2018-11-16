@@ -2,8 +2,8 @@
 #define CGTFS_CALENDAR_DATES_H
 
 typedef enum ExceptionType {
-    ADDED = 1,
-    REMOVED = 2
+    ET_ADDED = 1,
+    ET_REMOVED = 2
 } exception_type_t;
 
 typedef struct CalendarDate {

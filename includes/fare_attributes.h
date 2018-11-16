@@ -2,15 +2,15 @@
 #define CGTFS_FARE_ATTRIBUTES_H
 
 typedef enum PaymentMethod {
-    ON_BOARD,
-    BEFOREHAND
+    PM_ON_BOARD,
+    PM_BEFOREHAND
 } payment_method_t;
 
 typedef enum Transfers {
-    NOT_ALLOWED,
-    ONCE,
-    TWICE,
-    UNLIMITED
+    T_NOT_ALLOWED,
+    T_ONCE,
+    T_TWICE,
+    T_UNLIMITED
 } transfers_t;
 
 typedef struct FareAttribute {

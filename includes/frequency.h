@@ -2,8 +2,8 @@
 #define CGTFS_FREQUENCY_H
 
 typedef enum ExactTimes {
-    NOT_EXACT,
-    EXACT
+    ET_NOT_EXACT,
+    ET_EXACT
 } exact_times_t;
 
 typedef struct Frequency {
