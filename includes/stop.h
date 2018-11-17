@@ -1,19 +1,19 @@
 #ifndef CGTFS_STOP_H
 #define CGTFS_STOP_H
 
-typedef enum LocationType {
+typedef enum {
     LT_STOP,
     LT_STATION,
     LT_STATION_ENTRANCE_EXIT
 } location_type_t;
 
-typedef enum WheelchairBoarding {
+typedef enum {
     WB_UNKNOWN,
     WB_SOME,
     WB_NOT_POSSIBLE
 } wheelchair_boarding_t;
 
-typedef struct Stop {
+typedef struct {
     char id[64];
     char code[64];
     char name[64];

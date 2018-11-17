@@ -1,7 +1,7 @@
 #ifndef CGTFS_FARE_RULE_H
 #define CGTFS_FARE_RULE_H
 
-typedef struct FareRule {
+typedef struct {
     char fare_id[64];
     char route_id[64];
     char origin_id[64];

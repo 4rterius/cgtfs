@@ -1,19 +1,19 @@
 #ifndef CGTFS_TRIP_H
 #define CGTFS_TRIP_H
 
-typedef enum WheelchairAccessible {
+typedef enum {
     WA_UNKNOWN,
     WA_POSSIBLE,
     WA_NOT_POSSIBLE
 } wheelchair_accessible_t;
 
-typedef enum BikesAllowed {
+typedef enum {
     BA_UNKNOWN,
     BA_POSSIBLE,
     BA_NOT_POSSIBLE
 } bikes_allowed_t;
 
-typedef struct Trip {
+typedef struct {
     char id[64];
     char route_id[64];
     char service_id[64];

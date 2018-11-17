@@ -1,7 +1,7 @@
 #ifndef CGTFS_AGENCY_H
 #define CGTFS_AGENCY_H
 
-typedef struct Agency {
+typedef struct {
     char id[64];
     char name[64];
     char url[128];

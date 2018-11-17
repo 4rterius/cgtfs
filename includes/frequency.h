@@ -1,12 +1,12 @@
 #ifndef CGTFS_FREQUENCY_H
 #define CGTFS_FREQUENCY_H
 
-typedef enum ExactTimes {
+typedef enum {
     ET_NOT_EXACT,
     ET_EXACT
 } exact_times_t;
 
-typedef struct Frequency {
+typedef struct {
     char trip_id[64];
     char start_time[8];
     char end_time[8];

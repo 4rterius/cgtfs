@@ -1,7 +1,7 @@
 #ifndef CGTFS_SHAPE_H
 #define CGTFS_SHAPE_H
 
-typedef struct Shape {
+typedef struct {
     char id[64];
     long double pt_lat;
     long double pt_lon;

@@ -1,7 +1,7 @@
 #ifndef CGTFS_FEED_INFO_H
 #define CGTFS_FEED_INFO_H
 
-typedef struct FeedInfo {
+typedef struct {
     char publisher_name[64];
     char publisher_url[128];
     char publisher_lang[64];

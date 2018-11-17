@@ -15,10 +15,10 @@
 #include "transfers.h"
 #include "trip.h"
 
-typedef struct Dataset {
+typedef struct {
     agency_t *agencies;
     calendar_date_t *calendar_dates;
-    service_t *service_records;
+    calendar_record_t *calendar_records;
     fare_attribute_t *fare_attributes;
     fare_rule_t *fare_rules;
     feed_info_t feed_info;

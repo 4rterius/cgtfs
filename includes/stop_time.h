@@ -1,19 +1,19 @@
 #ifndef CGTFS_STOP_TIME_H
 #define CGTFS_STOP_TIME_H
 
-typedef enum StopType {
+typedef enum {
     ST_REGULAR,
     ST_NOT_AVAILABLE,
     ST_CONTACT_AGENCY,
     ST_CONTACT_DRIVER
 } stop_type_t;
 
-typedef enum TimepointPrecision {
+typedef enum {
     TP_APPROXIMATE,
     TP_EXACT
 } timepoint_precision_t;
 
-typedef struct StopTime {
+typedef struct {
     char trip_id[64];
     char arrival_time[8];
     char departure_time[8];

@@ -1,7 +1,7 @@
 #ifndef CGTFS_CALENDAR_H
 #define CGTFS_CALENDAR_H
 
-typedef struct Service {
+typedef struct {
     char id[64];
     unsigned int monday;
     unsigned int tuesday;
@@ -12,6 +12,6 @@ typedef struct Service {
     unsigned int sunday;
     char start_date[8];
     char end_date[8];
-} service_t;
+} calendar_record_t;
 
 #endif

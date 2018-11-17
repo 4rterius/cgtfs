@@ -1,7 +1,7 @@
 #ifndef CGTFS_ROUTE_H
 #define CGTFS_ROUTE_H
 
-typedef enum RouteType {
+typedef enum {
     RT_STREET_LEVEL,
     RT_UNDERGROUND,
     RT_LONG_RAIL,
@@ -12,7 +12,7 @@ typedef enum RouteType {
     RT_FUNICULAR
 } route_type_t;
 
-typedef struct Route {
+typedef struct {
     char id[64];
     char agency_id[64];
     char short_name[64];
