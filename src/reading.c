@@ -3,46 +3,45 @@
 #include <string.h>
 
 #include "reading.h"
+#include "reading_utils.h"
 
 int read_agencies(FILE *fp, agency_t **agencies) {
-    int agencies_count = 0;
 
-    // Fetch & parse table header
-    // so that `field_names` has a list of them.
-
-    int field_count = 0;
-    char **field_names = malloc(sizeof(char *));
-    {
-        char header[1000];
-        char *field_name;
-
-        fgets(header, 1000, fp);
-        
-        field_name = strtok(header, ",");
-        while (field_name != NULL) {
-            field_count++;
-            field_names = realloc(field_names, field_count * sizeof(char *));
-            field_names[field_count - 1] = field_name;
-            field_name = strtok(NULL, ",");
-        }
-
-        free(field_name);
-        free(field_names);
-    }
+    char **field_names;
+    int field_count = read_header(fp, &field_names);
 
 
     // Fetch every agency from the file line-by-line
     
-    int agencies_count;
-    agency_t *agencies = malloc(sizeof(agency_t));
+    int agencies_count = 0;
+    agency_t *agencies_list = malloc(sizeof(agency_t));
     {
         char record[1000];
-        char *record_field;
+
+        char record_field[1000];
+        int record_field_length = 0;
+        int record_field_pos = 0;
+
+        char chr;
+        int chr_pos = 0;
+
         int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
-        fgets(record, 1000, fp);
-        
+        memset(record_field, 0, 1000);
 
+        while (fgets(record, 1000, fp)) {
+            while (chr = record[++chr_pos - 1]) {
+                if (chr == '"') {
+                    in_quotes = (in_quotes == 1) ? 0 : 1;
+                } else if ((chr == ',' || chr == '\n') && !in_quotes) {
+                    memset(record_field, 0, 1000);
+                    record_field_length = 0;
+                    record_field_pos++;
+                } else if (chr != '\n') {
+                    record_field[++record_field_length - 1] = chr;
+                }
+            }
+        }
     }
 
     return agencies_count;

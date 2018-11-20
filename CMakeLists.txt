@@ -13,6 +13,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 set(sources
   "src/haversine.c"
   "src/reading.c"
+  "src/reading_utils.c"
 )
 
 set(include_dirs
