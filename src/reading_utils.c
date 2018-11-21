@@ -30,44 +30,76 @@ int read_header(FILE *fp, char ***field_names) {
     return field_count;
 }
 
-int read_records(FILE *fp, char ****record_values) {
-    int records_count = 0;
-
+int read_a_record(FILE *fp, int fields_number, char ***record_values) {
     char record[LINE_MAX_LEN];
-    char record_field[LINE_MAX_LEN];
+    char r_field[LINE_MAX_LEN];
+    char r_field_index = 0;
+    int r_field_len = 0;
+    int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
-    int record_field_length = 0;
-    int record_field_pos = 0;
+    if (!fgets(record, LINE_MAX_LEN, fp))
+        return -1;
 
     char chr;
     int chr_pos = 0;
 
-    int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
+    *record_values = malloc(fields_number * sizeof(char *));
+    memset(r_field, 0, LINE_MAX_LEN);
+    
+    while (chr = record[++chr_pos - 1]) {
+        if (chr == '"') {
+            in_quotes = (in_quotes == 1) ? 0 : 1;
+        } else if ((chr == ',' || chr == '\n') && !in_quotes) {
+            (*record_values)[r_field_index] = strdup(r_field);
 
-    *record_values = malloc(sizeof(char **));
-    memset(record_field, 0, LINE_MAX_LEN);
-
-    while (fgets(record, LINE_MAX_LEN, fp)) {
-        *record_values = realloc(*record_values, (records_count + 1) * sizeof(char **));
-        (*record_values)[records_count] = malloc(sizeof(char **));
-        chr_pos = 0;
-
-        while (chr = record[++chr_pos - 1]) {
-            if (chr == '"') {
-                in_quotes = (in_quotes == 1) ? 0 : 1;
-            } else if ((chr == ',' || chr == '\n') && !in_quotes) {
-                (*record_values)[records_count] = realloc((*record_values)[records_count], (record_field_pos + 1) * sizeof(char *));
-                (*record_values)[records_count][record_field_pos] = strdup(record_field);
-
-                memset(record_field, 0, LINE_MAX_LEN);
-                record_field_length = 0;
-                record_field_pos++;
-            } else if (chr != '\n') {
-                record_field[++record_field_length - 1] = chr;
-            }
+            memset(r_field, 0, LINE_MAX_LEN);
+            r_field_len = 0;
+            r_field_index++;
+        } else if (chr != '\n') {
+            r_field[++r_field_len - 1] = chr;
         }
-        records_count++;
     }
-
-    return records_count;
+    return 1;
 }
+
+// int read_records(FILE *fp, char ****record_values) {
+//     int records_count = 0;
+
+//     char record[LINE_MAX_LEN];
+//     char record_field[LINE_MAX_LEN];
+
+//     int record_field_length = 0;
+//     int record_field_pos = 0;
+
+//     char chr;
+//     int chr_pos = 0;
+
+//     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
+
+//     *record_values = malloc(sizeof(char **));
+//     memset(record_field, 0, LINE_MAX_LEN);
+
+//     while (fgets(record, LINE_MAX_LEN, fp)) {
+//         *record_values = realloc(*record_values, (records_count + 1) * sizeof(char **));
+//         (*record_values)[records_count] = malloc(sizeof(char **));
+//         chr_pos = 0;
+
+//         while (chr = record[++chr_pos - 1]) {
+//             if (chr == '"') {
+//                 in_quotes = (in_quotes == 1) ? 0 : 1;
+//             } else if ((chr == ',' || chr == '\n') && !in_quotes) {
+//                 (*record_values)[records_count] = realloc((*record_values)[records_count], (record_field_pos + 1) * sizeof(char *));
+//                 (*record_values)[records_count][record_field_pos] = strdup(record_field);
+
+//                 memset(record_field, 0, LINE_MAX_LEN);
+//                 record_field_length = 0;
+//                 record_field_pos++;
+//             } else if (chr != '\n') {
+//                 record_field[++record_field_length - 1] = chr;
+//             }
+//         }
+//         records_count++;
+//     }
+
+//     return records_count;
+// }
