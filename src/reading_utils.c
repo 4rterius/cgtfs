@@ -50,6 +50,8 @@ int read_records(FILE *fp, char ****record_values) {
     while (fgets(record, LINE_MAX_LEN, fp)) {
         *record_values = realloc(*record_values, (records_count + 1) * sizeof(char **));
         (*record_values)[records_count] = malloc(sizeof(char **));
+        chr_pos = 0;
+
         while (chr = record[++chr_pos - 1]) {
             if (chr == '"') {
                 in_quotes = (in_quotes == 1) ? 0 : 1;
