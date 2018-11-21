@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define LINE_MAX_LEN 10000
+
 int read_header(FILE *fp, char ***field_names);
 int read_records(FILE *fp, char ****record_values);
 

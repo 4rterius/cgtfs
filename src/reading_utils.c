@@ -2,12 +2,12 @@
 
 int read_header(FILE *fp, char ***field_names) {
     int field_count = 0;
-    char header[1000];
+    char header[LINE_MAX_LEN];
     char *field_token;
 
     *field_names = malloc(sizeof(char *));
 
-    if (fgets(header, 1000, fp)) {
+    if (fgets(header, LINE_MAX_LEN, fp)) {
         if (!(field_token = strtok(header, ",")))
             return -1;
 
@@ -33,8 +33,8 @@ int read_header(FILE *fp, char ***field_names) {
 int read_records(FILE *fp, char ****record_values) {
     int records_count = 0;
 
-    char record[1000];
-    char record_field[1000];
+    char record[LINE_MAX_LEN];
+    char record_field[LINE_MAX_LEN];
 
     int record_field_length = 0;
     int record_field_pos = 0;
@@ -45,9 +45,9 @@ int read_records(FILE *fp, char ****record_values) {
     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
     *record_values = malloc(sizeof(char **));
-    memset(record_field, 0, 1000);
+    memset(record_field, 0, LINE_MAX_LEN);
 
-    while (fgets(record, 1000, fp)) {
+    while (fgets(record, LINE_MAX_LEN, fp)) {
         *record_values = realloc(*record_values, (records_count + 1) * sizeof(char **));
         (*record_values)[records_count] = malloc(sizeof(char **));
         while (chr = record[++chr_pos - 1]) {
@@ -55,13 +55,9 @@ int read_records(FILE *fp, char ****record_values) {
                 in_quotes = (in_quotes == 1) ? 0 : 1;
             } else if ((chr == ',' || chr == '\n') && !in_quotes) {
                 (*record_values)[records_count] = realloc((*record_values)[records_count], (record_field_pos + 1) * sizeof(char *));
-                (*record_values)[records_count][record_field_pos] = record_field;
-                
-                printf("\n!!!REALLY DOESN'T WORK ATM: %s:%i\n\n", __FILE__, __LINE__);
-                exit(-1);
-                printf("%i . %i . %s\n", records_count, record_field_pos, (*record_values)[records_count][record_field_pos]);
-                
-                memset(record_field, 0, 1000);
+                (*record_values)[records_count][record_field_pos] = strdup(record_field);
+
+                memset(record_field, 0, LINE_MAX_LEN);
                 record_field_length = 0;
                 record_field_pos++;
             } else if (chr != '\n') {
@@ -70,8 +66,6 @@ int read_records(FILE *fp, char ****record_values) {
         }
         records_count++;
     }
-
-    printf("\n\n%s\n\n", (*record_values)[0][0]);
 
     return records_count;
 }
