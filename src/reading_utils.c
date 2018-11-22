@@ -30,7 +30,7 @@ int read_header(FILE *fp, char ***field_names) {
     return field_count;
 }
 
-int read_a_record(FILE *fp, int fields_number, char ***record_values) {
+int read_one_record(FILE *fp, int fields_number, char ***record_values) {
     char record[LINE_MAX_LEN];
     char r_field[LINE_MAX_LEN];
     char r_field_index = 0;
@@ -62,44 +62,14 @@ int read_a_record(FILE *fp, int fields_number, char ***record_values) {
     return 1;
 }
 
-// int read_records(FILE *fp, char ****record_values) {
-//     int records_count = 0;
+int for_each_record(FILE *fp, int fields_number, int (*cb)(int, int, char **)) {
+    char **record_values;
+    int line_num = 0;
 
-//     char record[LINE_MAX_LEN];
-//     char record_field[LINE_MAX_LEN];
+    while (read_one_record(fp, fields_number, &record_values) > 0)
+        if (cb(line_num++, fields_number, record_values) < 0)
+            return -1;
 
-//     int record_field_length = 0;
-//     int record_field_pos = 0;
-
-//     char chr;
-//     int chr_pos = 0;
-
-//     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
-
-//     *record_values = malloc(sizeof(char **));
-//     memset(record_field, 0, LINE_MAX_LEN);
-
-//     while (fgets(record, LINE_MAX_LEN, fp)) {
-//         *record_values = realloc(*record_values, (records_count + 1) * sizeof(char **));
-//         (*record_values)[records_count] = malloc(sizeof(char **));
-//         chr_pos = 0;
-
-//         while (chr = record[++chr_pos - 1]) {
-//             if (chr == '"') {
-//                 in_quotes = (in_quotes == 1) ? 0 : 1;
-//             } else if ((chr == ',' || chr == '\n') && !in_quotes) {
-//                 (*record_values)[records_count] = realloc((*record_values)[records_count], (record_field_pos + 1) * sizeof(char *));
-//                 (*record_values)[records_count][record_field_pos] = strdup(record_field);
-
-//                 memset(record_field, 0, LINE_MAX_LEN);
-//                 record_field_length = 0;
-//                 record_field_pos++;
-//             } else if (chr != '\n') {
-//                 record_field[++record_field_length - 1] = chr;
-//             }
-//         }
-//         records_count++;
-//     }
-
-//     return records_count;
-// }
+    free(record_values);
+    return line_num;
+}
