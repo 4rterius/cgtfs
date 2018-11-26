@@ -1,33 +1,34 @@
 #include "reading_utils.h"
 
 int read_header(FILE *fp, char ***field_names) {
-    int field_count = 0;
     char header[LINE_MAX_LEN];
-    char *field_token;
+    char h_field[LINE_MAX_LEN];
+    char h_field_index = 0;
+    int h_field_len = 0;
+
+    if (!fgets(header, LINE_MAX_LEN, fp))
+        return -1;
+
+    char chr;
+    int chr_pos = 0;
 
     *field_names = malloc(sizeof(char *));
+    memset(h_field, 0, LINE_MAX_LEN);
+    
+    while (chr = header[++chr_pos - 1]) {
+        if (chr == ',' || chr == '\n') {
+            *field_names = realloc(*field_names, (h_field_index + 1) * sizeof(char *));
+            (*field_names)[h_field_index] = strdup(h_field);
 
-    if (fgets(header, LINE_MAX_LEN, fp)) {
-        if (!(field_token = strtok(header, ",")))
-            return -1;
-
-        for(;;) {
-            field_count++;
-            *field_names = realloc(*field_names, field_count * sizeof(char *));
-            (*field_names)[field_count - 1] = field_token;
-
-            if (!(field_token = strtok(NULL, ",")))
-                break;
-
-            if (field_token[strlen(field_token) - 1] == '\n')
-                field_token[strlen(field_token) - 1] = '\0';
+            memset(h_field, 0, LINE_MAX_LEN);
+            h_field_len = 0;
+            h_field_index++;
+        } else if (chr != '\n') {
+            h_field[++h_field_len - 1] = chr;
         }
-    } else {
-        return -1;
     }
-
-    free(field_token);
-    return field_count;
+    
+    return h_field_index;
 }
 
 int read_one_record(FILE *fp, int fields_number, char ***record_values) {

@@ -16,7 +16,14 @@ int rd_cb(int line_num, int field_count, char **record_vals) {
 int read_agencies(FILE *fp, agency_t **agencies) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
-    int record_count = for_each_record(fp, field_count, rd_cb);
+    
+    char **record_values;
+    int record_count = 0;
+
+    while (read_one_record(fp, field_count, &record_values) > 0) {
+        // f(record_values);
+        record_count++;
+    }
 
     return record_count;
 }
