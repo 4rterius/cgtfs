@@ -13,10 +13,12 @@ int read_agencies(FILE *fp, agency_t **agencies) {
     char **record_values;
     int record_count = 0;
     
+    *agencies = malloc(sizeof(agency_t));
+    
     while (read_one_record(fp, field_count, &record_values) > 0) {
-        agency_t agency = make_agency(field_count, field_names, record_values);
+        *agencies = realloc(*agencies, (record_count + 1) * sizeof(agency_t));
+        (*agencies)[record_count] = make_agency(field_count, field_names, record_values);;
         record_count++;
-        // TODO: allocate memory in *agencies array and write a new agency there
     }
 
     return record_count;
