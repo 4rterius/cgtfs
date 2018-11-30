@@ -46,6 +46,8 @@ int read_one_record(FILE *fp, int fields_number, char ***record_values) {
 
     *record_values = malloc(fields_number * sizeof(char *));
     memset(r_field, 0, LINE_MAX_LEN);
+    strcat(record, "\n");  // fixes the error that happens when the last record isn't followed by a newline
+                           // (then the last record field fails to be parsed)
     
     while (chr = record[++chr_pos - 1]) {
         if (chr == '"') {

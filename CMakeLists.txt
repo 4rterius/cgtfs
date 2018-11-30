@@ -11,6 +11,7 @@ project(cgtfs VERSION 0.1.0)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 set(sources
+  "src/agency.c"
   "src/haversine.c"
   "src/reading.c"
   "src/reading_utils.c"
