@@ -31,7 +31,7 @@ int read_header(FILE *fp, char ***field_names) {
     return h_field_index;
 }
 
-int read_one_record(FILE *fp, int fields_number, char ***record_values) {
+int read_record(FILE *fp, int fields_number, char ***record_values) {
     char record[LINE_MAX_LEN];
     char r_field[LINE_MAX_LEN];
     char r_field_index = 0;
@@ -63,16 +63,4 @@ int read_one_record(FILE *fp, int fields_number, char ***record_values) {
         }
     }
     return 1;
-}
-
-int for_each_record(FILE *fp, int fields_number, int (*cb)(int, int, char **)) {
-    char **record_values;
-    int line_num = 0;
-
-    while (read_one_record(fp, fields_number, &record_values) > 0)
-        if (cb(line_num++, fields_number, record_values) < 0)
-            return -1;
-
-    free(record_values);
-    return line_num;
 }

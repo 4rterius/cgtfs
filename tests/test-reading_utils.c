@@ -90,4 +90,67 @@ int test_reading_utils_read_header() {
     return 0;
 }
 
+int test_reading_utils_read_record() {
+
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/agency.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/agency.txt` file");
+        } else {
+            char **field_names;
+            int field_count = read_header(fp, &field_names);
+
+            char **record_values;
+            int record_count = 0;
+            
+            while (read_record(fp, field_count, &record_values) > 0) {
+                switch(record_count) {
+                    case 0:
+                        if (!(
+                            !strcmp(record_values[0], "1") &&
+                            !strcmp(record_values[1], "Lahden Seudun Liikenne") &&
+                            !strcmp(record_values[2], "http://www.lsl.fi") &&
+                            !strcmp(record_values[3], "Europe/Helsinki") &&
+                            !strcmp(record_values[4], "fi") &&
+                            !strcmp(record_values[5], "03 814 2355")
+                        )) {
+                            printf("Agency 1 parsed incorrectly.");
+                        }
+                        break;
+                    case 2:
+                        if (!(
+                            !strcmp(record_values[0], "3") &&
+                            !strcmp(record_values[1], "") &&
+                            !strcmp(record_values[2], "") &&
+                            !strcmp(record_values[3], "") &&
+                            !strcmp(record_values[4], "") &&
+                            !strcmp(record_values[5], "")
+                        )) {
+                            printf("Agency 3 (empty) parsed incorrectly.");
+                        }
+                        break;
+                    case 3:
+                        if (!(
+                            !strcmp(record_values[0], "4") &&
+                            !strcmp(record_values[1], "djghasldföäånkl´+123sd") &&
+                            !strcmp(record_values[2], "http://www.lsl.fi") &&
+                            !strcmp(record_values[3], "blahblah") &&
+                            !strcmp(record_values[4], "fi") &&
+                            !strcmp(record_values[5], "03 814 2355")
+                        )) {
+                            printf("Agency 4 parsed incorrectly.");
+                        }
+                        break;
+                }
+                record_count++;
+            }
+
+            free(field_names);
+            free(record_values);
+        }
+        fclose(fp);
+    }
+}
+
 #endif

@@ -7,8 +7,8 @@
 
 int main(int argc, char **argv) {
     test_haversine_correct();
-    test_reading_agencies_correct();
     test_reading_utils_read_header();
+    test_reading_utils_read_record();
     return 0;
 }
 

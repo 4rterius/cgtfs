@@ -15,11 +15,14 @@ int read_agencies(FILE *fp, agency_t **agencies) {
     
     *agencies = malloc(sizeof(agency_t));
     
-    while (read_one_record(fp, field_count, &record_values) > 0) {
+    while (read_record(fp, field_count, &record_values) > 0) {
         *agencies = realloc(*agencies, (record_count + 1) * sizeof(agency_t));
         (*agencies)[record_count] = make_agency(field_count, field_names, record_values);;
         record_count++;
     }
+
+    free(field_names);
+    free(record_values);
 
     return record_count;
 }
