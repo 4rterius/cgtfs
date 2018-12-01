@@ -1,7 +1,21 @@
 #include "agency.h"
 
-agency_t make_agency(int field_count, char **field_names, char **field_values) {
+agency_t empty_agency(void) {
     agency_t agency;
+    strcpy(agency.id, "");
+    strcpy(agency.name, "");
+    strcpy(agency.url, "");
+    strcpy(agency.timezone, "");
+    strcpy(agency.lang, "");
+    strcpy(agency.phone, "");
+    strcpy(agency.fare_url, "");
+    strcpy(agency.email, "");
+    agency.is_null = 1;
+    return agency;
+}
+
+agency_t make_agency(int field_count, char **field_names, char **field_values) {
+    agency_t agency = empty_agency();
     int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {

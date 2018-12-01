@@ -18,6 +18,7 @@ typedef struct {
 } agency_t;
 
 
+agency_t empty_agency(void);
 agency_t make_agency(int field_count, char **field_names, char **field_values);
 
 #endif
