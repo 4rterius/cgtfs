@@ -71,6 +71,8 @@ calendar_record_t make_calendar_record(int field_count, char **field_names, char
 
     if (assignment_counter == 0)
         calendar_record.is_null = 1;
+    else
+        calendar_record.is_null = 0;
 
     return calendar_record;
 }

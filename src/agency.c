@@ -63,6 +63,8 @@ agency_t make_agency(int field_count, char **field_names, char **field_values) {
 
     if (assignment_counter == 0)
         agency.is_null = 1;
+    else
+        agency.is_null = 0;
 
     return agency;
 }

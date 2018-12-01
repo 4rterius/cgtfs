@@ -12,6 +12,7 @@ set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS}")
 
 set(sources
   "src/agency.c"
+  "src/calendar_dates.c"
   "src/calendar.c"
   "src/haversine.c"
   "src/reading.c"
