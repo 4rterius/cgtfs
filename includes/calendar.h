@@ -12,7 +12,7 @@ typedef enum {
 } service_availability_t;
 
 typedef struct {
-    char service_id[64];
+    char service_id[65];
     service_availability_t monday;
     service_availability_t tuesday;
     service_availability_t wednesday;
@@ -20,8 +20,8 @@ typedef struct {
     service_availability_t friday;
     service_availability_t saturday;
     service_availability_t sunday;
-    char start_date[8];
-    char end_date[8];
+    char start_date[9];
+    char end_date[9];
     int is_null;
 } calendar_record_t;
 

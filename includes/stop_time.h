@@ -14,12 +14,12 @@ typedef enum {
 } timepoint_precision_t;
 
 typedef struct {
-    char trip_id[64];
-    char arrival_time[8];
-    char departure_time[8];
-    char stop_id[64];
+    char trip_id[65];
+    char arrival_time[9];
+    char departure_time[9];
+    char stop_id[65];
     unsigned int stop_sequence;
-    char stop_headsign[64];
+    char stop_headsign[65];
     stop_type_t pickup_type;
     stop_type_t dropoff_type;
     double shape_dist_traveled;

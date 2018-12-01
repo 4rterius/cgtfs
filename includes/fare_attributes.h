@@ -14,12 +14,12 @@ typedef enum {
 } transfers_t;
 
 typedef struct {
-    char fare_id[64];
+    char fare_id[65];
     int price;
-    char currency_type[3];
+    char currency_type[4];
     payment_method_t payment_method;
     transfers_t transfers;
-    char agency_id[64];
+    char agency_id[65];
     int transfer_duration;
 } fare_attribute_t;
 

@@ -2,7 +2,7 @@
 #define CGTFS_SHAPE_H
 
 typedef struct {
-    char id[64];
+    char id[65];
     long double pt_lat;
     long double pt_lon;
     unsigned int pt_sequence;

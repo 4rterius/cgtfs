@@ -13,15 +13,15 @@ typedef enum {
 } route_type_t;
 
 typedef struct {
-    char id[64];
-    char agency_id[64];
-    char short_name[64];
-    char long_name[256];
-    char desc[512];
+    char id[65];
+    char agency_id[65];
+    char short_name[65];
+    char long_name[257];
+    char desc[513];
     route_type_t type;
-    char url[128];
-    char color[6];
-    char text_color[6];
+    char url[129];
+    char color[7];
+    char text_color[7];
     unsigned int sort_order;
 } route_t;
 

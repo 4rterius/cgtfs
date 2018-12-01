@@ -14,14 +14,14 @@ typedef enum {
 } bikes_allowed_t;
 
 typedef struct {
-    char id[64];
-    char route_id[64];
-    char service_id[64];
-    char headsign[64];
-    char short_name[64];
+    char id[65];
+    char route_id[65];
+    char service_id[65];
+    char headsign[65];
+    char short_name[65];
     unsigned int direction_id;
-    char block_id[64];
-    char shape_id[64];
+    char block_id[65];
+    char shape_id[65];
     wheelchair_accessible_t wheelchair_accessible;
     bikes_allowed_t bikes_allowed;
 } trip_t;

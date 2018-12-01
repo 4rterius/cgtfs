@@ -6,14 +6,14 @@
 
 
 typedef struct {
-    char id[64];
-    char name[64];
-    char url[128];
-    char timezone[64];
-    char lang[64];
-    char phone[64];
-    char fare_url[128];
-    char email[64];
+    char id[65];
+    char name[65];
+    char url[129];
+    char timezone[65];
+    char lang[65];
+    char phone[65];
+    char fare_url[129];
+    char email[65];
     int is_null;
 } agency_t;
 
