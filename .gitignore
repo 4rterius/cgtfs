@@ -51,6 +51,10 @@ Module.symvers
 Mkfile.old
 dkms.conf
 
+# Documentation
+docs/
+!docs/extra/
+
 # Non-public stuff
 _local/
 .vscode/
