@@ -1,17 +1,34 @@
 #ifndef CGTFS_CALENDAR_H
 #define CGTFS_CALENDAR_H
 
+#include <stdio.h>
+#include <string.h>
+
+
+typedef enum {
+    SA_UNAVAILABLE = 0,
+    SA_AVAILABLE = 1,
+    SA_NOT_SET
+} service_availability_t;
+
 typedef struct {
-    char id[64];
-    unsigned int monday;
-    unsigned int tuesday;
-    unsigned int wednesday;
-    unsigned int thursday;
-    unsigned int friday;
-    unsigned int saturday;
-    unsigned int sunday;
+    char service_id[64];
+    service_availability_t monday;
+    service_availability_t tuesday;
+    service_availability_t wednesday;
+    service_availability_t thursday;
+    service_availability_t friday;
+    service_availability_t saturday;
+    service_availability_t sunday;
     char start_date[8];
     char end_date[8];
+    int is_null;
 } calendar_record_t;
+
+
+service_availability_t parse_service_availability(char *value);
+
+calendar_record_t empty_calendar_record(void);
+calendar_record_t make_calendar_record(int field_count, char **field_names, char **field_values);
 
 #endif
