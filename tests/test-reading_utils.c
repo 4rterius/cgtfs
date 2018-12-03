@@ -151,6 +151,7 @@ int test_reading_utils_read_record() {
         }
         fclose(fp);
     }
+    return 0;
 }
 
 #endif

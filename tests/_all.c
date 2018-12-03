@@ -9,6 +9,7 @@
 int main(int argc, char **argv) {
     test_haversine_correct();
 
+    test_mf_agency();
     test_mf_calendar_dates();
 
     test_reading_utils_read_header();
