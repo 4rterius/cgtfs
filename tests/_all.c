@@ -11,6 +11,7 @@ int main(int argc, char **argv) {
 
     test_mf_agency();
     test_mf_calendar_dates();
+    test_mf_calendar();
 
     test_reading_utils_read_header();
     test_reading_utils_read_record();

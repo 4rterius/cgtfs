@@ -3,6 +3,7 @@
 
 #include "agency.h"
 #include "calendar_dates.h"
+#include "calendar.h"
 
 int test_mf_agency(void) {
     // Case 1
@@ -59,6 +60,38 @@ int test_mf_calendar_dates(void) {
         }
     }
 
+    return 0;
+}
+
+int test_mf_calendar(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_3 10
+        char *field_names[FIELDS_NUM_3] = {
+            "service_id", "monday", "tuesday", "wednesday", "thursday",
+            "friday", "saturday", "sunday", "start_date", "end_date"
+        };
+        char *field_values[FIELDS_NUM_3] = {
+            "1001", "1", "1", "1", "1", "1", "0", "0", "20000101", "20201231"
+        };
+
+        calendar_record_t cr_1 = make_calendar_record(FIELDS_NUM_3, field_names, field_values);
+        
+        if (!(
+            !strcmp(cr_1.service_id, "1001") &&
+            !strcmp(cr_1.start_date, "20000101") &&
+            !strcmp(cr_1.end_date, "20201231") &&
+            cr_1.monday == SA_AVAILABLE &&
+            cr_1.tuesday == SA_AVAILABLE &&
+            cr_1.wednesday == SA_AVAILABLE &&
+            cr_1.thursday == SA_AVAILABLE &&
+            cr_1.friday == SA_AVAILABLE &&
+            cr_1.saturday == SA_UNAVAILABLE &&
+            cr_1.sunday == SA_UNAVAILABLE
+        )) {
+            printf("Parsed calendar record 1 incorrectly!");
+        }
+    }
     return 0;
 }
 
