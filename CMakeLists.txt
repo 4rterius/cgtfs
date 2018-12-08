@@ -26,10 +26,6 @@ set(include_dirs
   "tests/"
 )
 
-set(libraries
-  m
-)
-
 include_directories(${include_dirs})
 
 
@@ -37,9 +33,11 @@ include_directories(${include_dirs})
 ## -----------------------------------------------------------------
 
 add_library(cgtfs STATIC ${sources})
-target_link_libraries(cgtfs ${libraries})
 set_target_properties(cgtfs PROPERTIES VERSION ${PROJECT_VERSION})
 
+if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
+  target_link_libraries(cgtfs m)
+endif()
 
 ## Tests
 ## -----------------------------------------------------------------
