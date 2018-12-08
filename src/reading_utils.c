@@ -23,7 +23,7 @@ int read_header(FILE *fp, char ***field_names) {
             memset(h_field, 0, LINE_MAX_LEN);
             h_field_len = 0;
             h_field_index++;
-        } else if (chr != '\n') {
+        } else if (chr != '\n' && chr != '\r') {
             h_field[++h_field_len - 1] = chr;
         }
     }
@@ -58,7 +58,7 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
             memset(r_field, 0, LINE_MAX_LEN);
             r_field_len = 0;
             r_field_index++;
-        } else if (chr != '\n') {
+        } else if (chr != '\n' && chr != '\r') {
             r_field[++r_field_len - 1] = chr;
         }
     }
