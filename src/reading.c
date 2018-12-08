@@ -6,18 +6,18 @@
 #include "reading_utils.h"
 
 
-int read_agencies(FILE *fp, agency_t **agencies) {
+int read_agencies(FILE *fp, agency_t **records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
     char **record_values;
     int record_count = 0;
     
-    *agencies = malloc(sizeof(agency_t));
+    *records = malloc(sizeof(agency_t));
     
     while (read_record(fp, field_count, &record_values) > 0) {
-        *agencies = realloc(*agencies, (record_count + 1) * sizeof(agency_t));
-        (*agencies)[record_count] = read_agency(field_count, field_names, record_values);
+        *records = realloc(*records, (record_count + 1) * sizeof(agency_t));
+        (*records)[record_count] = read_agency(field_count, field_names, record_values);
         record_count++;
     }
 
@@ -27,18 +27,18 @@ int read_agencies(FILE *fp, agency_t **agencies) {
     return record_count;
 }
 
-int read_calendar_dates(FILE *fp, calendar_date_t **calendar_dates) {
+int read_calendar_dates(FILE *fp, calendar_date_t **records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
     char **record_values;
     int record_count = 0;
     
-    *calendar_dates = malloc(sizeof(calendar_date_t));
+    *records = malloc(sizeof(calendar_date_t));
     
     while (read_record(fp, field_count, &record_values) > 0) {
-        *calendar_dates = realloc(*calendar_dates, (record_count + 1) * sizeof(agency_t));
-        (*calendar_dates)[record_count] = read_calendar_date(field_count, field_names, record_values);
+        *records = realloc(*records, (record_count + 1) * sizeof(agency_t));
+        (*records)[record_count] = read_calendar_date(field_count, field_names, record_values);
         record_count++;
     }
 
@@ -48,18 +48,18 @@ int read_calendar_dates(FILE *fp, calendar_date_t **calendar_dates) {
     return record_count;
 }
 
-int read_calendar_records(FILE *fp, calendar_record_t **calendar_records) {
+int read_calendar_records(FILE *fp, calendar_record_t **records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
     char **record_values;
     int record_count = 0;
     
-    *calendar_records = malloc(sizeof(calendar_record_t));
+    *records = malloc(sizeof(calendar_record_t));
     
     while (read_record(fp, field_count, &record_values) > 0) {
-        *calendar_records = realloc(*calendar_records, (record_count + 1) * sizeof(agency_t));
-        (*calendar_records)[record_count] = read_calendar_record(field_count, field_names, record_values);
+        *records = realloc(*records, (record_count + 1) * sizeof(agency_t));
+        (*records)[record_count] = read_calendar_record(field_count, field_names, record_values);
         record_count++;
     }
 
