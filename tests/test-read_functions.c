@@ -5,6 +5,7 @@
 #include "calendar_dates.h"
 #include "calendar.h"
 #include "fare_attributes.h"
+#include "fare_rule.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -120,6 +121,32 @@ int test_rf_fare_attributes(void) {
             fa_1.transfer_duration == 6000
         )) {
             printf("Parsed fare attributes record 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_fare_rule(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_5 5
+        char *field_names[FIELDS_NUM_5] = {
+            "fare_id", "route_id", "origin_id", "destination_id", "contains_id"
+        };
+        char *field_values[FIELDS_NUM_5] = {
+            "b", "TSW", "2", "8", "6"
+        };
+
+        fare_rule_t fa_1 = read_fare_rule(FIELDS_NUM_5, field_names, field_values);
+
+        if (!(
+            !strcmp(fa_1.fare_id, "b") &&
+            !strcmp(fa_1.route_id, "TSW") &&
+            !strcmp(fa_1.origin_id, "2") &&
+            !strcmp(fa_1.destination_id, "8") &&
+            !strcmp(fa_1.contains_id, "6")
+        )) {
+            printf("Parsed fare rules record 1 incorrectly!");
         }
     }
     return 0;
