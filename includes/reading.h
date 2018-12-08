@@ -23,7 +23,7 @@ int read_all_calendar_records(FILE *fp, calendar_record_t **records);
 int read_all_fare_attributes(FILE *fp, fare_attributes_t **records);
 int read_all_fare_rules(FILE *fp, fare_rule_t **records);
 int read_all_feed_info(FILE *fp, feed_info_t **records);
-int read_all_frequences(FILE *fp, frequency_t **records);
+int read_all_frequencies(FILE *fp, frequency_t **records);
 int read_all_routes(FILE *fp, route_t **records);
 int read_all_shapes(FILE *fp, shape_t **records);
 int read_all_stop_times(FILE *fp, stop_time_t **records);
