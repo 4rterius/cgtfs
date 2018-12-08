@@ -6,7 +6,7 @@
 #include "reading_utils.h"
 
 
-int read_agencies(FILE *fp, agency_t **records) {
+int read_all_agencies(FILE *fp, agency_t **records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
@@ -27,7 +27,7 @@ int read_agencies(FILE *fp, agency_t **records) {
     return record_count;
 }
 
-int read_calendar_dates(FILE *fp, calendar_date_t **records) {
+int read_all_calendar_dates(FILE *fp, calendar_date_t **records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
@@ -48,7 +48,7 @@ int read_calendar_dates(FILE *fp, calendar_date_t **records) {
     return record_count;
 }
 
-int read_calendar_records(FILE *fp, calendar_record_t **records) {
+int read_all_calendar_records(FILE *fp, calendar_record_t **records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
