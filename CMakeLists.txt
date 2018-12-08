@@ -14,6 +14,7 @@ set(sources
   "src/agency.c"
   "src/calendar_dates.c"
   "src/calendar.c"
+  "src/fare_attributes.c"
   "src/haversine.c"
   "src/reading.c"
   "src/reading_utils.c"

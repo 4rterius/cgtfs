@@ -12,6 +12,7 @@ int main(int argc, char **argv) {
     test_rf_agency();
     test_rf_calendar_dates();
     test_rf_calendar();
+    test_rf_fare_attributes();
 
     test_reading_utils_read_header();
     test_reading_utils_read_record();

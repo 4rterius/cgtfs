@@ -20,7 +20,8 @@
 int read_agencies(FILE *fp, agency_t **records);
 int read_calendar_dates(FILE *fp, calendar_date_t **records);
 int read_calendar_records(FILE *fp, calendar_record_t **records);
-int read_fare_attributes(FILE *fp, fare_attribute_t **records);
+// TODO: add *_all_* to names for disambiguation
+// int read_fare_attributes(FILE *fp, fare_attribute_t **records);
 int read_fare_rules(FILE *fp, fare_rule_t **records);
 int read_feed_info(FILE *fp, feed_info_t *records);
 int read_frequences(FILE *fp, frequency_t **records);

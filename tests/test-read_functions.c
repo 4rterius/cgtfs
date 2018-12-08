@@ -4,6 +4,7 @@
 #include "agency.h"
 #include "calendar_dates.h"
 #include "calendar.h"
+#include "fare_attributes.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -90,6 +91,35 @@ int test_rf_calendar(void) {
             cr_1.sunday == SA_UNAVAILABLE
         )) {
             printf("Parsed calendar record 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_fare_attributes(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_4 7
+        char *field_names[FIELDS_NUM_4] = {
+            "fare_id", "price", "currency_type", "payment_method",
+            "transfers", "agency_id", "transfer_duration"
+        };
+        char *field_values[FIELDS_NUM_4] = {
+            "17", "2.85", "EUR", "0", "", "1", "6000"
+        };
+
+        fare_attributes_t fa_1 = read_fare_attributes(FIELDS_NUM_4, field_names, field_values);
+
+        if (!(
+            !strcmp(fa_1.fare_id, "17") &&
+            fa_1.price == 2.85 &&
+            !strcmp(fa_1.currency_type, "EUR") &&
+            fa_1.payment_method == PM_ON_BOARD &&
+            fa_1.transfers == TS_UNLIMITED &&
+            !strcmp(fa_1.agency_id, "1") &&
+            fa_1.transfer_duration == 6000
+        )) {
+            printf("Parsed fare attributes record 1 incorrectly!");
         }
     }
     return 0;
