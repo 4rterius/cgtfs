@@ -16,6 +16,7 @@ set(sources
   "src/calendar.c"
   "src/fare_attributes.c"
   "src/fare_rule.c"
+  "src/feed_info.c"
   "src/haversine.c"
   "src/reading.c"
   "src/reading_utils.c"

@@ -6,6 +6,7 @@
 #include "calendar.h"
 #include "fare_attributes.h"
 #include "fare_rule.h"
+#include "feed_info.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -147,6 +148,37 @@ int test_rf_fare_rule(void) {
             !strcmp(fa_1.contains_id, "6")
         )) {
             printf("Parsed fare rules record 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_feed_info(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_6 8
+        char *field_names[FIELDS_NUM_6] = {
+            "feed_publisher_name", "feed_publisher_url", "feed_lang", "feed_start_date",
+            "feed_end_date", "feed_version", "feed_contact_email", "feed_contact_url"
+        };
+        char *field_values[FIELDS_NUM_6] = {
+            "Vasilij Terkin", "protocol://domain.zone", "somelang", "18970527",
+            "30000101", "0.1.0", "some@example.com", "http://example.com"
+        };
+
+        feed_info_t fi_1 = read_feed_info(FIELDS_NUM_6, field_names, field_values);
+
+        if (!(
+            !strcmp(fi_1.feed_publisher_name, "Vasilij Terkin") &&
+            !strcmp(fi_1.feed_publisher_url, "protocol://domain.zone") &&
+            !strcmp(fi_1.feed_lang, "somelang") &&
+            !strcmp(fi_1.feed_start_date, "18970527") &&
+            !strcmp(fi_1.feed_end_date, "30000101") &&
+            !strcmp(fi_1.feed_version, "0.1.0") &&
+            !strcmp(fi_1.feed_contact_email, "some@example.com") &&
+            !strcmp(fi_1.feed_contact_url, "http://example.com")
+        )) {
+            printf("Parsed feed info incorrectly!");
         }
     }
     return 0;
