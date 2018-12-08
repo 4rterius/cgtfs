@@ -27,6 +27,27 @@ int read_agencies(FILE *fp, agency_t **agencies) {
     return record_count;
 }
 
+int read_calendar_dates(FILE *fp, calendar_date_t **calendar_dates) {
+    char **field_names;
+    int field_count = read_header(fp, &field_names);
+
+    char **record_values;
+    int record_count = 0;
+    
+    *calendar_dates = malloc(sizeof(calendar_date_t));
+    
+    while (read_record(fp, field_count, &record_values) > 0) {
+        *calendar_dates = realloc(*calendar_dates, (record_count + 1) * sizeof(agency_t));
+        (*calendar_dates)[record_count] = read_calendar_date(field_count, field_names, record_values);
+        record_count++;
+    }
+
+    free(field_names);
+    free(record_values);
+
+    return record_count;
+}
+
 int read_calendar_records(FILE *fp, calendar_record_t **calendar_records) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
