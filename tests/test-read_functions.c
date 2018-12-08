@@ -7,6 +7,7 @@
 #include "fare_attributes.h"
 #include "fare_rule.h"
 #include "feed_info.h"
+#include "frequency.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -179,6 +180,32 @@ int test_rf_feed_info(void) {
             !strcmp(fi_1.feed_contact_url, "http://example.com")
         )) {
             printf("Parsed feed info incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_frequency(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_7 5
+        char *field_names[FIELDS_NUM_7] = {
+            "trip_id", "start_time", "end_time", "headway_secs", "exact_times"
+        };
+        char *field_values[FIELDS_NUM_7] = {
+            "0xC0FFEE", "05:00:00", "07:00:00", "1200", ""
+        };
+
+        frequency_t freq_1 = read_frequency(FIELDS_NUM_7, field_names, field_values);
+
+        if (!(
+            !strcmp(freq_1.trip_id, "0xC0FFEE") &&
+            !strcmp(freq_1.start_time, "05:00:00") &&
+            !strcmp(freq_1.end_time, "07:00:00") && 
+            freq_1.headway_secs == 1200 &&
+            freq_1.exact_times == TE_NOT_EXACT
+        )) {
+            printf("Parsed frequency 1 incorrectly!");
         }
     }
     return 0;

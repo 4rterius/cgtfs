@@ -1,17 +1,29 @@
 #ifndef CGTFS_FREQUENCY_H
 #define CGTFS_FREQUENCY_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+
 typedef enum {
-    ET_NOT_EXACT,
-    ET_EXACT
-} exact_times_t;
+    TE_NOT_EXACT = 0,
+    TE_EXACT = 1,
+    TE_NOT_SET
+} time_exactness_t;
 
 typedef struct {
     char trip_id[65];
     char start_time[9];
     char end_time[9];
     int headway_secs;
-    exact_times_t exact_times;
+    time_exactness_t exact_times;
+    int is_null;
 } frequency_t;
+
+time_exactness_t parse_time_exactness(char *value);
+
+frequency_t empty_frequency(void);
+frequency_t read_frequency(int field_count, char **field_names, char **field_values);
 
 #endif
