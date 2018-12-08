@@ -17,7 +17,7 @@ int read_agencies(FILE *fp, agency_t **agencies) {
     
     while (read_record(fp, field_count, &record_values) > 0) {
         *agencies = realloc(*agencies, (record_count + 1) * sizeof(agency_t));
-        (*agencies)[record_count] = make_agency(field_count, field_names, record_values);
+        (*agencies)[record_count] = read_agency(field_count, field_names, record_values);
         record_count++;
     }
 
@@ -38,7 +38,7 @@ int read_calendar_records(FILE *fp, calendar_record_t **calendar_records) {
     
     while (read_record(fp, field_count, &record_values) > 0) {
         *calendar_records = realloc(*calendar_records, (record_count + 1) * sizeof(agency_t));
-        (*calendar_records)[record_count] = make_calendar_record(field_count, field_names, record_values);
+        (*calendar_records)[record_count] = read_calendar_record(field_count, field_names, record_values);
         record_count++;
     }
 

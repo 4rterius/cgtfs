@@ -29,6 +29,6 @@ typedef struct {
 service_availability_t parse_service_availability(char *value);
 
 calendar_record_t empty_calendar_record(void);
-calendar_record_t make_calendar_record(int field_count, char **field_names, char **field_values);
+calendar_record_t read_calendar_record(int field_count, char **field_names, char **field_values);
 
 #endif

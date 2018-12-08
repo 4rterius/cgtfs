@@ -22,6 +22,6 @@ typedef struct {
 exception_type_t parse_exception_type(char *value);
 
 calendar_date_t empty_calendar_date(void);
-calendar_date_t make_calendar_date(int field_count, char **field_names, char **field_values);
+calendar_date_t read_calendar_date(int field_count, char **field_names, char **field_values);
 
 #endif

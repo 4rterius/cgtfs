@@ -5,7 +5,7 @@
 #include "calendar_dates.h"
 #include "calendar.h"
 
-int test_mf_agency(void) {
+int test_rf_agency(void) {
     // Case 1
     {
         #define FIELDS_NUM_1 8
@@ -18,7 +18,7 @@ int test_mf_agency(void) {
             "en", "0 000 000 00 00", "http://cash.me/outside", "ex@amp.le"
         };
 
-        agency_t a_1 = make_agency(FIELDS_NUM_1, field_names, field_values);
+        agency_t a_1 = read_agency(FIELDS_NUM_1, field_names, field_values);
 
         if (!(
             !strcmp(a_1.id, "1") &&
@@ -38,7 +38,7 @@ int test_mf_agency(void) {
     return 0;
 }
 
-int test_mf_calendar_dates(void) {
+int test_rf_calendar_dates(void) {
     // Case 1
     {
         #define FIELDS_NUM_2 3
@@ -49,7 +49,7 @@ int test_mf_calendar_dates(void) {
             "1000", "20000101", "2"
         };
 
-        calendar_date_t cd_1 = make_calendar_date(FIELDS_NUM_2, field_names, field_values);
+        calendar_date_t cd_1 = read_calendar_date(FIELDS_NUM_2, field_names, field_values);
         
         if (!(
             !strcmp(cd_1.service_id, "1000") &&
@@ -63,7 +63,7 @@ int test_mf_calendar_dates(void) {
     return 0;
 }
 
-int test_mf_calendar(void) {
+int test_rf_calendar(void) {
     // Case 1
     {
         #define FIELDS_NUM_3 10
@@ -75,7 +75,7 @@ int test_mf_calendar(void) {
             "1001", "1", "1", "1", "1", "1", "0", "0", "20000101", "20201231"
         };
 
-        calendar_record_t cr_1 = make_calendar_record(FIELDS_NUM_3, field_names, field_values);
+        calendar_record_t cr_1 = read_calendar_record(FIELDS_NUM_3, field_names, field_values);
         
         if (!(
             !strcmp(cr_1.service_id, "1001") &&

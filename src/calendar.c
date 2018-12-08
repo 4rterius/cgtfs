@@ -26,7 +26,7 @@ calendar_record_t empty_calendar_record(void) {
     return calendar_record;
 }
 
-calendar_record_t make_calendar_record(int field_count, char **field_names, char **field_values) {
+calendar_record_t read_calendar_record(int field_count, char **field_names, char **field_values) {
     calendar_record_t calendar_record = empty_calendar_record();
     int assignment_counter = 0;
 
