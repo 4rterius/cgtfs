@@ -9,6 +9,7 @@
 #include "feed_info.h"
 #include "frequency.h"
 #include "route.h"
+#include "shape.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -240,6 +241,32 @@ int test_rf_route(void) {
             r_1.sort_order == 175
         )) {
             printf("Parsed route 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_shape(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_9 5
+        char *field_names[FIELDS_NUM_9] = {
+            "shape_id", "shape_pt_lat", "shape_pt_lon", "shape_pt_sequence", "shape_dist_traveled"
+        };
+        char *field_values[FIELDS_NUM_9] = {
+            "A_shp", "37.64430", "-122.41070", "0", "6.8310"
+        };
+
+        shape_t s_1 = read_shape(FIELDS_NUM_9, field_names, field_values);
+
+        if (!(
+            !strcmp(s_1.id, "A_shp") &&
+            s_1.pt_lat == 37.64430 &&
+            s_1.pt_lon == -122.41070 &&
+            s_1.pt_sequence == 0 &&
+            s_1.dist_traveled == 6.8310
+        )) {
+            printf("Parsed shape 1 incorrectly!");
         }
     }
     return 0;

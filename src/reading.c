@@ -173,3 +173,24 @@ int read_all_routes(FILE *fp, route_t **records) {
 
     return record_count;
 }
+
+int read_all_shapes(FILE *fp, shape_t **records) {
+    char **field_names;
+    int field_count = read_header(fp, &field_names);
+
+    char **record_values;
+    int record_count = 0;
+    
+    *records = malloc(sizeof(shape_t));
+    
+    while (read_record(fp, field_count, &record_values) > 0) {
+        *records = realloc(*records, (record_count + 1) * sizeof(shape_t));
+        (*records)[record_count] = read_shape(field_count, field_names, record_values);
+        record_count++;
+    }
+
+    free(field_names);
+    free(record_values);
+
+    return record_count;
+}
