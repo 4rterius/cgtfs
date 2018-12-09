@@ -41,13 +41,13 @@ frequency_t read_frequency(int field_count, char **field_names, char **field_val
             continue;
         }
         if (strcmp(field_names[i], "headway_secs") == 0) {
-            frequency.headway_secs = atoi(field_values[i]);
+            frequency.headway_secs = (int)strtol(field_values[i], NULL, 0);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "exact_times") == 0) {
             frequency.exact_times = parse_time_exactness(field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

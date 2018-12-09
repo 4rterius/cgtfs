@@ -23,22 +23,22 @@ fare_rule_t read_fare_rule(int field_count, char **field_names, char **field_val
         }
         if (strcmp(field_names[i], "route_id") == 0) {
             strcpy(fare_rule.route_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "origin_id") == 0) {
             strcpy(fare_rule.origin_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "destination_id") == 0) {
             strcpy(fare_rule.destination_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "contains_id") == 0) {
             strcpy(fare_rule.contains_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

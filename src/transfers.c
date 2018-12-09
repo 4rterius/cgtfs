@@ -45,7 +45,7 @@ transfer_t read_transfer(int field_count, char **field_names, char **field_value
         }
         if (strcmp(field_names[i], "min_transfer_time") == 0) {
             transfer.min_transfer_time = (unsigned int)strtoul(field_values[i], NULL, 0);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

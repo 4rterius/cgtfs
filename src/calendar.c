@@ -48,24 +48,38 @@ calendar_record_t read_calendar_record(int field_count, char **field_names, char
         }
         if (strcmp(field_names[i], "monday") == 0) {
             calendar_record.monday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
         if (strcmp(field_names[i], "tuesday") == 0) {
             calendar_record.tuesday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
         if (strcmp(field_names[i], "wednesday") == 0) {
             calendar_record.wednesday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
         if (strcmp(field_names[i], "thursday") == 0) {
             calendar_record.thursday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
         if (strcmp(field_names[i], "friday") == 0) {
             calendar_record.friday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
         if (strcmp(field_names[i], "saturday") == 0) {
             calendar_record.saturday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
         if (strcmp(field_names[i], "sunday") == 0) {
             calendar_record.sunday = parse_service_availability(field_values[i]);
+            assignment_counter++;
+            continue;
         }
     }
 

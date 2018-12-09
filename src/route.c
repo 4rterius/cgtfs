@@ -49,22 +49,22 @@ route_t read_route(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "agency_id") == 0) {
             strcpy(route.agency_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_short_name") == 0) {
             strcpy(route.short_name, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_long_name") == 0) {
             strcpy(route.long_name, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_desc") == 0) {
             strcpy(route.desc, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_type") == 0) {
@@ -74,22 +74,22 @@ route_t read_route(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "route_url") == 0) {
             strcpy(route.url, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_color") == 0) {
             strcpy(route.color, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_text_color") == 0) {
             strcpy(route.text_color, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_sort_order") == 0) {
-            route.sort_order = atoi(field_values[i]);
-            assignment_counter++;
+            route.sort_order = (int)strtol(field_values[i], NULL, 0);
+            // assignment_counter++;
             continue;
         }
     }

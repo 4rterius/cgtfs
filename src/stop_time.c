@@ -70,27 +70,27 @@ stop_time_t read_stop_time(int field_count, char **field_names, char **field_val
         }
         if (strcmp(field_names[i], "stop_headsign") == 0) {
             strcpy(stop_time.stop_headsign, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "pickup_type") == 0) {
             stop_time.pickup_type = parse_stop_type(field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "drop_off_type") == 0) {
             stop_time.dropoff_type = parse_stop_type(field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "shape_dist_traveled") == 0) {
             stop_time.shape_dist_traveled = strtod(field_values[i], NULL);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "timepoint") == 0) {
             stop_time.timepoint = parse_timepoint_precision(field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

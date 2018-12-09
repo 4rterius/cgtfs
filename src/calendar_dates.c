@@ -35,6 +35,8 @@ calendar_date_t read_calendar_date(int field_count, char **field_names, char **f
         }
         if (strcmp(field_names[i], "exception_type") == 0) {
             calendar_date.exception_type = parse_exception_type(field_values[i]);
+            assignment_counter++;
+            continue;
         }
     }
 

@@ -67,12 +67,12 @@ fare_attributes_t read_fare_attributes(int field_count, char **field_names, char
         }
         if (strcmp(field_names[i], "agency_id") == 0) {
             strcpy(fare_attributes.agency_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "transfer_duration") == 0) {
-            fare_attributes.transfer_duration = atof(field_values[i]);
-            assignment_counter++;
+            fare_attributes.transfer_duration = strtod(field_values[i], NULL);
+            // assignment_counter++;
             continue;
         }
     }

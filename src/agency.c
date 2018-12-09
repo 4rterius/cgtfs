@@ -21,7 +21,7 @@ agency_t read_agency(int field_count, char **field_names, char **field_values) {
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "agency_id") == 0) {
             strcpy(agency.id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "agency_name") == 0) {
@@ -41,22 +41,22 @@ agency_t read_agency(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "agency_lang") == 0) {
             strcpy(agency.lang, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "agency_phone") == 0) {
             strcpy(agency.phone, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "agency_fare_url") == 0) {
             strcpy(agency.fare_url, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "agency_email") == 0) {
             strcpy(agency.email, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

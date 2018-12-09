@@ -36,27 +36,27 @@ feed_info_t read_feed_info(int field_count, char **field_names, char **field_val
         }
         if (strcmp(field_names[i], "feed_start_date") == 0) {
             strcpy(feed_info.feed_start_date, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_end_date") == 0) {
             strcpy(feed_info.feed_end_date, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_version") == 0) {
             strcpy(feed_info.feed_version, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_contact_email") == 0) {
             strcpy(feed_info.feed_contact_email, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_contact_url") == 0) {
             strcpy(feed_info.feed_contact_url, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

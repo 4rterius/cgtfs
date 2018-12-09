@@ -38,7 +38,7 @@ shape_t read_shape(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "shape_dist_traveled") == 0) {
             shape.dist_traveled = strtod(field_values[i], NULL);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }

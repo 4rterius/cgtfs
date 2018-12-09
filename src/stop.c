@@ -52,7 +52,7 @@ stop_t read_stop(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "stop_code") == 0) {
             strcpy(stop.code, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_name") == 0) {
@@ -62,7 +62,7 @@ stop_t read_stop(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "stop_desc") == 0) {
             strcpy(stop.desc, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_lat") == 0) {
@@ -77,32 +77,32 @@ stop_t read_stop(int field_count, char **field_names, char **field_values) {
         }
         if (strcmp(field_names[i], "zone_id") == 0) {
             strcpy(stop.zone_id, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_url") == 0) {
             strcpy(stop.url, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "location_type") == 0) {
             stop.location_type = parse_location_type(field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "parent_station") == 0) {
             strcpy(stop.parent_station, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_timezone") == 0) {
             strcpy(stop.timezone, field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "wheelchair_boarding") == 0) {
             stop.wheelchair_boarding = parse_wheelchair_boarding(field_values[i]);
-            assignment_counter++;
+            // assignment_counter++;
             continue;
         }
     }
