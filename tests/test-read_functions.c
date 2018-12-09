@@ -8,6 +8,7 @@
 #include "fare_rule.h"
 #include "feed_info.h"
 #include "frequency.h"
+#include "route.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -206,6 +207,39 @@ int test_rf_frequency(void) {
             freq_1.exact_times == TE_NOT_EXACT
         )) {
             printf("Parsed frequency 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_route(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_8 10
+        char *field_names[FIELDS_NUM_8] = {
+            "route_id", "agency_id", "route_short_name", "route_long_name", "route_desc",
+            "route_type", "route_url", "route_color", "route_text_color", "route_sort_order"
+        };
+        char *field_values[FIELDS_NUM_8] = {
+            "A", "2", "17", "Mission", "Amazing desc",
+            "3", "http://some.url", "cccccc", "ff0000", "175"
+        };
+
+        route_t r_1 = read_route(FIELDS_NUM_8, field_names, field_values);
+
+        if (!(
+            !strcmp(r_1.id, "A") &&
+            !strcmp(r_1.agency_id, "2") &&
+            !strcmp(r_1.short_name, "17") &&
+            !strcmp(r_1.long_name, "Mission") &&
+            !strcmp(r_1.desc, "Amazing desc") &&
+            r_1.type == RT_BUS &&
+            !strcmp(r_1.url, "http://some.url") &&
+            !strcmp(r_1.color, "cccccc") &&
+            !strcmp(r_1.text_color, "ff0000") &&
+            r_1.sort_order == 175
+        )) {
+            printf("Parsed route 1 incorrectly!");
         }
     }
     return 0;

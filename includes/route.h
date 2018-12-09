@@ -1,15 +1,21 @@
 #ifndef CGTFS_ROUTE_H
 #define CGTFS_ROUTE_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+
 typedef enum {
-    RT_STREET_LEVEL,
-    RT_UNDERGROUND,
-    RT_LONG_RAIL,
-    RT_BUS,
-    RT_FERRY,
-    RT_CABLE_CAR,
-    RT_SUSPENDED,
-    RT_FUNICULAR
+    RT_STREET_LEVEL = 0,
+    RT_UNDERGROUND = 1,
+    RT_LONG_RAIL = 2,
+    RT_BUS = 3,
+    RT_FERRY = 4,
+    RT_CABLE_CAR = 5,
+    RT_SUSPENDED = 6,
+    RT_FUNICULAR = 7,
+    RT_NOT_SET
 } route_type_t;
 
 typedef struct {
@@ -22,7 +28,14 @@ typedef struct {
     char url[129];
     char color[7];
     char text_color[7];
-    unsigned int sort_order;
+    int sort_order;
+    int is_null;
 } route_t;
+
+
+route_type_t parse_route_type(char *value);
+
+route_t empty_route(void);
+route_t read_route(int field_count, char **field_names, char **field_values);
 
 #endif

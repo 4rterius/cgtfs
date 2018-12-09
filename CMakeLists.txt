@@ -21,6 +21,7 @@ set(sources
   "src/haversine.c"
   "src/reading.c"
   "src/reading_utils.c"
+  "src/route.c"
 )
 
 set(include_dirs
