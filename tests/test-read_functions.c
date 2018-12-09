@@ -11,6 +11,7 @@
 #include "route.h"
 #include "shape.h"
 #include "stop_time.h"
+#include "stop.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -258,7 +259,7 @@ int test_rf_shape(void) {
             "A_shp", "37.64430", "-122.41070", "0", "6.8310"
         };
 
-        shape_t s_1 = read_shape(FIELDS_NUM_9, field_names, field_values);
+        shape_t s_1 = read_shape(FIELDS_NUM_9, field_names, field_values);   // TODO: find out why works on Win but not on Linux
 
         if (!(
             !strcmp(s_1.id, "A_shp") &&
@@ -301,6 +302,45 @@ int test_rf_stop_time(void) {
             st_1.timepoint == TP_EXACT
         )) {
             printf("Parsed stop time 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_stop(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_11 12
+        char *field_names[FIELDS_NUM_11] = {
+            "stop_id", "stop_code", "stop_name",
+            "stop_desc", "stop_lat", "stop_lon",
+            "zone_id", "stop_url", "location_type",
+            "parent_station", "stop_timezone", "wheelchair_boarding"
+        };
+        char *field_values[FIELDS_NUM_11] = {
+            "S1", "SOMECODE", "Mission St, Silver Ave.",
+            "The stop is located at the southwest corner of the intersection.", "37.728631", "-122.431282",
+            "1", "http://example.com", "0",
+            "ST0", "Europe/Helsinki", "2"
+        };
+
+        stop_t stp_1 = read_stop(FIELDS_NUM_11, field_names, field_values);
+
+        if (!(
+            !strcmp(stp_1.id, "S1") &&
+            !strcmp(stp_1.code, "SOMECODE") &&
+            !strcmp(stp_1.name, "Mission St, Silver Ave.") &&
+            !strcmp(stp_1.desc, "The stop is located at the southwest corner of the intersection.") &&
+            stp_1.lat == 37.728631 &&
+            stp_1.lon == -122.431282 &&
+            !strcmp(stp_1.zone_id, "1") &&
+            !strcmp(stp_1.url, "http://example.com") &&
+            stp_1.location_type == LT_STOP &&
+            !strcmp(stp_1.parent_station, "ST0") &&
+            !strcmp(stp_1.timezone, "Europe/Helsinki") &&
+            stp_1.wheelchair_boarding == WB_NOT_POSSIBLE
+        )) {
+            printf("Parsed stop 1 incorrectly!");
         }
     }
     return 0;

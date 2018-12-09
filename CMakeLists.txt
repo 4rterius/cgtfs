@@ -24,6 +24,7 @@ set(sources
   "src/route.c"
   "src/shape.c"
   "src/stop_time.c"
+  "src/stop.c"
 )
 
 set(include_dirs

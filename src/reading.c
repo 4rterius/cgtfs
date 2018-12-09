@@ -215,3 +215,24 @@ int read_all_stop_times(FILE *fp, stop_time_t **records) {
 
     return record_count;
 }
+
+int read_all_stops(FILE *fp, stop_t **records) {
+    char **field_names;
+    int field_count = read_header(fp, &field_names);
+
+    char **record_values;
+    int record_count = 0;
+    
+    *records = malloc(sizeof(stop_t));
+    
+    while (read_record(fp, field_count, &record_values) > 0) {
+        *records = realloc(*records, (record_count + 1) * sizeof(stop_t));
+        (*records)[record_count] = read_stop(field_count, field_names, record_values);
+        record_count++;
+    }
+
+    free(field_names);
+    free(record_values);
+
+    return record_count;
+}
