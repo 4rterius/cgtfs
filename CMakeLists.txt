@@ -23,6 +23,7 @@ set(sources
   "src/reading_utils.c"
   "src/route.c"
   "src/shape.c"
+  "src/stop_time.c"
 )
 
 set(include_dirs

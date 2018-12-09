@@ -1,16 +1,23 @@
 #ifndef CGTFS_STOP_TIME_H
 #define CGTFS_STOP_TIME_H
 
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+
+
 typedef enum {
-    ST_REGULAR,
-    ST_NOT_AVAILABLE,
-    ST_CONTACT_AGENCY,
-    ST_CONTACT_DRIVER
+    ST_REGULAR = 0,
+    ST_NOT_AVAILABLE = 1,
+    ST_CONTACT_AGENCY = 2,
+    ST_CONTACT_DRIVER = 3,
+    ST_NOT_SET
 } stop_type_t;
 
 typedef enum {
-    TP_APPROXIMATE,
-    TP_EXACT
+    TP_APPROXIMATE = 0,
+    TP_EXACT = 1,
+    TP_NOT_SET
 } timepoint_precision_t;
 
 typedef struct {
@@ -24,6 +31,13 @@ typedef struct {
     stop_type_t dropoff_type;
     double shape_dist_traveled;
     timepoint_precision_t timepoint;
+    int is_null;
 } stop_time_t;
+
+stop_type_t parse_stop_type(char *value);
+timepoint_precision_t parse_timepoint_precision(char *value);
+
+stop_time_t empty_stop_time(void);
+stop_time_t read_stop_time(int field_count, char **field_names, char **field_values);
 
 #endif

@@ -10,6 +10,7 @@
 #include "frequency.h"
 #include "route.h"
 #include "shape.h"
+#include "stop_time.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -267,6 +268,39 @@ int test_rf_shape(void) {
             s_1.dist_traveled == 6.8310
         )) {
             printf("Parsed shape 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_stop_time(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_10 10
+        char *field_names[FIELDS_NUM_10] = {
+            "trip_id", "arrival_time", "departure_time", "stop_id", "stop_sequence",
+            "stop_headsign", "pickup_type", "drop_off_type", "shape_dist_traveled", "timepoint"
+        };
+        char *field_values[FIELDS_NUM_10] = {
+            "AWE1", "00:06:00", "00:06:30", "ST_666", "1",
+            "Argent D'Nur", "1", "2", "6.8315", ""
+        };
+
+        stop_time_t st_1 = read_stop_time(FIELDS_NUM_10, field_names, field_values);
+
+        if (!(
+            !strcmp(st_1.trip_id, "AWE1") &&
+            !strcmp(st_1.arrival_time, "00:06:00") &&
+            !strcmp(st_1.departure_time, "00:06:30") &&
+            !strcmp(st_1.stop_id, "ST_666") &&
+            st_1.stop_sequence == 1 &&
+            !strcmp(st_1.stop_headsign, "Argent D'Nur") &&
+            st_1.pickup_type == ST_NOT_AVAILABLE &&
+            st_1.dropoff_type == ST_CONTACT_AGENCY &&
+            st_1.shape_dist_traveled == 6.8315 &&
+            st_1.timepoint == TP_EXACT
+        )) {
+            printf("Parsed stop time 1 incorrectly!");
         }
     }
     return 0;
