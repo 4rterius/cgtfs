@@ -25,6 +25,7 @@ set(sources
   "src/shape.c"
   "src/stop_time.c"
   "src/stop.c"
+  "src/transfers.c"
 )
 
 set(include_dirs

@@ -12,6 +12,7 @@
 #include "shape.h"
 #include "stop_time.h"
 #include "stop.h"
+#include "transfers.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -341,6 +342,31 @@ int test_rf_stop(void) {
             stp_1.wheelchair_boarding == WB_NOT_POSSIBLE
         )) {
             printf("Parsed stop 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_transfer(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_12 4
+        char *field_names[FIELDS_NUM_12] = {
+            "from_stop_id", "to_stop_id", "transfer_type", "min_transfer_time"
+        };
+        char *field_values[FIELDS_NUM_12] = {
+            "S180", "R360", "2", "120"
+        };
+
+        transfer_t t_1 = read_transfer(FIELDS_NUM_12, field_names, field_values);
+
+        if (!(
+            !strcmp(t_1.from_stop_id, "S180") &&
+            !strcmp(t_1.to_stop_id, "R360") &&
+            t_1.transfer_type == TT_TIME_REQUIRED &&
+            t_1.min_transfer_time == 120
+        )) {
+            printf("Parsed transfer 1 incorrectly!");
         }
     }
     return 0;
