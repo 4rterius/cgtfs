@@ -26,6 +26,7 @@ set(sources
   "src/stop_time.c"
   "src/stop.c"
   "src/transfers.c"
+  "src/trip.c"
 )
 
 set(include_dirs

@@ -21,6 +21,7 @@ int main(int argc, char **argv) {
     test_rf_stop_time();
     test_rf_stop();
     test_rf_transfer();
+    test_rf_trip();
 
     test_reading_utils_read_header();
     test_reading_utils_read_record();

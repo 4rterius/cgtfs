@@ -13,6 +13,7 @@
 #include "stop_time.h"
 #include "stop.h"
 #include "transfers.h"
+#include "trip.h"
 
 int test_rf_agency(void) {
     // Case 1
@@ -367,6 +368,39 @@ int test_rf_transfer(void) {
             t_1.min_transfer_time == 120
         )) {
             printf("Parsed transfer 1 incorrectly!");
+        }
+    }
+    return 0;
+}
+
+int test_rf_trip(void) {
+    // Case 1
+    {
+        #define FIELDS_NUM_13 10
+        char *field_names[FIELDS_NUM_13] = {
+            "route_id", "service_id", "trip_id", "trip_headsign", "trip_short_name",
+            "direction_id", "block_id", "shape_id", "wheelchair_accessible", "bikes_allowed"
+        };
+        char *field_values[FIELDS_NUM_13] = {
+            "A", "WE", "AWE1", "Downtown", "Some short name",
+            "", "11", "8", "1", "2"
+        };
+
+        trip_t tr_1 = read_trip(FIELDS_NUM_13, field_names, field_values);
+
+        if (!(
+            !strcmp(tr_1.route_id, "A") &&
+            !strcmp(tr_1.service_id, "WE") &&
+            !strcmp(tr_1.trip_id, "AWE1") &&
+            !strcmp(tr_1.headsign, "Downtown") &&
+            !strcmp(tr_1.short_name, "Some short name") &&
+            tr_1.direction_id == 0 &&
+            !strcmp(tr_1.block_id, "11") &&
+            !strcmp(tr_1.shape_id, "8") &&
+            tr_1.wheelchair_accessible == WA_POSSIBLE &&
+            tr_1.bikes_allowed == BA_NOT_POSSIBLE
+        )) {
+            printf("Parsed trip 1 incorrectly!");
         }
     }
     return 0;
