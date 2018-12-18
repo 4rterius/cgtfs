@@ -6,9 +6,9 @@
 
 
 typedef enum {
-    ET_NOT_SET = 0,
     ET_ADDED = 1,
-    ET_REMOVED = 2
+    ET_REMOVED = 2,
+    ET_NOT_SET
 } exception_type_t;
 
 typedef struct {

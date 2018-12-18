@@ -2,12 +2,27 @@
 #define CGTFS_TESTS__ALL_C
 
 #include "test-haversine.c"
+#include "test-parsing_functions.c"
 #include "test-read_functions.c"
 #include "test-reading.c"
 #include "test-reading_utils.c"
 
 int main(int argc, char **argv) {
     test_haversine_correct();
+
+    test_pf_exception_type();
+    test_pf_service_availability();
+    test_pf_payment_method();
+    test_pf_transfer_state();
+    test_pf_time_exactness();
+    test_pf_route_type();
+    test_pf_stop_type();
+    test_pf_timepoint_precision();
+    test_pf_location_type();
+    test_pf_wheelchair_boarding();
+    test_pf_transfer_type();
+    test_pf_wheelchair_accessibility();
+    test_pf_bike_allowance();
 
     test_rf_agency();
     test_rf_calendar_dates();
