@@ -40,6 +40,9 @@ int main(int argc, char **argv) {
 
     test_reading_utils_read_header();
     test_reading_utils_read_record();
+
+    test_reading_all_agencies();
+    
     return 0;
 }
 
