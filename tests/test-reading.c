@@ -13,6 +13,15 @@ int test_reading_all_agencies() {
         } else {
             agency_t *records;
             int record_count = read_all_agencies(fp, &records);
+
+            if (!(
+                !strcmp(records[0].id, "DTA") &&
+                !strcmp(records[0].name, "Demo Transit Authority") &&
+                !strcmp(records[0].url, "http://google.com") &&
+                !strcmp(records[0].timezone, "America/Los_Angeles")
+            )) {
+                printf("Parsed agency file record 1 incorrectly!");
+            }
             free(records);
         }
         fclose(fp);
