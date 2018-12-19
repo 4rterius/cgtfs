@@ -14,6 +14,7 @@ set(sources
   "src/agency.c"
   "src/calendar_dates.c"
   "src/calendar.c"
+  "src/dataset.c"
   "src/fare_attributes.c"
   "src/fare_rule.c"
   "src/feed_info.c"

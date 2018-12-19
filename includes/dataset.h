@@ -17,18 +17,35 @@
 
 typedef struct {
     agency_t *agencies;
+    int agency_count;
     calendar_date_t *calendar_dates;
+    int calendar_dates_count;
     calendar_record_t *calendar_records;
-    fare_attribute_t *fare_attributes;
+    int calendar_records_count;
+    fare_attributes_t *fare_attributes;
+    int fare_attributes_count;
     fare_rule_t *fare_rules;
-    feed_info_t feed_info;
+    int fare_rules_count;
+    feed_info_t *feed_info;
+    int feed_info_count;  // 0 or 1 really, but for consistency sake.
     frequency_t *frequencies;
+    int frequencies_count;
     route_t *routes;
+    int routes_count;
     shape_t *shapes;
+    int shapes_count;
     stop_time_t *stop_times;
+    int stop_times_count;
     stop_t *stops;
+    int stops_count;
     transfer_t *transfers;
+    int transfers_count;
     trip_t *trips;
+    int trips_count;
 } dataset_t;
+
+
+dataset_t empty_dataset(void);
+int read_dataset(char *feed_directory_path, dataset_t *ds);
 
 #endif
