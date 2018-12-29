@@ -42,6 +42,9 @@ int main(int argc, char **argv) {
     test_reading_utils_read_record();
 
     test_reading_all_agencies();
+    test_reading_all_calendar_dates();
+    test_reading_all_calendar_records();
+    test_reading_all_fare_attributes();
     
     printf("\n[TESTS] reached end");
     return 0;
