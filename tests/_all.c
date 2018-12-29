@@ -45,6 +45,10 @@ int main(int argc, char **argv) {
     test_reading_all_calendar_dates();
     test_reading_all_calendar_records();
     test_reading_all_fare_attributes();
+    test_reading_all_fare_rules();
+    test_reading_all_frequencies();
+    test_reading_all_routes();
+    test_reading_all_shapes();
     
     printf("\n[TESTS] reached end");
     return 0;

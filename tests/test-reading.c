@@ -139,4 +139,285 @@ int test_reading_all_fare_attributes() {
     return 0;
 }
 
+int test_reading_all_fare_rules() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/fare_rules.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/fare_rules.txt` file");
+        } else {
+            fare_rule_t *records;
+            int record_count = read_all_fare_rules(fp, &records);
+
+            if (!(
+                !strcmp(records[0].fare_id, "p") &&
+                !strcmp(records[0].route_id, "AB") &&
+                !strcmp(records[0].origin_id, "") &&
+                !strcmp(records[0].destination_id, "") &&
+                !strcmp(records[0].contains_id, "")
+            )) {
+                printf("Parsed fare rules file record 1 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[1].fare_id, "p") &&
+                !strcmp(records[1].route_id, "STBA") &&
+                !strcmp(records[1].origin_id, "") &&
+                !strcmp(records[1].destination_id, "") &&
+                !strcmp(records[1].contains_id, "")
+            )) {
+                printf("Parsed fare rules file record 2 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[2].fare_id, "p") &&
+                !strcmp(records[2].route_id, "BFC") &&
+                !strcmp(records[2].origin_id, "") &&
+                !strcmp(records[2].destination_id, "") &&
+                !strcmp(records[2].contains_id, "")
+            )) {
+                printf("Parsed fare rules file record 3 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[3].fare_id, "a") &&
+                !strcmp(records[3].route_id, "AAMV") &&
+                !strcmp(records[3].origin_id, "") &&
+                !strcmp(records[3].destination_id, "") &&
+                !strcmp(records[3].contains_id, "")
+            )) {
+                printf("Parsed fare rules file record 4 incorrectly!");
+            }
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
+
+int test_reading_all_frequencies() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/frequencies.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/frequencies.txt` file");
+        } else {
+            frequency_t *records;
+            int record_count = read_all_frequencies_info(fp, &records);
+
+            if (!(
+                !strcmp(records[0].trip_id, "STBA") &&
+                !strcmp(records[0].start_time, "6:00:00") &&
+                !strcmp(records[0].end_time, "22:00:00") &&
+                records[0].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 1 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[1].trip_id, "CITY1") &&
+                !strcmp(records[1].start_time, "6:00:00") &&
+                !strcmp(records[1].end_time, "7:59:59") &&
+                records[1].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 2 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[2].trip_id, "CITY2") &&
+                !strcmp(records[2].start_time, "6:00:00") &&
+                !strcmp(records[2].end_time, "7:59:59") &&
+                records[2].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 3 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[3].trip_id, "CITY1") &&
+                !strcmp(records[3].start_time, "8:00:00") &&
+                !strcmp(records[3].end_time, "9:59:59") &&
+                records[3].headway_secs == 600
+            )) {
+                printf("Parsed frequencies file record 4 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[4].trip_id, "CITY2") &&
+                !strcmp(records[4].start_time, "8:00:00") &&
+                !strcmp(records[4].end_time, "9:59:59") &&
+                records[4].headway_secs == 600
+            )) {
+                printf("Parsed frequencies file record 5 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[5].trip_id, "CITY1") &&
+                !strcmp(records[5].start_time, "10:00:00") &&
+                !strcmp(records[5].end_time, "15:59:59") &&
+                records[5].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 6 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[6].trip_id, "CITY2") &&
+                !strcmp(records[6].start_time, "10:00:00") &&
+                !strcmp(records[6].end_time, "15:59:59") &&
+                records[6].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 7 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[7].trip_id, "CITY1") &&
+                !strcmp(records[7].start_time, "16:00:00") &&
+                !strcmp(records[7].end_time, "18:59:59") &&
+                records[7].headway_secs == 600
+            )) {
+                printf("Parsed frequencies file record 8 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[8].trip_id, "CITY2") &&
+                !strcmp(records[8].start_time, "16:00:00") &&
+                !strcmp(records[8].end_time, "18:59:59") &&
+                records[8].headway_secs == 600
+            )) {
+                printf("Parsed frequencies file record 9 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[9].trip_id, "CITY1") &&
+                !strcmp(records[9].start_time, "19:00:00") &&
+                !strcmp(records[9].end_time, "22:00:00") &&
+                records[9].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 10 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[10].trip_id, "CITY2") &&
+                !strcmp(records[10].start_time, "19:00:00") &&
+                !strcmp(records[10].end_time, "22:00:00") &&
+                records[10].headway_secs == 1800
+            )) {
+                printf("Parsed frequencies file record 11 incorrectly!");
+            }
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
+
+int test_reading_all_routes() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/routes.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/routes.txt` file");
+        } else {
+            route_t *records;
+            int record_count = read_all_routes(fp, &records);
+
+            if (!(
+                !strcmp(records[0].id, "AB") &&
+                !strcmp(records[0].agency_id, "DTA") &&
+                !strcmp(records[0].short_name, "10") &&
+                !strcmp(records[0].long_name, "Airport - Bullfrog") &&
+                !strcmp(records[0].desc, "") &&
+                records[0].type == RT_BUS &&
+                !strcmp(records[0].url, "") &&
+                !strcmp(records[0].color, "") &&
+                !strcmp(records[0].text_color, "")
+            )) {
+                printf("Parsed routes file record 1 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[1].id, "BFC") &&
+                !strcmp(records[1].agency_id, "DTA") &&
+                !strcmp(records[1].short_name, "20") &&
+                !strcmp(records[1].long_name, "Bullfrog - Furnace Creek Resort") &&
+                !strcmp(records[1].desc, "") &&
+                records[1].type == RT_BUS &&
+                !strcmp(records[1].url, "") &&
+                !strcmp(records[1].color, "") &&
+                !strcmp(records[1].text_color, "")
+            )) {
+                printf("Parsed routes file record 2 incorrectly!");
+            }
+            
+            if (!(
+                !strcmp(records[2].id, "STBA") &&
+                !strcmp(records[2].agency_id, "DTA") &&
+                !strcmp(records[2].short_name, "30") &&
+                !strcmp(records[2].long_name, "Stagecoach - Airport Shuttle") &&
+                !strcmp(records[2].desc, "") &&
+                records[2].type == RT_BUS &&
+                !strcmp(records[2].url, "") &&
+                !strcmp(records[2].color, "") &&
+                !strcmp(records[2].text_color, "")
+            )) {
+                printf("Parsed routes file record 3 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[3].id, "CITY") &&
+                !strcmp(records[3].agency_id, "DTA") &&
+                !strcmp(records[3].short_name, "40") &&
+                !strcmp(records[3].long_name, "City") &&
+                !strcmp(records[3].desc, "") &&
+                records[3].type == RT_BUS &&
+                !strcmp(records[3].url, "") &&
+                !strcmp(records[3].color, "") &&
+                !strcmp(records[3].text_color, "")
+            )) {
+                printf("Parsed routes file record 4 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[4].id, "AAMV") &&
+                !strcmp(records[4].agency_id, "DTA") &&
+                !strcmp(records[4].short_name, "50") &&
+                !strcmp(records[4].long_name, "Airport - Amargosa Valley") &&
+                !strcmp(records[4].desc, "") &&
+                records[4].type == RT_BUS &&
+                !strcmp(records[4].url, "") &&
+                !strcmp(records[4].color, "") &&
+                !strcmp(records[4].text_color, "")
+            )) {
+                printf("Parsed routes file record 5 incorrectly!");
+            }
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
+
+int test_reading_all_shapes() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/shapes.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/shapes.txt` file");
+        } else {
+            shape_t *records;
+            int record_count = read_all_shapes(fp, &records);
+
+            // TODO: add some test for this case and this reader
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
+
+
+
 #endif
