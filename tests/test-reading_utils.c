@@ -133,9 +133,9 @@ int test_reading_utils_read_record() {
                     case 3:
                         if (!(
                             !strcmp(record_values[0], "4") &&
-                            !strcmp(record_values[1], "djghasldföäånkl´+123sd") &&
+                            !strcmp(record_values[1], "\"djghas\"ldföäånkl´+123sd\"") &&
                             !strcmp(record_values[2], "http://www.lsl.fi") &&
-                            !strcmp(record_values[3], "blahblah") &&
+                            !strcmp(record_values[3], "blah \"HELLO\" blah") &&
                             !strcmp(record_values[4], "fi") &&
                             !strcmp(record_values[5], "03 814 2355")
                         )) {

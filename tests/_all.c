@@ -43,6 +43,7 @@ int main(int argc, char **argv) {
 
     test_reading_all_agencies();
     
+    printf("\n[TESTS] reached end");
     return 0;
 }
 

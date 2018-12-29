@@ -43,6 +43,7 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
 
     char chr;
     int chr_pos = 0;
+    int record_len = strlen(record);
 
     *record_values = malloc(fields_number * sizeof(char *));
     memset(r_field, 0, LINE_MAX_LEN);
@@ -51,7 +52,16 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
     
     while (chr = record[++chr_pos - 1]) {
         if (chr == '"') {
-            in_quotes = (in_quotes == 1) ? 0 : 1;
+            if (in_quotes == 0) {
+                in_quotes = 1;
+            } else {
+                if (chr_pos < record_len && record[chr_pos] == '"') {
+                    r_field[++r_field_len - 1] = '"';
+                    chr_pos++;
+                } else {
+                    in_quotes = 0;
+                }
+            }
         } else if ((chr == ',' || chr == '\n') && !in_quotes) {
             (*record_values)[r_field_index] = strdup(r_field);
 
