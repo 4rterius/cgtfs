@@ -43,7 +43,9 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
 
     char chr;
     int chr_pos = 0;
-    int record_len = strlen(record);
+    int record_len = strlen(record);  // In theory, is guaranteed to have null-terminator, as
+                                      // fgets() automatically applies one.
+                                      // If not, pls PR or drop maintainer(s) a line.
 
     *record_values = malloc(fields_number * sizeof(char *));
     memset(r_field, 0, LINE_MAX_LEN);
