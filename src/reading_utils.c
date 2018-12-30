@@ -6,15 +6,15 @@ int read_header(FILE *fp, char ***field_names) {
     char h_field_index = 0;
     int h_field_len = 0;
 
+    *field_names = malloc(sizeof(char *));
+    memset(h_field, 0, LINE_MAX_LEN);
+
     if (!fgets(header, LINE_MAX_LEN, fp))
         return -1;
 
     char chr;
     int chr_pos = 0;
 
-    *field_names = malloc(sizeof(char *));
-    memset(h_field, 0, LINE_MAX_LEN);
-    
     while (chr = header[++chr_pos - 1]) {
         if (chr == ',' || chr == '\n') {
             *field_names = realloc(*field_names, (h_field_index + 1) * sizeof(char *));
@@ -38,6 +38,9 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
     int r_field_len = 0;
     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
+    *record_values = malloc(fields_number * sizeof(char *));
+    memset(r_field, 0, LINE_MAX_LEN);
+
     if (!fgets(record, LINE_MAX_LEN, fp))
         return -1;
 
@@ -47,8 +50,6 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
                                       // fgets() automatically applies one.
                                       // If not, pls PR or drop maintainer(s) a line.
 
-    *record_values = malloc(fields_number * sizeof(char *));
-    memset(r_field, 0, LINE_MAX_LEN);
     strcat(record, "\n");  // fixes the error that happens when the last record isn't followed by a newline
                            // (then the last record field fails to be parsed)
     
