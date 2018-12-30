@@ -49,6 +49,7 @@ int main(int argc, char **argv) {
     test_reading_all_frequencies();
     test_reading_all_routes();
     test_reading_all_shapes();
+    test_reading_all_stop_times();
     
     printf("\n[TESTS] reached end");
     return 0;

@@ -418,6 +418,69 @@ int test_reading_all_shapes() {
     return 0;
 }
 
+int test_reading_all_stop_times() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/stop_times.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/stop_times.txt` file");
+        } else {
+            stop_time_t *records;
+            int record_count = read_all_stop_times(fp, &records);
 
+            if (record_count != 28) {
+                printf("Number of records parsed from stop times file is incorrect");
+            }
+
+            if (!(
+                !strcmp(records[0].trip_id, "STBA") &&
+                !strcmp(records[0].arrival_time, "6:00:00") &&
+                !strcmp(records[0].departure_time, "6:00:00") &&
+                !strcmp(records[0].stop_id, "STAGECOACH") &&
+                records[0].stop_sequence == 1 &&
+                !strcmp(records[0].stop_headsign, "") &&
+                records[0].pickup_type == ST_REGULAR &&
+                records[0].dropoff_type == ST_REGULAR &&
+                records[0].shape_dist_traveled == 0
+            )) {
+                printf("Parsed stop times file record 1 incorrectly!");
+            }
+            
+            if (!(
+                !strcmp(records[1].trip_id, "STBA") &&
+                !strcmp(records[1].arrival_time, "6:20:00") &&
+                !strcmp(records[1].departure_time, "6:20:00") &&
+                !strcmp(records[1].stop_id, "BEATTY_AIRPORT") &&
+                records[1].stop_sequence == 1 &&  // 2
+                !strcmp(records[1].stop_headsign, "") &&
+                records[1].pickup_type == ST_REGULAR &&
+                records[1].dropoff_type == ST_REGULAR &&
+                records[1].shape_dist_traveled == 0
+            )) {
+                printf("Parsed stop times file record 2 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[2].trip_id, "CITY1") &&
+                !strcmp(records[2].arrival_time, "6:00:00") &&
+                !strcmp(records[2].departure_time, "6:00:00") &&
+                !strcmp(records[2].stop_id, "STAGECOACH") &&
+                records[2].stop_sequence == 1 &&
+                !strcmp(records[2].stop_headsign, "") &&
+                records[2].pickup_type == ST_REGULAR &&
+                records[2].dropoff_type == ST_REGULAR &&
+                records[2].shape_dist_traveled == 0
+            )) {
+                printf("Parsed stop times file record 3 incorrectly!");
+            }
+
+            // and further on
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
 
 #endif
