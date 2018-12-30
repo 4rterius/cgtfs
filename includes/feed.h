@@ -42,10 +42,10 @@ typedef struct {
     int transfers_count;
     trip_t *trips;
     int trips_count;
-} dataset_t;
+} feed_t;
 
 
-dataset_t empty_dataset(void);
-int read_dataset(char *feed_directory_path, dataset_t *ds);
+feed_t empty_feed(void);
+int read_feed(char *feed_directory_path, feed_t *feed_instance);
 
 #endif
