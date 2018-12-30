@@ -451,7 +451,7 @@ int test_reading_all_stop_times() {
                 !strcmp(records[1].arrival_time, "6:20:00") &&
                 !strcmp(records[1].departure_time, "6:20:00") &&
                 !strcmp(records[1].stop_id, "BEATTY_AIRPORT") &&
-                records[1].stop_sequence == 1 &&  // 2
+                records[1].stop_sequence == 2 &&
                 !strcmp(records[1].stop_headsign, "") &&
                 records[1].pickup_type == ST_REGULAR &&
                 records[1].dropoff_type == ST_REGULAR &&
