@@ -38,8 +38,11 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
     int r_field_len = 0;
     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
-    *record_values = malloc(fields_number * sizeof(char *));
     memset(r_field, 0, LINE_MAX_LEN);
+    
+    *record_values = malloc(fields_number * sizeof(char *));
+    for (unsigned i = 0; i < fields_number; i++)
+        (*record_values)[i] = strdup("");
 
     if (!fgets(record, LINE_MAX_LEN, fp))
         return -1;
