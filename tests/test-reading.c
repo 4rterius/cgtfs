@@ -445,7 +445,7 @@ int test_reading_all_stop_times() {
             )) {
                 printf("Parsed stop times file record 1 incorrectly!");
             }
-            
+
             if (!(
                 !strcmp(records[1].trip_id, "STBA") &&
                 !strcmp(records[1].arrival_time, "6:20:00") &&
@@ -472,6 +472,124 @@ int test_reading_all_stop_times() {
                 records[2].shape_dist_traveled == 0
             )) {
                 printf("Parsed stop times file record 3 incorrectly!");
+            }
+
+            // and further on
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
+
+int test_reading_all_stops() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/stops.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/stops.txt` file");
+        } else {
+            stop_t *records;
+            int record_count = read_all_stops(fp, &records);
+
+            if (record_count != 9) {
+                printf("Number of records parsed from stops file is incorrect");
+            }
+
+            if (!(
+                !strcmp(records[0].id, "FUR_CREEK_RES") &&
+                !strcmp(records[0].name, "Furnace Creek Resort (Demo)") &&
+                !strcmp(records[0].desc, "") &&
+                records[0].lat == 36.425288 &&
+                records[0].lon == -117.133162 &&
+                !strcmp(records[0].zone_id, "") &&
+                !strcmp(records[0].url, "")
+            )) {
+                printf("Parsed stops file record 1 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[1].id, "BEATTY_AIRPORT") &&
+                !strcmp(records[1].name, "Nye County Airport (Demo)") &&
+                !strcmp(records[1].desc, "") &&
+                records[1].lat == 36.868446 &&
+                records[1].lon == -116.784582 &&
+                !strcmp(records[1].zone_id, "") &&
+                !strcmp(records[1].url, "")
+            )) {
+                printf("Parsed stops file record 2 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[2].id, "BULLFROG") &&
+                !strcmp(records[2].name, "Bullfrog (Demo)") &&
+                !strcmp(records[2].desc, "") &&
+                records[2].lat == 36.88108 &&
+                records[2].lon == -116.81797 &&
+                !strcmp(records[2].zone_id, "") &&
+                !strcmp(records[2].url, "")
+            )) {
+                printf("Parsed stops file record 3 incorrectly!");
+            }
+
+            // and further on
+
+            free(records);
+        }
+        fclose(fp);
+    }
+    return 0;
+}
+
+int test_reading_all_trips() {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/google_sample/trips.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/google_sample/trips.txt` file");
+        } else {
+            trip_t *records;
+            int record_count = read_all_trips(fp, &records);
+
+            if (record_count != 11) {
+                printf("Number of records parsed from trips file is incorrect");
+            }
+
+            if (!(
+                !strcmp(records[0].route_id, "AB") &&
+                !strcmp(records[0].service_id, "FULLW") &&
+                !strcmp(records[0].trip_id, "AB1") &&
+                !strcmp(records[0].headsign, "to Bullfrog") &&
+                records[0].direction_id == 0 &&
+                !strcmp(records[0].block_id, "1") &&
+                !strcmp(records[0].shape_id, "")
+            )) {
+                printf("Parsed trips file record 1 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[1].route_id, "AB") &&
+                !strcmp(records[1].service_id, "FULLW") &&
+                !strcmp(records[1].trip_id, "AB2") &&
+                !strcmp(records[1].headsign, "to Airport") &&
+                records[1].direction_id == 1 &&
+                !strcmp(records[1].block_id, "2") &&
+                !strcmp(records[1].shape_id, "")
+            )) {
+                printf("Parsed trips file record 2 incorrectly!");
+            }
+
+            if (!(
+                !strcmp(records[2].route_id, "STBA") &&
+                !strcmp(records[2].service_id, "FULLW") &&
+                !strcmp(records[2].trip_id, "STBA") &&
+                !strcmp(records[2].headsign, "Shuttle") &&
+                records[2].direction_id == 0 &&
+                !strcmp(records[2].block_id, "") &&
+                !strcmp(records[2].shape_id, "")
+            )) {
+                printf("Parsed trips file record 3 incorrectly!");
             }
 
             // and further on

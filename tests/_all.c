@@ -50,6 +50,8 @@ int main(int argc, char **argv) {
     test_reading_all_routes();
     test_reading_all_shapes();
     test_reading_all_stop_times();
+    test_reading_all_stops();
+    test_reading_all_trips();
     
     printf("\n[TESTS] reached end");
     return 0;
