@@ -1,6 +1,7 @@
 #ifndef CGTFS_TESTS__ALL_C
 #define CGTFS_TESTS__ALL_C
 
+#include "test-filenames.c"
 #include "test-haversine.c"
 #include "test-parsing_functions.c"
 #include "test-read_functions.c"
@@ -8,6 +9,8 @@
 #include "test-reading_utils.c"
 
 int main(int argc, char **argv) {
+    test_filenames_no_endslash();
+
     test_haversine_correct();
 
     test_pf_exception_type();

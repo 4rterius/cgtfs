@@ -18,6 +18,7 @@ set(sources
   "src/fare_rule.c"
   "src/feed_info.c"
   "src/feed.c"
+  "src/filenames.c"
   "src/frequency.c"
   "src/haversine.c"
   "src/reading.c"
