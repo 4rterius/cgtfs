@@ -10,6 +10,7 @@
 
 int main(int argc, char **argv) {
     test_filenames_no_endslash();
+    test_filenames_with_endslash();
 
     test_haversine_correct();
 
