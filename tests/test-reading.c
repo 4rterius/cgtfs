@@ -204,7 +204,7 @@ int test_reading_all_frequencies() {
             perror("Couldn't open `data/google_sample/frequencies.txt` file");
         } else {
             frequency_t *records;
-            int record_count = read_all_frequencies_info(fp, &records);
+            int record_count = read_all_frequencies(fp, &records);
 
             if (!(
                 !strcmp(records[0].trip_id, "STBA") &&

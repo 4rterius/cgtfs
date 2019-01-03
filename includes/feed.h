@@ -1,6 +1,8 @@
 #ifndef CGTFS_DATASET_H
 #define CGTFS_DATASET_H
 
+#include <stdio.h>
+
 #include "agency.h"
 #include "calendar_dates.h"
 #include "calendar.h"
@@ -14,6 +16,9 @@
 #include "stop.h"
 #include "transfers.h"
 #include "trip.h"
+
+#include "filenames.h"
+#include "reading.h"
 
 typedef struct {
     agency_t *agencies;
@@ -46,6 +51,6 @@ typedef struct {
 
 
 feed_t empty_feed(void);
-int read_feed(char *feed_directory_path, feed_t *feed_instance);
+int read_feed(char *feed_directory_path, feed_t *instance);
 
 #endif

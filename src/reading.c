@@ -150,7 +150,7 @@ int read_all_feed_info(FILE *fp, feed_info_t **records) {
     return record_count;
 }
 
-int read_all_frequencies_info(FILE *fp, frequency_t **records) {
+int read_all_frequencies(FILE *fp, frequency_t **records) {
 
     rewind(fp);
 

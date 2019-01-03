@@ -13,6 +13,6 @@
 
 #define FILENAME_MAX_LENGTH 1000
 
-void make_filepath(char **out, char *dirname, char *filename);
+void make_filepath(char **out, const char *dirname, const char *filename);
 
 #endif

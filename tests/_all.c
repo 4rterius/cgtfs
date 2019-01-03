@@ -1,6 +1,7 @@
 #ifndef CGTFS_TESTS__ALL_C
 #define CGTFS_TESTS__ALL_C
 
+#include "test-feed.c"
 #include "test-filenames.c"
 #include "test-haversine.c"
 #include "test-parsing_functions.c"
@@ -56,6 +57,8 @@ int main(int argc, char **argv) {
     test_reading_all_stop_times();
     test_reading_all_stops();
     test_reading_all_trips();
+
+    test_feed_good();
     
     printf("\n[TESTS] reached end");
     return 0;
