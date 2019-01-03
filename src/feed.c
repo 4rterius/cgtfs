@@ -86,7 +86,7 @@ int read_feed(char *feed_directory_path, feed_t *instance) {
 
     FILE *fp_fare_rules = fopen(fare_rules_fname, "r");
     if (fp_fare_rules) {
-        instance->fare_rules_count = read_all_fare_attributes(fp_fare_rules, &(instance->fare_rules));
+        instance->fare_rules_count = read_all_fare_rules(fp_fare_rules, &(instance->fare_rules));
         fclose(fp_fare_rules);
     }
 
