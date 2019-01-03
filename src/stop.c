@@ -66,12 +66,12 @@ stop_t read_stop(int field_count, char **field_names, char **field_values) {
             continue;
         }
         if (strcmp(field_names[i], "stop_lat") == 0) {
-            stop.lat = strtold(field_values[i], NULL);
+            stop.lat = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_lon") == 0) {
-            stop.lon = strtold(field_values[i], NULL);
+            stop.lon = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
             assignment_counter++;
             continue;
         }
