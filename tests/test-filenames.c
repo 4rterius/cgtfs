@@ -23,6 +23,7 @@ int test_filenames_no_endslash(void) {
     }
 
     free(filepath);
+    return 0;
 }
 
 int test_filenames_with_endslash(void) {
@@ -45,6 +46,7 @@ int test_filenames_with_endslash(void) {
     }
 
     free(filepath);
+    return 0;
 }
 
 #endif
