@@ -45,6 +45,7 @@ int main(int argc, char **argv) {
 
     test_reading_utils_read_header();
     test_reading_utils_read_record();
+    test_reading_utils_count_lines();
 
     test_reading_all_agencies();
     test_reading_all_calendar_dates();

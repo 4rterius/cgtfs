@@ -80,3 +80,25 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
     }
     return 1;
 }
+
+int count_lines(FILE *fp) {
+    int lines = 0;
+    int ch_count = -1;
+    int ch;
+
+    rewind(fp);
+    do {
+        ch = fgetc(fp);
+        ch_count++;
+        if (ch == '\n')
+            lines++;
+    } while (ch != EOF);
+
+    if (ch != '\n' && ch_count > 0)
+        lines++;
+
+    if (ferror(fp) != 0)
+        return -1;
+
+    return lines;
+}
