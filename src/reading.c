@@ -7,21 +7,21 @@
 
 
 int read_all_agencies(FILE *fp, agency_t **records) {
+    char **record_values;
+    int record_count = count_lines(fp) - 1;
 
     rewind(fp);
-
     char **field_names;
     int field_count = read_header(fp, &field_names);
+    
+    if (record_count < 0)
+        return -1;
 
-    char **record_values;
-    int record_count = 0;
-    
-    *records = malloc(sizeof(agency_t));
-    
-    while (read_record(fp, field_count, &record_values) > 0) {
-        *records = realloc(*records, (record_count + 1) * sizeof(agency_t));
-        (*records)[record_count] = read_agency(field_count, field_names, record_values);
-        record_count++;
+    *records = malloc(record_count * sizeof(agency_t));
+
+    for (int i = 0; i < record_count; i++) {
+        if (read_record(fp, field_count, &record_values) > 0)
+            (*records)[i] = read_agency(field_count, field_names, record_values);
     }
 
     free(field_names);
