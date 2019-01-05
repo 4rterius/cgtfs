@@ -22,7 +22,7 @@ int test_feed_good(void) {
     if (feed.fare_rules_count != 4)
         printf("Feed reader counted incorrect number of fare rules.\n");
 
-    if (feed.feed_info_count != 0)
+    if (feed.feed_info_count != -1)
         printf("Feed reader counted incorrect number of feed info.\n");
 
     if (feed.frequencies_count != 11)
@@ -40,7 +40,7 @@ int test_feed_good(void) {
     if (feed.stops_count != 9)
         printf("Feed reader counted incorrect number of stops.\n");
     
-    if (feed.transfers_count != 0)
+    if (feed.transfers_count != -1)
         printf("Feed reader counted incorrect number of transfers.\n");
     
     if (feed.trips_count != 11)

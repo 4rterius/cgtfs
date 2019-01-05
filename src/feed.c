@@ -64,78 +64,104 @@ int read_feed(char *feed_directory_path, feed_t *instance) {
     if (fp_agencies) {
         instance->agency_count = read_all_agencies(fp_agencies, &(instance->agencies));
         fclose(fp_agencies);
+    } else {
+        instance->agency_count = -1;
     }
 
     FILE *fp_calendar_dates = fopen(calendar_dates_fname, "r");
     if (fp_calendar_dates) {
         instance->calendar_dates_count = read_all_calendar_dates(fp_calendar_dates, &(instance->calendar_dates));
         fclose(fp_calendar_dates);
+    } else {
+        instance->calendar_dates_count = -1;
     }
 
     FILE *fp_calendar_records = fopen(calendar_records_fname, "r");
     if (fp_calendar_records) {
         instance->calendar_records_count = read_all_calendar_records(fp_calendar_records, &(instance->calendar_records));
         fclose(fp_calendar_records);
+    } else {
+        instance->calendar_records_count = -1;
     }
 
     FILE *fp_fare_attributes = fopen(fare_attributes_fname, "r");
     if (fp_fare_attributes) {
         instance->fare_attributes_count = read_all_fare_attributes(fp_fare_attributes, &(instance->fare_attributes));
         fclose(fp_fare_attributes);
+    } else {
+        instance->fare_attributes_count = -1;
     }
 
     FILE *fp_fare_rules = fopen(fare_rules_fname, "r");
     if (fp_fare_rules) {
         instance->fare_rules_count = read_all_fare_rules(fp_fare_rules, &(instance->fare_rules));
         fclose(fp_fare_rules);
+    } else {
+        instance->fare_rules_count = -1;
     }
 
     FILE *fp_feed_info = fopen(feed_info_fname, "r");
     if (fp_feed_info) {
         instance->feed_info_count = read_all_feed_info(fp_feed_info, &(instance->feed_info));
         fclose(fp_feed_info);
+    } else {
+        instance->feed_info_count = -1;
     }
 
     FILE *fp_frequencies = fopen(frequencies_fname, "r");
     if (fp_frequencies) {
         instance->frequencies_count = read_all_frequencies(fp_frequencies, &(instance->frequencies));
         fclose(fp_frequencies);
+    } else {
+        instance->frequencies_count = -1;
     }
 
     FILE *fp_routes = fopen(routes_fname, "r");
     if (fp_routes) {
         instance->routes_count = read_all_routes(fp_routes, &(instance->routes));
         fclose(fp_routes);
+    } else {
+        instance->routes_count = -1;
     }
 
     FILE *fp_shapes = fopen(shapes_fname, "r");
     if (fp_shapes) {
         instance->shapes_count = read_all_shapes(fp_shapes, &(instance->shapes));
         fclose(fp_shapes);
+    } else {
+        instance->shapes_count = -1;
     }
 
     FILE *fp_stop_times = fopen(stop_times_fname, "r");
     if (fp_stop_times) {
         instance->stop_times_count = read_all_stop_times(fp_stop_times, &(instance->stop_times));
         fclose(fp_stop_times);
+    } else {
+        instance->stop_times_count = -1;
     }
 
     FILE *fp_stops = fopen(stops_fname, "r");
     if (fp_stops) {
         instance->stops_count = read_all_stops(fp_stops, &(instance->stops));
         fclose(fp_stops);
+    } else {
+        instance->stops_count = -1;
     }
 
     FILE *fp_transfers = fopen(transfers_fname, "r");
     if (fp_transfers) {
         instance->transfers_count = read_all_transfers(fp_transfers, &(instance->transfers));
         fclose(fp_transfers);
+    } else {
+        instance->transfers_count = -1;
     }
 
     FILE *fp_trips = fopen(trips_fname, "r");
     if (fp_trips) {
         instance->trips_count = read_all_trips(fp_trips, &(instance->trips));
         fclose(fp_trips);
+    } else {
+        instance->trips_count = -1;
     }
     
 
