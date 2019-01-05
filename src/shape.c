@@ -1,4 +1,5 @@
 #include "shape.h"
+#include <stdlib.h>
 
 shape_t empty_shape(void) {
     shape_t shape;
@@ -22,12 +23,12 @@ shape_t read_shape(int field_count, char **field_names, char **field_values) {
             continue;
         }
         if (strcmp(field_names[i], "shape_pt_lat") == 0) {
-            shape.pt_lat = strtold(field_values[i], NULL);
+            shape.pt_lat = strtod(field_values[i], NULL);  // TODO: strtold not working, figure out why
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "shape_pt_lon") == 0) {
-            shape.pt_lon = strtold(field_values[i], NULL);
+            shape.pt_lon = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
             assignment_counter++;
             continue;
         }
