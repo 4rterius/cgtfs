@@ -47,17 +47,17 @@ int main(int argc, char **argv) {
     test_reading_utils_read_record();
     test_reading_utils_count_lines();
 
-    test_reading_all_agencies();  // +
-    test_reading_all_calendar_dates();  // +
-    test_reading_all_calendar_records();  // +
-    test_reading_all_fare_attributes();  // +
-    test_reading_all_fare_rules();  // +
-    test_reading_all_frequencies();  // +
-    test_reading_all_routes();  // +
-    test_reading_all_shapes();  // +
-    test_reading_all_stop_times();  // +
-    test_reading_all_stops();  // +
-    test_reading_all_trips();  // +
+    test_reading_all_agencies();
+    test_reading_all_calendar_dates();
+    test_reading_all_calendar_records();
+    test_reading_all_fare_attributes();
+    test_reading_all_fare_rules();
+    test_reading_all_frequencies();
+    test_reading_all_routes();
+    test_reading_all_shapes();
+    test_reading_all_stop_times();
+    test_reading_all_stops();
+    test_reading_all_trips();
 
     test_feed_good();
     
