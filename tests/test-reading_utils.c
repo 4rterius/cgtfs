@@ -154,4 +154,49 @@ int test_reading_utils_read_record() {
     return 0;
 }
 
+int test_reading_utils_count_lines(void) {
+    // Case 1
+    {
+        FILE *fp = fopen("../tests/data/agency.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/agency.txt` file");
+        } else {
+            int lc = count_lines(fp);
+            if (lc != 5) {
+                printf("Counted line count in `data/agency.txt` incorrectly.");
+            }
+            fclose(fp);
+        }
+    }
+
+    // Case 2
+    {
+        FILE *fp = fopen("../tests/data/empty.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/empty.txt` file");
+        } else {
+            int lc = count_lines(fp);
+            if (lc != 0) {
+                printf("Counted line count in `data/empty.txt` incorrectly.");
+            }
+            fclose(fp);
+        }
+    }
+
+    // Case 3
+    {
+        FILE *fp = fopen("../tests/data/only_nl.txt", "r");
+        if (fp == NULL) {
+            perror("Couldn't open `data/only_nl.txt` file");
+        } else {
+            int lc = count_lines(fp);
+            if (lc != 2) {
+                printf("Counted line count in `data/only_nl.txt` incorrectly.");
+            }
+            fclose(fp);
+        }
+    }
+    return 0;
+}
+
 #endif
