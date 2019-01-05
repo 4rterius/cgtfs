@@ -8,7 +8,7 @@ project(cgtfs VERSION 0.1.0)
 ## Flags and settings
 ## -----------------------------------------------------------------
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -g")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
 
 set(sources
   "src/agency.c"
