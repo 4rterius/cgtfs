@@ -94,7 +94,7 @@ It is recommended to instantiate them with `empty_*()` function return value.
 *Please note: All IDs are stored as strings.*
 
 Struct | Contents
-- | -
+------ | --------
 `agency_t` | A record of the [agency.txt](https://developers.google.com/transit/gtfs/reference/#agencytxt) file
 `calendar_date_t` | A record of the [calendar_dates.txt](https://developers.google.com/transit/gtfs/reference/#calendar_datestxt) file
 `calendar_record_t` | A record of the [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt) file
