@@ -122,7 +122,44 @@ Additionally, this library defines `geo_location_t` structure with `latitude` an
 
 ### Functions
 
+#### Reading utilities
+
+Low-level functions for reading CSV files. Declarations in `reading_utils.h`.
+
+Function | Arguments | Returns
+-------- | --------- | -------
+`int read_header(FILE *fp, char ***field_names)` | `fp` - opened file stream to read header from; `field_names` - pointer to an array of c-strings, to write field names into | Number of fields
+`int read_record(FILE *fp, int fields_number, char ***record_values)` | `fp` - opened file stream to read a row from; `fields_number` - number of fields to parse; `record_values` - pointer to an array of c-strings, to write row values into | 1 on success, -1 on file reading error
+`int count_lines(FILE *fp)` | `fp` - opened file stream to count lines in | Number of lines in the file, -1 on file reading error
+
+#### Record readers
+
 *Work in progress*
+
+#### Struct parsers
+
+*Work in progress*
+
+#### File readers
+
+*Work in progress*
+
+#### Helpers
+
+Other useful functions, implemented for the library itself or potential future use.
+
+##### filenames.h
+
+Function | Arguments | Returns
+-------- | --------- | -------
+`void make_filepath(char **out, const char *dirname, const char *filename)` | `out` - pointer to c-string to write resulting filepath into; `dirname` and `filename` - c-strings with directory and file names to concatenate | Nothing
+
+##### haversine.h
+
+Function | Arguments | Returns
+-------- | --------- | -------
+`double dg_to_rad(long double d)` | `d` - degrees to translate into radians | Radians
+`double haversine_distance(geo_location_t a, geo_location_t b)` | `a` - latitude and longitude of point A; `b` - lat. & lon. of point B | Meters between points A and B
 
 
 ## Useful links
