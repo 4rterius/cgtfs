@@ -67,6 +67,8 @@ void another_function(void) {
 
 As of version 0.1.0, the library has no dependencies. However, as a database integration for higher speed and memory efficiency is in plans, [*SQLite*](https://www.sqlite.org/index.html) might become one.
 
+The downside is that extraction of GTFS .zip needs to be done separately.
+
 ### Build process
 
 ```
@@ -79,7 +81,49 @@ $ ./tests    # on Linux; tests executable location on Windows may vary
 
 ## API overview
 
+This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility.
+
+### Structures
+
+Each of the following structs has fields according to its respective specification.
+
+Additionally, they all have `is_null` integer field set to 1 unless all *required* fields have been parsed by their `read_*` function (structs have been designed for use with reader functions, for instance, `read_agency(..)` returns a parsed `agency_t` structure).
+
+It is recommended to instantiate them with `empty_*()` function return value.
+
+*Please note: All IDs are stored as strings.*
+
+Struct | Contents
+- | -
+`agency_t` | A record of the [agency.txt](https://developers.google.com/transit/gtfs/reference/#agencytxt) file
+`calendar_date_t` | A record of the [calendar_dates.txt](https://developers.google.com/transit/gtfs/reference/#calendar_datestxt) file
+`calendar_record_t` | A record of the [calendar.txt](https://developers.google.com/transit/gtfs/reference/#calendartxt) file
+`fare_attributes_t` | A record of the [fare_attributes.txt](https://developers.google.com/transit/gtfs/reference/#fare_attributestxt) file
+`fare_rule_t` | A record of the [fare_rules.txt](https://developers.google.com/transit/gtfs/reference/#fare_rulestxt) file
+`feed_info_t` | A record of the [feed_info.txt](https://developers.google.com/transit/gtfs/reference/#feed_infotxt) file
+`frequency_t` | A record of the [frequencies.txt](https://developers.google.com/transit/gtfs/reference/#frequenciestxt) file
+`route_t` | A record of the [routes.txt](https://developers.google.com/transit/gtfs/reference/#routestxt) file
+`shape_t` | A record of the [shapes.txt](https://developers.google.com/transit/gtfs/reference/#shapestxt) file
+`stop_time_t` | A record of the [stop_times.txt](https://developers.google.com/transit/gtfs/reference/#stop_timestxt) file
+`stop_t` | A record of the [stops.txt](https://developers.google.com/transit/gtfs/reference/#stopstxt) file
+`transfer_t` | A record of the [transfers.txt](https://developers.google.com/transit/gtfs/reference/#transferstxt) file
+`trip_t` | A record of the [trips.txt](https://developers.google.com/transit/gtfs/reference/#tripstxt) file
+
+#### feed_t structure
+
+`feed_t` is the compound structure which holds pointers to all of the aforementioned structs, and for each of them an integer field with the number of parsed records. `feed_t` is designed to be used with `read_feed(..)` (see [example 0](#examples)).
+
+As with record structs, it is recommended to instantiate it with `empty_feed()` value.
+
+#### Other structures
+
+Additionally, this library defines `geo_location_t` structure with `latitude` and `longitude` fields of type `long double`.
+
+
+### Functions
+
 *Work in progress*
+
 
 ## Useful links
 
