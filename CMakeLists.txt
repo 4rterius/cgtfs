@@ -55,3 +55,14 @@ endif()
 add_executable(tests tests/_all.c)
 add_dependencies(tests cgtfs)
 target_link_libraries(tests cgtfs)
+
+## Examples
+## -----------------------------------------------------------------
+
+add_executable(example_0 examples/example_0.c)
+add_dependencies(example_0 cgtfs)
+target_link_libraries(example_0 cgtfs)
+
+add_executable(example_1 examples/example_1.c)
+add_dependencies(example_1 cgtfs)
+target_link_libraries(example_1 cgtfs)
