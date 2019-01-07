@@ -220,7 +220,7 @@ stop_time_t empty_stop_time(void);
 stop_time_t read_stop_time(int field_count, char **field_names, char **field_values);
 
 transfer_t empty_transfer(void);
-transfer_t read_transfer(int field_count, char **field_names, char **field_values)
+transfer_t read_transfer(int field_count, char **field_names, char **field_values);
 
 trip_t empty_trip(void);
 trip_t read_trip(int field_count, char **field_names, char **field_values);
