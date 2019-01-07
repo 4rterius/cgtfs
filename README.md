@@ -85,6 +85,8 @@ This library tries to provide a semantic and readable interface. Before release 
 
 ### Structures
 
+#### Record structures
+
 Each of the following structs has fields according to its respective specification.
 
 Additionally, they all have `is_null` integer field set to 1 unless all *required* fields have been parsed by their `read_*` function (structs have been designed for use with reader functions, for instance, `read_agency(..)` returns a parsed `agency_t` structure).
@@ -157,17 +159,103 @@ Function | Arguments | Returns
 `int read_record(FILE *fp, int fields_number, char ***record_values)` | `fp` - opened file stream to read a row from; `fields_number` - number of fields to parse; `record_values` - pointer to an array of c-strings, to write row values into | 1 on success, -1 on file reading error
 `int count_lines(FILE *fp)` | `fp` - opened file stream to count lines in | Number of lines in the file, -1 on file reading error
 
-#### Record readers
-
-*Work in progress*
-
 #### Enumeration parsers
 
-*Work in progress*
+For each of the aforementioned [enumerations](#enumerations), a parser exists that takes a c-string argument and returns an enum value. These parsers also ensure default values correctness (according to the GTFS spec). The list of these parsers is as following:
+
+```c
+service_availability_t parse_service_availability(char *value);
+exception_type_t parse_exception_type(char *value);
+payment_method_t parse_payment_method(char *value);
+transfers_state_t parse_transfer_state(char *value);
+time_exactness_t parse_time_exactness(char *value);
+route_type_t parse_route_type(char *value);
+location_type_t parse_location_type(char *value);
+wheelchair_boarding_t parse_wheelchair_boarding(char *value);
+stop_type_t parse_stop_type(char *value);
+timepoint_precision_t parse_timepoint_precision(char *value);
+transfer_type_t parse_transfer_type(char *value);
+wheelchair_accessible_t parse_wheelchair_accessibility(char *value);
+bikes_allowed_t parse_bike_allowance(char *value);
+```
+
+#### Record reading and initialization functions
+
+For each of the aforementioned [record structs](#record-structures), an initialization function `* empty_*(void)` and a reader `* read_*(int field_count, char **field_names, char **field_values)` exist. Initialization functions take nothing and return an empty struct (with default values set and initialized). Readers take a number of fields, an array of c-strings with names of the fields, and an array of field values of a single row (record).
+
+All of these functions are given in the following list:
+
+```c
+agency_t empty_agency(void);
+agency_t read_agency(int field_count, char **field_names, char **field_values);
+
+calendar_record_t empty_calendar_record(void);
+calendar_record_t read_calendar_record(int field_count, char **field_names, char **field_values);
+
+calendar_date_t empty_calendar_date(void);
+calendar_date_t read_calendar_date(int field_count, char **field_names, char **field_values);
+
+fare_attributes_t empty_fare_attributes(void);
+fare_attributes_t read_fare_attributes(int field_count, char **field_names, char **field_values);
+
+fare_rule_t empty_fare_rule(void);
+fare_rule_t read_fare_rule(int field_count, char **field_names, char **field_values);
+
+feed_info_t empty_feed_info(void);
+feed_info_t read_feed_info(int field_count, char **field_names, char **field_values);
+
+frequency_t empty_frequency(void);
+frequency_t read_frequency(int field_count, char **field_names, char **field_values);
+
+route_t empty_route(void);
+route_t read_route(int field_count, char **field_names, char **field_values);
+
+shape_t empty_shape(void);
+shape_t read_shape(int field_count, char **field_names, char **field_values);
+
+stop_t empty_stop(void);
+stop_t read_stop(int field_count, char **field_names, char **field_values);
+
+stop_time_t empty_stop_time(void);
+stop_time_t read_stop_time(int field_count, char **field_names, char **field_values);
+
+transfer_t empty_transfer(void);
+transfer_t read_transfer(int field_count, char **field_names, char **field_values)
+
+trip_t empty_trip(void);
+trip_t read_trip(int field_count, char **field_names, char **field_values);
+```
+
 
 #### File readers
 
-*Work in progress*
+File readers are functions that handle reading entire files, e.g. `routes.txt`. They are convenient wrappers around [record readers](#record-reading-and-initialization-functions) which:
+
+- read file headers;
+- count records and allocate sufficient memory for the resulting record structs;
+- loop through the file lines and read each of them using record readers;
+- free their own temporary memory.
+
+Each file reader takes an opened `FILE` stream (from where it reads) and a pointer to an array of structs (where the results are put).
+
+The declarations of file readers are as follows:
+
+```c
+int read_all_agencies(FILE *fp, agency_t **records);
+int read_all_calendar_dates(FILE *fp, calendar_date_t **records);
+int read_all_calendar_records(FILE *fp, calendar_record_t **records);
+int read_all_fare_attributes(FILE *fp, fare_attributes_t **records);
+int read_all_fare_rules(FILE *fp, fare_rule_t **records);
+int read_all_feed_info(FILE *fp, feed_info_t **records);
+int read_all_frequencies(FILE *fp, frequency_t **records);
+int read_all_routes(FILE *fp, route_t **records);
+int read_all_shapes(FILE *fp, shape_t **records);
+int read_all_stop_times(FILE *fp, stop_time_t **records);
+int read_all_stops(FILE *fp, stop_t **records);
+int read_all_transfers(FILE *fp, transfer_t **records);
+int read_all_trips(FILE *fp, trip_t **records);
+```
+
 
 #### Helpers
 
