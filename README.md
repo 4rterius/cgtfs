@@ -120,6 +120,31 @@ As with record structs, it is recommended to instantiate it with `empty_feed()` 
 Additionally, this library defines `geo_location_t` structure with `latitude` and `longitude` fields of type `long double`.
 
 
+### Enumerations
+
+Enumerations are used in this library as a semantic and somewhat restricting method of storing data about fields which only allow specific values and define their own meaning behind every possible value.
+
+Each of these enumerations has values according to the specification, and an obligatory `*_NOT_SET` field.
+
+Names of enum values start with two capital letters (first letters of each word in the enum's name) and an underscore. For instance, `service_availability_t` has values `SA_UNAVAILABLE`, `SA_AVAILABLE` and `SA_NOT_SET`.
+
+Enum | Contents
+---- | --------
+`service_availability_t` | Whether or not a [calendar record day](https://developers.google.com/transit/gtfs/reference/#calendartxt) has service available.
+`exception_type_t` | What kind of an exception a [calendar date](https://developers.google.com/transit/gtfs/reference/#calendar_datestxt) presents.
+`payment_method_t` | How do passangers pay [fare](https://developers.google.com/transit/gtfs/reference/#fare_attributestxt).
+`transfers_state_t` | Whether [transfers](https://developers.google.com/transit/gtfs/reference/#fare_attributestxt) are permitted and how many times.
+`time_exactness_t` | If time fields specified for a [frequency record](https://developers.google.com/transit/gtfs/reference/#frequenciestxt) are exact.
+`route_type_t` | What kind of transport a [route](https://developers.google.com/transit/gtfs/reference/#routestxt) serves.
+`location_type_t` | What kind of location a [stop](https://developers.google.com/transit/gtfs/reference/#stopstxt) represents.
+`wheelchair_boarding_t` | Whether wheelchair boardings are possible on a particular [stop](https://developers.google.com/transit/gtfs/reference/#stopstxt).
+`stop_type_t` | How passangers are picked up or dropped off at a stop at a particular [stop time](https://developers.google.com/transit/gtfs/reference/#stop_timestxt).
+`timepoint_precision_t` | Whether timepoint of a particular [stop time](https://developers.google.com/transit/gtfs/reference/#stop_timestxt) is precise.
+`transfer_type_t` | Whether [transfers](https://developers.google.com/transit/gtfs/reference/#transferstxt) are possible between two stops.
+`wheelchair_accessible_t` | Whether wheelchairs are allowed on a particular [trip](https://developers.google.com/transit/gtfs/reference/#tripstxt).
+`bikes_allowed_t` | Whether bikes are allowed on a particualr [trip](https://developers.google.com/transit/gtfs/reference/#tripstxt).
+
+
 ### Functions
 
 #### Reading utilities
@@ -136,7 +161,7 @@ Function | Arguments | Returns
 
 *Work in progress*
 
-#### Struct parsers
+#### Enumeration parsers
 
 *Work in progress*
 
