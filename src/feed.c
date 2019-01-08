@@ -181,3 +181,45 @@ int read_feed(char *feed_directory_path, feed_t *instance) {
 
     return 0;
 }
+
+void free_feed(feed_t *feed) {
+    if (feed->agency_count > 0) {
+        free(feed->agencies);
+    }
+    if (feed->calendar_dates_count > 0) {
+        free(feed->calendar_dates);
+    }
+    if (feed->calendar_records_count > 0) {
+        free(feed->calendar_records);
+    }
+    if (feed->fare_attributes_count > 0) {
+        free(feed->fare_attributes);
+    }
+    if (feed->fare_rules_count > 0) {
+        free(feed->fare_rules);
+    }
+    if (feed->feed_info_count > 0) {
+        free(feed->feed_info);
+    }
+    if (feed->frequencies_count > 0) {
+        free(feed->frequencies);
+    }
+    if (feed->routes_count > 0) {
+        free(feed->routes);
+    }
+    if (feed->shapes_count > 0) {
+        free(feed->shapes);
+    }
+    if (feed->stop_times_count > 0) {
+        free(feed->stop_times);
+    }
+    if (feed->stops_count > 0) {
+        free(feed->stops);
+    }
+    if (feed->transfers_count > 0) {
+        free(feed->transfers);
+    }
+    if (feed->trips_count > 0) {
+        free(feed->trips);
+    }
+}

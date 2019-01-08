@@ -46,6 +46,8 @@ int test_feed_good(void) {
     if (feed.trips_count != 11)
         printf("Feed reader counted incorrect number of trips.\n");
 
+    free_feed(&feed);
+
     return 0;
 }
 

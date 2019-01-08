@@ -35,6 +35,10 @@ int test_reading_utils_read_header() {
                 }
             }
 
+            for (size_t j = 0; j < field_count; j++)
+                free(field_names[j]);
+            free(field_names);
+            fclose(fp);
         }
     }
 
@@ -68,6 +72,11 @@ int test_reading_utils_read_header() {
                     printf("Incorrect field %i name: %s instead of %s", i, field_names[i], correct_field_names[i]);
                 }
             }
+
+            for (size_t j = 0; j < field_count; j++)
+                free(field_names[j]);
+            free(field_names);
+            fclose(fp);
         }
     }
 
@@ -82,9 +91,14 @@ int test_reading_utils_read_header() {
 
             field_count = read_header(fp, &field_names);
 
-            if (field_count != -1) {
-                printf("read_header() somehow didn't signal the error when reading what it could not read");
+            if (field_count != 0) {
+                printf("read_header() somehow managed to read what it could not read");
             }
+
+            for (size_t j = 0; j < field_count; j++)
+                free(field_names[j]);
+            free(field_names);
+            fclose(fp);
         }
     }
     return 0;
@@ -144,10 +158,19 @@ int test_reading_utils_read_record() {
                         break;
                 }
                 record_count++;
+
+                for (size_t j = 0; j < field_count; j++)
+                    free(record_values[j]);
+                free(record_values);
             }
 
+            for (size_t j = 0; j < field_count; j++)
+                free(field_names[j]);
             free(field_names);
-            free(record_values);
+
+            for (size_t j = 0; j < field_count; j++)
+                free(record_values[j]);
+            free(record_values);  // Free here, because read_record() allocates memory even on read failure.
         }
         fclose(fp);
     }

@@ -10,7 +10,7 @@ int read_header(FILE *fp, char ***field_names) {
     memset(h_field, 0, LINE_MAX_LEN);
 
     if (!fgets(header, LINE_MAX_LEN, fp))
-        return -1;
+        return 0;
 
     char chr;
     int chr_pos = 0;
@@ -68,7 +68,8 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
                     in_quotes = 0;
                 }
             }
-        } else if ((chr == ',' || chr == '\n') && !in_quotes) {
+        } else if ((chr == ',' || chr == '\n') && !in_quotes && r_field_index < fields_number) {
+            free((*record_values)[r_field_index]);
             (*record_values)[r_field_index] = strdup(r_field);
 
             memset(r_field, 0, LINE_MAX_LEN);

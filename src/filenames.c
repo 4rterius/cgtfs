@@ -18,4 +18,6 @@ void make_filepath(char **out, const char *dirname, const char *filename) {
     strncat(*out, _dirname, strlen(_dirname));
     strncat(*out, FILENAME_SEPARATOR, 1);
     strncat(*out, filename, strlen(filename));
+
+    free(_dirname);
 }

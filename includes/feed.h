@@ -53,4 +53,6 @@ typedef struct {
 feed_t empty_feed(void);
 int read_feed(char *feed_directory_path, feed_t *instance);
 
+void free_feed(feed_t *feed);
+
 #endif

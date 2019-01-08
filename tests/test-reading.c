@@ -411,7 +411,7 @@ int test_reading_all_shapes() {
 
             // TODO: add some test for this case and this reader
 
-            free(records);
+            if (record_count > 0) free(records);
         }
         fclose(fp);
     }
