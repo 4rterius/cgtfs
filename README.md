@@ -24,6 +24,8 @@ void some_function(void) {
         printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
     else
         perror("Failed to open agency.txt or the file has no records");
+
+    free_feed(&amazing_feed);
 }
 ```
 
@@ -115,7 +117,7 @@ Struct | Contents
 
 `feed_t` is the compound structure which holds pointers to all of the aforementioned structs, and for each of them an integer field with the number of parsed records. `feed_t` is designed to be used with `read_feed(..)` (see [example 0](#examples)).
 
-As with record structs, it is recommended to instantiate it with `empty_feed()` value.
+It is recommended to instantiate it with `empty_feed()` value. When an instance of the structure is no longer necessary, function `free_feed(..)` can handle freeing the memory.
 
 #### Other structures
 
@@ -155,7 +157,7 @@ Low-level functions for reading CSV files. Declarations in `reading_utils.h`.
 
 Function | Arguments | Returns
 -------- | --------- | -------
-`int read_header(FILE *fp, char ***field_names)` | `fp` - opened file stream to read header from; `field_names` - pointer to an array of c-strings, to write field names into | Number of fields
+`int read_header(FILE *fp, char ***field_names)` | `fp` - opened file stream to read header from; `field_names` - pointer to an array of c-strings, to write field names into | Number of fields, 0 on file reading error
 `int read_record(FILE *fp, int fields_number, char ***record_values)` | `fp` - opened file stream to read a row from; `fields_number` - number of fields to parse; `record_values` - pointer to an array of c-strings, to write row values into | 1 on success, -1 on file reading error
 `int count_lines(FILE *fp)` | `fp` - opened file stream to count lines in | Number of lines in the file, -1 on file reading error
 

@@ -11,6 +11,8 @@ void some_function(void) {
         printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
     else
         perror("Failed to open agency.txt or the file has no records");
+    
+    free_feed(&amazing_feed);
 }
 
 int main() {
