@@ -56,13 +56,20 @@ add_executable(tests tests/_all.c)
 add_dependencies(tests cgtfs)
 target_link_libraries(tests cgtfs)
 
+## Benchmark
+## -----------------------------------------------------------------
+
+add_executable(bench tests/_bench.c)
+add_dependencies(bench tests)
+target_link_libraries(bench cgtfs)
+
 ## Examples
 ## -----------------------------------------------------------------
 
 add_executable(example_0 examples/example_0.c)
-add_dependencies(example_0 cgtfs)
+add_dependencies(example_0 tests)
 target_link_libraries(example_0 cgtfs)
 
 add_executable(example_1 examples/example_1.c)
-add_dependencies(example_1 cgtfs)
+add_dependencies(example_1 tests)
 target_link_libraries(example_1 cgtfs)
