@@ -9,6 +9,9 @@ int read_header(FILE *fp, char ***field_names) {
     *field_names = malloc(sizeof(char *));
     memset(h_field, 0, LINE_MAX_LEN);
 
+    if (fp == NULL)
+        return 0;
+
     if (!fgets(header, LINE_MAX_LEN, fp))
         return 0;
 
@@ -43,6 +46,9 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
     *record_values = malloc(fields_number * sizeof(char *));
     for (unsigned i = 0; i < fields_number; i++)
         (*record_values)[i] = strdup("");
+
+    if (fp == NULL)
+        return -1;
 
     if (!fgets(record, LINE_MAX_LEN, fp))
         return -1;
@@ -86,6 +92,9 @@ int count_lines(FILE *fp) {
     int lines = 0;
     int ch_count = -1;
     int ch;
+
+    if (fp == NULL)
+        return -1;
 
     rewind(fp);
     do {

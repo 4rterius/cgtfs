@@ -23,8 +23,8 @@ int test_reading_all_agencies() {
                 printf("Parsed agency file record 1 incorrectly!");
             }
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -47,8 +47,8 @@ int test_reading_all_calendar_dates() {
                 printf("Parsed calendar dates file record 1 incorrectly!");
             }
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -94,8 +94,8 @@ int test_reading_all_calendar_records() {
             }
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -133,8 +133,8 @@ int test_reading_all_fare_attributes() {
             }
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -190,8 +190,8 @@ int test_reading_all_fare_rules() {
             }
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -306,8 +306,8 @@ int test_reading_all_frequencies() {
             }
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -393,8 +393,8 @@ int test_reading_all_routes() {
             }
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -412,8 +412,8 @@ int test_reading_all_shapes() {
             // TODO: add some test for this case and this reader
 
             if (record_count > 0) free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -477,8 +477,8 @@ int test_reading_all_stop_times() {
             // and further on
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -536,8 +536,8 @@ int test_reading_all_stops() {
             // and further on
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
@@ -595,8 +595,8 @@ int test_reading_all_trips() {
             // and further on
 
             free(records);
+            fclose(fp);
         }
-        fclose(fp);
     }
     return 0;
 }
