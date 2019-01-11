@@ -1,6 +1,6 @@
 #include "transfers.h"
 
-transfer_type_t parse_transfer_type(char *value) {
+transfer_type_t parse_transfer_type(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return TT_RECOMMENDED;
     else if (strcmp(value, "1") == 0)
@@ -23,7 +23,7 @@ transfer_t empty_transfer(void) {
     return transfer;
 }
 
-transfer_t read_transfer(int field_count, char **field_names, char **field_values) {
+transfer_t read_transfer(const int field_count, const char **field_names, const char **field_values) {
     transfer_t transfer = empty_transfer();
     int assignment_counter = 0;
 

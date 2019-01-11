@@ -1,6 +1,6 @@
 #include "frequency.h"
 
-time_exactness_t parse_time_exactness(char *value) {
+time_exactness_t parse_time_exactness(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return TE_NOT_EXACT;
     else if (strcmp(value, "1") == 0)
@@ -20,7 +20,7 @@ frequency_t empty_frequency(void) {
     return frequency;
 }
 
-frequency_t read_frequency(int field_count, char **field_names, char **field_values) {
+frequency_t read_frequency(const int field_count, const char **field_names, const char **field_values) {
     frequency_t frequency = empty_frequency();
     int assignment_counter = 0;
 

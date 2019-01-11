@@ -34,7 +34,7 @@ int read_header(FILE *fp, char ***field_names) {
     return h_field_index;
 }
 
-int read_record(FILE *fp, int fields_number, char ***record_values) {
+int read_record(FILE *fp, const int fields_number, char ***record_values) {
     char record[LINE_MAX_LEN];
     char r_field[LINE_MAX_LEN];
     char r_field_index = 0;

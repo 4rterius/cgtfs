@@ -1,6 +1,6 @@
 #include "calendar_dates.h"
 
-exception_type_t parse_exception_type(char *value) {
+exception_type_t parse_exception_type(const char *value) {
     if (strcmp(value, "1") == 0)
         return ET_ADDED;
     else if (strcmp(value, "2") == 0)
@@ -18,7 +18,7 @@ calendar_date_t empty_calendar_date(void) {
     return calendar_date;
 }
 
-calendar_date_t read_calendar_date(int field_count, char **field_names, char **field_values) {
+calendar_date_t read_calendar_date(const int field_count, const char **field_names, const char **field_values) {
     calendar_date_t calendar_date = empty_calendar_date();
     int assignment_counter = 0;
 

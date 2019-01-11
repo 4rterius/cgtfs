@@ -1,6 +1,6 @@
 #include "fare_attributes.h"
 
-payment_method_t parse_payment_method(char *value) {
+payment_method_t parse_payment_method(const char *value) {
     if (strcmp(value, "0") == 0)
         return PM_ON_BOARD;
     else if (strcmp(value, "1") == 0)
@@ -9,7 +9,7 @@ payment_method_t parse_payment_method(char *value) {
         return PM_NOT_SET;
 }
 
-transfers_state_t parse_transfer_state(char *value) {
+transfers_state_t parse_transfer_state(const char *value) {
     if (strcmp(value, "0") == 0)
         return TS_NOT_ALLOWED;
     else if (strcmp(value, "1") == 0)
@@ -35,7 +35,7 @@ fare_attributes_t empty_fare_attributes(void) {
     return fare_attributes;
 }
 
-fare_attributes_t read_fare_attributes(int field_count, char **field_names, char **field_values) {
+fare_attributes_t read_fare_attributes(const int field_count, const char **field_names, const char **field_values) {
     fare_attributes_t fare_attributes = empty_fare_attributes();
     int assignment_counter = 0;
 

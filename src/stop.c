@@ -1,6 +1,6 @@
 #include "stop.h"
 
-location_type_t parse_location_type(char *value) {
+location_type_t parse_location_type(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return LT_STOP;
     else if (strcmp(value, "1") == 0)
@@ -11,7 +11,7 @@ location_type_t parse_location_type(char *value) {
         return LT_NOT_SET;
 }
 
-wheelchair_boarding_t parse_wheelchair_boarding(char *value) {
+wheelchair_boarding_t parse_wheelchair_boarding(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return WB_UNKNOWN_OR_INHERITED;
     else if (strcmp(value, "1") == 0)
@@ -40,7 +40,7 @@ stop_t empty_stop(void) {
     return stop;
 }
 
-stop_t read_stop(int field_count, char **field_names, char **field_values) {
+stop_t read_stop(const int field_count, const char **field_names, const char **field_values) {
     stop_t stop = empty_stop();
     int assignment_counter = 0;
 

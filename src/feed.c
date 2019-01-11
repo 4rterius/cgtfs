@@ -31,7 +31,7 @@ feed_t empty_feed(void) {
     return feed;
 }
 
-int read_feed(char *feed_directory_path, feed_t *instance) {
+int read_feed(const char *feed_directory_path, feed_t *instance) {
     char *agencies_fname;
     char *calendar_dates_fname;
     char *calendar_records_fname;

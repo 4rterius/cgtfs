@@ -21,9 +21,9 @@ typedef struct {
     int is_null;
 } frequency_t;
 
-time_exactness_t parse_time_exactness(char *value);
+time_exactness_t parse_time_exactness(const char *value);
 
 frequency_t empty_frequency(void);
-frequency_t read_frequency(int field_count, char **field_names, char **field_values);
+frequency_t read_frequency(const int field_count, const char **field_names, const char **field_values);
 
 #endif

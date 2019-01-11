@@ -8,7 +8,7 @@
 #define LINE_MAX_LEN 10000
 
 int read_header(FILE *fp, char ***field_names);
-int read_record(FILE *fp, int fields_number, char ***record_values);
+int read_record(FILE *fp, const int fields_number, char ***record_values);
 
 int count_lines(FILE *fp);
 

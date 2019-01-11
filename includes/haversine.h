@@ -5,7 +5,7 @@
 
 #define MATH_PI 3.14159265358979323846
 
-double dg_to_rad(long double d);
-double haversine_distance(geo_location_t a, geo_location_t b);
+double dg_to_rad(const long double d);
+double haversine_distance(const geo_location_t a, const geo_location_t b);
 
 #endif

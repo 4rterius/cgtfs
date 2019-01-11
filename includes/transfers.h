@@ -22,9 +22,9 @@ typedef struct {
     int is_null;
 } transfer_t;
 
-transfer_type_t parse_transfer_type(char *value);
+transfer_type_t parse_transfer_type(const char *value);
 
 transfer_t empty_transfer(void);
-transfer_t read_transfer(int field_count, char **field_names, char **field_values);
+transfer_t read_transfer(const int field_count, const char **field_names, const char **field_values);
 
 #endif

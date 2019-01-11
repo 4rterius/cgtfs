@@ -14,7 +14,7 @@ agency_t empty_agency(void) {
     return agency;
 }
 
-agency_t read_agency(int field_count, char **field_names, char **field_values) {
+agency_t read_agency(const int field_count, const char **field_names, const char **field_values) {
     agency_t agency = empty_agency();
     int assignment_counter = 0;
 

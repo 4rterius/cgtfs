@@ -12,7 +12,7 @@ shape_t empty_shape(void) {
     return shape;
 }
 
-shape_t read_shape(int field_count, char **field_names, char **field_values) {
+shape_t read_shape(const int field_count, const char **field_names, const char **field_values) {
     shape_t shape = empty_shape();
     int assignment_counter = 0;
 

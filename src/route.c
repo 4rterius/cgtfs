@@ -1,6 +1,6 @@
 #include "route.h"
 
-route_type_t parse_route_type(char *value) {
+route_type_t parse_route_type(const char *value) {
     if (strcmp(value, "0") == 0)
         return RT_STREET_LEVEL;
     else if (strcmp(value, "1") == 0)
@@ -37,7 +37,7 @@ route_t empty_route(void) {
     return route;
 }
 
-route_t read_route(int field_count, char **field_names, char **field_values) {
+route_t read_route(const int field_count, const char **field_names, const char **field_values) {
     route_t route = empty_route();
     int assignment_counter = 0;
 
