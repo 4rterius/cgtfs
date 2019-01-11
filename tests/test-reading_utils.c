@@ -27,11 +27,11 @@ int test_reading_utils_read_header() {
             field_count = read_header(fp, &field_names);
 
             if (field_count != correct_field_count)
-                printf("Number of header fields (e.g. columns) parsed incorrectly: %i, not %i", field_count, correct_field_count);
+                printf("Number of header fields (e.g. columns) parsed incorrectly: %i, not %zi", field_count, correct_field_count);
 
             for (size_t i = 0; i < correct_field_count; i++) {
                 if (strcmp(correct_field_names[i], field_names[i]) != 0) {
-                    printf("Incorrect field %i name: %s instead of %s", i, field_names[i], correct_field_names[i]);
+                    printf("Incorrect field %zi name: %s instead of %s", i, field_names[i], correct_field_names[i]);
                 }
             }
 
@@ -65,11 +65,11 @@ int test_reading_utils_read_header() {
             field_count = read_header(fp, &field_names);
 
             if (field_count != correct_field_count)
-                printf("Number of header fields (e.g. columns) parsed incorrectly: %i, not %i", field_count, correct_field_count);
+                printf("Number of header fields (e.g. columns) parsed incorrectly: %i, not %zi", field_count, correct_field_count);
 
             for (size_t i = 0; i < correct_field_count; i++) {
                 if (strcmp(correct_field_names[i], field_names[i]) != 0) {
-                    printf("Incorrect field %i name: %s instead of %s", i, field_names[i], correct_field_names[i]);
+                    printf("Incorrect field %zi name: %s instead of %s", i, field_names[i], correct_field_names[i]);
                 }
             }
 

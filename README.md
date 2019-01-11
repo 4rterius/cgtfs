@@ -34,6 +34,7 @@ Unfortunately, as of version 0.1.0, the memory usage is far from sensible, and i
 
 ```c
 #include <stdio.h>
+#include "filenames.h"
 #include "reading.h"
 
 // Example 1: read all bus stops into memory

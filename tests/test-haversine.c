@@ -12,7 +12,7 @@ int test_haversine_correct() {
     long double dist_ab = haversine_distance(point_a, point_b);
     
     if (in_ld(dist_ab, 705, 715) != 0) {
-        printf("Dist. btw. Colloseo & Circo Massimo calculated incorrectly: %lf, should be around %li", dist_ab, 710);
+        printf("Dist. btw. Colloseo & Circo Massimo calculated incorrectly: %Lf, should be around %i", dist_ab, 710);
     }
 
     geo_location_t point_c = {.latitude = 60.98390, .longitude = 25.65733};
@@ -21,7 +21,7 @@ int test_haversine_correct() {
     long double dist_cd = haversine_distance(point_c, point_d);
 
     if (in_ld(dist_cd, 21, 22) != 0) {
-        printf("Dist. btw. Lahden Kauppatori D2 & E calculated incorrectly: %lf, should be around %lf", dist_cd, 21.7f);
+        printf("Dist. btw. Lahden Kauppatori D2 & E calculated incorrectly: %Lf, should be around %f", dist_cd, 21.7f);
     }
 
     return 0;
