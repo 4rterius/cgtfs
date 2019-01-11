@@ -18,7 +18,7 @@ calendar_date_t empty_calendar_date(void) {
     return calendar_date;
 }
 
-calendar_date_t read_calendar_date(const int field_count, const char **field_names, const char **field_values) {
+calendar_date_t read_calendar_date(int field_count, const char **field_names, const char **field_values) {
     calendar_date_t calendar_date = empty_calendar_date();
     int assignment_counter = 0;
 

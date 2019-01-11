@@ -20,7 +20,7 @@ frequency_t empty_frequency(void) {
     return frequency;
 }
 
-frequency_t read_frequency(const int field_count, const char **field_names, const char **field_values) {
+frequency_t read_frequency(int field_count, const char **field_names, const char **field_values) {
     frequency_t frequency = empty_frequency();
     int assignment_counter = 0;
 

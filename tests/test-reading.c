@@ -14,6 +14,10 @@ int test_reading_all_agencies() {
             agency_t *records;
             int record_count = read_all_agencies(fp, &records);
 
+            if (record_count != 1) {
+                printf("Number of records parsed from agencies file is incorrect");
+            }
+
             if (!(
                 !strcmp(records[0].id, "DTA") &&
                 !strcmp(records[0].name, "Demo Transit Authority") &&
@@ -39,6 +43,10 @@ int test_reading_all_calendar_dates() {
             calendar_date_t *records;
             int record_count = read_all_calendar_dates(fp, &records);
 
+            if (record_count != 1) {
+                printf("Number of records parsed from calendar dates file is incorrect");
+            }
+
             if (!(
                 !strcmp(records[0].service_id, "FULLW") &&
                 !strcmp(records[0].date, "20070604") &&
@@ -62,6 +70,10 @@ int test_reading_all_calendar_records() {
         } else {
             calendar_record_t *records;
             int record_count = read_all_calendar_records(fp, &records);
+
+            if (record_count != 2) {
+                printf("Number of records parsed from calendar records file is incorrect");
+            }
 
             if (!(
                 !strcmp(records[0].service_id, "FULLW") &&
@@ -110,6 +122,10 @@ int test_reading_all_fare_attributes() {
             fare_attributes_t *records;
             int record_count = read_all_fare_attributes(fp, &records);
 
+            if (record_count != 2) {
+                printf("Number of records parsed from fare attributes file is incorrect");
+            }
+
             if (!(
                 !strcmp(records[0].fare_id, "p") &&
                 records[0].price == 1.25 &&
@@ -148,6 +164,10 @@ int test_reading_all_fare_rules() {
         } else {
             fare_rule_t *records;
             int record_count = read_all_fare_rules(fp, &records);
+
+            if (record_count != 4) {
+                printf("Number of records parsed from fare rules file is incorrect");
+            }
 
             if (!(
                 !strcmp(records[0].fare_id, "p") &&
@@ -205,6 +225,10 @@ int test_reading_all_frequencies() {
         } else {
             frequency_t *records;
             int record_count = read_all_frequencies(fp, &records);
+
+            if (record_count != 11) {
+                printf("Number of records parsed from frequencies file is incorrect");
+            }
 
             if (!(
                 !strcmp(records[0].trip_id, "STBA") &&
@@ -322,6 +346,10 @@ int test_reading_all_routes() {
             route_t *records;
             int record_count = read_all_routes(fp, &records);
 
+            if (record_count != 5) {
+                printf("Number of records parsed from routes file is incorrect");
+            }
+
             if (!(
                 !strcmp(records[0].id, "AB") &&
                 !strcmp(records[0].agency_id, "DTA") &&
@@ -408,6 +436,10 @@ int test_reading_all_shapes() {
         } else {
             shape_t *records;
             int record_count = read_all_shapes(fp, &records);
+
+            if (record_count != 0) {
+                printf("Number of records parsed from shapes file is incorrect");
+            }
 
             // TODO: add some test for this case and this reader
 

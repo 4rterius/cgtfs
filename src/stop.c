@@ -40,7 +40,7 @@ stop_t empty_stop(void) {
     return stop;
 }
 
-stop_t read_stop(const int field_count, const char **field_names, const char **field_values) {
+stop_t read_stop(int field_count, const char **field_names, const char **field_values) {
     stop_t stop = empty_stop();
     int assignment_counter = 0;
 

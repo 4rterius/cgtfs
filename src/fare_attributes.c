@@ -35,7 +35,7 @@ fare_attributes_t empty_fare_attributes(void) {
     return fare_attributes;
 }
 
-fare_attributes_t read_fare_attributes(const int field_count, const char **field_names, const char **field_values) {
+fare_attributes_t read_fare_attributes(int field_count, const char **field_names, const char **field_values) {
     fare_attributes_t fare_attributes = empty_fare_attributes();
     int assignment_counter = 0;
 

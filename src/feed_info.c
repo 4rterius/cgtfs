@@ -14,7 +14,7 @@ feed_info_t empty_feed_info(void) {
     return feed_info;
 }
 
-feed_info_t read_feed_info(const int field_count, const char **field_names, const char **field_values) {
+feed_info_t read_feed_info(int field_count, const char **field_names, const char **field_values) {
     feed_info_t feed_info = empty_feed_info();
     int assignment_counter = 0;
 

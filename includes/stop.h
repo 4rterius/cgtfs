@@ -40,6 +40,6 @@ location_type_t parse_location_type(const char *value);
 wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
 
 stop_t empty_stop(void);
-stop_t read_stop(const int field_count, const char **field_names, const char **field_values);
+stop_t read_stop(int field_count, const char **field_names, const char **field_values);
 
 #endif

@@ -18,6 +18,6 @@ typedef struct {
 } feed_info_t;
 
 feed_info_t empty_feed_info(void);
-feed_info_t read_feed_info(const int field_count, const char **field_names, const char **field_values);
+feed_info_t read_feed_info(int field_count, const char **field_names, const char **field_values);
 
 #endif

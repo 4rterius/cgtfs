@@ -38,7 +38,7 @@ stop_time_t empty_stop_time(void) {
     return stop_time;
 }
 
-stop_time_t read_stop_time(const int field_count, const char **field_names, const char **field_values) {
+stop_time_t read_stop_time(int field_count, const char **field_names, const char **field_values) {
     stop_time_t stop_time = empty_stop_time();
     int assignment_counter = 0;
 

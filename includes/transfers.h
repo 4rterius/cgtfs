@@ -25,6 +25,6 @@ typedef struct {
 transfer_type_t parse_transfer_type(const char *value);
 
 transfer_t empty_transfer(void);
-transfer_t read_transfer(const int field_count, const char **field_names, const char **field_values);
+transfer_t read_transfer(int field_count, const char **field_names, const char **field_values);
 
 #endif

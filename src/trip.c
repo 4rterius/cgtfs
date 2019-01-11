@@ -11,7 +11,7 @@ wheelchair_accessible_t parse_wheelchair_accessibility(const char *value) {
         return WA_NOT_SET;
 }
 
-bikes_allowed_t parse_bike_allowance(char *value) {
+bikes_allowed_t parse_bike_allowance(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return BA_UNKNOWN;
     else if (strcmp(value, "1") == 0)
@@ -38,7 +38,7 @@ trip_t empty_trip(void) {
     return trip;
 }
 
-trip_t read_trip(const int field_count, const char **field_names, const char **field_values) {
+trip_t read_trip(int field_count, const char **field_names, const char **field_values) {
     trip_t trip = empty_trip();
     int assignment_counter = 0;
 

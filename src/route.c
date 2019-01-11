@@ -37,7 +37,7 @@ route_t empty_route(void) {
     return route;
 }
 
-route_t read_route(const int field_count, const char **field_names, const char **field_values) {
+route_t read_route(int field_count, const char **field_names, const char **field_values) {
     route_t route = empty_route();
     int assignment_counter = 0;
 

@@ -36,6 +36,6 @@ payment_method_t parse_payment_method(const char *value);
 transfers_state_t parse_transfer_state(const char *value);
 
 fare_attributes_t empty_fare_attributes(void);
-fare_attributes_t read_fare_attributes(const int field_count, const char **field_names, const char **field_values);
+fare_attributes_t read_fare_attributes(int field_count, const char **field_names, const char **field_values);
 
 #endif

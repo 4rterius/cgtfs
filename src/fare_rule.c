@@ -11,7 +11,7 @@ fare_rule_t empty_fare_rule(void) {
     return fare_rule;
 }
 
-fare_rule_t read_fare_rule(const int field_count, const char **field_names, const char **field_values) {
+fare_rule_t read_fare_rule(int field_count, const char **field_names, const char **field_values) {
     fare_rule_t fare_rule = empty_fare_rule();
     int assignment_counter = 0;
 

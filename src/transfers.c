@@ -23,7 +23,7 @@ transfer_t empty_transfer(void) {
     return transfer;
 }
 
-transfer_t read_transfer(const int field_count, const char **field_names, const char **field_values) {
+transfer_t read_transfer(int field_count, const char **field_names, const char **field_values) {
     transfer_t transfer = empty_transfer();
     int assignment_counter = 0;
 
