@@ -1,6 +1,6 @@
 #include "stop.h"
 
-location_type_t parse_location_type(char *value) {
+location_type_t parse_location_type(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return LT_STOP;
     else if (strcmp(value, "1") == 0)
@@ -11,7 +11,7 @@ location_type_t parse_location_type(char *value) {
         return LT_NOT_SET;
 }
 
-wheelchair_boarding_t parse_wheelchair_boarding(char *value) {
+wheelchair_boarding_t parse_wheelchair_boarding(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
         return WB_UNKNOWN_OR_INHERITED;
     else if (strcmp(value, "1") == 0)
@@ -22,95 +22,91 @@ wheelchair_boarding_t parse_wheelchair_boarding(char *value) {
         return WB_NOT_SET;
 }
 
-stop_t empty_stop(void) {
-    stop_t stop;
-    strcpy(stop.id, "");
-    strcpy(stop.code, "");
-    strcpy(stop.name, "");
-    strcpy(stop.desc, "");
-    stop.lat = 0.0;
-    stop.lon = 0.0;
-    strcpy(stop.zone_id, "");
-    strcpy(stop.url, "");
-    stop.location_type = LT_STOP;
-    strcpy(stop.parent_station, "");
-    strcpy(stop.timezone, "");
-    stop.wheelchair_boarding = WB_UNKNOWN_OR_INHERITED;
-    stop.is_null = 1;
-    return stop;
+void init_stop(stop_t *record){
+    strcpy(record->id, "");
+    strcpy(record->code, "");
+    strcpy(record->name, "");
+    strcpy(record->desc, "");
+    record->lat = 0.0;
+    record->lon = 0.0;
+    strcpy(record->zone_id, "");
+    strcpy(record->url, "");
+    record->location_type = LT_STOP;
+    strcpy(record->parent_station, "");
+    strcpy(record->timezone, "");
+    record->wheelchair_boarding = WB_UNKNOWN_OR_INHERITED;
+    record->is_null = 1;
 }
 
-stop_t read_stop(int field_count, char **field_names, char **field_values) {
-    stop_t stop = empty_stop();
+void read_stop(stop_t *record, int field_count, const char **field_names, const char **field_values) {
+    init_stop(record);
     int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "stop_id") == 0) {
-            strcpy(stop.id, field_values[i]);
+            strcpy(record->id, field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_code") == 0) {
-            strcpy(stop.code, field_values[i]);
+            strcpy(record->code, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_name") == 0) {
-            strcpy(stop.name, field_values[i]);
+            strcpy(record->name, field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_desc") == 0) {
-            strcpy(stop.desc, field_values[i]);
+            strcpy(record->desc, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_lat") == 0) {
-            stop.lat = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
+            record->lat = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_lon") == 0) {
-            stop.lon = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
+            record->lon = strtod(field_values[i], NULL);  // TODO: same as shape.c:26
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "zone_id") == 0) {
-            strcpy(stop.zone_id, field_values[i]);
+            strcpy(record->zone_id, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_url") == 0) {
-            strcpy(stop.url, field_values[i]);
+            strcpy(record->url, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "location_type") == 0) {
-            stop.location_type = parse_location_type(field_values[i]);
+            record->location_type = parse_location_type(field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "parent_station") == 0) {
-            strcpy(stop.parent_station, field_values[i]);
+            strcpy(record->parent_station, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "stop_timezone") == 0) {
-            strcpy(stop.timezone, field_values[i]);
+            strcpy(record->timezone, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "wheelchair_boarding") == 0) {
-            stop.wheelchair_boarding = parse_wheelchair_boarding(field_values[i]);
+            record->wheelchair_boarding = parse_wheelchair_boarding(field_values[i]);
             // assignment_counter++;
             continue;
         }
     }
 
     if (assignment_counter == 0)
-        stop.is_null = 1;
+        record->is_null = 1;
     else
-        stop.is_null = 0;
-    
-    return stop;
+        record->is_null = 0;
 }

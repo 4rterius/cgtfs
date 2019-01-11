@@ -33,9 +33,9 @@ typedef struct {
 } route_t;
 
 
-route_type_t parse_route_type(char *value);
+route_type_t parse_route_type(const char *value);
 
-route_t empty_route(void);
-route_t read_route(int field_count, char **field_names, char **field_values);
+void init_route(route_t *record);
+void read_route(route_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

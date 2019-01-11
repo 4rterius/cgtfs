@@ -10,7 +10,6 @@ int read_all_agencies(FILE *fp, agency_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -26,7 +25,7 @@ int read_all_agencies(FILE *fp, agency_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_agency(field_count, field_names, record_values);
+            read_agency(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -44,7 +43,6 @@ int read_all_calendar_dates(FILE *fp, calendar_date_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -60,7 +58,7 @@ int read_all_calendar_dates(FILE *fp, calendar_date_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_calendar_date(field_count, field_names, record_values);
+            read_calendar_date(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -78,7 +76,6 @@ int read_all_calendar_records(FILE *fp, calendar_record_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -94,7 +91,7 @@ int read_all_calendar_records(FILE *fp, calendar_record_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_calendar_record(field_count, field_names, record_values);
+            read_calendar_record(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -112,7 +109,6 @@ int read_all_fare_attributes(FILE *fp, fare_attributes_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -128,7 +124,7 @@ int read_all_fare_attributes(FILE *fp, fare_attributes_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_fare_attributes(field_count, field_names, record_values);
+            read_fare_attributes(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -146,7 +142,6 @@ int read_all_fare_rules(FILE *fp, fare_rule_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -162,7 +157,7 @@ int read_all_fare_rules(FILE *fp, fare_rule_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_fare_rule(field_count, field_names, record_values);
+            read_fare_rule(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -180,7 +175,6 @@ int read_all_feed_info(FILE *fp, feed_info_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -196,7 +190,7 @@ int read_all_feed_info(FILE *fp, feed_info_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_feed_info(field_count, field_names, record_values);
+            read_feed_info(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -214,7 +208,6 @@ int read_all_frequencies(FILE *fp, frequency_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -230,7 +223,7 @@ int read_all_frequencies(FILE *fp, frequency_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_frequency(field_count, field_names, record_values);
+            read_frequency(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -248,7 +241,6 @@ int read_all_routes(FILE *fp, route_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -264,7 +256,7 @@ int read_all_routes(FILE *fp, route_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_route(field_count, field_names, record_values);
+            read_route(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -282,7 +274,6 @@ int read_all_shapes(FILE *fp, shape_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -298,7 +289,7 @@ int read_all_shapes(FILE *fp, shape_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_shape(field_count, field_names, record_values);
+            read_shape(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -316,7 +307,6 @@ int read_all_stop_times(FILE *fp, stop_time_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -332,7 +322,7 @@ int read_all_stop_times(FILE *fp, stop_time_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_stop_time(field_count, field_names, record_values);
+            read_stop_time(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -350,7 +340,6 @@ int read_all_stops(FILE *fp, stop_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -366,7 +355,7 @@ int read_all_stops(FILE *fp, stop_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_stop(field_count, field_names, record_values);
+            read_stop(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -384,7 +373,6 @@ int read_all_transfers(FILE *fp, transfer_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -400,7 +388,7 @@ int read_all_transfers(FILE *fp, transfer_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_transfer(field_count, field_names, record_values);
+            read_transfer(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);
@@ -418,7 +406,6 @@ int read_all_trips(FILE *fp, trip_t **records) {
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
 
-    rewind(fp);
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
     
@@ -434,7 +421,7 @@ int read_all_trips(FILE *fp, trip_t **records) {
 
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            (*records)[i] = read_trip(field_count, field_names, record_values);
+            read_trip(&(*records)[i], field_count, (const char **)field_names, (const char **)record_values);
             for (size_t j = 0; j < field_count; j++)
                 free(record_values[j]);
             free(record_values);

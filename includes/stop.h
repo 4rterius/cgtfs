@@ -36,10 +36,10 @@ typedef struct {
     int is_null;
 } stop_t;
 
-location_type_t parse_location_type(char *value);
-wheelchair_boarding_t parse_wheelchair_boarding(char *value);
+location_type_t parse_location_type(const char *value);
+wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
 
-stop_t empty_stop(void);
-stop_t read_stop(int field_count, char **field_names, char **field_values);
+void init_stop(stop_t *record);
+void read_stop(stop_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

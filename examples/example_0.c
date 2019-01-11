@@ -4,8 +4,9 @@
 // Example 0: read all feed data into memory
 // (!) be careful, as reading ~12mb feed will take ~200mb of RAM.
 void some_function(void) {
-    feed_t amazing_feed = empty_feed();
-    read_feed("../tests/data/google_sample", &amazing_feed);
+    feed_t amazing_feed;
+    init_feed(&amazing_feed);
+    read_feed(&amazing_feed, "../tests/data/google_sample");
 
     if (amazing_feed.agency_count > 0)
         printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);

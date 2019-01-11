@@ -28,10 +28,10 @@ int in_ld(long double num, long double lb, long double rb) {
 
 
 typedef struct {
-    double iter1;
-    double iter10;
-    double iter100;
-    double iter1000;
+    long double iter1;
+    long double iter10;
+    long double iter100;
+    long double iter1000;
 } bm_results_t;
 
 bm_results_t bm_init_results(void) {
@@ -43,7 +43,7 @@ bm_results_t bm_init_results(void) {
     return res;
 }
 
-double bm_run_n(unsigned n, void (*test_fn)()) {
+long double bm_run_n(unsigned n, void (*test_fn)()) {
     clock_t bgn;
     bgn = clock();
 
@@ -78,16 +78,16 @@ void bm_display_results(const bm_results_t *results, const char *msg) {
     printf("Benchmark results for %s:\n", msg);
 
     if (results->iter1 >= 0)
-        printf(" -> 1     iteration:    %lf sec./iter.\n", results->iter1);
+        printf(" -> 1     iteration:    %Lf sec. / %i iter. = %Lf\n", results->iter1, 1, results->iter1);
 
     if (results->iter10 >= 0)
-        printf(" -> 10    iterations:   %lf sec./iter.\n", results->iter10 / (double)10);
+        printf(" -> 10    iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter10, 10, results->iter10 / (long double)10);
     
     if (results->iter100 >= 0)
-        printf(" -> 100   iterations:   %lf sec./iter.\n", results->iter100 / (double)100);
+        printf(" -> 100   iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter100, 100, results->iter100 / (long double)100);
 
     if (results->iter1000 >= 0)    
-        printf(" -> 1000  iterations:   %lf sec./iter.\n", results->iter1000 / (double)1000.0);
+        printf(" -> 1000  iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter1000, 1000, results->iter1000 / (long double)1000.0);
 
     printf("---------\n");
 }

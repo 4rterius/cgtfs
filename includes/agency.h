@@ -18,7 +18,7 @@ typedef struct {
 } agency_t;
 
 
-agency_t empty_agency(void);
-agency_t read_agency(int field_count, char **field_names, char **field_values);
+void init_agency(agency_t *record);
+void read_agency(agency_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

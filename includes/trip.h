@@ -34,10 +34,10 @@ typedef struct {
     int is_null;
 } trip_t;
 
-wheelchair_accessible_t parse_wheelchair_accessibility(char *value);
-bikes_allowed_t parse_bike_allowance(char *value);
+wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
+bikes_allowed_t parse_bike_allowance(const char *value);
 
-trip_t empty_trip(void);
-trip_t read_trip(int field_count, char **field_names, char **field_values);
+void init_trip(trip_t *record);
+void read_trip(trip_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

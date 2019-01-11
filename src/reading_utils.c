@@ -3,7 +3,7 @@
 int read_header(FILE *fp, char ***field_names) {
     char header[LINE_MAX_LEN];
     char h_field[LINE_MAX_LEN];
-    char h_field_index = 0;
+    int h_field_index = 0;
     int h_field_len = 0;
 
     *field_names = malloc(sizeof(char *));
@@ -18,7 +18,7 @@ int read_header(FILE *fp, char ***field_names) {
     char chr;
     int chr_pos = 0;
 
-    while (chr = header[++chr_pos - 1]) {
+    while ((chr = header[++chr_pos - 1])) {
         if (chr == ',' || chr == '\n') {
             *field_names = realloc(*field_names, (h_field_index + 1) * sizeof(char *));
             (*field_names)[h_field_index] = strdup(h_field);
@@ -34,10 +34,10 @@ int read_header(FILE *fp, char ***field_names) {
     return h_field_index;
 }
 
-int read_record(FILE *fp, int fields_number, char ***record_values) {
+int read_record(FILE *fp, const int fields_number, char ***record_values) {
     char record[LINE_MAX_LEN];
     char r_field[LINE_MAX_LEN];
-    char r_field_index = 0;
+    int r_field_index = 0;
     int r_field_len = 0;
     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
@@ -62,7 +62,7 @@ int read_record(FILE *fp, int fields_number, char ***record_values) {
     strcat(record, "\n");  // fixes the error that happens when the last record isn't followed by a newline
                            // (then the last record field fails to be parsed)
     
-    while (chr = record[++chr_pos - 1]) {
+    while ((chr = record[++chr_pos - 1])) {
         if (chr == '"') {
             if (in_quotes == 0) {
                 in_quotes = 1;
@@ -93,16 +93,22 @@ int count_lines(FILE *fp) {
     int ch_count = -1;
     int ch;
 
+    fpos_t orig_pos;
+
     if (fp == NULL)
         return -1;
 
+    fgetpos(fp, &orig_pos);
     rewind(fp);
+
     do {
         ch = fgetc(fp);
         ch_count++;
         if (ch == '\n')
             lines++;
     } while (ch != EOF);
+
+    fsetpos(fp, &orig_pos);
 
     if (ch != '\n' && ch_count > 0)
         lines++;

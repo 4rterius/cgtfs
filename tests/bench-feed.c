@@ -5,8 +5,9 @@
 #include "feed.h"
 
 void _bm_feed_1() {
-    feed_t f = empty_feed();
-    read_feed("../tests/data/google_sample", &f);
+    feed_t f;
+    init_feed(&f);
+    read_feed(&f, "../tests/data/google_sample");
     free_feed(&f);
 }
 

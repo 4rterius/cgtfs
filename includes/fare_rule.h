@@ -14,7 +14,7 @@ typedef struct {
     int is_null;
 } fare_rule_t;
 
-fare_rule_t empty_fare_rule(void);
-fare_rule_t read_fare_rule(int field_count, char **field_names, char **field_values);
+void init_fare_rule(fare_rule_t *record);
+void read_fare_rule(fare_rule_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

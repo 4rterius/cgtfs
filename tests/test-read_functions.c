@@ -28,7 +28,8 @@ int test_rf_agency(void) {
             "en", "0 000 000 00 00", "http://cash.me/outside", "ex@amp.le"
         };
 
-        agency_t a_1 = read_agency(FIELDS_NUM_1, field_names, field_values);
+        agency_t a_1;
+        read_agency(&a_1, FIELDS_NUM_1, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(a_1.id, "1") &&
@@ -59,7 +60,8 @@ int test_rf_calendar_dates(void) {
             "1000", "20000101", "2"
         };
 
-        calendar_date_t cd_1 = read_calendar_date(FIELDS_NUM_2, field_names, field_values);
+        calendar_date_t cd_1;
+        read_calendar_date(&cd_1, FIELDS_NUM_2, (const char **)field_names, (const char **)field_values);
         
         if (!(
             !strcmp(cd_1.service_id, "1000") &&
@@ -85,7 +87,8 @@ int test_rf_calendar(void) {
             "1001", "1", "1", "1", "1", "1", "0", "0", "20000101", "20201231"
         };
 
-        calendar_record_t cr_1 = read_calendar_record(FIELDS_NUM_3, field_names, field_values);
+        calendar_record_t cr_1;
+        read_calendar_record(&cr_1, FIELDS_NUM_3, (const char **)field_names, (const char **)field_values);
         
         if (!(
             !strcmp(cr_1.service_id, "1001") &&
@@ -117,7 +120,8 @@ int test_rf_fare_attributes(void) {
             "17", "2.85", "EUR", "0", "", "1", "6000"
         };
 
-        fare_attributes_t fa_1 = read_fare_attributes(FIELDS_NUM_4, field_names, field_values);
+        fare_attributes_t fa_1;
+        read_fare_attributes(&fa_1, FIELDS_NUM_4, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(fa_1.fare_id, "17") &&
@@ -145,7 +149,8 @@ int test_rf_fare_rule(void) {
             "b", "TSW", "2", "8", "6"
         };
 
-        fare_rule_t fa_1 = read_fare_rule(FIELDS_NUM_5, field_names, field_values);
+        fare_rule_t fa_1;
+        read_fare_rule(&fa_1, FIELDS_NUM_5, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(fa_1.fare_id, "b") &&
@@ -173,7 +178,8 @@ int test_rf_feed_info(void) {
             "30000101", "0.1.0", "some@example.com", "http://example.com"
         };
 
-        feed_info_t fi_1 = read_feed_info(FIELDS_NUM_6, field_names, field_values);
+        feed_info_t fi_1;
+        read_feed_info(&fi_1, FIELDS_NUM_6, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(fi_1.feed_publisher_name, "Vasilij Terkin") &&
@@ -202,7 +208,8 @@ int test_rf_frequency(void) {
             "0xC0FFEE", "05:00:00", "07:00:00", "1200", ""
         };
 
-        frequency_t freq_1 = read_frequency(FIELDS_NUM_7, field_names, field_values);
+        frequency_t freq_1;
+        read_frequency(&freq_1, FIELDS_NUM_7, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(freq_1.trip_id, "0xC0FFEE") &&
@@ -230,7 +237,8 @@ int test_rf_route(void) {
             "3", "http://some.url", "cccccc", "ff0000", "175"
         };
 
-        route_t r_1 = read_route(FIELDS_NUM_8, field_names, field_values);
+        route_t r_1;
+        read_route(&r_1, FIELDS_NUM_8, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(r_1.id, "A") &&
@@ -261,7 +269,8 @@ int test_rf_shape(void) {
             "A_shp", "37.64430", "-122.41070", "0", "6.8310"
         };
 
-        shape_t s_1 = read_shape(FIELDS_NUM_9, field_names, field_values);   // TODO: find out why works on Win but not on Linux
+        shape_t s_1;
+        read_shape(&s_1, FIELDS_NUM_9, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(s_1.id, "A_shp") &&
@@ -289,7 +298,8 @@ int test_rf_stop_time(void) {
             "Argent D'Nur", "1", "2", "6.8315", ""
         };
 
-        stop_time_t st_1 = read_stop_time(FIELDS_NUM_10, field_names, field_values);
+        stop_time_t st_1;
+        read_stop_time(&st_1, FIELDS_NUM_10, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(st_1.trip_id, "AWE1") &&
@@ -326,7 +336,8 @@ int test_rf_stop(void) {
             "ST0", "Europe/Helsinki", "2"
         };
 
-        stop_t stp_1 = read_stop(FIELDS_NUM_11, field_names, field_values);
+        stop_t stp_1;
+        read_stop(&stp_1, FIELDS_NUM_11, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(stp_1.id, "S1") &&
@@ -359,7 +370,8 @@ int test_rf_transfer(void) {
             "S180", "R360", "2", "120"
         };
 
-        transfer_t t_1 = read_transfer(FIELDS_NUM_12, field_names, field_values);
+        transfer_t t_1;
+        read_transfer(&t_1, FIELDS_NUM_12, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(t_1.from_stop_id, "S180") &&
@@ -386,7 +398,8 @@ int test_rf_trip(void) {
             "", "11", "8", "1", "2"
         };
 
-        trip_t tr_1 = read_trip(FIELDS_NUM_13, field_names, field_values);
+        trip_t tr_1;
+        read_trip(&tr_1, FIELDS_NUM_13, (const char **)field_names, (const char **)field_values);
 
         if (!(
             !strcmp(tr_1.route_id, "A") &&
