@@ -22,83 +22,79 @@ bikes_allowed_t parse_bike_allowance(const char *value) {
         return BA_NOT_SET;
 }
 
-trip_t empty_trip(void) {
-    trip_t trip;
-    strcpy(trip.route_id, "");
-    strcpy(trip.service_id, "");
-    strcpy(trip.trip_id, "");
-    strcpy(trip.headsign, "");
-    strcpy(trip.short_name, "");
-    trip.direction_id = 0;
-    strcpy(trip.block_id, "");
-    strcpy(trip.shape_id, "");
-    trip.wheelchair_accessible = WA_UNKNOWN;
-    trip.bikes_allowed = BA_UNKNOWN;
-    trip.is_null = 1;
-    return trip;
+void init_trip(trip_t *record) {
+    strcpy(record->route_id, "");
+    strcpy(record->service_id, "");
+    strcpy(record->trip_id, "");
+    strcpy(record->headsign, "");
+    strcpy(record->short_name, "");
+    record->direction_id = 0;
+    strcpy(record->block_id, "");
+    strcpy(record->shape_id, "");
+    record->wheelchair_accessible = WA_UNKNOWN;
+    record->bikes_allowed = BA_UNKNOWN;
+    record->is_null = 1;
 }
 
-trip_t read_trip(int field_count, const char **field_names, const char **field_values) {
-    trip_t trip = empty_trip();
+void read_trip(trip_t *record, int field_count, const char **field_names, const char **field_values) {
+    init_trip(record);
     int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "route_id") == 0) {
-            strcpy(trip.route_id, field_values[i]);
+            strcpy(record->route_id, field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "service_id") == 0) {
-            strcpy(trip.service_id, field_values[i]);
+            strcpy(record->service_id, field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "trip_id") == 0) {
-            strcpy(trip.trip_id, field_values[i]);
+            strcpy(record->trip_id, field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "trip_headsign") == 0) {
-            strcpy(trip.headsign, field_values[i]);
+            strcpy(record->headsign, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "trip_short_name") == 0) {
-            strcpy(trip.short_name, field_values[i]);
+            strcpy(record->short_name, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "direction_id") == 0) {
-            trip.direction_id = (unsigned int)strtoul(field_values[i], NULL, 0);
+            record->direction_id = (unsigned int)strtoul(field_values[i], NULL, 0);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "block_id") == 0) {
-            strcpy(trip.block_id, field_values[i]);
+            strcpy(record->block_id, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "shape_id") == 0) {
-            strcpy(trip.shape_id, field_values[i]);
+            strcpy(record->shape_id, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "wheelchair_accessible") == 0) {
-            trip.wheelchair_accessible = parse_wheelchair_accessibility(field_values[i]);
+            record->wheelchair_accessible = parse_wheelchair_accessibility(field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "bikes_allowed") == 0) {
-            trip.bikes_allowed = parse_bike_allowance(field_values[i]);
+            record->bikes_allowed = parse_bike_allowance(field_values[i]);
             // assignment_counter++;
             continue;
         }
     }
 
     if (assignment_counter == 0)
-        trip.is_null = 1;
+        record->is_null = 1;
     else
-        trip.is_null = 0;
-    
-    return trip;
+        record->is_null = 0;
 }

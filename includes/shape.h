@@ -15,7 +15,7 @@ typedef struct {
     int is_null;
 } shape_t;
 
-shape_t empty_shape(void);
-shape_t read_shape(int field_count, const char **field_names, const char **field_values);
+void init_shape(shape_t *record);
+void read_shape(shape_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

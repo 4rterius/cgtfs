@@ -4,8 +4,9 @@
 #include "feed.h"
 
 int test_feed_good(void) {
-    feed_t feed = empty_feed();
-    read_feed("../tests/data/google_sample", &feed);
+    feed_t feed;
+    init_feed(&feed);
+    read_feed(&feed, "../tests/data/google_sample");
 
     if (feed.agency_count != 1)
         printf("Feed reader counted incorrect number of agencies.\n");

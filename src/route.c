@@ -21,83 +21,79 @@ route_type_t parse_route_type(const char *value) {
         return RT_NOT_SET;
 }
 
-route_t empty_route(void) {
-    route_t route;
-    strcpy(route.id, "");
-    strcpy(route.agency_id, "");
-    strcpy(route.short_name, "");
-    strcpy(route.long_name, "");
-    strcpy(route.desc, "");
-    route.type = RT_NOT_SET; 
-    strcpy(route.url, "");
-    strcpy(route.color, "");
-    strcpy(route.text_color, "");
-    route.sort_order = 0;
-    route.is_null = 1;
-    return route;
+void init_route(route_t *record) {
+    strcpy(record->id, "");
+    strcpy(record->agency_id, "");
+    strcpy(record->short_name, "");
+    strcpy(record->long_name, "");
+    strcpy(record->desc, "");
+    record->type = RT_NOT_SET; 
+    strcpy(record->url, "");
+    strcpy(record->color, "");
+    strcpy(record->text_color, "");
+    record->sort_order = 0;
+    record->is_null = 1;
 }
 
-route_t read_route(int field_count, const char **field_names, const char **field_values) {
-    route_t route = empty_route();
+void read_route(route_t *record, int field_count, const char **field_names, const char **field_values) {
+    init_route(record);
     int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "route_id") == 0) {
-            strcpy(route.id, field_values[i]);
+            strcpy(record->id, field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "agency_id") == 0) {
-            strcpy(route.agency_id, field_values[i]);
+            strcpy(record->agency_id, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_short_name") == 0) {
-            strcpy(route.short_name, field_values[i]);
+            strcpy(record->short_name, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_long_name") == 0) {
-            strcpy(route.long_name, field_values[i]);
+            strcpy(record->long_name, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_desc") == 0) {
-            strcpy(route.desc, field_values[i]);
+            strcpy(record->desc, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_type") == 0) {
-            route.type = parse_route_type(field_values[i]);
+            record->type = parse_route_type(field_values[i]);
             assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_url") == 0) {
-            strcpy(route.url, field_values[i]);
+            strcpy(record->url, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_color") == 0) {
-            strcpy(route.color, field_values[i]);
+            strcpy(record->color, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_text_color") == 0) {
-            strcpy(route.text_color, field_values[i]);
+            strcpy(record->text_color, field_values[i]);
             // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "route_sort_order") == 0) {
-            route.sort_order = (int)strtol(field_values[i], NULL, 0);
+            record->sort_order = (int)strtol(field_values[i], NULL, 0);
             // assignment_counter++;
             continue;
         }
     }
 
     if (assignment_counter == 0)
-        route.is_null = 1;
+        record->is_null = 1;
     else
-        route.is_null = 0;
-    
-    return route;
+        record->is_null = 0;
 }

@@ -50,8 +50,8 @@ typedef struct {
 } feed_t;
 
 
-feed_t empty_feed(void);
-int read_feed(const char *feed_directory_path, feed_t *instance);
+void init_feed(feed_t *feed);
+int read_feed(feed_t *instance, const char *feed_directory_path);
 
 void free_feed(feed_t *feed);
 

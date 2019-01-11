@@ -23,7 +23,7 @@ typedef struct {
 
 time_exactness_t parse_time_exactness(const char *value);
 
-frequency_t empty_frequency(void);
-frequency_t read_frequency(int field_count, const char **field_names, const char **field_values);
+void init_frequency(frequency_t *record);
+void read_frequency(frequency_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

@@ -17,7 +17,7 @@ typedef struct {
     int is_null;
 } feed_info_t;
 
-feed_info_t empty_feed_info(void);
-feed_info_t read_feed_info(int field_count, const char **field_names, const char **field_values);
+void init_feed_info(feed_info_t *record);
+void read_feed_info(feed_info_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif
