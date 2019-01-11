@@ -93,16 +93,22 @@ int count_lines(FILE *fp) {
     int ch_count = -1;
     int ch;
 
+    fpos_t orig_pos;
+
     if (fp == NULL)
         return -1;
 
+    fgetpos(fp, &orig_pos);
     rewind(fp);
+
     do {
         ch = fgetc(fp);
         ch_count++;
         if (ch == '\n')
             lines++;
     } while (ch != EOF);
+
+    fsetpos(fp, &orig_pos);
 
     if (ch != '\n' && ch_count > 0)
         lines++;
