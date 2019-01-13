@@ -2,7 +2,6 @@
 #include "feed.h"
 
 // Example 0: read all feed data into memory
-// (!) be careful, as reading ~12mb feed will take ~200mb of RAM.
 void some_function(void) {
     feed_t amazing_feed;
     init_feed(&amazing_feed);

@@ -2,12 +2,9 @@
 
 ![Release version plate](https://img.shields.io/github/release-pre/rakhack/cgtfs.svg)
 ![Build Status](https://travis-ci.com/rakhack/cgtfs.svg?branch=master)
-![Code size plate](https://img.shields.io/github/languages/code-size/rakhack/cgtfs.svg)
 ![License: MIT plate](https://img.shields.io/github/license/rakhack/cgtfs.svg)
 
 A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the format defined by Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/).
-
-*Note: as of the last README update, this library is deep in the development stage. Though it is tested and already provides the described functionality, it might not be doing that in the most efficient or stable manner. As such, caution is advised when using **cgtfs**.*
 
 ## Examples
 
@@ -16,21 +13,19 @@ A thin and fast low-level library which reads GTFS static feeds. This library pr
 #include "feed.h"
 
 // Example 0: read all feed data into memory
-// (!) be careful, as reading ~12mb feed will take ~200mb of RAM.
 void some_function(void) {
-    feed_t amazing_feed = empty_feed();
-    read_feed("/path/to/unpacked/gtfs/", &amazing_feed);
+    feed_t amazing_feed;
+    init_feed(&amazing_feed);
+    read_feed(&amazing_feed, "/path/to/unpacked/gtfs/");
 
     if (amazing_feed.agency_count > 0)
         printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
     else
         perror("Failed to open agency.txt or the file has no records");
-
+    
     free_feed(&amazing_feed);
 }
 ```
-
-Unfortunately, as of version 0.1.0, the memory usage is far from sensible, and into-database reading is not yet implemented (but will be soon). Hence, it is generally recommended to use individual readers instead, as shown in the `example 1` below.
 
 ```c
 #include <stdio.h>
@@ -69,7 +64,7 @@ void another_function(void) {
 
 ### Dependencies
 
-As of version 0.1.0, the library has no dependencies. However, as a database integration for higher speed and memory efficiency is in plans, [*SQLite*](https://www.sqlite.org/index.html) might become one.
+As of version 0.1.1, the library has no dependencies. However, as a database integration for higher speed and memory efficiency is in plans, [*SQLite*](https://www.sqlite.org/index.html) might become one.
 
 The downside is that extraction of GTFS .zip needs to be done separately.
 
@@ -86,6 +81,8 @@ $ ./tests    # on Linux; tests executable location on Windows may vary
 ## API overview
 
 This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility.
+
+*__Please note__: the API overview is outdated; major changes have been made since this documentation was last updated.*
 
 ### Structures
 
