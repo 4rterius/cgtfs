@@ -5,9 +5,12 @@
 #include <string.h>
 
 
+/**
+ * Whether service is available on a given day.
+ */
 typedef enum {
-    SA_UNAVAILABLE = 0,
-    SA_AVAILABLE = 1,
+    SA_UNAVAILABLE = 0,  ///< Service is unavailable.
+    SA_AVAILABLE = 1,    ///< Service is available.
     SA_NOT_SET
 } service_availability_t;
 
@@ -32,6 +35,12 @@ typedef struct {
 } calendar_record_t;
 
 
+/**
+ * Parses the service_availability_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An service_availability_t value;
+ */
 service_availability_t parse_service_availability(const char *value);
 
 /**

@@ -6,11 +6,14 @@
 #include <string.h>
 
 
+/**
+ * Whether a transfer between two stops is possible and how.
+ */
 typedef enum {
-    TT_RECOMMENDED = 0,
-    TT_TIMED = 1,
-    TT_TIME_REQUIRED = 2,
-    TT_NOT_POSSIBLE = 3,
+    TT_RECOMMENDED = 0,    ///< This is a recommended transfer point between routes (also on empty field value).
+    TT_TIMED = 1,          ///< Departing vehicle waits for the arriving one, with enough time for a passenger to transfer.
+    TT_TIME_REQUIRED = 2,  ///< This transfer requires a minimum amount of time between arrival and departure to ensure a connection.
+    TT_NOT_POSSIBLE = 3,   ///< Transfers are not possible between the specified stops.
     TT_NOT_SET
 } transfer_type_t;
 
@@ -28,6 +31,12 @@ typedef struct {
     int is_null;
 } transfer_t;
 
+/**
+ * Parses the transfer_type_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An transfer_type_t value;
+ */
 transfer_type_t parse_transfer_type(const char *value);
 
 /**

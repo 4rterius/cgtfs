@@ -6,17 +6,23 @@
 #include <string.h>
 
 
+/**
+ * What kind of a location the entity is.
+ */
 typedef enum {
-    LT_STOP = 0,
-    LT_STATION = 1,
-    LT_STATION_ENTRANCE_EXIT = 2,
+    LT_STOP = 0,                   ///< Stop.
+    LT_STATION = 1,                ///< Station, an area with one or more stops.
+    LT_STATION_ENTRANCE_EXIT = 2,  ///< Station entrance/exit.
     LT_NOT_SET
 } location_type_t;
 
+/**
+ * Whether wheelchair boardings/entrances are possible.
+ */
 typedef enum {
-    WB_UNKNOWN_OR_INHERITED = 0,
-    WB_SOME = 1,
-    WB_NOT_POSSIBLE = 2,
+    WB_UNKNOWN_OR_INHERITED = 0,  ///< No information available or the parent's value applies.
+    WB_SOME = 1,                  ///< Possible.
+    WB_NOT_POSSIBLE = 2,          ///< Not possible.
     WB_NOT_SET
 } wheelchair_boarding_t;
 
@@ -42,7 +48,20 @@ typedef struct {
     int is_null;
 } stop_t;
 
+/**
+ * Parses the location_type_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An location_type_t value;
+ */
 location_type_t parse_location_type(const char *value);
+
+/**
+ * Parses the wheelchair_boarding_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An wheelchair_boarding_t value;
+ */
 wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
 
 /**

@@ -6,6 +6,9 @@
 #include <string.h>
 
 
+/**
+ * Whether it is possible to access a trip using wheelchairs.
+ */
 typedef enum {
     WA_UNKNOWN = 0,
     WA_POSSIBLE = 1,
@@ -13,6 +16,9 @@ typedef enum {
     WA_NOT_SET
 } wheelchair_accessible_t;
 
+/**
+ * Whether bikes are allowed on a trip.
+ */
 typedef enum {
     BA_UNKNOWN = 0,
     BA_POSSIBLE = 1,
@@ -40,7 +46,20 @@ typedef struct {
     int is_null;
 } trip_t;
 
+/**
+ * Parses the wheelchair_accessible_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An wheelchair_accessible_t value;
+ */
 wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
+
+/**
+ * Parses the bikes_allowed_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An bikes_allowed_t value;
+ */
 bikes_allowed_t parse_bike_allowance(const char *value);
 
 /**

@@ -6,18 +6,24 @@
 #include <string.h>
 
 
+/**
+ * When the fare must be paid by the customer.
+ */
 typedef enum {
-    PM_ON_BOARD = 0,
-    PM_BEFOREHAND = 1,
+    PM_ON_BOARD = 0,    ///< Fare is paid on board.
+    PM_BEFOREHAND = 1,  ///< Fare is paid before boarding.
     PM_NOT_SET
 } payment_method_t;
 
+/**
+ * Number of transfers allowed on the fare.
+ */
 typedef enum {
-    TS_NOT_ALLOWED = 0,
-    TS_ONCE = 1,
-    TS_TWICE = 2,
-    TS_UNLIMITED,  // when the field is empty
-    TS_NOT_SET     // when the field has bad value (not in {0, 1, 2, empty})
+    TS_NOT_ALLOWED = 0,  ///< Zero
+    TS_ONCE = 1,         ///< Once
+    TS_TWICE = 2,        ///< Twice
+    TS_UNLIMITED,        ///< As many as customer wishes (when the field is empty)
+    TS_NOT_SET           // when the field has bad value (not in {0, 1, 2, (empty)})
 } transfers_state_t;
 
 /**
@@ -38,7 +44,20 @@ typedef struct {
 } fare_attributes_t;
 
 
+/**
+ * Parses the payment_method_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An payment_method_t value;
+ */
 payment_method_t parse_payment_method(const char *value);
+
+/**
+ * Parses the transfers_state_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An transfers_state_t value;
+ */
 transfers_state_t parse_transfer_state(const char *value);
 
 /**

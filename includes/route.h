@@ -6,15 +6,18 @@
 #include <string.h>
 
 
+/**
+ * The kind of transport the route serves.
+ */
 typedef enum {
-    RT_STREET_LEVEL = 0,
-    RT_UNDERGROUND = 1,
-    RT_LONG_RAIL = 2,
-    RT_BUS = 3,
-    RT_FERRY = 4,
-    RT_CABLE_CAR = 5,
-    RT_SUSPENDED = 6,
-    RT_FUNICULAR = 7,
+    RT_STREET_LEVEL = 0,  ///< Any light rail or street level system within a metropolitan area.
+    RT_UNDERGROUND = 1,   ///< Any underground rail system within a metropolitan area.
+    RT_LONG_RAIL = 2,     ///< Rail. Used for intercity or long-distance travel.
+    RT_BUS = 3,           ///< Short- and long-distance bus routes.
+    RT_FERRY = 4,         ///< Short- and long-distance boat service.
+    RT_CABLE_CAR = 5,     ///< Street-level cable trams where the cable runs beneath the tram.
+    RT_SUSPENDED = 6,     ///< Cable transport where the cabins, cars or gondolas are hauled above the ground by one or several cables.
+    RT_FUNICULAR = 7,     ///< Any rail system which uses a cable traction for moving on steep inclines.
     RT_NOT_SET
 } route_type_t;
 
@@ -38,7 +41,12 @@ typedef struct {
     int is_null;
 } route_t;
 
-
+/**
+ * Parses the route_type_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An route_type_t value;
+ */
 route_type_t parse_route_type(const char *value);
 
 /**

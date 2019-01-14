@@ -6,17 +6,24 @@
 #include <string.h>
 
 
+/**
+ * Whether passangers are picked up / dropped off at the stop
+ * normally, never, or only on special arrangements.
+ */
 typedef enum {
-    ST_REGULAR = 0,
-    ST_NOT_AVAILABLE = 1,
-    ST_CONTACT_AGENCY = 2,
-    ST_CONTACT_DRIVER = 3,
+    ST_REGULAR = 0,         ///< Regularly scheduled pickup.
+    ST_NOT_AVAILABLE = 1,   ///< No pickup available.
+    ST_CONTACT_AGENCY = 2,  ///< Must phone agency to arrange pickup.
+    ST_CONTACT_DRIVER = 3,  ///< Must coordinate with driver to arrange pickup.
     ST_NOT_SET
 } stop_type_t;
 
+/**
+ * Whether timepoints are considered exact or approximate.
+ */
 typedef enum {
-    TP_APPROXIMATE = 0,
-    TP_EXACT = 1,
+    TP_APPROXIMATE = 0,  ///< Approximate (default behavior; when the field is empty).
+    TP_EXACT = 1,        ///< Exact.
     TP_NOT_SET
 } timepoint_precision_t;
 
@@ -40,7 +47,21 @@ typedef struct {
     int is_null;
 } stop_time_t;
 
+
+/**
+ * Parses the stop_type_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An stop_type_t value;
+ */
 stop_type_t parse_stop_type(const char *value);
+
+/**
+ * Parses the timepoint_precision_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An timepoint_precision_t value;
+ */
 timepoint_precision_t parse_timepoint_precision(const char *value);
 
 /**

@@ -6,9 +6,12 @@
 #include <string.h>
 
 
+/**
+ * Whether timepoints are considered exact or approximate.
+ */
 typedef enum {
-    TE_NOT_EXACT = 0,
-    TE_EXACT = 1,
+    TE_NOT_EXACT = 0,  ///< Approximate (default behavior; when the field is empty)
+    TE_EXACT = 1,      ///< Exact
     TE_NOT_SET
 } time_exactness_t;
 
@@ -27,6 +30,12 @@ typedef struct {
     int is_null;
 } frequency_t;
 
+/**
+ * Parses the time_exactness_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An time_exactness_t value;
+ */
 time_exactness_t parse_time_exactness(const char *value);
 
 /**

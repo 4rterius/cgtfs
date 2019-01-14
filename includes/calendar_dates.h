@@ -5,9 +5,12 @@
 #include <string.h>
 
 
+/**
+ * What kind of exception does calendar_date_t present.
+ */
 typedef enum {
-    ET_ADDED = 1,
-    ET_REMOVED = 2,
+    ET_ADDED = 1,    ///< Service is added.
+    ET_REMOVED = 2,  ///< Service is removed.
     ET_NOT_SET
 } exception_type_t;
 
@@ -25,6 +28,12 @@ typedef struct {
 } calendar_date_t;
 
 
+/**
+ * Parses the exception_type_t value from given string
+ * with regard for the default value as per GTFS reference.
+ * @param[in] value Char array (string) to parse the enumerator from.
+ * @returns An exception_type_t value;
+ */
 exception_type_t parse_exception_type(const char *value);
 
 /**
