@@ -5,6 +5,12 @@
 #include <stdlib.h>
 #include <string.h>
 
+/**
+ * @def LINE_MAX_LEN
+ * @brief Max reasonable length of a line or a record (!).
+ * 
+ * Obviously, increase/decrease if needed.
+ */
 #define LINE_MAX_LEN 10000
 
 /**
