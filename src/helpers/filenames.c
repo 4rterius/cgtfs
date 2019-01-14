@@ -1,4 +1,4 @@
-#include "filenames.h"
+#include "helpers/filenames.h"
 
 void make_filepath(char **out, const char *dirname, const char *filename) {
     // TODO: null-checking here

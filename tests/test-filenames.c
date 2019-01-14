@@ -1,7 +1,7 @@
 #ifndef CGTFS_TESTS_FILENAMES_C
 #define CGTFS_TESTS_FILENAMES_C
 
-#include "filenames.h"
+#include "helpers/filenames.h"
 
 int test_filenames_no_endslash(void) {
 

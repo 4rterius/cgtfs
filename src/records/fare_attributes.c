@@ -1,4 +1,4 @@
-#include "fare_attributes.h"
+#include "records/fare_attributes.h"
 
 payment_method_t parse_payment_method(const char *value) {
     if (strcmp(value, "0") == 0)

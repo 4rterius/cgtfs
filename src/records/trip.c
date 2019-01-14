@@ -1,4 +1,4 @@
-#include "trip.h"
+#include "records/trip.h"
 
 wheelchair_accessible_t parse_wheelchair_accessibility(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)

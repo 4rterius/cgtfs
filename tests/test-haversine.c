@@ -3,7 +3,7 @@
 
 #include "_utils.c"
 
-#include "haversine.h"
+#include "helpers/haversine.h"
 
 int test_haversine_correct() {
     geo_location_t point_a = {.latitude = 41.8903, .longitude = 12.4924};

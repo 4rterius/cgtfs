@@ -4,7 +4,33 @@
 ![Build Status](https://travis-ci.com/rakhack/cgtfs.svg?branch=master)
 ![License: MIT plate](https://img.shields.io/github/license/rakhack/cgtfs.svg)
 
-A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the format defined by Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/).
+A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) format.
+
+## Table of contents
+
+- [CGTFS - C library to read static GTFS feeds](#cgtfs---c-library-to-read-static-gtfs-feeds)
+  - [Table of contents](#table-of-contents)
+  - [Examples](#examples)
+  - [Build process and dependencies](#build-process-and-dependencies)
+    - [Dependencies](#dependencies)
+    - [Build process](#build-process)
+    - [Documentation](#documentation)
+  - [API overview](#api-overview)
+    - [Structures](#structures)
+      - [Record structures](#record-structures)
+      - [feed_t structure](#feedt-structure)
+      - [Other structures](#other-structures)
+    - [Enumerations](#enumerations)
+    - [Functions](#functions)
+      - [Reading utilities](#reading-utilities)
+      - [Enumeration parsers](#enumeration-parsers)
+      - [Record reading and initialization functions](#record-reading-and-initialization-functions)
+      - [File readers](#file-readers)
+      - [Helpers](#helpers)
+        - [In filenames.h](#in-filenamesh)
+        - [In haversine.h](#in-haversineh)
+  - [Useful links](#useful-links)
+  - [License and attribution](#license-and-attribution)
 
 ## Examples
 
@@ -15,6 +41,7 @@ A thin and fast low-level library which reads GTFS static feeds. This library pr
 // Example 0: read all feed data into memory
 void some_function(void) {
     feed_t amazing_feed;
+    
     init_feed(&amazing_feed);
     read_feed(&amazing_feed, "/path/to/unpacked/gtfs/");
 
@@ -29,7 +56,7 @@ void some_function(void) {
 
 ```c
 #include <stdio.h>
-#include "filenames.h"
+#include "helpers/filenames.h"
 #include "reading.h"
 
 // Example 1: read all bus stops into memory
@@ -64,9 +91,7 @@ void another_function(void) {
 
 ### Dependencies
 
-As of version 0.1.1, the library has no dependencies. However, as a database integration for higher speed and memory efficiency is in plans, [*SQLite*](https://www.sqlite.org/index.html) might become one.
-
-The downside is that extraction of GTFS .zip needs to be done separately.
+As of the last README update, the library has no dependencies, as was the development goal. However, it means that extraction of GTFS .zip needs to be done separately.
 
 ### Build process
 
@@ -78,11 +103,15 @@ $ cmake .. && cmake --build .
 $ ./tests    # on Linux; tests executable location on Windows may vary
 ```
 
+### Documentation
+
+The library is heavily documented via code comments. To compile them into HTML, just run `doxygen`. The following section provides a brief overview of the API.
+
+*However, this file is guaranteed to contain up-to-date information only on releases, so it is advised to download the latest relase from Releases page and read README.md of the release's latest commit.*
+
 ## API overview
 
-This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility.
-
-*__Please note__: the API overview is outdated; major changes have been made since this documentation was last updated.*
+This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
 
 ### Structures
 
@@ -90,9 +119,9 @@ This library tries to provide a semantic and readable interface. Before release 
 
 Each of the following structs has fields according to its respective specification.
 
-Additionally, they all have `is_null` integer field set to 1 unless all *required* fields have been parsed by their `read_*` function (structs have been designed for use with reader functions, for instance, `read_agency(..)` returns a parsed `agency_t` structure).
+Additionally, they all have `is_null` integer field set to 1 unless all *required* fields have been parsed by their `read_*` function (structs have been designed for use with reader functions, for instance, `read_agency(..)` parses data into an `agency_t` structure).
 
-It is recommended to instantiate them with `empty_*()` function return value.
+It is recommended to instantiate them with `init_*(..)` function return value.
 
 *Please note: All IDs are stored as strings.*
 
@@ -116,7 +145,7 @@ Struct | Contents
 
 `feed_t` is the compound structure which holds pointers to all of the aforementioned structs, and for each of them an integer field with the number of parsed records. `feed_t` is designed to be used with `read_feed(..)` (see [example 0](#examples)).
 
-It is recommended to instantiate it with `empty_feed()` value. When an instance of the structure is no longer necessary, function `free_feed(..)` can handle freeing the memory.
+It is recommended to instantiate it with `init_feed(..)`. When an instance of the structure is no longer necessary, function `free_feed(..)` can handle freeing the memory.
 
 #### Other structures
 
@@ -156,7 +185,7 @@ Low-level functions for reading CSV files. Declarations in `reading_utils.h`.
 
 Function | Arguments | Returns
 -------- | --------- | -------
-`int read_header(FILE *fp, char ***field_names)` | `fp` - opened file stream to read header from; `field_names` - pointer to an array of c-strings, to write field names into | Number of fields, 0 on file reading error
+`int read_header(FILE *fp, char ***field_names)` | `fp` - opened file stream to read header from; `field_names` - pointer to an array of c-strings, to write field names into | Number of fields on success, 0 on file reading error
 `int read_record(FILE *fp, int fields_number, char ***record_values)` | `fp` - opened file stream to read a row from; `fields_number` - number of fields to parse; `record_values` - pointer to an array of c-strings, to write row values into | 1 on success, -1 on file reading error
 `int count_lines(FILE *fp)` | `fp` - opened file stream to count lines in | Number of lines in the file, -1 on file reading error
 
@@ -165,66 +194,66 @@ Function | Arguments | Returns
 For each of the aforementioned [enumerations](#enumerations), a parser exists that takes a c-string argument and returns an enum value. These parsers also ensure default values correctness (according to the GTFS spec). The list of these parsers is as following:
 
 ```c
-service_availability_t parse_service_availability(char *value);
-exception_type_t parse_exception_type(char *value);
-payment_method_t parse_payment_method(char *value);
-transfers_state_t parse_transfer_state(char *value);
-time_exactness_t parse_time_exactness(char *value);
-route_type_t parse_route_type(char *value);
-location_type_t parse_location_type(char *value);
-wheelchair_boarding_t parse_wheelchair_boarding(char *value);
-stop_type_t parse_stop_type(char *value);
-timepoint_precision_t parse_timepoint_precision(char *value);
-transfer_type_t parse_transfer_type(char *value);
-wheelchair_accessible_t parse_wheelchair_accessibility(char *value);
-bikes_allowed_t parse_bike_allowance(char *value);
+service_availability_t parse_service_availability(const char *value);
+exception_type_t parse_exception_type(const char *value);
+payment_method_t parse_payment_method(const char *value);
+transfers_state_t parse_transfer_state(const char *value);
+time_exactness_t parse_time_exactness(const char *value);
+route_type_t parse_route_type(const char *value);
+location_type_t parse_location_type(const char *value);
+wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
+stop_type_t parse_stop_type(const char *value);
+timepoint_precision_t parse_timepoint_precision(const char *value);
+transfer_type_t parse_transfer_type(const char *value);
+wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
+bikes_allowed_t parse_bike_allowance(const char *value);
 ```
 
 #### Record reading and initialization functions
 
-For each of the aforementioned [record structs](#record-structures), an initialization function `* empty_*(void)` and a reader `* read_*(int field_count, char **field_names, char **field_values)` exist. Initialization functions take nothing and return an empty struct (with default values set and initialized). Readers take a number of fields, an array of c-strings with names of the fields, and an array of field values of a single row (record).
+For each of the aforementioned [record structs](#record-structures), an initialization function `init_*(* *record)` and a reader `read_*(int field_count, char **field_names, char **field_values)` exist. Initialization functions take nothing and return an empty struct (with default values set and initialized). Readers take a number of fields, an array of c-strings with names of the fields, and an array of field values of a single row (record).
 
 All of these functions are given in the following list:
 
 ```c
-agency_t empty_agency(void);
-agency_t read_agency(int field_count, char **field_names, char **field_values);
+void init_agency(agency_t *record);
+void read_agency(agency_t *record, int field_count, const char **field_names, const char **field_values);
 
-calendar_record_t empty_calendar_record(void);
-calendar_record_t read_calendar_record(int field_count, char **field_names, char **field_values);
+void init_calendar_record(calendar_record_t *record);
+void read_calendar_record(calendar_record_t *record, int field_count, const char **field_names, const char **field_values);
 
-calendar_date_t empty_calendar_date(void);
-calendar_date_t read_calendar_date(int field_count, char **field_names, char **field_values);
+void init_calendar_date(calendar_date_t *record);
+void read_calendar_date(calendar_date_t *record, int field_count, char **field_names, char **field_values);
 
-fare_attributes_t empty_fare_attributes(void);
-fare_attributes_t read_fare_attributes(int field_count, char **field_names, char **field_values);
+void init_fare_attributes(fare_attributes_t *record);
+void read_fare_attributes(fare_attributes_t *record, int field_count, char **field_names, char **field_values);
 
-fare_rule_t empty_fare_rule(void);
-fare_rule_t read_fare_rule(int field_count, char **field_names, char **field_values);
+void init_fare_rule(fare_rule_t *record);
+void read_fare_rule(fare_rule_t *record, int field_count, char **field_names, char **field_values);
 
-feed_info_t empty_feed_info(void);
-feed_info_t read_feed_info(int field_count, char **field_names, char **field_values);
+void init_feed_info(feed_info_t *record);
+void read_feed_info(feed_info_t *record, int field_count, char **field_names, char **field_values);
 
-frequency_t empty_frequency(void);
-frequency_t read_frequency(int field_count, char **field_names, char **field_values);
+void init_frequency(frequency_t *record);
+void read_frequency(frequency_t *record, int field_count, char **field_names, char **field_values);
 
-route_t empty_route(void);
-route_t read_route(int field_count, char **field_names, char **field_values);
+void init_route(route_t *record);
+void read_route(route_t *record, int field_count, char **field_names, char **field_values);
 
-shape_t empty_shape(void);
-shape_t read_shape(int field_count, char **field_names, char **field_values);
+void init_shape(shape_t *record);
+void read_shape(shape_t *record, int field_count, char **field_names, char **field_values);
 
-stop_t empty_stop(void);
-stop_t read_stop(int field_count, char **field_names, char **field_values);
+void init_stop(stop_t *record);
+void read_stop(stop_t *record, int field_count, char **field_names, char **field_values);
 
-stop_time_t empty_stop_time(void);
-stop_time_t read_stop_time(int field_count, char **field_names, char **field_values);
+void init_stop_time(stop_time_t *record);
+void read_stop_time(stop_time_t *record, int field_count, char **field_names, char **field_values);
 
-transfer_t empty_transfer(void);
-transfer_t read_transfer(int field_count, char **field_names, char **field_values);
+void init_transfer(transfer_t *record);
+void read_transfer(transfer_t *record, int field_count, char **field_names, char **field_values);
 
-trip_t empty_trip(void);
-trip_t read_trip(int field_count, char **field_names, char **field_values);
+void init_trip(trip_t *record);
+void read_trip(trip_t *record, int field_count, char **field_names, char **field_values);
 ```
 
 
@@ -235,7 +264,7 @@ File readers are functions that handle reading entire files, e.g. `routes.txt`. 
 - read file headers;
 - count records and allocate sufficient memory for the resulting record structs;
 - loop through the file lines and read each of them using record readers;
-- free their own temporary memory.
+- free their own memory.
 
 Each file reader takes an opened `FILE` stream (from where it reads) and a pointer to an array of structs (where the results are put).
 
@@ -262,13 +291,13 @@ int read_all_trips(FILE *fp, trip_t **records);
 
 Other useful functions, implemented for the library itself or potential future use.
 
-##### filenames.h
+##### In filenames.h
 
-Function | Arguments | Returns
--------- | --------- | -------
-`void make_filepath(char **out, const char *dirname, const char *filename)` | `out` - pointer to c-string to write resulting filepath into; `dirname` and `filename` - c-strings with directory and file names to concatenate | Nothing
+Function | Arguments
+-------- | ---------
+`void make_filepath(char **out, const char *dirname, const char *filename)` | `out` - pointer to c-string to write resulting filepath into; `dirname` and `filename` - c-strings with directory and file names to concatenate
 
-##### haversine.h
+##### In haversine.h
 
 Function | Arguments | Returns
 -------- | --------- | -------
@@ -278,13 +307,13 @@ Function | Arguments | Returns
 
 ## Useful links
 
-- [Official GTFS static reference](https://developers.google.com/transit/gtfs/reference/)
-- [Other GTFS handling libraries](https://github.com/CUTR-at-USF/awesome-transit#gtfs-libraries)
+  - [Official GTFS static reference](https://developers.google.com/transit/gtfs/reference/)
+  - [Other GTFS handling libraries](https://github.com/CUTR-at-USF/awesome-transit#gtfs-libraries)
 
 ## License and attribution
 
 The library is developed and distributed under the [MIT License](https://choosealicense.com/licenses/mit/), a copy of which can be found in the root of the project. Documentation and materials other than the library's source code are distributed under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/).
 
-Files under the `tests/data/google_sample` directory constitute [an example Google Transit Feed](https://developers.google.com/transit/gtfs/examples/gtfs-feed) created and [shared by Google](https://developers.google.com/readme/policies/) and are used according to terms described in the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/).
+Files under the `tests/data/google_sample` directory constitute [an example Google Transit Feed](https://developers.google.com/transit/gtfs/examples/gtfs-feed) created and [shared by Google](https://developers.google.com/readme/policies/) and are used according to terms described in the [Creative Commons 3.0 Attribution License](https://creativecommons.org/licenses/by/3.0/). *Additionaly, parts of the in-code documentation may contain pieces of the [GTFS reference](https://developers.google.com/transit/gtfs/reference/).*
 
 Other files under the `tests/data` directory may contain elements of the [open data](http://www.lsl.fi/lisatietoa/avoin-data/) publicly provided by [Lahden Seudun Liikenne](http://www.lsl.fi/) under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/deed.fi).

@@ -1,7 +1,7 @@
 #include <math.h>
 
-#include "geo_location.h"
-#include "haversine.h"
+#include "helpers/geo_location.h"
+#include "helpers/haversine.h"
 
 double dg_to_rad(const long double d) {
     return d * MATH_PI / 180;

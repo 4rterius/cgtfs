@@ -1,4 +1,4 @@
-#include "feed_info.h"
+#include "records/feed_info.h"
 
 void init_feed_info(feed_info_t *record) {
     strcpy(record->feed_publisher_name, "");

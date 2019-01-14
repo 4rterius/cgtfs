@@ -1,4 +1,4 @@
-#include "frequency.h"
+#include "records/frequency.h"
 
 time_exactness_t parse_time_exactness(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)

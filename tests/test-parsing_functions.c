@@ -1,15 +1,15 @@
 #ifndef CGTFS_TESTS_PARSING_FUNCTIONS_C
 #define CGTFS_TESTS_PARSING_FUNCTIONS_C
 
-#include "calendar_dates.h"
-#include "calendar.h"
-#include "fare_attributes.h"
-#include "frequency.h"
-#include "route.h"
-#include "stop_time.h"
-#include "stop.h"
-#include "transfers.h"
-#include "trip.h"
+#include "records/calendar_dates.h"
+#include "records/calendar.h"
+#include "records/fare_attributes.h"
+#include "records/frequency.h"
+#include "records/route.h"
+#include "records/stop_time.h"
+#include "records/stop.h"
+#include "records/transfers.h"
+#include "records/trip.h"
 
 int test_pf_exception_type(void) {
     {

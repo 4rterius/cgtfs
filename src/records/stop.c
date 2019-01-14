@@ -1,4 +1,4 @@
-#include "stop.h"
+#include "records/stop.h"
 
 location_type_t parse_location_type(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)
