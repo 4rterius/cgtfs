@@ -11,24 +11,26 @@ project(cgtfs VERSION 0.1.0)
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
 
 set(sources
-  "src/agency.c"
-  "src/calendar_dates.c"
-  "src/calendar.c"
-  "src/fare_attributes.c"
-  "src/fare_rule.c"
-  "src/feed_info.c"
+  "src/helpers/filenames.c"
+  "src/helpers/haversine.c"
+
+  "src/records/agency.c"
+  "src/records/calendar_dates.c"
+  "src/records/calendar.c"
+  "src/records/fare_attributes.c"
+  "src/records/fare_rule.c"
+  "src/records/feed_info.c"
+  "src/records/frequency.c"
+  "src/records/route.c"
+  "src/records/shape.c"
+  "src/records/stop_time.c"
+  "src/records/stop.c"
+  "src/records/transfers.c"
+  "src/records/trip.c"
+
   "src/feed.c"
-  "src/filenames.c"
-  "src/frequency.c"
-  "src/haversine.c"
   "src/reading.c"
   "src/reading_utils.c"
-  "src/route.c"
-  "src/shape.c"
-  "src/stop_time.c"
-  "src/stop.c"
-  "src/transfers.c"
-  "src/trip.c"
 )
 
 set(include_dirs
