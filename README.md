@@ -1,6 +1,6 @@
 # CGTFS - C library to read static GTFS feeds
 
-![Release version plate](https://img.shields.io/github/release-pre/rakhack/cgtfs.svg)
+![Release version plate](https://img.shields.io/github/release/rakhack/cgtfs.svg)
 ![Build Status](https://travis-ci.com/rakhack/cgtfs.svg?branch=master)
 ![License: MIT plate](https://img.shields.io/github/license/rakhack/cgtfs.svg)
 
