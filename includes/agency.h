@@ -5,20 +5,38 @@
 #include <string.h>
 
 
+/**
+ * agency.txt record
+ * @see init_agency()
+ * @see read_agency()
+ * @see https://developers.google.com/transit/gtfs/reference/#agencytxt
+ */
 typedef struct {
-    char id[65];
-    char name[65];
-    char url[129];
-    char timezone[65];
-    char lang[65];
-    char phone[65];
-    char fare_url[129];
-    char email[65];
+    char id[65];        ///< [Optional] Unique agency ID
+    char name[65];      ///< [Required] Agency name
+    char url[129];      ///< [Required] Agency URL
+    char timezone[65];  ///< [Required] Timezone in which the agency operates (http://en.wikipedia.org/wiki/List_of_tz_zones)
+    char lang[65];      ///< [Optional] Primary agency's language (IETF BCP 47)
+    char phone[65];     ///< [Optional] Telephone number for contacting the agency
+    char fare_url[129]; ///< [Optional] URL that allows visitor to buy tickets for the agency's trips
+    char email[65];     ///< [Optional] Agency's customer support email.
     int is_null;
 } agency_t;
 
 
+/**
+ * Initializes the given agency record with empty/default values.
+ * @param[out] record Agency pointer to initialize.
+ */
 void init_agency(agency_t *record);
+
+/**
+ * Reads given datafields and field names into the given agency record struct
+ * @param[out] record        The pointer to write into
+ * @param[in]  field_count   Number of rows (columns) the record has
+ * @param[in]  field_names   Names of the fields
+ * @param[in]  field_values  Contents of the record
+ */
 void read_agency(agency_t *record, int field_count, const char **field_names, const char **field_values);
 
 #endif

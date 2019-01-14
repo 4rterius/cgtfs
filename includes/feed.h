@@ -20,6 +20,15 @@
 #include "filenames.h"
 #include "reading.h"
 
+/**
+ * A GTFS feed entity that encapsulates all data of a single GTFS feed.
+ * 
+ * For each of the GTFS feed files,
+ * this struct has a field for an array of the structs to store the file's records
+ * and an integer field to store the number of the file's records (zero if no file or no records).
+ * 
+ * @see https://developers.google.com/transit/gtfs/reference/
+ */
 typedef struct {
     agency_t *agencies;
     int agency_count;
@@ -50,9 +59,26 @@ typedef struct {
 } feed_t;
 
 
+/**
+ * Initializes a feed structure with default values
+ * (pointers/arrays with NULLs, *_count fields with 0-s).
+ * 
+ * @param[out] feed Pointer to the feed to initialize.
+ */
 void init_feed(feed_t *feed);
+
+/**
+ * Reads an unpacked GTFS feed from the given folder into the given feed_t pointer.
+ * @param[out] instance             Pointer to the feed to read data into.
+ * @param[in]  feed_directory_path  /path/to/unpacked/gtfs/feed
+ * @returns 0
+ */
 int read_feed(feed_t *instance, const char *feed_directory_path);
 
+/**
+ * Frees the memory taken by the given feed structure.
+ * @param feed Pointer to the feed to free.
+ */
 void free_feed(feed_t *feed);
 
 #endif
