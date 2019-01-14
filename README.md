@@ -8,20 +8,32 @@ A thin and fast low-level library which reads GTFS static feeds. This library pr
 
 ## Table of contents
 
-0. [Examples](#examples)
-   - [Example 0](#example-0)
-   - [Example 1](#example-1)
-1. [Build process and dependencies](#build-process-and-dependencies)
-   - [Dependencies](#dependencies)
-   - [Build process](#build-process)
-   - [Documentation](#documentation)
-2. [API overview](#api-overview)
-3. [Useful links](#useful-links)
-4. [License and attribution](#license-and-attribution)
+- [CGTFS - C library to read static GTFS feeds](#cgtfs---c-library-to-read-static-gtfs-feeds)
+  - [Table of contents](#table-of-contents)
+  - [Examples](#examples)
+  - [Build process and dependencies](#build-process-and-dependencies)
+    - [Dependencies](#dependencies)
+    - [Build process](#build-process)
+    - [Documentation](#documentation)
+  - [API overview](#api-overview)
+    - [Structures](#structures)
+      - [Record structures](#record-structures)
+      - [feed_t structure](#feedt-structure)
+      - [Other structures](#other-structures)
+    - [Enumerations](#enumerations)
+    - [Functions](#functions)
+      - [Reading utilities](#reading-utilities)
+      - [Enumeration parsers](#enumeration-parsers)
+      - [Record reading and initialization functions](#record-reading-and-initialization-functions)
+      - [File readers](#file-readers)
+      - [Helpers](#helpers)
+        - [In filenames.h](#in-filenamesh)
+        - [In haversine.h](#in-haversineh)
+  - [Useful links](#useful-links)
+  - [License and attribution](#license-and-attribution)
 
 ## Examples
 
-##### Example 0
 ```c
 #include <stdio.h>
 #include "feed.h"
@@ -41,8 +53,6 @@ void some_function(void) {
     free_feed(&amazing_feed);
 }
 ```
-
-##### Example 1
 
 ```c
 #include <stdio.h>
@@ -281,13 +291,13 @@ int read_all_trips(FILE *fp, trip_t **records);
 
 Other useful functions, implemented for the library itself or potential future use.
 
-##### filenames.h
+##### In filenames.h
 
 Function | Arguments
 -------- | ---------
 `void make_filepath(char **out, const char *dirname, const char *filename)` | `out` - pointer to c-string to write resulting filepath into; `dirname` and `filename` - c-strings with directory and file names to concatenate
 
-##### haversine.h
+##### In haversine.h
 
 Function | Arguments | Returns
 -------- | --------- | -------
@@ -297,8 +307,8 @@ Function | Arguments | Returns
 
 ## Useful links
 
-- [Official GTFS static reference](https://developers.google.com/transit/gtfs/reference/)
-- [Other GTFS handling libraries](https://github.com/CUTR-at-USF/awesome-transit#gtfs-libraries)
+  - [Official GTFS static reference](https://developers.google.com/transit/gtfs/reference/)
+  - [Other GTFS handling libraries](https://github.com/CUTR-at-USF/awesome-transit#gtfs-libraries)
 
 ## License and attribution
 
