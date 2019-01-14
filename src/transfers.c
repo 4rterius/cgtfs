@@ -1,4 +1,4 @@
-#include "transfers.h"
+#include "records/transfers.h"
 
 transfer_type_t parse_transfer_type(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)

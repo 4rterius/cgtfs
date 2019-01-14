@@ -1,5 +1,5 @@
-#include "shape.h"
 #include <stdlib.h>
+#include "records/shape.h"
 
 void init_shape(shape_t *record) {
     strcpy(record->id, "");

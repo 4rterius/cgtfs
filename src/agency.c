@@ -1,4 +1,4 @@
-#include "agency.h"
+#include "records/agency.h"
 
 void init_agency(agency_t *record) {
     strcpy(record->id, "");

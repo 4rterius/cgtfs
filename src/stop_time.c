@@ -1,4 +1,4 @@
-#include "stop_time.h"
+#include "records/stop_time.h"
 
 stop_type_t parse_stop_type(const char *value) {
     if (strcmp(value, "0") == 0 || strcmp(value, "") == 0)

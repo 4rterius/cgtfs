@@ -1,4 +1,4 @@
-#include "fare_rule.h"
+#include "records/fare_rule.h"
 
 void init_fare_rule(fare_rule_t *record) {
     strcpy(record->fare_id, "");
