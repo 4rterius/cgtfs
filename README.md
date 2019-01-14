@@ -95,6 +95,8 @@ As of the last README update, the library has no dependencies, as was the develo
 
 ### Build process
 
+The library should compile on `gcc >= 4.8.4`, `clang >= 5.0.0` and latest Microsoft's C/C++ compiler.
+
 ```
 $ cd /path/to/cgtfs/
 $ mkdir build && cd build/
@@ -123,7 +125,9 @@ Additionally, they all have `is_null` integer field set to 1 unless all *require
 
 It is recommended to instantiate them with `init_*(..)` function return value.
 
-*Please note: All IDs are stored as strings.*
+*Note 1: All IDs are stored as strings.*
+
+*Note 2: If member/field name starts with the name of the entity (for instance, `agency_id` of the `agency_t` struct), the entity name is omitted, to make naming semantic and avoid duplicity. Otherwise, struct member names correspond with the field names.*
 
 Struct | Contents
 ------ | --------

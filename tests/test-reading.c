@@ -591,7 +591,7 @@ int test_reading_all_trips() {
             if (!(
                 !strcmp(records[0].route_id, "AB") &&
                 !strcmp(records[0].service_id, "FULLW") &&
-                !strcmp(records[0].trip_id, "AB1") &&
+                !strcmp(records[0].id, "AB1") &&
                 !strcmp(records[0].headsign, "to Bullfrog") &&
                 records[0].direction_id == 0 &&
                 !strcmp(records[0].block_id, "1") &&
@@ -603,7 +603,7 @@ int test_reading_all_trips() {
             if (!(
                 !strcmp(records[1].route_id, "AB") &&
                 !strcmp(records[1].service_id, "FULLW") &&
-                !strcmp(records[1].trip_id, "AB2") &&
+                !strcmp(records[1].id, "AB2") &&
                 !strcmp(records[1].headsign, "to Airport") &&
                 records[1].direction_id == 1 &&
                 !strcmp(records[1].block_id, "2") &&
@@ -615,7 +615,7 @@ int test_reading_all_trips() {
             if (!(
                 !strcmp(records[2].route_id, "STBA") &&
                 !strcmp(records[2].service_id, "FULLW") &&
-                !strcmp(records[2].trip_id, "STBA") &&
+                !strcmp(records[2].id, "STBA") &&
                 !strcmp(records[2].headsign, "Shuttle") &&
                 records[2].direction_id == 0 &&
                 !strcmp(records[2].block_id, "") &&
