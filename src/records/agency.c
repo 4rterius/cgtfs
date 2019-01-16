@@ -64,3 +64,14 @@ void read_agency(agency_t *record, int field_count, const char **field_names, co
     else
         record->is_null = 0;
 }
+
+int equal_agency(const agency_t *a, const agency_t *b) {
+    return !(!strcmp(a->id, b->id) &&
+             !strcmp(a->name, b->name) &&
+             !strcmp(a->url, b->url) &&
+             !strcmp(a->timezone, b->timezone) &&
+             !strcmp(a->lang, b->lang) &&
+             !strcmp(a->phone, b->phone) &&
+             !strcmp(a->fare_url, b->fare_url) &&
+             !strcmp(a->email, b->email));
+}

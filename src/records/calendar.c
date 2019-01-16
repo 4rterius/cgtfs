@@ -86,3 +86,16 @@ void read_calendar_record(calendar_record_t *record, int field_count, const char
     else
         record->is_null = 0;
 }
+
+int equal_calendar_record(const calendar_record_t *a, const calendar_record_t *b) {
+    return !(!strcmp(a->service_id, b->service_id) &&
+             !strcmp(a->start_date, b->start_date) &&
+             !strcmp(a->end_date, b->end_date) &&
+             a->monday == b->monday &&
+             a->tuesday == b->tuesday &&
+             a->wednesday == b->wednesday &&
+             a->thursday == b->thursday &&
+             a->friday == b->friday &&
+             a->saturday == b->saturday &&
+             a->sunday == b->sunday);
+}
