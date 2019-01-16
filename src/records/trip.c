@@ -25,7 +25,7 @@ bikes_allowed_t parse_bike_allowance(const char *value) {
 void init_trip(trip_t *record) {
     strcpy(record->route_id, "");
     strcpy(record->service_id, "");
-    strcpy(record->trip_id, "");
+    strcpy(record->id, "");
     strcpy(record->headsign, "");
     strcpy(record->short_name, "");
     record->direction_id = 0;
@@ -52,7 +52,7 @@ void read_trip(trip_t *record, int field_count, const char **field_names, const 
             continue;
         }
         if (strcmp(field_names[i], "trip_id") == 0) {
-            strcpy(record->trip_id, field_values[i]);
+            strcpy(record->id, field_values[i]);
             assignment_counter++;
             continue;
         }

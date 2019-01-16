@@ -35,7 +35,7 @@ typedef enum {
 typedef struct {
     char route_id[65];                              ///< Unique ID that identifies the route of the trip.
     char service_id[65];                            ///< Unique ID that identifies a set of dates when the service is available.
-    char trip_id[65];                               ///< Unique ID that identifies the trip.
+    char id[65];                                    ///< Unique ID that identifies the trip.
     char headsign[65];                              ///< Text that appears to the passangers to identify the trip's destination.
     char short_name[65];                            ///< Text that appears to the passangers to identify the trip.
     unsigned int direction_id;                      ///< Binary value that indicates the direction of travel of this trip.

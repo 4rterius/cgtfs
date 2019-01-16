@@ -2,7 +2,7 @@
 ## -----------------------------------------------------------------
 
 cmake_minimum_required(VERSION 3.0)
-project(cgtfs VERSION 0.1.0)
+project(cgtfs VERSION 0.2.0)
 
 
 ## Flags and settings
@@ -31,6 +31,7 @@ set(sources
   "src/feed.c"
   "src/reading.c"
   "src/reading_utils.c"
+  "src/mem_utils.c"
 )
 
 set(include_dirs
@@ -75,3 +76,10 @@ target_link_libraries(example_0 cgtfs)
 add_executable(example_1 examples/example_1.c)
 add_dependencies(example_1 tests)
 target_link_libraries(example_1 cgtfs)
+
+
+
+## Some more settings
+## -----------------------------------------------------------------
+
+set_target_properties(cgtfs tests bench example_0 example_1 PROPERTIES C_STANDARD 99)

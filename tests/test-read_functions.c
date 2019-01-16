@@ -404,7 +404,7 @@ int test_rf_trip(void) {
         if (!(
             !strcmp(tr_1.route_id, "A") &&
             !strcmp(tr_1.service_id, "WE") &&
-            !strcmp(tr_1.trip_id, "AWE1") &&
+            !strcmp(tr_1.id, "AWE1") &&
             !strcmp(tr_1.headsign, "Downtown") &&
             !strcmp(tr_1.short_name, "Some short name") &&
             tr_1.direction_id == 0 &&
