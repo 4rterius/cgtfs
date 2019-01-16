@@ -14,7 +14,7 @@ static char *filename = "some.file";
 #else
     static char *dirname_noslash = "/some/folder";
     static char *dirname_slash = "/some/folder/";
-    static char *expected = "D:/some/folder/some.file";
+    static char *expected = "/some/folder/some.file";
 #endif
 
 

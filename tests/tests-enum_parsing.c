@@ -133,6 +133,7 @@ SUITE(CGTFS_EnumParsing) {
     RUN_TEST(pf_wheelchair_boarding);
     RUN_TEST(pf_transfer_type);
     RUN_TEST(pf_wheelchair_accessibility);
+    RUN_TEST(pf_bike_allowance);
 }
 
 #endif
