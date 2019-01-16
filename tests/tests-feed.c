@@ -25,6 +25,7 @@ TEST feed_parsing_success(void) {
     ASSERT_EQ(f.trips_count, 11);
 
     free_feed(&f);
+    PASS();
 }
 
 TEST feed_parsing_agency(void) {
@@ -47,6 +48,7 @@ TEST feed_parsing_agency(void) {
     ASSERT_STR_EQ(f.agencies[0].timezone, a1.timezone);
 
     free_feed(&f);
+    PASS();
 }
 
 // ...
