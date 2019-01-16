@@ -31,6 +31,7 @@ set(sources
   "src/feed.c"
   "src/reading.c"
   "src/reading_utils.c"
+  "src/mem_utils.c"
 )
 
 set(include_dirs
