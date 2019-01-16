@@ -37,6 +37,7 @@ set(sources
 set(include_dirs
   "includes/"
   "tests/"
+  "third_party/"
 )
 
 include_directories(${include_dirs})
@@ -59,13 +60,6 @@ add_executable(tests tests/_all.c)
 add_dependencies(tests cgtfs)
 target_link_libraries(tests cgtfs)
 
-## Benchmark
-## -----------------------------------------------------------------
-
-add_executable(bench tests/_bench.c)
-add_dependencies(bench tests)
-target_link_libraries(bench cgtfs)
-
 ## Examples
 ## -----------------------------------------------------------------
 
@@ -82,4 +76,4 @@ target_link_libraries(example_1 cgtfs)
 ## Some more settings
 ## -----------------------------------------------------------------
 
-set_target_properties(cgtfs tests bench example_0 example_1 PROPERTIES C_STANDARD 99)
+set_target_properties(cgtfs tests example_0 example_1 PROPERTIES C_STANDARD 99)

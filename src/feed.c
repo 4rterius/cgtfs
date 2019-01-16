@@ -221,3 +221,11 @@ void free_feed(feed_t *feed) {
         free(feed->trips);
     }
 }
+
+// int cmp_feed(const feed_t *a, const feed_t *b) {
+//     int diff = 0;
+
+    
+
+//     return diff;
+// }
