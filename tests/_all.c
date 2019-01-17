@@ -22,6 +22,11 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_ReadingAgency);
     RUN_SUITE(CGTFS_ReadingCalendarDate);
     RUN_SUITE(CGTFS_ReadingCalendarRecord);
+    RUN_SUITE(CGTFS_ReadingFareAttributes);
+    RUN_SUITE(CGTFS_ReadingFareRule);
+    RUN_SUITE(CGTFS_ReadingFeedInfo);
+    RUN_SUITE(CGTFS_ReadingFrequency);
+    RUN_SUITE(CGTFS_ReadingRoute);
 
     GREATEST_MAIN_END();
 }

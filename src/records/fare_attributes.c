@@ -80,3 +80,13 @@ void read_fare_attributes(fare_attributes_t *record, int field_count, const char
     else
         record->is_null = 0;
 }
+
+int equal_fare_attributes(const fare_attributes_t *a, const fare_attributes_t *b) {
+    return !(!strcmp(a->fare_id, b->fare_id) &&
+             !strcmp(a->currency_type, b->currency_type) &&
+             !strcmp(a->agency_id, b->agency_id) &&
+             a->price == b->price &&
+             a->payment_method == b->payment_method &&
+             a->transfers == b->transfers &&
+             a->transfer_duration == b->transfer_duration);
+}
