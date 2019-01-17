@@ -27,6 +27,11 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_ReadingFeedInfo);
     RUN_SUITE(CGTFS_ReadingFrequency);
     RUN_SUITE(CGTFS_ReadingRoute);
+    RUN_SUITE(CGTFS_ReadingShape);
+    RUN_SUITE(CGTFS_ReadingStopTime);
+    RUN_SUITE(CGTFS_ReadingStop);
+    RUN_SUITE(CGTFS_ReadingTransfer);
+    RUN_SUITE(CGTFS_ReadingTrip);
 
     GREATEST_MAIN_END();
 }
