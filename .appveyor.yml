@@ -20,7 +20,7 @@ before_build:
   - mkdir build && cd build && cmake ..
 
 build_script:
-  - cmake --build . --config $(CONFIGURATION)
+  - cmake --build .
 
 test_script:
-  - 'build\%CONFIGURATION%\tests.exe'
+  - cd %APPVEYOR_BUILD_FOLDER%\build && %CONFIGURATION%\tests.exe
