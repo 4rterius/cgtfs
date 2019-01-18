@@ -58,6 +58,8 @@ int read_feed(feed_t *instance, const char *feed_directory_path) {
     make_filepath(&transfers_fname, feed_directory_path, "transfers.txt");
     make_filepath(&trips_fname, feed_directory_path, "trips.txt");
 
+    init_feed(instance);
+
     FILE *fp_agencies = fopen(agencies_fname, "r");
     if (fp_agencies) {
         instance->agency_count = read_all_agencies(fp_agencies, &(instance->agencies));
@@ -222,10 +224,98 @@ void free_feed(feed_t *feed) {
     }
 }
 
-// int cmp_feed(const feed_t *a, const feed_t *b) {
-//     int diff = 0;
+int equal_feeds(const feed_t *a, const feed_t *b) {
+    if (a->agency_count != b->agency_count)
+        return 1;
 
+    if (a->calendar_dates_count != b->calendar_dates_count)
+        return 1;
+        
+    if (a->calendar_records_count != b->calendar_records_count)
+        return 1;
+
+    if (a->fare_attributes_count != b->fare_attributes_count)
+        return 1;
     
+    if (a->fare_rules_count != b->fare_rules_count)
+        return 1;
 
-//     return diff;
-// }
+    if (a->feed_info_count != b->feed_info_count)
+        return 1;
+    
+    if (a->frequencies_count != b->frequencies_count)
+        return 1;
+    
+    if (a->routes_count != b->routes_count)
+        return 1;
+
+    if (a->shapes_count != b->shapes_count)
+        return 1;
+    
+    if (a->stop_times_count != b->stop_times_count)
+        return 1;
+    
+    if (a->stops_count != b->stops_count)
+        return 1;
+    
+    if (a->transfers_count != b->transfers_count)
+        return 1;
+
+    if (a->trips_count != b->trips_count)
+        return 1;
+
+
+    for (int i = 0; i < a->agency_count; i++)
+        if (equal_agency(&(a->agencies[i]), &(b->agencies[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->calendar_dates_count; i++)
+        if (equal_calendar_date(&(a->calendar_dates[i]), &(b->calendar_dates[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->calendar_records_count; i++)
+        if (equal_calendar_record(&(a->calendar_records[i]), &(b->calendar_records[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->fare_attributes_count; i++)
+        if (equal_fare_attributes(&(a->fare_attributes[i]), &(b->fare_attributes[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->fare_rules_count; i++)
+        if (equal_fare_rule(&(a->fare_rules[i]), &(b->fare_rules[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->feed_info_count; i++)
+        if (equal_feed_info(&(a->feed_info[i]), &(b->feed_info[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->frequencies_count; i++)
+        if (equal_frequency(&(a->frequencies[i]), &(b->frequencies[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->routes_count; i++)
+        if (equal_route(&(a->routes[i]), &(b->routes[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->shapes_count; i++)
+        if (equal_shape(&(a->shapes[i]), &(b->shapes[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->stop_times_count; i++)
+        if (equal_stop_time(&(a->stop_times[i]), &(b->stop_times[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->stops_count; i++)
+        if (equal_stop(&(a->stops[i]), &(b->stops[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->transfers_count; i++)
+        if (equal_transfer(&(a->transfers[i]), &(b->transfers[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->trips_count; i++)
+        if (equal_trip(&(a->trips[i]), &(b->trips[i])) != 0)
+            return 1;
+
+    return 0;
+}

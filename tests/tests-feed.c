@@ -4,60 +4,50 @@
 #include "greatest/greatest.h"
 #include "feed.h"
 
-TEST feed_parsing_success(void) {
+TEST feed_parsing(void) {
     feed_t f;
     
-    init_feed(&f);
     read_feed(&f, "../tests/data/google_sample");
 
-    ASSERT_EQ(f.agency_count, 1);
-    ASSERT_EQ(f.calendar_dates_count, 1);
-    ASSERT_EQ(f.calendar_records_count, 2);
-    ASSERT_EQ(f.fare_attributes_count, 2);
-    ASSERT_EQ(f.fare_rules_count, 4);
-    ASSERT_EQ(f.feed_info_count, -1);
-    ASSERT_EQ(f.frequencies_count, 11);
-    ASSERT_EQ(f.routes_count, 5);
-    ASSERT_EQ(f.shapes_count, 0);
-    ASSERT_EQ(f.stop_times_count, 28);
-    ASSERT_EQ(f.stops_count, 9);
-    ASSERT_EQ(f.transfers_count, -1);
-    ASSERT_EQ(f.trips_count, 11);
+    ASSERT_EQ(1, f.agency_count);
+    ASSERT_EQ(1, f.calendar_dates_count);
+    ASSERT_EQ(2, f.calendar_records_count);
+    ASSERT_EQ(2, f.fare_attributes_count);
+    ASSERT_EQ(4, f.fare_rules_count);
+    ASSERT_EQ(-1, f.feed_info_count);
+    ASSERT_EQ(11, f.frequencies_count);
+    ASSERT_EQ(5, f.routes_count);
+    ASSERT_EQ(0, f.shapes_count, 0);
+    ASSERT_EQ(28, f.stop_times_count);
+    ASSERT_EQ(9, f.stops_count);
+    ASSERT_EQ(-1, f.transfers_count);
+    ASSERT_EQ(11, f.trips_count);
 
     free_feed(&f);
     PASS();
 }
 
-TEST feed_parsing_agency(void) {
-    feed_t f;
-    
-    init_feed(&f);
-    read_feed(&f, "../tests/data/google_sample");
+TEST feed_comparison(void) {
+    feed_t f1, f2, f3;
 
-    agency_t a1 = { .id = "DTA",
-                    .name = "Demo Transit Authority",
-                    .url = "http://google.com",
-                    .timezone = "America/Los_Angeles"
-    };
+    read_feed(&f1, "../tests/data/google_sample");
+    read_feed(&f2, "../tests/data/google_sample");
+    read_feed(&f3, "../tests/data/pocono_pony");
 
-    ASSERT_EQ(f.agency_count, 1);
+    ASSERT_EQ_FMT(0, equal_feeds(&f1, &f2), "%i");
+    ASSERT_EQ_FMT(1, equal_feeds(&f1, &f3), "%i");
+    ASSERT_EQ_FMT(1, equal_feeds(&f2, &f3), "%i");
 
-    ASSERT_STR_EQ(f.agencies[0].id, a1.id);
-    ASSERT_STR_EQ(f.agencies[0].name, a1.name);
-    ASSERT_STR_EQ(f.agencies[0].url, a1.url);
-    ASSERT_STR_EQ(f.agencies[0].timezone, a1.timezone);
-
-    free_feed(&f);
-    PASS();
+    free_feed(&f1);
+    free_feed(&f2);
+    free_feed(&f3);
 }
-
-// ...
 
 
 
 SUITE(CGTFS_Feed) {
-    RUN_TEST(feed_parsing_success);
-    RUN_TEST(feed_parsing_agency);
+    RUN_TEST(feed_parsing);
+    RUN_TEST(feed_comparison);
 }
 
 #endif

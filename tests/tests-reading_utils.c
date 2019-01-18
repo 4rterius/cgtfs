@@ -27,7 +27,7 @@ TEST reading_utils_read_header_0(void) {
         };
 
         field_count = read_header(fp, &field_names);
-        ASSERT_EQ_FMTm("Counted wrong number of fields in the header", correct_field_count, field_count, "%i");
+        ASSERT_EQ_FMTm("Counted wrong number of fields in the header", correct_field_count, field_count, "%zu");
 
         for (size_t i = 0; i < correct_field_count; i++)
             ASSERT_STR_EQ(correct_field_names[i], field_names[i]);
@@ -61,7 +61,7 @@ TEST reading_utils_read_header_1(void) {
         };
 
         field_count = read_header(fp, &field_names);
-        ASSERT_EQ_FMTm("Counted wrong number of fields in the header", correct_field_count, field_count, "%i");
+        ASSERT_EQ_FMTm("Counted wrong number of fields in the header", correct_field_count, field_count, "%zu");
 
         for (size_t i = 0; i < correct_field_count; i++)
             ASSERT_STR_EQ(correct_field_names[i], field_names[i]);

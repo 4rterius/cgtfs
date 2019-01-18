@@ -1,0 +1,276 @@
+stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,wheelchair_boarding
+6,7,Allegheney / PA 115,,41.008738999999998,-75.476448000000005,,http://ponytracker.availtec.com/InfoPoint/7,1
+7,18,Mt. Effort / Martz / PA 115,,40.976050999999998,-75.443886000000006,,http://ponytracker.availtec.com/InfoPoint/18,1
+8,22,Weir Lake Rd,,40.928485999999999,-75.419250000000005,,http://ponytracker.availtec.com/InfoPoint/22,1
+9,23,Kinsleys Shop Rite / Weir Lake Rd,,40.919589999999999,-75.423698000000002,,http://ponytracker.availtec.com/InfoPoint/23,1
+12,36,Chestnuthill Diner / US 209,,40.922367000000001,-75.358542999999997,,http://ponytracker.availtec.com/InfoPoint/36,1
+13,41,Price Chopper / US 209,,41.05048,-75.108367999999999,,http://ponytracker.availtec.com/InfoPoint/41,1
+16,56,Drivers License Center / Manor Dr,,40.954101999999999,-75.282966999999999,,http://ponytracker.availtec.com/InfoPoint/56,1
+19,204,Woodland / PA 611 E,,41.101353000000003,-75.334946000000002,,http://ponytracker.availtec.com/InfoPoint/204,1
+20,205,Fork Street / Martz / PA 611,,41.117901000000003,-75.354881000000006,,http://ponytracker.availtec.com/InfoPoint/205,1
+21,209,Belmont Knoll / PA 611,,41.123050999999997,-75.357613000000001,,http://ponytracker.availtec.com/InfoPoint/209,1
+23,211,Limeklin / East Kinney,,41.122962999999999,-75.355057000000002,,http://ponytracker.availtec.com/InfoPoint/211,1
+25,213,Mt Pocono Plaza,,41.120891999999998,-75.374031000000002,,http://ponytracker.availtec.com/InfoPoint/213,1
+26,214,Northampton Community College Annex,,41.146090999999998,-75.36515,,http://ponytracker.availtec.com/InfoPoint/214,1
+27,218,Kings Way / PA 196 E,,41.162640000000003,-75.357337999999999,,http://ponytracker.availtec.com/InfoPoint/218,1
+28,220,Carriage Square / PA 196 E,,41.170963,-75.359076999999999,,http://ponytracker.availtec.com/InfoPoint/220,1
+29,222,PCP Main Gate / PA 196 E,,41.185844000000003,-75.356612999999996,,http://ponytracker.availtec.com/InfoPoint/222,1
+30,224,PCP JKL Gate / PA 196 E,,41.212012999999999,-75.362907000000007,,http://ponytracker.availtec.com/InfoPoint/224,1
+31,226,PCP Rear Gate / PA 196,,41.219085999999997,-75.365195999999997,,http://ponytracker.availtec.com/InfoPoint/226,1
+33,230,Acorn Market / PA 611 E,,41.094925000000003,-75.327895999999996,,http://ponytracker.availtec.com/InfoPoint/230,1
+34,233,Crossings Premium Outlets N,,41.048102999999998,-75.312790000000007,,http://ponytracker.availtec.com/InfoPoint/233,1
+35,235,Weis Tannersville,,41.040047000000001,-75.308234999999996,,http://ponytracker.availtec.com/InfoPoint/235,1
+36,240,American Candle / PA 611 E,,41.006610999999999,-75.283439999999999,,http://ponytracker.availtec.com/InfoPoint/240,1
+37,247,Stroud Commons / PA 611 E,,40.996215999999997,-75.253387000000004,,http://ponytracker.availtec.com/InfoPoint/247,1
+38,249,Fountain Court / PA 611 E,,41.018604000000003,-75.296227000000002,,http://ponytracker.availtec.com/InfoPoint/249,1
+39,250,Careerlink / PA 611 E,,41.034519000000003,-75.302643000000003,,http://ponytracker.availtec.com/InfoPoint/250,1
+40,251,Walmart Plaza / PA 940,,41.125503999999999,-75.373360000000005,,http://ponytracker.availtec.com/InfoPoint/251,1
+41,253,NCC Monroe Campus by Pocono Hall,,41.035724999999999,-75.327254999999994,,http://ponytracker.availtec.com/InfoPoint/253,1
+42,259,Giant Supermarket / PA 611,,41.001038000000001,-75.272605999999996,,http://ponytracker.availtec.com/InfoPoint/259,1
+43,269,Mountain Health Care Center,,41.147647999999997,-75.373076999999995,,http://ponytracker.availtec.com/InfoPoint/269,1
+45,271,Bills ShopRite Knox St E,,41.12471,-75.355423000000002,,http://ponytracker.availtec.com/InfoPoint/271,1
+46,2272,Great Wolf Lodge / Rte 611 / E,,41.059601000000001,-75.316872000000004,,http://ponytracker.availtec.com/InfoPoint/2272,1
+47,272,Weis Marshalls Creek / US 209,,41.042380999999999,-75.127990999999994,,http://ponytracker.availtec.com/InfoPoint/272,1
+48,408,Area Agency on Aging / C&Y,,40.991562000000002,-75.198340999999999,,http://ponytracker.availtec.com/InfoPoint/408,1
+49,420,Aldi Market / PA 611 W,,40.988224000000002,-75.209136999999998,,http://ponytracker.availtec.com/InfoPoint/420,1
+50,422,5th / Chipperfield Sts,,41.014220999999999,-75.207534999999993,,http://ponytracker.availtec.com/InfoPoint/422,1
+51,433,Mill Creek Rd / PA 447,,41.023823,-75.188286000000005,,http://ponytracker.availtec.com/InfoPoint/433,1
+52,432,Eagles Glen / US Bus 209,,41.021037999999997,-75.180160999999998,,http://ponytracker.availtec.com/InfoPoint/432,1
+53,434,Plaza Court Medical Center,,41.005726000000003,-75.161613000000003,,http://ponytracker.availtec.com/InfoPoint/434,1
+54,438,Walmart / Lincoln St,,40.990527999999998,-75.183220000000006,,http://ponytracker.availtec.com/InfoPoint/438,1
+55,443,Pocono Medical Center / E Brown St,,40.992451000000003,-75.172882000000001,,http://ponytracker.availtec.com/InfoPoint/443,1
+56,447,ESU Kemp Library,,40.998050999999997,-75.170485999999997,,http://ponytracker.availtec.com/InfoPoint/447,1
+59,462,SSA Office / US Bus 209,,41.036780999999998,-75.137626999999995,,http://ponytracker.availtec.com/InfoPoint/462,1
+60,461,Milford Rd / Milford Manor,,41.029643999999998,-75.159485000000004,,http://ponytracker.availtec.com/InfoPoint/461,1
+61,4611,Milford Rd / Valhalla Dr,,41.027470000000001,-75.166106999999997,,http://ponytracker.availtec.com/InfoPoint/4611,1
+62,4612,Milford Rd / Skyline Apts,,41.025402,-75.169815,,http://ponytracker.availtec.com/InfoPoint/4612,1
+63,463,Sellersville Rd / US 209,,41.055157000000001,-75.093140000000005,,http://ponytracker.availtec.com/InfoPoint/463,1
+64,465,Super Foodtown Plaza / US 209,,41.062607,-75.073211999999998,,http://ponytracker.availtec.com/InfoPoint/465,1
+65,471,Fernwood Resort / US 209,,41.078769999999999,-75.026718000000002,,http://ponytracker.availtec.com/InfoPoint/471,1
+66,472,Lake of the Pines / McCole Rd / US 20,,41.069000000000003,-75.043694000000002,,http://ponytracker.availtec.com/InfoPoint/472,1
+67,609,Westgate / Main St,,40.983035999999998,-75.203506000000004,,http://ponytracker.availtec.com/InfoPoint/609,1
+68,6091,Westgate / Dreher Ave.,,40.982608999999997,-75.202866,,http://ponytracker.availtec.com/InfoPoint/6091,1
+70,624,Analomink / S Kistler Sts,,40.999476999999999,-75.181190000000001,,http://ponytracker.availtec.com/InfoPoint/624,1
+71,626,Crystal St / Dansbury Depot,,40.998199,-75.181740000000005,,http://ponytracker.availtec.com/InfoPoint/626,1
+72,629,Avon Ct / Day St,,40.998333000000002,-75.185867000000002,,http://ponytracker.availtec.com/InfoPoint/629,1
+73,631,Day St / Lenox Ave,,41.000194999999998,-75.187652999999997,,http://ponytracker.availtec.com/InfoPoint/631,1
+74,636,N Courtland St / Lenox Ave,,41.001925999999997,-75.182961000000006,,http://ponytracker.availtec.com/InfoPoint/636,1
+75,642,N Courtland St / PA 447,,41.015656,-75.182907,,http://ponytracker.availtec.com/InfoPoint/642,1
+76,643,N Courtland St / Maple Ave,,41.007759,-75.184478999999996,,http://ponytracker.availtec.com/InfoPoint/643,1
+77,644,McConnell / 4th Sts,,40.988010000000003,-75.190490999999994,,http://ponytracker.availtec.com/InfoPoint/644,1
+78,645,Stroud Mall / Burger King,,40.987858000000003,-75.225075000000004,,http://ponytracker.availtec.com/InfoPoint/645,1
+79,6451,Stroud Mall Front Entrance,,40.989387999999998,-75.225037,,http://ponytracker.availtec.com/InfoPoint/6451,1
+80,646,Main / 7th SW,,40.985306000000001,-75.194182999999995,,http://ponytracker.availtec.com/InfoPoint/646,1
+81,647,Lower Main / 3rd,,40.989361000000002,-75.188209999999998,,http://ponytracker.availtec.com/InfoPoint/647,1
+83,996,DEWA South Contact Station / US 209,,41.082348000000003,-75.017189000000002,,http://ponytracker.availtec.com/InfoPoint/996,1
+84,997,Mt Airy Resort and Casino / Woodland Rd,,41.113334999999999,-75.320296999999997,,http://ponytracker.availtec.com/InfoPoint/997,1
+85,899,Tobyhanna Army Depot,,41.195552999999997,-75.427268999999995,,http://ponytracker.availtec.com/InfoPoint/899,1
+86,898,Pocono Ambulance / Rte 611,,41.037731000000001,-75.304596000000004,,http://ponytracker.availtec.com/InfoPoint/898,1
+87,402,Weis Stroudsburg,,40.989840999999998,-75.219466999999995,,http://ponytracker.availtec.com/InfoPoint/402,1
+88,418,Eastern Monroe Public Library,,40.990451999999998,-75.216682000000006,,http://ponytracker.availtec.com/InfoPoint/418,1
+89,201,MCTA / PA 611 W,,41.076740000000001,-75.326774999999998,,http://ponytracker.availtec.com/InfoPoint/201,1
+90,414,N. 5th St / Oakwood Ave,,41.002502,-75.198898,,http://ponytracker.availtec.com/InfoPoint/414,1
+91,489,Weis Eagle Valley,,41.017882999999998,-75.183228,,http://ponytracker.availtec.com/InfoPoint/489,1
+92,459,Milford Rd / Pocono Candle,,41.022494999999999,-75.175072,,http://ponytracker.availtec.com/InfoPoint/459,1
+93,4591,Milford Rd / Milford Commons,,41.023829999999997,-75.172379000000006,,http://ponytracker.availtec.com/InfoPoint/4591,1
+94,468,Milford Rd / Pocono Palace,,41.064259,-75.062461999999996,,http://ponytracker.availtec.com/InfoPoint/468,1
+95,437,Pocono Plaza,,40.991501,-75.182052999999996,,http://ponytracker.availtec.com/InfoPoint/437,1
+112,602,CAO / Bridge St Apts,,40.983597000000003,-75.224907000000002,,http://ponytracker.availtec.com/InfoPoint/602,1
+113,603,West Main St / Jane St,,40.982608999999997,-75.220153999999994,,http://ponytracker.availtec.com/InfoPoint/603,1
+114,604,West Main St / Grace Park,,40.982554999999998,-75.208954000000006,,http://ponytracker.availtec.com/InfoPoint/604,1
+115,606,West Main St / Fetherman St,,40.982703999999998,-75.206031999999993,,http://ponytracker.availtec.com/InfoPoint/606,1
+116,610,West Main St Wawa,,40.983482000000002,-75.200835999999995,,http://ponytracker.availtec.com/InfoPoint/610,1
+117,612,Little Angels Cafe,,40.984282999999998,-75.198006000000007,,http://ponytracker.availtec.com/InfoPoint/612,1
+119,622,Analomink St / North Green St,,41.000923,-75.178496999999993,,http://ponytracker.availtec.com/InfoPoint/622,1
+120,630,Day St. /  Barnum St. / SARP,,40.999428000000002,-75.186858999999998,,http://ponytracker.availtec.com/InfoPoint/630,1
+121,633,Lenox Ave / Elizabeth St,,41.001049000000002,-75.185928000000004,,http://ponytracker.availtec.com/InfoPoint/633,1
+122,637,North Courtland St / Burson St,,41.006144999999997,-75.184096999999994,,http://ponytracker.availtec.com/InfoPoint/637,1
+123,12,Colleen Dr / PA 115,,41.003200999999997,-75.471396999999996,,http://ponytracker.availtec.com/InfoPoint/12,1
+124,15,Rocky Mountain Dr / PA 115,,40.989601,-75.453902999999997,,http://ponytracker.availtec.com/InfoPoint/15,1
+125,17,Jonas RD / PA 115,,40.977001000000001,-75.445296999999997,,http://ponytracker.availtec.com/InfoPoint/17,1
+127,54,Monroe County Prison / PV Manor,,40.949798999999999,-75.287803999999994,,http://ponytracker.availtec.com/InfoPoint/54,1
+129,283,Glendale Dr / US 209,,40.924999,-75.345298999999997,,http://ponytracker.availtec.com/InfoPoint/283,1
+133,27,Kevin Ln / US 209,,40.917900000000003,-75.415497000000002,,http://ponytracker.availtec.com/InfoPoint/27,1
+135,281,Village Edge Dr / US 209,,40.922600000000003,-75.369499000000005,,http://ponytracker.availtec.com/InfoPoint/281,1
+138,221,Gilbert Rd / PA 115,,40.938999000000003,-75.435799000000003,,http://ponytracker.availtec.com/InfoPoint/221,1
+140,236,Warner Rd / PA 611 E,,41.031300000000002,-75.301299999999998,,http://ponytracker.availtec.com/InfoPoint/236,1
+142,263,Target / PA 611 E,,40.993499999999997,-75.246696,,http://ponytracker.availtec.com/InfoPoint/263,1
+143,260,PMC Immdte Care / PA 611 E,,40.998900999999996,-75.262398000000005,,http://ponytracker.availtec.com/InfoPoint/260,1
+144,241,Rimrock Dr / PA 611 E,,41.005001,-75.279701000000003,,http://ponytracker.availtec.com/InfoPoint/241,1
+145,238,Bartonsville Ave / PA 611 E,,41.013500000000001,-75.293403999999995,,http://ponytracker.availtec.com/InfoPoint/238,1
+147,206,Casino Theater / PA 611 E,,41.120899000000001,-75.355903999999995,,http://ponytracker.availtec.com/InfoPoint/206,1
+148,2283,5 Corners Mt Pocono,,41.127319,-75.360313000000005,,http://ponytracker.availtec.com/InfoPoint/2283,1
+149,228,NHS Mt Pocono,,41.1357,-75.364898999999994,,http://ponytracker.availtec.com/InfoPoint/228,1
+152,451,East Broad St / PA 447,,41.011901999999999,-75.165497000000002,,http://ponytracker.availtec.com/InfoPoint/451,1
+156,405,N 8th and Phillips St,,40.991000999999997,-75.199996999999996,,http://ponytracker.availtec.com/InfoPoint/405,1
+157,409,N 5th and Phillips St,,40.993000000000002,-75.192595999999995,,http://ponytracker.availtec.com/InfoPoint/409,1
+158,410,Avenue C and N 5th St,,40.999001,-75.195701999999997,,http://ponytracker.availtec.com/InfoPoint/410,1
+160,428,Progress St / Mill Creek Rd,,41.019596,-75.192870999999997,,http://ponytracker.availtec.com/InfoPoint/428,1
+162,416,Clearview Elementary,,41.0075,-75.203598,,http://ponytracker.availtec.com/InfoPoint/416,1
+163,423,Roosevelt St / Mill Creek Rd,,41.017406000000001,-75.197083000000006,,http://ponytracker.availtec.com/InfoPoint/423,1
+164,424,Shubert Rd / Mill Creek Rd,,41.014561,-75.202438000000001,,http://ponytracker.availtec.com/InfoPoint/424,1
+165,4621,Joel Rd / Milford Rd,,41.0336,-75.142196999999996,,http://ponytracker.availtec.com/InfoPoint/4621,1
+167,401,N 9th St and Chipperfield Dr NW,,40.989669999999997,-75.216751000000002,,http://ponytracker.availtec.com/InfoPoint/401,1
+169,4681,PORTUGAL,,41.064799999999998,-75.057899000000006,,http://ponytracker.availtec.com/InfoPoint/4681,1
+170,4631,Perkins / Saw Mill Furniture,,41.057701000000002,-75.086196999999999,,http://ponytracker.availtec.com/InfoPoint/4631,1
+174,4450,PA 447 / Martz P/R,,41.003101000000001,-75.154999000000004,,http://ponytracker.availtec.com/InfoPoint/4450,1
+175,4510,E Broad / PA447,,41.012000999999998,-75.165397999999996,,http://ponytracker.availtec.com/InfoPoint/4510,1
+177,648,Main St / 8 th SW,,40.984737000000003,-75.196151999999998,,http://ponytracker.availtec.com/InfoPoint/648,1
+182,1005,Merwinsburg Rd / Rte 115,,40.945576000000003,-75.442206999999996,,http://ponytracker.availtec.com/InfoPoint/1005,1
+184,1018,Mt. Effort / Martz / Rte 115,,40.976050999999998,-75.443886000000006,,http://ponytracker.availtec.com/InfoPoint/1018,1
+186,1029,WaWa Brodheadsville,,40.924072000000002,-75.393760999999998,,http://ponytracker.availtec.com/InfoPoint/1029,1
+187,1032,Monroe Plaza / US 209,,40.925552000000003,-75.386641999999995,,http://ponytracker.availtec.com/InfoPoint/1032,1
+189,1041,Price Chopper / US 209,,41.05048,-75.108367999999999,,http://ponytracker.availtec.com/InfoPoint/1041,1
+192,1204,Woodland Dr / PA 611 W,,41.101353000000003,-75.334946000000002,,http://ponytracker.availtec.com/InfoPoint/1204,1
+193,1209,Belmont Knoll / PA 611 SW,,41.122860000000003,-75.357596999999998,,http://ponytracker.availtec.com/InfoPoint/1209,1
+195,1211,Limeklin / East Kinney,,41.122962999999999,-75.355057000000002,,http://ponytracker.availtec.com/InfoPoint/1211,1
+196,1214,Northampton Community College Annex,,41.146090999999998,-75.36515,,http://ponytracker.availtec.com/InfoPoint/1214,1
+197,1218,Kings Way / Rte 196,,41.162930000000003,-75.357581999999994,,http://ponytracker.availtec.com/InfoPoint/1218,1
+198,1220,Carriage Square / Rte 196,,41.171013000000002,-75.359161,,http://ponytracker.availtec.com/InfoPoint/1220,1
+199,1222,PCP Main Gate / Rte 196,,41.185844000000003,-75.356658999999993,,http://ponytracker.availtec.com/InfoPoint/1222,1
+200,1224,PCP JKL Gate / Rte 196,,41.212131999999997,-75.363037000000006,,http://ponytracker.availtec.com/InfoPoint/1224,1
+201,1226,PCP Rear Gate / Rte 196,,41.219090000000001,-75.365157999999994,,http://ponytracker.availtec.com/InfoPoint/1226,1
+203,1230,Sanofi / PA 611 W,,41.094746000000001,-75.328018,,http://ponytracker.availtec.com/InfoPoint/1230,1
+204,1240,American Candle / Rte 611,,41.006610999999999,-75.283439999999999,,http://ponytracker.availtec.com/InfoPoint/1240,1
+205,1247,Stroud Commons / Rte 611,,40.996215999999997,-75.253387000000004,,http://ponytracker.availtec.com/InfoPoint/1247,1
+206,1249,Fountain Court / Rte 611,,41.018604000000003,-75.296227000000002,,http://ponytracker.availtec.com/InfoPoint/1249,1
+207,1250,Careerlink / Rte 611,,41.034519000000003,-75.302643000000003,,http://ponytracker.availtec.com/InfoPoint/1250,1
+208,1271,Bills ShopRite Knox St W,,41.124442999999999,-75.355391999999995,,http://ponytracker.availtec.com/InfoPoint/1271,1
+209,2273,Great Wolf Lodge / Rte 611 / W,,41.059055000000001,-75.316886999999994,,http://ponytracker.availtec.com/InfoPoint/2273,1
+210,1272,Weis Marshalls Creek / US 209,,41.042385000000003,-75.128258000000002,,http://ponytracker.availtec.com/InfoPoint/1272,1
+211,1408,Phillips / Lindberg Sts,,40.991580999999996,-75.198363999999998,,http://ponytracker.availtec.com/InfoPoint/1408,1
+212,1420,Aldi Market / Rte 611 E,,40.988025999999998,-75.208411999999996,,http://ponytracker.availtec.com/InfoPoint/1420,1
+213,1422,5th / Chipperfield Sts,,41.014220999999999,-75.207534999999993,,http://ponytracker.availtec.com/InfoPoint/1422,1
+214,1433,Mill Creek Rd / PA 447,,41.023299999999999,-75.188698000000002,,http://ponytracker.availtec.com/InfoPoint/1433,1
+216,1447,Hemlock Dorm ESU,,40.998032000000002,-75.170554999999993,,http://ponytracker.availtec.com/InfoPoint/1447,1
+218,1460,SSA Office / US Bus 209,,41.036811999999998,-75.137839999999997,,http://ponytracker.availtec.com/InfoPoint/1460,1
+219,1461,Milford Rd / Milford Manor,,41.029701000000003,-75.159592000000004,,http://ponytracker.availtec.com/InfoPoint/1461,1
+220,4613,Milford Rd / Valhalla Dr,,41.027489000000003,-75.166343999999995,,http://ponytracker.availtec.com/InfoPoint/4613,1
+221,4615,Milford Rd / Skyline Apts,,41.025398000000003,-75.170058999999995,,http://ponytracker.availtec.com/InfoPoint/4615,1
+222,1463,Sellersville Rd / US 209,,41.055157000000001,-75.093140000000005,,http://ponytracker.availtec.com/InfoPoint/1463,1
+223,1465,Super Foodtown Plaza / US 209,,41.062607,-75.073211999999998,,http://ponytracker.availtec.com/InfoPoint/1465,1
+224,1471,Fernwood Resort / US 209,,41.078769999999999,-75.026718000000002,,http://ponytracker.availtec.com/InfoPoint/1471,1
+227,1614,ShopRite Stroudsburg Plaza / McConnell,,40.990043999999997,-75.189980000000006,,http://ponytracker.availtec.com/InfoPoint/1614,1
+228,1624,Analomink / S Kistler Sts,,40.999476999999999,-75.181190000000001,,http://ponytracker.availtec.com/InfoPoint/1624,1
+229,1626,Crystal St / Dansbury Depot,,40.998199,-75.181740000000005,,http://ponytracker.availtec.com/InfoPoint/1626,1
+230,1629,Avon Ct / Day St,,40.998333000000002,-75.185867000000002,,http://ponytracker.availtec.com/InfoPoint/1629,1
+231,1631,Day St / Lenox Ave,,41.000194999999998,-75.187652999999997,,http://ponytracker.availtec.com/InfoPoint/1631,1
+232,1636,N Courtland St / Lenox Ave,,41.001925999999997,-75.182961000000006,,http://ponytracker.availtec.com/InfoPoint/1636,1
+233,1642,N Courtland St / Rt 447,,41.015656,-75.182907,,http://ponytracker.availtec.com/InfoPoint/1642,1
+236,1646,Main / 7th NW,,40.985385999999998,-75.194252000000006,,http://ponytracker.availtec.com/InfoPoint/1646,1
+238,1898,Pocono Ambulance / Rte 611,,41.037731000000001,-75.304596000000004,,http://ponytracker.availtec.com/InfoPoint/1898,1
+239,1201,MCTA / PA Rte 611,,41.076740000000001,-75.326774999999998,,http://ponytracker.availtec.com/InfoPoint/1201,1
+240,1414,N. 5th St / Oakwood Ave,,41.002502,-75.198898,,http://ponytracker.availtec.com/InfoPoint/1414,1
+241,1489,Weis Eagle Valley,,41.017882999999998,-75.183228,,http://ponytracker.availtec.com/InfoPoint/1489,1
+242,1459,Milford Rd / Pocono Candle,,41.022494999999999,-75.175072,,http://ponytracker.availtec.com/InfoPoint/1459,1
+243,4592,Milford Rd / Milford Commons,,41.023918000000002,-75.172661000000005,,http://ponytracker.availtec.com/InfoPoint/4592,1
+244,1468,Milford Rd / Pocono Palace,,41.064259,-75.062461999999996,,http://ponytracker.availtec.com/InfoPoint/1468,1
+257,1602,CAO / Bridge St Apts,,40.983466999999997,-75.224677999999997,,http://ponytracker.availtec.com/InfoPoint/1602,1
+258,1603,West Main St / Jane St,,40.982666000000002,-75.220061999999999,,http://ponytracker.availtec.com/InfoPoint/1603,1
+259,1604,West Main St / Grace Park,,40.982627999999998,-75.209029999999998,,http://ponytracker.availtec.com/InfoPoint/1604,1
+260,1606,Fetherman St / West Main,,40.982593999999999,-75.206237999999999,,http://ponytracker.availtec.com/InfoPoint/1606,1
+261,1610,West Main St Wawa,,40.983500999999997,-75.201172,,http://ponytracker.availtec.com/InfoPoint/1610,1
+262,1612,Stroud Mansion,,40.984318000000002,-75.198295999999999,,http://ponytracker.availtec.com/InfoPoint/1612,1
+264,1622,Analomink St / North Green St,,41.000923,-75.178496999999993,,http://ponytracker.availtec.com/InfoPoint/1622,1
+265,1630,Day St. /  Barnum St. / SARP,,40.999428000000002,-75.186858999999998,,http://ponytracker.availtec.com/InfoPoint/1630,1
+266,1633,Lenox Ave / Elizabeth St,,41.001049000000002,-75.185928000000004,,http://ponytracker.availtec.com/InfoPoint/1633,1
+267,1637,North Courtland St / Burson St,,41.006144999999997,-75.184096999999994,,http://ponytracker.availtec.com/InfoPoint/1637,1
+268,1012,Colleen Dr / PA 115,,41.003200999999997,-75.471396999999996,,http://ponytracker.availtec.com/InfoPoint/1012,1
+269,1015,Rocky Mountain Dr / PA 115,,40.989601,-75.453902999999997,,http://ponytracker.availtec.com/InfoPoint/1015,1
+270,1017,Jonas RD / PA 115,,40.977001000000001,-75.445296999999997,,http://ponytracker.availtec.com/InfoPoint/1017,1
+277,1027,Kevin Ln / US 209,,40.917900000000003,-75.415497000000002,,http://ponytracker.availtec.com/InfoPoint/1027,1
+278,1028,Pleasant Valley High School,,40.921630999999998,-75.402396999999993,,http://ponytracker.availtec.com/InfoPoint/1028,1
+280,1282,Silver Valley Rd / US 209,,40.925300999999997,-75.378997999999996,,http://ponytracker.availtec.com/InfoPoint/1282,1
+284,1236,Warner Rd / PA 611,,41.031300000000002,-75.301299999999998,,http://ponytracker.availtec.com/InfoPoint/1236,1
+285,1265,Radio Rd Best Buy / PA 611,,40.988700999999999,-75.235602999999998,,http://ponytracker.availtec.com/InfoPoint/1265,1
+286,1263,Target / PA 611,,40.993499999999997,-75.246696,,http://ponytracker.availtec.com/InfoPoint/1263,1
+287,1260,PMC Immediate Care / PA 611,,40.998900999999996,-75.262398000000005,,http://ponytracker.availtec.com/InfoPoint/1260,1
+288,1241,Rimrock Dr / PA 611,,41.005001,-75.279701000000003,,http://ponytracker.availtec.com/InfoPoint/1241,1
+289,1238,Smugglers Cove / Bartonsville Ave / PA 6,,41.013500000000001,-75.293403999999995,,http://ponytracker.availtec.com/InfoPoint/1238,1
+290,1206,Fairview Ave / PA 611,,41.120899000000001,-75.355903999999995,,http://ponytracker.availtec.com/InfoPoint/1206,1
+291,2282,5 Corners Mt Pocono,,41.127040999999998,-75.360366999999997,,http://ponytracker.availtec.com/InfoPoint/2282,1
+292,1228,NHS Mt Pocono,,41.1357,-75.365066999999996,,http://ponytracker.availtec.com/InfoPoint/1228,1
+293,1225,Brentwood Rd,,41.192253000000001,-75.356612999999996,,http://ponytracker.availtec.com/InfoPoint/1225,1
+294,1451,East Broad St / PA 447,,41.011901999999999,-75.165497000000002,,http://ponytracker.availtec.com/InfoPoint/1451,1
+298,1405,N 8th and Phillips St,,40.991000999999997,-75.199996999999996,,http://ponytracker.availtec.com/InfoPoint/1405,1
+299,1409,N 5th and Phillips St,,40.993000000000002,-75.192595999999995,,http://ponytracker.availtec.com/InfoPoint/1409,1
+300,1410,Avenue C and N 5th St,,40.998874999999998,-75.195808,,http://ponytracker.availtec.com/InfoPoint/1410,1
+301,1412,Stroud Township VFD / Town Hall,,41.0,-75.196999000000005,,http://ponytracker.availtec.com/InfoPoint/1412,1
+302,1428,Progress St / Mill Creek Rd,,41.019683999999998,-75.192993000000001,,http://ponytracker.availtec.com/InfoPoint/1428,1
+304,1416,Clearview Elementary,,41.0075,-75.203598,,http://ponytracker.availtec.com/InfoPoint/1416,1
+305,1423,Roosevelt St / Mill Creek Rd,,41.017490000000002,-75.197220000000002,,http://ponytracker.availtec.com/InfoPoint/1423,1
+306,1424,Shubert Rd / Mill Creek Rd,,41.014659999999999,-75.202567999999999,,http://ponytracker.availtec.com/InfoPoint/1424,1
+307,4622,Joel Rd / Milford Rd,,41.033661000000002,-75.142501999999993,,http://ponytracker.availtec.com/InfoPoint/4622,1
+310,4682,PORTUGAL,,41.064968,-75.057961000000006,,http://ponytracker.availtec.com/InfoPoint/4682,1
+311,4642,Perkins / Saw Mill Furniture,,41.057701000000002,-75.086196999999999,,http://ponytracker.availtec.com/InfoPoint/4642,1
+312,1648,Main St / 8th,,40.984898000000001,-75.196174999999997,,http://ponytracker.availtec.com/InfoPoint/1648,1
+315,254,Pine Hill Rd / PA 611 E,,41.130679999999998,-75.362533999999997,,http://ponytracker.availtec.com/InfoPoint/254,1
+318,442,175 E Brown St W,,40.992111000000001,-75.175323000000006,,http://ponytracker.availtec.com/InfoPoint/442,1
+319,1442,Pocono Medical Center ER Entrance,,40.992167999999999,-75.175315999999995,,http://ponytracker.availtec.com/InfoPoint/1442,1
+321,20,Arlene Dr and PA 115,,40.971111000000001,-75.443886000000006,,http://ponytracker.availtec.com/InfoPoint/20,1
+322,1020,Arlene Dr and PA 115,,40.971333000000001,-75.444061000000005,,http://ponytracker.availtec.com/InfoPoint/1020,1
+328,4465,Coordinated Health / PA 447,,41.006022999999999,-75.158096,,http://ponytracker.availtec.com/InfoPoint/4465,1
+329,6300,E. Brown / Smith Street,,40.995136000000002,-75.168014999999997,,http://ponytracker.availtec.com/InfoPoint/6300,1
+330,6301,E. Brown / Smith Street,,40.995063999999999,-75.168373000000003,,http://ponytracker.availtec.com/InfoPoint/6301,1
+337,3001,Kalahari Resort,,41.099739,-75.393471000000005,,http://ponytracker.availtec.com/InfoPoint/3001,1
+341,3019,Nittany Ct / PA 196 E,,41.127529000000003,-75.359909000000002,,http://ponytracker.availtec.com/InfoPoint/3019,1
+342,3021,Pine Hill Rd / PA 196 E,,41.131390000000003,-75.360588000000007,,http://ponytracker.availtec.com/InfoPoint/3021,1
+343,3023,Snowshoe Apts / PA 196 E,,41.132851000000002,-75.360703000000001,,http://ponytracker.availtec.com/InfoPoint/3023,1
+344,3025,Edgewood / PA 196 E,,41.136398,-75.360291000000004,,http://ponytracker.availtec.com/InfoPoint/3025,1
+345,3027,Evergreen / PA 196 E,,41.144401999999999,-75.359679999999997,,http://ponytracker.availtec.com/InfoPoint/3027,1
+346,3029,Green Rd / PA 196 E,,41.145659999999999,-75.359451000000007,,http://ponytracker.availtec.com/InfoPoint/3029,1
+347,3030,Green Rd / PA 196 W,,41.145901000000002,-75.359511999999995,,http://ponytracker.availtec.com/InfoPoint/3030,1
+348,3028,Evergreen / PA 196 W,,41.144610999999998,-75.359786999999997,,http://ponytracker.availtec.com/InfoPoint/3028,1
+349,3026,Edgewood / PA 196 W,,41.136519999999997,-75.360397000000006,,http://ponytracker.availtec.com/InfoPoint/3026,1
+350,3024,Snowshoe Apts / PA 196 W,,41.132938000000003,-75.360816999999997,,http://ponytracker.availtec.com/InfoPoint/3024,1
+351,3022,Pine Hill Rd / PA 196 W,,41.131549999999997,-75.360732999999996,,http://ponytracker.availtec.com/InfoPoint/3022,1
+352,3016,Salvation Army / Summit N,,41.117691000000001,-75.381927000000005,,http://ponytracker.availtec.com/InfoPoint/3016,1
+353,3020,Nittany Ct / PA 196 W,,41.127338000000002,-75.360039,,http://ponytracker.availtec.com/InfoPoint/3020,1
+354,3014,Summit Ave / PA 314 W,,41.114288000000002,-75.387360000000001,,http://ponytracker.availtec.com/InfoPoint/3014,1
+355,3012,Norton Pryor / PA 314 W,,41.112578999999997,-75.386657999999997,,http://ponytracker.availtec.com/InfoPoint/3012,1
+356,255,Pine Hill Rd / PA 611 W,,41.130839999999999,-75.362831,,http://ponytracker.availtec.com/InfoPoint/255,1
+357,3323,Corporate Center Dr / PA 611 NE,,41.146949999999997,-75.373572999999993,,http://ponytracker.availtec.com/InfoPoint/3323,1
+358,3324,Industrial Dr / PA 611 SW,,41.146019000000003,-75.372840999999994,,http://ponytracker.availtec.com/InfoPoint/3324,1
+359,3321,Hemlock Dr / PA 611 NE,,41.151321000000003,-75.377869000000004,,http://ponytracker.availtec.com/InfoPoint/3321,1
+360,3322,Hemlock Dr / PA 611 SW,,41.151271999999999,-75.378028999999998,,http://ponytracker.availtec.com/InfoPoint/3322,1
+361,3319,Sharbaugh Rd / PA 611 NE,,41.153041999999999,-75.379531999999998,,http://ponytracker.availtec.com/InfoPoint/3319,1
+362,3320,Sharbaugh Rd / PA 611 SW,,41.152771000000001,-75.379547000000002,,http://ponytracker.availtec.com/InfoPoint/3320,1
+363,3317,Crows Path / PA 611 NE,,41.158149999999999,-75.384529000000001,,http://ponytracker.availtec.com/InfoPoint/3317,1
+364,3318,Crows Path / PA 611 SW,,41.158057999999997,-75.384688999999995,,http://ponytracker.availtec.com/InfoPoint/3318,1
+365,3313,Cayugo Dr / PA 611 NE,,41.165599999999998,-75.394431999999995,,http://ponytracker.availtec.com/InfoPoint/3313,1
+366,3314,Cayugo Dr / PA 611 SW,,41.165408999999997,-75.394431999999995,,http://ponytracker.availtec.com/InfoPoint/3314,1
+367,3311,Laurel Dr / PA 611 NE,,41.167191000000003,-75.397048999999996,,http://ponytracker.availtec.com/InfoPoint/3311,1
+368,3312,Laurel Dr / PA 611 SW,,41.166919999999998,-75.396957,,http://ponytracker.availtec.com/InfoPoint/3312,1
+369,3300,Pocono Mountain Public Library,,41.171241999999999,-75.407318000000004,,http://ponytracker.availtec.com/InfoPoint/3300,1
+370,3315,Sussex Dr / PA 611 NE,,41.161307999999998,-75.387771999999998,,http://ponytracker.availtec.com/InfoPoint/3315,1
+371,3316,Sussex Dr / PA 611 SW,,41.161270000000002,-75.388023000000004,,http://ponytracker.availtec.com/InfoPoint/3316,1
+374,3032,Renaissance Ln / PA 196 W,,41.152248,-75.357688999999993,,http://ponytracker.availtec.com/InfoPoint/3032,1
+375,3031,Renaissance Ln / PA 196 E,,41.152309000000002,-75.357551999999998,,http://ponytracker.availtec.com/InfoPoint/3031,1
+389,650,Lower Main and 4th St,,40.987502999999997,-75.189514000000003,,http://ponytracker.availtec.com/InfoPoint/650,1
+397,1233,Crossings Premium Outlets S,,41.048079999999999,-75.312515000000005,,http://ponytracker.availtec.com/InfoPoint/1233,1
+398,223,Woodside Dr W / APCP,,41.199672999999997,-75.357910000000004,,http://ponytracker.availtec.com/InfoPoint/223,1
+400,231,Pocono Mt East HS S,,41.104934999999998,-75.328247000000005,,http://ponytracker.availtec.com/InfoPoint/231,1
+402,232,Crossings and PA 611,,41.048664000000002,-75.311378000000005,,http://ponytracker.availtec.com/InfoPoint/232,1
+406,267,St Lukes Hospital,,40.998009000000003,-75.261047000000005,,http://ponytracker.availtec.com/InfoPoint/267,1
+407,435,LVHN Smithfield,,41.009101999999999,-75.160538000000003,,http://ponytracker.availtec.com/InfoPoint/435,1
+408,3302,The Mountain Center,,41.171683999999999,-75.415588,,http://ponytracker.availtec.com/InfoPoint/3302,1
+409,4457,Chestnut St / PA 447 - North,,41.015591000000001,-75.181540999999996,,http://ponytracker.availtec.com/InfoPoint/4457,1
+410,4458,Chestnut St / PA 447 - South,,41.015498999999998,-75.181586999999993,,http://ponytracker.availtec.com/InfoPoint/4458,1
+412,60,Anglemire Rd North,,40.997456,-75.360161000000005,,http://ponytracker.availtec.com/InfoPoint/60,1
+413,61,Anglemire Rd South,,40.997199999999999,-75.360061999999999,,http://ponytracker.availtec.com/InfoPoint/61,1
+414,62,Terrace Dr North,,40.989437000000002,-75.417297000000005,,http://ponytracker.availtec.com/InfoPoint/62,1
+415,63,Terrace Dr South,,40.989497999999998,-75.417297000000005,,http://ponytracker.availtec.com/InfoPoint/63,1
+416,64,Shenkel Rd North,,40.979931000000001,-75.434273000000005,,http://ponytracker.availtec.com/InfoPoint/64,1
+417,65,Shenkel Rd South,,40.979819999999997,-75.434357000000006,,http://ponytracker.availtec.com/InfoPoint/65,1
+418,66,Burnely / Allied Health,,40.951385000000002,-75.284110999999996,,http://ponytracker.availtec.com/InfoPoint/66,1
+427,404,1137 N 9th St S / Popeyes,,40.988117000000003,-75.221474000000001,,http://ponytracker.availtec.com/InfoPoint/404,1
+428,1897,2885 PA 611 / Vincents Deli,,41.037967999999999,-75.304625999999999,,http://ponytracker.availtec.com/InfoPoint/1897,1
+429,1896,2558 PA 715 / Sunoco / N,,41.03857,-75.315117000000001,,http://ponytracker.availtec.com/InfoPoint/1896,1
+430,1895,2558 PA 715 / Sunoco / S,,41.038479000000002,-75.315071000000003,,http://ponytracker.availtec.com/InfoPoint/1895,1
+431,1894,PA 715 / Warner Rd / N,,41.031792000000003,-75.324462999999994,,http://ponytracker.availtec.com/InfoPoint/1894,1
+432,1892,PA 611 / Desaki / W,,41.088237999999997,-75.325539000000006,,http://ponytracker.availtec.com/InfoPoint/1892,1
+433,1893,PA 611 / Desaki / E,,41.088386999999997,-75.325232999999997,,http://ponytracker.availtec.com/InfoPoint/1893,1
+434,1891,PA 611 / Amber / E,,41.096775000000001,-75.331138999999993,,http://ponytracker.availtec.com/InfoPoint/1891,1
+435,1890,PA 611 / Amber / W,,41.096958000000001,-75.331733999999997,,http://ponytracker.availtec.com/InfoPoint/1890,1
+436,1889,Forge Rd W / Iridium,,40.987651999999997,-75.178398000000001,,http://ponytracker.availtec.com/InfoPoint/1889,1
+437,1888,Forge Rd E / Iridium,,40.987682,-75.178473999999994,,http://ponytracker.availtec.com/InfoPoint/1888,1
