@@ -17,7 +17,7 @@ TEST feed_parsing(void) {
     ASSERT_EQ(-1, f.feed_info_count);
     ASSERT_EQ(11, f.frequencies_count);
     ASSERT_EQ(5, f.routes_count);
-    ASSERT_EQ(0, f.shapes_count, 0);
+    ASSERT_EQ(0, f.shapes_count);
     ASSERT_EQ(28, f.stop_times_count);
     ASSERT_EQ(9, f.stops_count);
     ASSERT_EQ(-1, f.transfers_count);
