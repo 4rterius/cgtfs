@@ -5,6 +5,7 @@
 
 #include "tests-enum_parsing.c"
 #include "tests-feed.c"
+#include "tests-file_reading.c"
 #include "tests-filenames.c"
 #include "tests-haversine.c"
 #include "tests-reading_utils.c"
@@ -35,6 +36,8 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_ReadingStop);
     RUN_SUITE(CGTFS_ReadingTransfer);
     RUN_SUITE(CGTFS_ReadingTrip);
+
+    RUN_SUITE(CGTFS_FileReading);
 
     GREATEST_MAIN_END();
 }

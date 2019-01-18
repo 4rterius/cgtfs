@@ -26,8 +26,8 @@ void another_function(void) {
         printf("\n");
     }
 
+    if (stops_count > 0) free(stops);
     free(stops_filename);
-    free(stops);
 }
 
 int main() {
