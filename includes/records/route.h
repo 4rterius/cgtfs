@@ -64,4 +64,12 @@ void init_route(route_t *record);
  */
 void read_route(route_t *record, int field_count, const char **field_names, const char **field_values);
 
+/**
+ * Compares two structures.
+ * @param[in] a  First structure
+ * @param[in] b  Second structure
+ * @returns 0 if structures are equal, non-zero otherwise.
+ */
+int equal_route(const route_t *a, const route_t *b);
+
 #endif

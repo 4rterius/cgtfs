@@ -110,3 +110,18 @@ void read_stop(stop_t *record, int field_count, const char **field_names, const 
     else
         record->is_null = 0;
 }
+
+int equal_stop(const stop_t *a, const stop_t *b) {
+    return !(!strcmp(a->id, b->id) &&
+             !strcmp(a->code, b->code) &&
+             !strcmp(a->name, b->name) &&
+             !strcmp(a->desc, b->desc) &&
+             !strcmp(a->zone_id, b->zone_id) &&
+             !strcmp(a->url, b->url) &&
+             !strcmp(a->parent_station, b->parent_station) &&
+             !strcmp(a->timezone, b->timezone) &&
+             a->lat == b->lat &&
+             a->lon == b->lon &&
+             a->location_type == b->location_type &&
+             a->wheelchair_boarding == b->wheelchair_boarding);
+}

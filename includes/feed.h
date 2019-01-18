@@ -81,4 +81,12 @@ int read_feed(feed_t *instance, const char *feed_directory_path);
  */
 void free_feed(feed_t *feed);
 
+// /**
+//  * Compares two feeds.
+//  * @param[in] a First feed.
+//  * @param[in] b Second feed.
+//  * @returns 0 if feeds are equal, non-zero if not.
+//  */
+// int cmp_feed(const feed_t *a, const feed_t *b);
+
 #endif

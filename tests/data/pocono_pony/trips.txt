@@ -1,0 +1,316 @@
+route_id,service_id,trip_id,trip_headsign,direction_id,block_id,shape_id,wheelchair_accessible,bikes_allowed
+245,12,t254-sl12-pAF-r120,"Eagle Valley",0,1012,175_shp,1,0
+245,12,t257-sl12-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,12,t258-sl12-pB0-r11F,"Eagle Valley",0,1011,176_shp,1,0
+245,12,t259-sl12-pAF-r120,"Eagle Valley",0,1012,175_shp,1,0
+245,12,t25A-sl12-pB1-r11F,"St Lukes",1,1011,177_shp,1,0
+245,12,t25B-sl12-p100-r11F,"Eagle Valley",0,1011,256_shp,1,0
+245,12,t25C-sl12-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,12,t25D-sl12-p100-r120,"Eagle Valley",0,1012,256_shp,1,0
+245,12,t25E-sl12-pB1-r11F,"St Lukes",1,1011,177_shp,1,0
+245,12,t25F-sl12-p101-r11F,"Eagle Valley",0,1011,257_shp,1,0
+245,12,t260-sl12-p102-r120,"St Lukes",1,1012,258_shp,1,0
+245,12,t261-sl12-p101-r120,"Eagle Valley",0,1012,257_shp,1,0
+245,12,t262-sl12-p102-r11F,"St Lukes",1,1011,258_shp,1,0
+245,12,t263-sl12-p128-r11F,"Eagle Valley",0,1011,296_shp,1,0
+245,12,t264-sl12-p102-r120,"St Lukes",1,1012,258_shp,1,0
+245,12,t265-sl12-p129-r120,"Eagle Valley",0,1012,297_shp,1,0
+245,12,t266-sl12-p102-r11F,"St Lukes",1,1011,258_shp,1,0
+245,12,t267-sl12-p12A-r11F,"Eagle Valley",0,1011,298_shp,1,0
+245,12,t268-sl12-p102-r120,"St Lukes",1,1012,258_shp,1,0
+245,12,t269-sl12-p12B-r120,"Eagle Valley",0,1012,299_shp,1,0
+245,12,t26A-sl12-p102-r11F,"St Lukes",1,1011,258_shp,1,0
+245,12,t26B-sl12-p12C-r11F,"Eagle Valley",0,1011,300_shp,1,0
+245,12,t26C-sl12-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,12,t26D-sl12-p12C-r120,"Eagle Valley",0,1012,300_shp,1,0
+245,12,t26E-sl12-pB1-r126,"St Lukes",1,1051,177_shp,1,0
+245,12,t26F-sl12-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,12,t2FC-sl12-pB1-r121,"St Lukes",1,1021,177_shp,1,0
+245,13,t254-sl13-pB2-r129,"Eagle Valley",0,4011,178_shp,1,0
+245,13,t256-sl13-pB2-r12A,"Eagle Valley",0,4012,178_shp,1,0
+245,13,t257-sl13-pB3-r129,"St Lukes",1,4011,179_shp,1,0
+245,13,t259-sl13-pB2-r129,"Eagle Valley",0,4011,178_shp,1,0
+245,13,t25A-sl13-pB3-r12A,"St Lukes",1,4012,179_shp,1,0
+245,13,t25B-sl13-pF7-r12A,"Eagle Valley",0,4012,247_shp,1,0
+245,13,t25C-sl13-pB3-r129,"St Lukes",1,4011,179_shp,1,0
+245,13,t25D-sl13-pF7-r129,"Eagle Valley",0,4011,247_shp,1,0
+245,13,t25E-sl13-pB3-r12A,"St Lukes",1,4012,179_shp,1,0
+245,13,t25F-sl13-pF8-r12A,"Eagle Valley",0,4012,248_shp,1,0
+245,13,t260-sl13-pF9-r129,"St Lukes",1,4011,249_shp,1,0
+245,13,t261-sl13-pF8-r129,"Eagle Valley",0,4011,248_shp,1,0
+245,13,t262-sl13-pF9-r12A,"St Lukes",1,4012,249_shp,1,0
+245,13,t263-sl13-p123-r12A,"Eagle Valley",0,4012,291_shp,1,0
+245,13,t264-sl13-pF9-r129,"St Lukes",1,4011,249_shp,1,0
+245,13,t265-sl13-p124-r129,"Eagle Valley",0,4011,292_shp,1,0
+245,13,t266-sl13-pF9-r12A,"St Lukes",1,4012,249_shp,1,0
+245,13,t267-sl13-p125-r12A,"Eagle Valley",0,4012,293_shp,1,0
+245,13,t268-sl13-pF9-r129,"St Lukes",1,4011,249_shp,1,0
+245,13,t269-sl13-p126-r129,"Eagle Valley",0,4011,294_shp,1,0
+245,13,t26A-sl13-pF9-r12A,"St Lukes",1,4012,249_shp,1,0
+245,13,t26B-sl13-p127-r12A,"Eagle Valley",0,4012,295_shp,1,0
+245,13,t26C-sl13-pB3-r129,"St Lukes",1,4011,179_shp,1,0
+245,13,t26D-sl13-p127-r129,"Eagle Valley",0,4011,295_shp,1,0
+245,13,t26E-sl13-pB3-r12A,"St Lukes",1,4012,179_shp,1,0
+245,13,t26F-sl13-pB3-r129,"St Lukes",1,4011,179_shp,1,0
+245,13,t2FC-sl13-pB3-r12B,"St Lukes",1,4021,179_shp,1,0
+245,15,t254-sl15-pAF-r120,"Eagle Valley",0,1012,175_shp,1,0
+245,15,t257-sl15-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,15,t258-sl15-pB0-r11F,"Eagle Valley",0,1011,176_shp,1,0
+245,15,t259-sl15-pAF-r120,"Eagle Valley",0,1012,175_shp,1,0
+245,15,t25A-sl15-pB1-r11F,"St Lukes",1,1011,177_shp,1,0
+245,15,t25B-sl15-p100-r11F,"Eagle Valley",0,1011,256_shp,1,0
+245,15,t25C-sl15-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,15,t25D-sl15-p100-r120,"Eagle Valley",0,1012,256_shp,1,0
+245,15,t25E-sl15-pB1-r11F,"St Lukes",1,1011,177_shp,1,0
+245,15,t25F-sl15-p101-r11F,"Eagle Valley",0,1011,257_shp,1,0
+245,15,t260-sl15-p102-r120,"St Lukes",1,1012,258_shp,1,0
+245,15,t261-sl15-p101-r120,"Eagle Valley",0,1012,257_shp,1,0
+245,15,t262-sl15-p102-r11F,"St Lukes",1,1011,258_shp,1,0
+245,15,t263-sl15-p128-r11F,"Eagle Valley",0,1011,296_shp,1,0
+245,15,t264-sl15-p102-r120,"St Lukes",1,1012,258_shp,1,0
+245,15,t265-sl15-p129-r120,"Eagle Valley",0,1012,297_shp,1,0
+245,15,t266-sl15-p102-r11F,"St Lukes",1,1011,258_shp,1,0
+245,15,t267-sl15-p12A-r11F,"Eagle Valley",0,1011,298_shp,1,0
+245,15,t268-sl15-p102-r120,"St Lukes",1,1012,258_shp,1,0
+245,15,t269-sl15-p12B-r120,"Eagle Valley",0,1012,299_shp,1,0
+245,15,t26A-sl15-p102-r11F,"St Lukes",1,1011,258_shp,1,0
+245,15,t26B-sl15-p12C-r11F,"Eagle Valley",0,1011,300_shp,1,0
+245,15,t26C-sl15-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,15,t26D-sl15-p12C-r120,"Eagle Valley",0,1012,300_shp,1,0
+245,15,t26E-sl15-pB1-r126,"St Lukes",1,1051,177_shp,1,0
+245,15,t26F-sl15-pB1-r120,"St Lukes",1,1012,177_shp,1,0
+245,15,t2FC-sl15-pB1-r121,"St Lukes",1,1021,177_shp,1,0
+246,12,t13D-sl12-pB6-r120,"St Lukes No Ncc",1,1012,182_shp,1,0
+246,12,t271-sl12-pB5-r122,"Mt Pocono",0,1022,181_shp,1,0
+246,12,t272-sl12-pB4-r121,"Mountain Center",0,1021,180_shp,1,0
+246,12,t273-sl12-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,12,t274-sl12-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,12,t275-sl12-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,12,t276-sl12-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,12,t277-sl12-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,12,t278-sl12-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,12,t279-sl12-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,12,t27A-sl12-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,12,t27B-sl12-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,12,t27C-sl12-pB5-r121,"Mt Pocono",0,1021,181_shp,1,0
+246,12,t27D-sl12-pB5-r122,"Mt Pocono",0,1022,181_shp,1,0
+246,12,t27E-sl12-pB5-r121,"Mt Pocono",0,1021,181_shp,1,0
+246,12,t27F-sl12-pB8-r122,"St Lukes",1,1022,184_shp,1,0
+246,12,t281-sl12-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,12,t282-sl12-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,12,t283-sl12-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,12,t284-sl12-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,12,t285-sl12-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,12,t286-sl12-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,12,t287-sl12-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,12,t288-sl12-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,12,t289-sl12-pB8-r122,"St Lukes",1,1022,184_shp,1,0
+246,12,t28A-sl12-pB8-r121,"St Lukes",1,1021,184_shp,1,0
+246,12,t28B-sl12-pB8-r122,"St Lukes",1,1022,184_shp,1,0
+246,12,t2FD-sl12-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,13,t272-sl13-pB9-r12B,"Mt Pocono No Ncc",0,4021,185_shp,1,0
+246,13,t273-sl13-pFA-r12C,"Mt Pocono No Ncc",0,4022,250_shp,1,0
+246,13,t274-sl13-pFA-r12B,"Mt Pocono No Ncc",0,4021,250_shp,1,0
+246,13,t275-sl13-pFA-r12C,"Mt Pocono No Ncc",0,4022,250_shp,1,0
+246,13,t276-sl13-pFA-r12B,"Mt Pocono No Ncc",0,4021,250_shp,1,0
+246,13,t277-sl13-pFA-r12C,"Mt Pocono No Ncc",0,4022,250_shp,1,0
+246,13,t278-sl13-pFA-r12B,"Mt Pocono No Ncc",0,4021,250_shp,1,0
+246,13,t279-sl13-pFA-r12C,"Mt Pocono No Ncc",0,4022,250_shp,1,0
+246,13,t27A-sl13-pFA-r12B,"Mt Pocono No Ncc",0,4021,250_shp,1,0
+246,13,t27B-sl13-pFA-r12C,"Mt Pocono No Ncc",0,4022,250_shp,1,0
+246,13,t27C-sl13-pB9-r12B,"Mt Pocono No Ncc",0,4021,185_shp,1,0
+246,13,t27D-sl13-pB9-r12C,"Mt Pocono No Ncc",0,4022,185_shp,1,0
+246,13,t27E-sl13-pB9-r12B,"Mt Pocono No Ncc",0,4021,185_shp,1,0
+246,13,t27F-sl13-pBB-r12C,"St Lukes No Ncc",1,4022,187_shp,1,0
+246,13,t289-sl13-pFB-r12C,"St Lukes No Ncc",1,4022,251_shp,1,0
+246,13,t28A-sl13-pFC-r12B,"St Lukes No Ncc",1,4021,252_shp,1,0
+246,13,t28B-sl13-pFB-r12C,"St Lukes No Ncc",1,4022,251_shp,1,0
+246,13,t28C-sl13-pBB-r12B,"St Lukes No Ncc",1,4021,187_shp,1,0
+246,13,t28D-sl13-pBB-r12C,"St Lukes No Ncc",1,4022,187_shp,1,0
+246,13,t28E-sl13-pFB-r12B,"St Lukes No Ncc",1,4021,251_shp,1,0
+246,13,t28F-sl13-pFB-r12C,"St Lukes No Ncc",1,4022,251_shp,1,0
+246,13,t290-sl13-pFB-r12B,"St Lukes No Ncc",1,4021,251_shp,1,0
+246,13,t291-sl13-pBB-r12C,"St Lukes No Ncc",1,4022,187_shp,1,0
+246,13,t292-sl13-pFB-r12B,"St Lukes No Ncc",1,4021,251_shp,1,0
+246,13,t293-sl13-pFB-r12C,"St Lukes No Ncc",1,4022,251_shp,1,0
+246,13,t294-sl13-pFB-r12B,"St Lukes No Ncc",1,4021,251_shp,1,0
+246,13,t2E8-sl13-pBA-r129,"St Lukes No Ncc",1,4011,186_shp,1,0
+246,13,t2E9-sl13-pBA-r12A,"St Lukes No Ncc",1,4012,186_shp,1,0
+246,15,t13D-sl15-pB6-r120,"St Lukes No Ncc",1,1012,182_shp,1,0
+246,15,t271-sl15-pB5-r122,"Mt Pocono",0,1022,181_shp,1,0
+246,15,t272-sl15-pB4-r121,"Mountain Center",0,1021,180_shp,1,0
+246,15,t273-sl15-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,15,t274-sl15-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,15,t275-sl15-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,15,t276-sl15-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,15,t277-sl15-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,15,t278-sl15-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,15,t279-sl15-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,15,t27A-sl15-p103-r121,"Mountain Center",0,1021,259_shp,1,0
+246,15,t27B-sl15-p103-r122,"Mountain Center",0,1022,259_shp,1,0
+246,15,t27C-sl15-pB5-r121,"Mt Pocono",0,1021,181_shp,1,0
+246,15,t27D-sl15-pB5-r122,"Mt Pocono",0,1022,181_shp,1,0
+246,15,t27E-sl15-pB5-r121,"Mt Pocono",0,1021,181_shp,1,0
+246,15,t27F-sl15-pB8-r122,"St Lukes",1,1022,184_shp,1,0
+246,15,t281-sl15-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,15,t282-sl15-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,15,t283-sl15-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,15,t284-sl15-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,15,t285-sl15-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,15,t286-sl15-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,15,t287-sl15-pB7-r122,"St Lukes",1,1022,183_shp,1,0
+246,15,t288-sl15-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+246,15,t289-sl15-pB8-r122,"St Lukes",1,1022,184_shp,1,0
+246,15,t28A-sl15-pB8-r121,"St Lukes",1,1021,184_shp,1,0
+246,15,t28B-sl15-pB8-r122,"St Lukes",1,1022,184_shp,1,0
+246,15,t2FD-sl15-pB7-r121,"St Lukes",1,1021,183_shp,1,0
+247,12,t161-sl12-pC4-r124,"Mt Effort",0,1041,196_shp,1,0
+247,12,t2C7-sl12-pC7-r124,"Ncc Monroe",1,1041,199_shp,1,0
+247,12,t2C8-sl12-pC6-r124,"Dlc",0,1041,198_shp,1,0
+247,12,t2C9-sl12-pC9-r125,"Ncc Monroe",1,1042,201_shp,1,0
+247,12,t2CA-sl12-pC5-r125,"Mt Effort",0,1042,197_shp,1,0
+247,12,t2CB-sl12-pC8-r125,"St Lukes",1,1042,200_shp,1,0
+247,15,t161-sl15-pC4-r124,"Mt Effort",0,1041,196_shp,1,0
+247,15,t2C7-sl15-pC7-r124,"Ncc Monroe",1,1041,199_shp,1,0
+247,15,t2C8-sl15-pC6-r124,"Dlc",0,1041,198_shp,1,0
+247,15,t2C9-sl15-pC9-r125,"Ncc Monroe",1,1042,201_shp,1,0
+247,15,t2CA-sl15-pC5-r125,"Mt Effort",0,1042,197_shp,1,0
+247,15,t2CB-sl15-pC8-r125,"St Lukes",1,1042,200_shp,1,0
+248,12,t16B-sl12-pCA-r126,"Fernwood",0,1051,202_shp,1,0
+248,12,t2B0-sl12-pCA-r126,"Fernwood",0,1051,202_shp,1,0
+248,12,t2B2-sl12-pCA-r126,"Fernwood",0,1051,202_shp,1,0
+248,12,t2B3-sl12-p108-r126,"Fernwood",0,1051,264_shp,1,0
+248,12,t2B4-sl12-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,12,t2B5-sl12-pCC-r126,"Eagle Valley",1,1051,204_shp,1,0
+248,12,t2B6-sl12-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,12,t2B7-sl12-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,12,t2B8-sl12-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,12,t2EA-sl12-pCB-r126,"Fernwood",0,1051,203_shp,1,0
+248,15,t16B-sl15-pCA-r126,"Fernwood",0,1051,202_shp,1,0
+248,15,t2B0-sl15-pCA-r126,"Fernwood",0,1051,202_shp,1,0
+248,15,t2B2-sl15-pCA-r126,"Fernwood",0,1051,202_shp,1,0
+248,15,t2B3-sl15-p108-r126,"Fernwood",0,1051,264_shp,1,0
+248,15,t2B4-sl15-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,15,t2B5-sl15-pCC-r126,"Eagle Valley",1,1051,204_shp,1,0
+248,15,t2B6-sl15-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,15,t2B7-sl15-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,15,t2B8-sl15-pCD-r126,"Independence Rd",1,1051,205_shp,1,0
+248,15,t2EA-sl15-pCB-r126,"Fernwood",0,1051,203_shp,1,0
+249,12,tBE-sl12-pD2-r11F,"Toby Army Depot",0,1011,210_shp,1,0
+249,12,tC0-sl12-pD3-r127,"Toby Army Depot",1,2061,211_shp,1,0
+249,15,tBE-sl15-pD2-r11F,"Toby Army Depot",0,1011,210_shp,1,0
+249,15,tBF-sl15-pD4-r128,"Toby Army Depot",1,3061,212_shp,1,0
+259,12,t1A4-sl12-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,12,t295-sl12-pBC-r123,"Millwood / Apcp",0,1031,188_shp,1,0
+259,12,t296-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t297-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t298-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t299-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t29A-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t29B-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t29C-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t29D-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t29E-sl12-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,12,t29F-sl12-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,12,t2A0-sl12-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,12,t2A1-sl12-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,12,t2A2-sl12-pBE-r123,"Kalahari",1,1031,190_shp,1,0
+259,12,t2A3-sl12-p106-r123,"Kalahari",1,1031,262_shp,1,0
+259,12,t2A4-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2A5-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2A6-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2A7-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2A8-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2A9-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2AA-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2AB-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2AC-sl12-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,12,t2AD-sl12-pBF-r123,"Kalahari",1,1031,191_shp,1,0
+259,12,t2AE-sl12-pBF-r123,"Kalahari",1,1031,191_shp,1,0
+259,12,t2AF-sl12-pBF-r123,"Kalahari",1,1031,191_shp,1,0
+259,13,t1A4-sl13-pC1-r12C,"Millwood / Apcp",0,4022,193_shp,1,0
+259,13,t295-sl13-pC0-r12D,"Millwood / Apcp",0,4031,192_shp,1,0
+259,13,t296-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t297-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t298-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t299-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t29A-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t29B-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t29C-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t29D-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t29E-sl13-pFD-r12D,"Millwood / Apcp",0,4031,253_shp,1,0
+259,13,t29F-sl13-pC1-r12D,"Millwood / Apcp",0,4031,193_shp,1,0
+259,13,t2A0-sl13-pC1-r12D,"Millwood / Apcp",0,4031,193_shp,1,0
+259,13,t2A1-sl13-pC1-r12D,"Millwood / Apcp",0,4031,193_shp,1,0
+259,13,t2A2-sl13-pC2-r12C,"Kalahari",1,4022,194_shp,1,0
+259,13,t2A3-sl13-pFE-r12D,"Kalahari",1,4031,254_shp,1,0
+259,13,t2A4-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2A5-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2A6-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2A7-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2A8-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2A9-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2AA-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2AB-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2AC-sl13-pFF-r12D,"Kalahari",1,4031,255_shp,1,0
+259,13,t2AD-sl13-pC3-r12D,"Kalahari",1,4031,195_shp,1,0
+259,13,t2AE-sl13-pC3-r12D,"Kalahari",1,4031,195_shp,1,0
+259,13,t2AF-sl13-pC3-r12D,"Kalahari",1,4031,195_shp,1,0
+259,15,t1A4-sl15-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,15,t295-sl15-pBC-r123,"Millwood / Apcp",0,1031,188_shp,1,0
+259,15,t296-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t297-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t298-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t299-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t29A-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t29B-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t29C-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t29D-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t29E-sl15-p105-r123,"Millwood / Apcp",0,1031,261_shp,1,0
+259,15,t29F-sl15-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,15,t2A0-sl15-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,15,t2A1-sl15-pBD-r123,"Millwood / Apcp",0,1031,189_shp,1,0
+259,15,t2A2-sl15-pBE-r123,"Kalahari",1,1031,190_shp,1,0
+259,15,t2A3-sl15-p106-r123,"Kalahari",1,1031,262_shp,1,0
+259,15,t2A4-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2A5-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2A6-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2A7-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2A8-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2A9-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2AA-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2AB-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2AC-sl15-p107-r123,"Kalahari",1,1031,263_shp,1,0
+259,15,t2AD-sl15-pBF-r123,"Kalahari",1,1031,191_shp,1,0
+259,15,t2AE-sl15-pBF-r123,"Kalahari",1,1031,191_shp,1,0
+259,15,t2AF-sl15-pBF-r123,"Kalahari",1,1031,191_shp,1,0
+262,12,t2EB-sl12-pD5-r11F,"Eastburg Express",0,1011,213_shp,1,0
+262,15,t2EB-sl15-pD5-r11F,"Eastburg Express",0,1011,213_shp,1,0
+263,12,t2B9-sl12-pD1-r126,"St Lukes",1,1051,209_shp,1,0
+263,12,t2BA-sl12-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,12,t2BB-sl12-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,12,t2BC-sl12-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,12,t2BD-sl12-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,12,t2BE-sl12-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,12,t2BF-sl12-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,12,t2C0-sl12-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,12,t2C1-sl12-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,12,t2C2-sl12-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,12,t2C3-sl12-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,12,t2C4-sl12-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,12,t2C5-sl12-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,12,t2C6-sl12-pCF-r126,"Eagle Valley",0,1051,207_shp,1,0
+263,15,t2B9-sl15-pD1-r126,"St Lukes",1,1051,209_shp,1,0
+263,15,t2BA-sl15-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,15,t2BB-sl15-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,15,t2BC-sl15-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,15,t2BD-sl15-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,15,t2BE-sl15-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,15,t2BF-sl15-pD0-r126,"St Lukes",1,1051,208_shp,1,0
+263,15,t2C0-sl15-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,15,t2C1-sl15-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,15,t2C2-sl15-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,15,t2C3-sl15-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,15,t2C4-sl15-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,15,t2C5-sl15-pCE-r126,"Independence Rd",0,1051,206_shp,1,0
+263,15,t2C6-sl15-pCF-r126,"Eagle Valley",0,1051,207_shp,1,0

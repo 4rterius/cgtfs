@@ -97,3 +97,16 @@ void read_route(route_t *record, int field_count, const char **field_names, cons
     else
         record->is_null = 0;
 }
+
+int equal_route(const route_t *a, const route_t *b) {
+    return !(!strcmp(a->id, b->id) &&
+             !strcmp(a->agency_id, b->agency_id) &&
+             !strcmp(a->short_name, b->short_name) &&
+             !strcmp(a->long_name, b->long_name) &&
+             !strcmp(a->desc, b->desc) &&
+             !strcmp(a->url, b->url) &&
+             !strcmp(a->color, b->color) &&
+             !strcmp(a->text_color, b->text_color) &&
+             a->type == b->type &&
+             a->sort_order == b->sort_order);
+}

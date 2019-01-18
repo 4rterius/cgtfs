@@ -77,4 +77,12 @@ void init_trip(trip_t *record);
  */
 void read_trip(trip_t *record, int field_count, const char **field_names, const char **field_values);
 
+/**
+ * Compares two structures.
+ * @param[in] a  First structure
+ * @param[in] b  Second structure
+ * @returns 0 if structures are equal, non-zero otherwise.
+ */
+int equal_trip(const trip_t *a, const trip_t *b);
+
 #endif

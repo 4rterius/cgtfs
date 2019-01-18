@@ -64,3 +64,14 @@ void read_feed_info(feed_info_t *record, int field_count, const char **field_nam
     else
         record->is_null = 0;
 }
+
+int equal_feed_info(const feed_info_t *a, const feed_info_t *b) {
+    return !(!strcmp(a->feed_publisher_name, b->feed_publisher_name) &&
+             !strcmp(a->feed_publisher_url, b->feed_publisher_url) &&
+             !strcmp(a->feed_lang, b->feed_lang) &&
+             !strcmp(a->feed_start_date, b->feed_start_date) &&
+             !strcmp(a->feed_end_date, b->feed_end_date) &&
+             !strcmp(a->feed_version, b->feed_version) &&
+             !strcmp(a->feed_contact_email, b->feed_contact_email) &&
+             !strcmp(a->feed_contact_url, b->feed_contact_url));
+}

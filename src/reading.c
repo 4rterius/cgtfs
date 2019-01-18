@@ -304,6 +304,7 @@ int read_all_transfers(FILE *fp, transfer_t **records) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
         return record_count;
+        // TODO: return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));

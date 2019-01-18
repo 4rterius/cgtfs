@@ -51,4 +51,12 @@ void init_calendar_date(calendar_date_t *record);
  */
 void read_calendar_date(calendar_date_t *record, int field_count, const char **field_names, const char **field_values);
 
+/**
+ * Compares two structures.
+ * @param[in] a  First structure
+ * @param[in] b  Second structure
+ * @returns 0 if structures are equal, non-zero otherwise.
+ */
+int equal_calendar_date(const calendar_date_t *a, const calendar_date_t *b);
+
 #endif

@@ -98,3 +98,16 @@ void read_trip(trip_t *record, int field_count, const char **field_names, const 
     else
         record->is_null = 0;
 }
+
+int equal_trip(const trip_t *a, const trip_t *b) {
+    return !(!strcmp(a->route_id, b->route_id) &&
+             !strcmp(a->service_id, b->service_id) &&
+             !strcmp(a->id, b->id) &&
+             !strcmp(a->headsign, b->headsign) &&
+             !strcmp(a->short_name, b->short_name) &&
+             !strcmp(a->block_id, b->block_id) &&
+             !strcmp(a->shape_id, b->shape_id) &&
+             a->direction_id == b->direction_id &&
+             a->wheelchair_accessible == b->wheelchair_accessible &&
+             a->bikes_allowed == b->bikes_allowed);
+}

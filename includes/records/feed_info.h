@@ -39,4 +39,12 @@ void init_feed_info(feed_info_t *record);
  */
 void read_feed_info(feed_info_t *record, int field_count, const char **field_names, const char **field_values);
 
+/**
+ * Compares two structures.
+ * @param[in] a  First structure
+ * @param[in] b  Second structure
+ * @returns 0 if structures are equal, non-zero otherwise.
+ */
+int equal_feed_info(const feed_info_t *a, const feed_info_t *b);
+
 #endif

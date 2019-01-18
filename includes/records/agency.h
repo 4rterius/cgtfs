@@ -39,4 +39,12 @@ void init_agency(agency_t *record);
  */
 void read_agency(agency_t *record, int field_count, const char **field_names, const char **field_values);
 
+/**
+ * Compares two structures.
+ * @param[in] a  First structure
+ * @param[in] b  Second structure
+ * @returns 0 if structures are equal, non-zero otherwise.
+ */
+int equal_agency(const agency_t *a, const agency_t *b);
+
 #endif

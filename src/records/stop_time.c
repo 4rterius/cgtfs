@@ -98,3 +98,16 @@ void read_stop_time(stop_time_t *record, int field_count, const char **field_nam
     else
         record->is_null = 0;
 }
+
+int equal_stop_time(const stop_time_t *a, const stop_time_t *b) {
+    return !(!strcmp(a->trip_id, b->trip_id) &&
+             !strcmp(a->arrival_time, b->arrival_time) &&
+             !strcmp(a->departure_time, b->departure_time) &&
+             !strcmp(a->stop_id, b->stop_id) &&
+             !strcmp(a->stop_headsign, b->stop_headsign) &&
+             a->stop_sequence == b->stop_sequence &&
+             a->pickup_type == b->pickup_type &&
+             a->dropoff_type == b->dropoff_type &&
+             a->shape_dist_traveled == b->shape_dist_traveled &&
+             a->timepoint == b->timepoint);
+}
