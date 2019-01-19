@@ -44,9 +44,9 @@ TEST route_compare(void) {
         .sort_order = 1
     };
 
-    ASSERT_EQ(equal_route(&a, &b), 0);
-    ASSERT_EQ(equal_route(&a, &c), 1);
-    ASSERT_EQ(equal_route(&b, &c), 1);
+    ASSERT_EQ(0, equal_route(&a, &b));
+    ASSERT_EQ(1, equal_route(&a, &c));
+    ASSERT_EQ(1, equal_route(&b, &c));
 
     PASS();
 }

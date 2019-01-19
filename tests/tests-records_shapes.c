@@ -29,9 +29,9 @@ TEST shape_compare(void) {
         .dist_traveled = 2.6
     };
 
-    ASSERT_EQ(equal_shape(&a, &b), 0);
-    ASSERT_EQ(equal_shape(&a, &c), 1);
-    ASSERT_EQ(equal_shape(&b, &c), 1);
+    ASSERT_EQ(0, equal_shape(&a, &b));
+    ASSERT_EQ(1, equal_shape(&a, &c));
+    ASSERT_EQ(1, equal_shape(&b, &c));
 
     PASS();
 }

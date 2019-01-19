@@ -26,9 +26,9 @@ TEST transfer_compare(void) {
         .min_transfer_time = 800
     };
 
-    ASSERT_EQ(equal_transfer(&a, &b), 0);
-    ASSERT_EQ(equal_transfer(&a, &c), 1);
-    ASSERT_EQ(equal_transfer(&b, &c), 1);
+    ASSERT_EQ(0, equal_transfer(&a, &b));
+    ASSERT_EQ(1, equal_transfer(&a, &c));
+    ASSERT_EQ(1, equal_transfer(&b, &c));
 
     PASS();
 }

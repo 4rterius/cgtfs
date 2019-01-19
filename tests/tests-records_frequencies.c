@@ -29,9 +29,9 @@ TEST frequency_compare(void) {
         .exact_times = TE_EXACT
     };
 
-    ASSERT_EQ(equal_frequency(&a, &b), 0);
-    ASSERT_EQ(equal_frequency(&a, &c), 1);
-    ASSERT_EQ(equal_frequency(&b, &c), 1);
+    ASSERT_EQ(0, equal_frequency(&a, &b));
+    ASSERT_EQ(1, equal_frequency(&a, &c));
+    ASSERT_EQ(1, equal_frequency(&b, &c));
 
     PASS();
 }

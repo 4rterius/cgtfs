@@ -44,9 +44,9 @@ TEST trip_compare(void) {
         .bikes_allowed = BA_POSSIBLE
     };
 
-    ASSERT_EQ(equal_trip(&a, &b), 0);
-    ASSERT_EQ(equal_trip(&a, &c), 1);
-    ASSERT_EQ(equal_trip(&b, &c), 1);
+    ASSERT_EQ(0, equal_trip(&a, &b));
+    ASSERT_EQ(1, equal_trip(&a, &c));
+    ASSERT_EQ(1, equal_trip(&b, &c));
 
     PASS();
 }

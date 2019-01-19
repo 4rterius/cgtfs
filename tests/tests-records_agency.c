@@ -37,9 +37,9 @@ TEST agency_compare(void) {
         .email = "no-reply@example.com"
     };
 
-    ASSERT_EQ(equal_agency(&a, &b), 0);
-    ASSERT_EQ(equal_agency(&a, &c), 1);
-    ASSERT_EQ(equal_agency(&b, &c), 1);
+    ASSERT_EQ(0, equal_agency(&a, &b));
+    ASSERT_EQ(1, equal_agency(&a, &c));
+    ASSERT_EQ(1, equal_agency(&b, &c));
 
     PASS();
 }

@@ -44,9 +44,9 @@ TEST stop_time_compare(void) {
         .timepoint = TP_NOT_SET
     };
 
-    ASSERT_EQ(equal_stop_time(&a, &b), 0);
-    ASSERT_EQ(equal_stop_time(&a, &c), 1);
-    ASSERT_EQ(equal_stop_time(&b, &c), 1);
+    ASSERT_EQ(0, equal_stop_time(&a, &b));
+    ASSERT_EQ(1, equal_stop_time(&a, &c));
+    ASSERT_EQ(1, equal_stop_time(&b, &c));
 
     PASS();
 }

@@ -23,9 +23,9 @@ TEST calendar_date_compare(void) {
         .exception_type = ET_REMOVED
     };
 
-    ASSERT_EQ(equal_calendar_date(&a, &b), 0);
-    ASSERT_EQ(equal_calendar_date(&a, &c), 1);
-    ASSERT_EQ(equal_calendar_date(&b, &c), 1);
+    ASSERT_EQ(0, equal_calendar_date(&a, &b));
+    ASSERT_EQ(1, equal_calendar_date(&a, &c));
+    ASSERT_EQ(1, equal_calendar_date(&b, &c));
 
     PASS();
 }

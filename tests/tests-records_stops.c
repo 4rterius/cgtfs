@@ -50,9 +50,9 @@ TEST stop_compare(void) {
         .wheelchair_boarding = WB_NOT_SET
     };
 
-    ASSERT_EQ(equal_stop(&a, &b), 0);
-    ASSERT_EQ(equal_stop(&a, &c), 1);
-    ASSERT_EQ(equal_stop(&b, &c), 1);
+    ASSERT_EQ(0, equal_stop(&a, &b));
+    ASSERT_EQ(1, equal_stop(&a, &c));
+    ASSERT_EQ(1, equal_stop(&b, &c));
 
     PASS();
 }

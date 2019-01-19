@@ -44,9 +44,9 @@ TEST calendar_record_compare(void) {
         .sunday = SA_AVAILABLE
     };
 
-    ASSERT_EQ(equal_calendar_record(&a, &b), 0);
-    ASSERT_EQ(equal_calendar_record(&a, &c), 1);
-    ASSERT_EQ(equal_calendar_record(&b, &c), 1);
+    ASSERT_EQ(0, equal_calendar_record(&a, &b));
+    ASSERT_EQ(1, equal_calendar_record(&a, &c));
+    ASSERT_EQ(1, equal_calendar_record(&b, &c));
 
     PASS();
 }
