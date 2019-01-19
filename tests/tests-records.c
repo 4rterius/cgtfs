@@ -1,5 +1,5 @@
-#ifndef CGTFS_TESTS_READING_C
-#define CGTFS_TESTS_READING_C
+#ifndef CGTFS_TESTS_RECORDS_C
+#define CGTFS_TESTS_RECORDS_C
 
 #include "greatest/greatest.h"
 
@@ -61,7 +61,7 @@ TEST agency_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingAgency) {
+SUITE(CGTFS_RecordAgency) {
     RUN_TEST(agency_compare);
 }
 
@@ -96,7 +96,7 @@ TEST calendar_date_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingCalendarDate) {
+SUITE(CGTFS_RecordCalendarDate) {
     RUN_TEST(calendar_date_compare);
 }
 
@@ -152,7 +152,7 @@ TEST calendar_record_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingCalendarRecord) {
+SUITE(CGTFS_RecordCalendarRecord) {
     RUN_TEST(calendar_record_compare);
 }
 
@@ -197,7 +197,7 @@ TEST fare_attributes_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingFareAttributes) {
+SUITE(CGTFS_RecordFareAttributes) {
     RUN_TEST(fare_attributes_compare);
 }
 
@@ -238,7 +238,7 @@ TEST fare_rule_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingFareRule) {
+SUITE(CGTFS_RecordFareRule) {
     RUN_TEST(fare_rule_compare);
 }
 
@@ -288,7 +288,7 @@ TEST feed_info_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingFeedInfo) {
+SUITE(CGTFS_RecordFeedInfo) {
     RUN_TEST(feed_info_compare);
 }
 
@@ -329,7 +329,7 @@ TEST frequency_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingFrequency) {
+SUITE(CGTFS_RecordFrequency) {
     RUN_TEST(frequency_compare);
 }
 
@@ -385,7 +385,7 @@ TEST route_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingRoute) {
+SUITE(CGTFS_RecordRoute) {
     RUN_TEST(route_compare);
 }
 
@@ -426,7 +426,7 @@ TEST shape_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingShape) {
+SUITE(CGTFS_RecordShape) {
     RUN_TEST(shape_compare);
 }
 
@@ -482,7 +482,7 @@ TEST stop_time_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingStopTime) {
+SUITE(CGTFS_RecordStopTime) {
     RUN_TEST(stop_time_compare);
 }
 
@@ -544,7 +544,7 @@ TEST stop_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingStop) {
+SUITE(CGTFS_RecordStop) {
     RUN_TEST(stop_compare);
 }
 
@@ -582,7 +582,7 @@ TEST transfer_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingTransfer) {
+SUITE(CGTFS_RecordTransfer) {
     RUN_TEST(transfer_compare);
 }
 
@@ -638,7 +638,7 @@ TEST trip_compare(void) {
     PASS();
 }
 
-SUITE(CGTFS_ReadingTrip) {
+SUITE(CGTFS_RecordTrip) {
     RUN_TEST(trip_compare);
 }
 
