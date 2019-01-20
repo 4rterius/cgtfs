@@ -6,17 +6,17 @@
 
 TEST fare_attributes_read(void) {
 
-    #define FIELDS_NUM 7
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_4 7
+    char *field_names[FIELDS_NUM_4] = {
         "fare_id", "price", "currency_type", "payment_method",
         "transfers", "agency_id", "transfer_duration"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_4] = {
         "17", "2.85", "EUR", "0", "", "1", "6000"
     };
 
     fare_attributes_t fa_1;
-    read_fare_attributes(&fa_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_fare_attributes(&fa_1, FIELDS_NUM_4, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("17", fa_1.fare_id);
     ASSERT_STR_EQ("EUR", fa_1.currency_type);

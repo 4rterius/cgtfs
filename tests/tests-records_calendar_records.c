@@ -6,17 +6,17 @@
 
 TEST calendar_record_read(void) {
 
-    #define FIELDS_NUM 10
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_3 10
+    char *field_names[FIELDS_NUM_3] = {
         "service_id", "monday", "tuesday", "wednesday", "thursday",
         "friday", "saturday", "sunday", "start_date", "end_date"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_3] = {
         "1001", "1", "1", "1", "1", "1", "0", "0", "20000101", "20201231"
     };
 
     calendar_record_t cr_1;
-    read_calendar_record(&cr_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_calendar_record(&cr_1, FIELDS_NUM_3, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("1001", cr_1.service_id);
     ASSERT_STR_EQ("20000101", cr_1.start_date);

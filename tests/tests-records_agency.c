@@ -6,18 +6,18 @@
 
 TEST agency_read(void) {
 
-    #define FIELDS_NUM 8
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_1 8
+    char *field_names[FIELDS_NUM_1] = {
         "agency_id", "agency_name", "agency_url", "agency_timezone",
         "agency_lang", "agency_phone", "agency_fare_url", "agency_email"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_1] = {
         "1", "blahblah", "http://example.com/", "Europe/Moscow",
         "en", "0 000 000 00 00", "http://cash.me/outside", "ex@amp.le"
     };
     
     agency_t a_1;
-    read_agency(&a_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_agency(&a_1, FIELDS_NUM_1, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("1", a_1.id);
     ASSERT_STR_EQ("blahblah", a_1.name);

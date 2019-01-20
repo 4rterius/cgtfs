@@ -4,6 +4,27 @@
 #include "greatest/greatest.h"
 #include "records/transfers.h"
 
+TEST transfer_read(void) {
+        
+    #define FIELDS_NUM_12 4
+    char *field_names[FIELDS_NUM_12] = {
+        "from_stop_id", "to_stop_id", "transfer_type", "min_transfer_time"
+    };
+    char *field_values[FIELDS_NUM_12] = {
+        "S180", "R360", "2", "120"
+    };
+
+    transfer_t t_1;
+    read_transfer(&t_1, FIELDS_NUM_12, (const char **)field_names, (const char **)field_values);
+    
+    ASSERT_STR_EQ("S180", t_1.from_stop_id);
+    ASSERT_STR_EQ("R360", t_1.to_stop_id);
+    ASSERT_EQ(TT_TIME_REQUIRED, t_1.transfer_type);
+    ASSERT_EQ(120, t_1.min_transfer_time);
+
+    PASS();
+}
+
 TEST transfer_compare(void) {
     transfer_t a = {
         .from_stop_id = "0STP8",
@@ -34,6 +55,7 @@ TEST transfer_compare(void) {
 }
 
 SUITE(CGTFS_RecordTransfer) {
+    RUN_TEST(transfer_read);
     RUN_TEST(transfer_compare);
 }
 

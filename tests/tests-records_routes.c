@@ -5,18 +5,18 @@
 #include "records/route.h"
 
 TEST route_read(void) {
-    #define FIELDS_NUM 10
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_8 10
+    char *field_names[FIELDS_NUM_8] = {
         "route_id", "agency_id", "route_short_name", "route_long_name", "route_desc",
         "route_type", "route_url", "route_color", "route_text_color", "route_sort_order"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_8] = {
         "A", "2", "17", "Mission", "Amazing desc",
         "3", "http://some.url", "cccccc", "ff0000", "175"
     };
 
     route_t r_1;
-    read_route(&r_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_route(&r_1, FIELDS_NUM_8, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("A", r_1.id);
     ASSERT_STR_EQ("2", r_1.agency_id);

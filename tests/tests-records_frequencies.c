@@ -5,16 +5,16 @@
 #include "records/frequency.h"
 
 TEST frequency_read(void) {
-    #define FIELDS_NUM 5
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_7 5
+    char *field_names[FIELDS_NUM_7] = {
         "trip_id", "start_time", "end_time", "headway_secs", "exact_times"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_7] = {
         "0xC0FFEE", "05:00:00", "07:00:00", "1200", ""
     };
 
     frequency_t freq_1;
-    read_frequency(&freq_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_frequency(&freq_1, FIELDS_NUM_7, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("0xC0FFEE", freq_1.trip_id);
     ASSERT_STR_EQ("05:00:00", freq_1.start_time);

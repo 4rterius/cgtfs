@@ -6,18 +6,18 @@
 
 TEST feed_info_read(void) {
 
-    #define FIELDS_NUM 8
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_6 8
+    char *field_names[FIELDS_NUM_6] = {
         "feed_publisher_name", "feed_publisher_url", "feed_lang", "feed_start_date",
         "feed_end_date", "feed_version", "feed_contact_email", "feed_contact_url"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_6] = {
         "Vasilij Terkin", "protocol://domain.zone", "somelang", "18970527",
         "30000101", "0.1.0", "some@example.com", "http://example.com"
     };
 
     feed_info_t fi_1;
-    read_feed_info(&fi_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_feed_info(&fi_1, FIELDS_NUM_6, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("Vasilij Terkin", fi_1.feed_publisher_name);
     ASSERT_STR_EQ("protocol://domain.zone", fi_1.feed_publisher_url);

@@ -6,16 +6,16 @@
 
 TEST fare_rule_read(void) {
 
-    #define FIELDS_NUM 5
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_5 5
+    char *field_names[FIELDS_NUM_5] = {
         "fare_id", "route_id", "origin_id", "destination_id", "contains_id"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_5] = {
         "b", "TSW", "2", "8", "6"
     };
 
     fare_rule_t fr_1;
-    read_fare_rule(&fr_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_fare_rule(&fr_1, FIELDS_NUM_5, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("b", fr_1.fare_id);
     ASSERT_STR_EQ("TSW", fr_1.route_id);

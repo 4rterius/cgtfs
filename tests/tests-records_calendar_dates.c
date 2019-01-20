@@ -6,16 +6,16 @@
 
 TEST calendar_date_read(void) {
 
-    #define FIELDS_NUM 3
-    char *field_names[FIELDS_NUM] = {
+    #define FIELDS_NUM_2 3
+    char *field_names[FIELDS_NUM_2] = {
         "service_id", "date", "exception_type"
     };
-    char *field_values[FIELDS_NUM] = {
+    char *field_values[FIELDS_NUM_2] = {
         "1000", "20000101", "2"
     };
 
     calendar_date_t cd_1;
-    read_calendar_date(&cd_1, FIELDS_NUM, (const char **)field_names, (const char **)field_values);
+    read_calendar_date(&cd_1, FIELDS_NUM_2, (const char **)field_names, (const char **)field_values);
 
     ASSERT_STR_EQ("1000", cd_1.service_id);
     ASSERT_STR_EQ("20000101", cd_1.date);
