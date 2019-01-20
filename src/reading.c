@@ -17,7 +17,7 @@ int read_all_agencies(FILE *fp, agency_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -43,7 +43,7 @@ int read_all_calendar_dates(FILE *fp, calendar_date_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -69,7 +69,7 @@ int read_all_calendar_records(FILE *fp, calendar_record_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -95,7 +95,7 @@ int read_all_fare_attributes(FILE *fp, fare_attributes_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -121,7 +121,7 @@ int read_all_fare_rules(FILE *fp, fare_rule_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -147,7 +147,7 @@ int read_all_feed_info(FILE *fp, feed_info_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -173,7 +173,7 @@ int read_all_frequencies(FILE *fp, frequency_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -199,7 +199,7 @@ int read_all_routes(FILE *fp, route_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -225,7 +225,7 @@ int read_all_shapes(FILE *fp, shape_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -251,7 +251,7 @@ int read_all_stop_times(FILE *fp, stop_time_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -277,7 +277,7 @@ int read_all_stops(FILE *fp, stop_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -303,8 +303,7 @@ int read_all_transfers(FILE *fp, transfer_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
-        // TODO: return (record_count < 0) ? -1 : 0;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));
@@ -330,7 +329,7 @@ int read_all_trips(FILE *fp, trip_t **records) {
     if (record_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
-        return record_count;
+        return (record_count < 0) ? -1 : 0;
     }
 
     *records = malloc(record_count * sizeof(**records));

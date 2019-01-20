@@ -422,8 +422,7 @@ TEST fr_transfers(void) {
     transfer_t *records;
     int record_count = read_all_transfers(fp, &records);
 
-    ASSERT_EQ_FMTm("Parsed records from empty file", -2, record_count, "%i");
-    // TODO: set to -1
+    ASSERT_EQ_FMTm("Parsed records from empty file", -1, record_count, "%i");
 
     if (record_count > 0) free(records);
     if (fp) fclose(fp);

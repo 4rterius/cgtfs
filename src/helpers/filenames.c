@@ -1,11 +1,16 @@
 #include "helpers/filenames.h"
 
 void make_filepath(char **out, const char *dirname, const char *filename) {
-    // TODO: null-checking here
+    
+    if (dirname == NULL || filename == NULL) {
+        *out = NULL;
+        return;
+    }
 
     char *_dirname = strdup(dirname);
+    const int res_len = strlen(dirname) + strlen(filename) + 2;
 
-    *out = malloc((strlen(dirname) + strlen(filename) + 2) * sizeof(char));
+    *out = malloc(res_len * sizeof(char));
     strcpy(*out, "");
 
     char last_dirname_char = '\0';
@@ -14,10 +19,8 @@ void make_filepath(char **out, const char *dirname, const char *filename) {
     
     if (last_dirname_char == *FILENAME_SEPARATOR)
         _dirname[strlen(_dirname) - 1] = '\0';
-
-    strncat(*out, _dirname, strlen(_dirname));
-    strncat(*out, FILENAME_SEPARATOR, 1);
-    strncat(*out, filename, strlen(filename));
+    
+    snprintf(*out, res_len, "%s%s%s", _dirname, FILENAME_SEPARATOR, filename);
 
     free(_dirname);
 }
