@@ -1,14 +1,14 @@
-#ifndef CGTFS_TESTS_READING_UTILS_C
-#define CGTFS_TESTS_READING_UTILS_C
+#ifndef CGTFS_TESTS_FILE_UTILS_C
+#define CGTFS_TESTS_FILE_UTILS_C
 
 #include "greatest/greatest.h"
-#include "reading_utils.h"
+#include "file_utils.h"
 
 
 // read_header(..) tests
 // ----------------------------------------------------------------------
 
-TEST reading_utils_read_header_0(void) {
+TEST file_utils_read_header_0(void) {
     FILE *fp = fopen("../tests/data/agency.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/agency.txt` test file");
@@ -41,7 +41,7 @@ TEST reading_utils_read_header_0(void) {
     }
 }
 
-TEST reading_utils_read_header_1(void) {
+TEST file_utils_read_header_1(void) {
     FILE *fp = fopen("../tests/data/routes.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/routes.txt` test file");
@@ -75,7 +75,7 @@ TEST reading_utils_read_header_1(void) {
     }
 }
 
-TEST reading_utils_read_header_2_empty(void) {
+TEST file_utils_read_header_2_empty(void) {
     FILE *fp = fopen("../tests/data/empty.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/empty.txt` test file");
@@ -95,7 +95,7 @@ TEST reading_utils_read_header_2_empty(void) {
     }
 }
 
-TEST reading_utils_read_header_3_badfile(void) {
+TEST file_utils_read_header_3_badfile(void) {
     FILE *fp = fopen("../tests/data/doesntexist.txt", "r");
     
     char **field_names;
@@ -119,7 +119,7 @@ TEST reading_utils_read_header_3_badfile(void) {
 // read_record(..) tests
 // ----------------------------------------------------------------------
 
-TEST reading_utils_read_record_0(void) {
+TEST file_utils_read_record_0(void) {
     FILE *fp = fopen("../tests/data/agency.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/agency.txt` test file");
@@ -178,7 +178,7 @@ TEST reading_utils_read_record_0(void) {
     }
 }
 
-TEST reading_utils_read_record_1_empty(void) {
+TEST file_utils_read_record_1_empty(void) {
     FILE *fp = fopen("../tests/data/empty.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/empty.txt` test file");
@@ -202,7 +202,7 @@ TEST reading_utils_read_record_1_empty(void) {
     }
 }
 
-TEST reading_utils_read_record_2_badfile(void) {
+TEST file_utils_read_record_2_badfile(void) {
     FILE *fp = fopen("../tests/data/doesntexist.txt", "r");
 
     char **field_names;
@@ -230,7 +230,7 @@ TEST reading_utils_read_record_2_badfile(void) {
 // count_lines(..) tests
 // ----------------------------------------------------------------------
 
-TEST reading_utils_count_lines_0(void) {
+TEST file_utils_count_lines_0(void) {
     FILE *fp = fopen("../tests/data/agency.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/agency.txt` test file");
@@ -241,7 +241,7 @@ TEST reading_utils_count_lines_0(void) {
     }
 }
 
-TEST reading_utils_count_lines_1(void) {
+TEST file_utils_count_lines_1(void) {
     FILE *fp = fopen("../tests/data/empty.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/empty.txt` test file");
@@ -252,7 +252,7 @@ TEST reading_utils_count_lines_1(void) {
     }
 }
 
-TEST reading_utils_count_lines_2(void) {
+TEST file_utils_count_lines_2(void) {
     FILE *fp = fopen("../tests/data/only_nl.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/only_nl.txt` test file");
@@ -263,7 +263,7 @@ TEST reading_utils_count_lines_2(void) {
     }
 }
 
-TEST reading_utils_count_lines_3_badfile(void) {
+TEST file_utils_count_lines_3_badfile(void) {
     FILE *fp = fopen("../tests/data/doesntexist.txt", "r");
     ASSERT_EQ(-1, count_lines(fp));
 
@@ -274,20 +274,20 @@ TEST reading_utils_count_lines_3_badfile(void) {
 
 
 
-SUITE(CGTFS_ReadingUtils) {
-    RUN_TEST(reading_utils_read_header_0);
-    RUN_TEST(reading_utils_read_header_1);
-    RUN_TEST(reading_utils_read_header_2_empty);
-    RUN_TEST(reading_utils_read_header_3_badfile);
+SUITE(CGTFS_FileUtils) {
+    RUN_TEST(file_utils_read_header_0);
+    RUN_TEST(file_utils_read_header_1);
+    RUN_TEST(file_utils_read_header_2_empty);
+    RUN_TEST(file_utils_read_header_3_badfile);
 
-    RUN_TEST(reading_utils_read_record_0);
-    RUN_TEST(reading_utils_read_record_1_empty);
-    RUN_TEST(reading_utils_read_record_2_badfile);
+    RUN_TEST(file_utils_read_record_0);
+    RUN_TEST(file_utils_read_record_1_empty);
+    RUN_TEST(file_utils_read_record_2_badfile);
 
-    RUN_TEST(reading_utils_count_lines_0);
-    RUN_TEST(reading_utils_count_lines_1);
-    RUN_TEST(reading_utils_count_lines_2);
-    RUN_TEST(reading_utils_count_lines_3_badfile);
+    RUN_TEST(file_utils_count_lines_0);
+    RUN_TEST(file_utils_count_lines_1);
+    RUN_TEST(file_utils_count_lines_2);
+    RUN_TEST(file_utils_count_lines_3_badfile);
 }
 
 #endif

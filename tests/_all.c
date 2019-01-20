@@ -8,8 +8,8 @@
 #include "tests-file_reading.c"
 #include "tests-filenames.c"
 #include "tests-haversine.c"
-#include "tests-reading_utils.c"
-#include "tests-reading.c"
+#include "tests-file_utils.c"
+#include "tests-records.c"
 
 GREATEST_MAIN_DEFS();
 
@@ -21,21 +21,21 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_Filenames);
     RUN_SUITE(CGTFS_Haversine);
 
-    RUN_SUITE(CGTFS_ReadingUtils);
+    RUN_SUITE(CGTFS_FileUtils);
     
-    RUN_SUITE(CGTFS_ReadingAgency);
-    RUN_SUITE(CGTFS_ReadingCalendarDate);
-    RUN_SUITE(CGTFS_ReadingCalendarRecord);
-    RUN_SUITE(CGTFS_ReadingFareAttributes);
-    RUN_SUITE(CGTFS_ReadingFareRule);
-    RUN_SUITE(CGTFS_ReadingFeedInfo);
-    RUN_SUITE(CGTFS_ReadingFrequency);
-    RUN_SUITE(CGTFS_ReadingRoute);
-    RUN_SUITE(CGTFS_ReadingShape);
-    RUN_SUITE(CGTFS_ReadingStopTime);
-    RUN_SUITE(CGTFS_ReadingStop);
-    RUN_SUITE(CGTFS_ReadingTransfer);
-    RUN_SUITE(CGTFS_ReadingTrip);
+    RUN_SUITE(CGTFS_RecordAgency);
+    RUN_SUITE(CGTFS_RecordCalendarDate);
+    RUN_SUITE(CGTFS_RecordCalendarRecord);
+    RUN_SUITE(CGTFS_RecordFareAttributes);
+    RUN_SUITE(CGTFS_RecordFareRule);
+    RUN_SUITE(CGTFS_RecordFeedInfo);
+    RUN_SUITE(CGTFS_RecordFrequency);
+    RUN_SUITE(CGTFS_RecordRoute);
+    RUN_SUITE(CGTFS_RecordShape);
+    RUN_SUITE(CGTFS_RecordStopTime);
+    RUN_SUITE(CGTFS_RecordStop);
+    RUN_SUITE(CGTFS_RecordTransfer);
+    RUN_SUITE(CGTFS_RecordTrip);
 
     RUN_SUITE(CGTFS_FileReading);
 
