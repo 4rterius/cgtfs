@@ -26,6 +26,8 @@
  * Concatenates a directory name with a file name,
  * removing or adding a trailing (back)slash in between them.
  * 
+ * Writes `NULL` into `out` if either of `dirname` or `filename` are NULLs.
+ * 
  * @param[out] out      String pointer to write the resulting path into.
  * @param[in]  dirname  Directory name.
  * @param[in]  filename File name.

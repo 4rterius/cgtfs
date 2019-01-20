@@ -110,7 +110,7 @@ int count_lines(FILE *fp) {
 
     fsetpos(fp, &orig_pos);
 
-    if (ch != '\n' && ch_count > 0)
+    if (ch_count > 0)
         lines++;
 
     if (ferror(fp) != 0)
