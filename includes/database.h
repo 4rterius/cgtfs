@@ -2,7 +2,7 @@
 #define CGTFS_DATABASE_H
 
 #include <string.h>
-#include "sqlite3/sqlite3.h"
+#include "sqlite3/src/sqlite3.h"
 
 /**
  * Base struct of all db processes to encapsulate the DB realization.
