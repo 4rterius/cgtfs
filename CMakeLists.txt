@@ -48,24 +48,17 @@ include_directories(${include_dirs})
 ## sqlite3 dependency
 ## -----------------------------------------------------------------
 
-ExternalProject_Add(sqlite3_dep 
-  TMP_DIR "build/tmp/deps/sqlite3"
-  SOURCE_DIR "${CMAKE_SOURCE_DIR}/third_party/sqlite3/sqlite3"
-  SOURCE_SUBDIR "../"
-
-  URL "https://www.sqlite.org/2018/sqlite-amalgamation-3260000.zip"
-  URL_HASH SHA1=a7405b6a3e59287db589fc0efcc72ccf46ae7ed0
-
-  INSTALL_COMMAND cmake -E echo "Skipping install step..."
-)
+add_subdirectory("${CMAKE_SOURCE_DIR}/third_party/sqlite3")
 
 
 ## Library
 ## -----------------------------------------------------------------
 
 add_library(cgtfs STATIC ${sources})
-add_dependencies(cgtfs sqlite3_dep)
+add_dependencies(cgtfs sqlite3)
 set_target_properties(cgtfs PROPERTIES VERSION ${PROJECT_VERSION})
+
+target_link_libraries(sqlite3)
 
 if (NOT ${CMAKE_SYSTEM_NAME} MATCHES "Windows")
   target_link_libraries(cgtfs m)
