@@ -33,6 +33,7 @@ set(sources
   "src/database.c"
   "src/feed.c"
   "src/reading.c"
+  "src/reading_db.c"
   "src/file_utils.c"
   "src/mem_utils.c"
 )
