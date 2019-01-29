@@ -1,6 +1,7 @@
 #ifndef CGTFS_DATABASE_H
 #define CGTFS_DATABASE_H
 
+#include <stdlib.h>
 #include <string.h>
 #include "sqlite3/src/sqlite3.h"
 
@@ -19,8 +20,7 @@ typedef struct feed_db_t {
  */
 typedef enum feed_db_status_t {
     FEED_DB_ERROR,
-    FEED_DB_SUCCESS,
-    FEED_DB_EXISTS
+    FEED_DB_SUCCESS
 } feed_db_status_t;
 
 /**
@@ -36,7 +36,7 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path);
  * @param Feed database to clear.
  * @returns Result of the db operation.
  */
-feed_db_status_t clear_feed_db(feed_db_t *db);
+// feed_db_status_t clear_feed_db(feed_db_t *db);
 
 /**
  * Reads a CGTFS from the given directory to the given database.

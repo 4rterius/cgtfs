@@ -30,6 +30,7 @@ set(sources
   "src/records/transfers.c"
   "src/records/trip.c"
 
+  "src/database.c"
   "src/feed.c"
   "src/reading.c"
   "src/file_utils.c"
