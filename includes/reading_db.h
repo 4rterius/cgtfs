@@ -18,8 +18,9 @@
 #include "records/trip.h"
 
 #include "database.h"
+#include "database_utils.h"
 
 
-feed_db_status_t read_all_agencies_db(FILE *fp, feed_db_t *db);
+int read_all_agencies_db(FILE *fp, feed_db_t *db);
 
 #endif

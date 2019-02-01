@@ -73,7 +73,7 @@ endif()
 
 add_executable(tests tests/_all.c)
 add_dependencies(tests cgtfs)
-target_link_libraries(tests cgtfs)
+target_link_libraries(tests cgtfs sqlite3)
 
 ## Benchmark
 ## -----------------------------------------------------------------

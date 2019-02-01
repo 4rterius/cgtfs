@@ -5,23 +5,9 @@
 #include <string.h>
 #include "sqlite3/src/sqlite3.h"
 
-/**
- * Base struct of all db processes to encapsulate the DB realization.
- */
-typedef struct feed_db_t {
-    char *path;
-    sqlite3* conn;
-    char *error_msg;
-    int rc;
-} feed_db_t;
+#include "database_types.h"
+#include "database_utils.h"
 
-/**
- * Possible outcomes of feed db operations.
- */
-typedef enum feed_db_status_t {
-    FEED_DB_ERROR,
-    FEED_DB_SUCCESS
-} feed_db_status_t;
 
 /**
  * Initializes a give feed database.
@@ -33,11 +19,11 @@ typedef enum feed_db_status_t {
 feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
 
 /**
- * Empties the given database.
- * @param Feed database to clear.
+ * Creates the layout in the given database.
+ * @param Feed database to work on.
  * @returns Result of the db operation.
  */
-// feed_db_status_t clear_feed_db(feed_db_t *db);
+feed_db_status_t setup_feed_db(feed_db_t *db);
 
 /**
  * Reads a CGTFS from the given directory to the given database.

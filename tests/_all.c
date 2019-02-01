@@ -3,6 +3,7 @@
 
 #include "greatest/greatest.h"
 
+#include "tests-database.c"
 #include "tests-enum_parsing.c"
 #include "tests-feed.c"
 #include "tests-file_reading.c"
@@ -15,6 +16,8 @@ GREATEST_MAIN_DEFS();
 
 int main(int argc, char **argv) {
     GREATEST_MAIN_BEGIN();
+
+    RUN_SUITE(CGTFS_Database);
 
     RUN_SUITE(CGTFS_EnumParsing);
     RUN_SUITE(CGTFS_Feed);

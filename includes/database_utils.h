@@ -7,11 +7,12 @@
 
 #include "sqlite3/src/sqlite3.h"
 
+#include "database_types.h"
 #include "database.h"
 
 #define STATEMENT_BUF_LEN 1000
 
 
-feed_db_status_t cgtfs_db_create_table(const char *name, int field_num, const char **field_names, const char *key_field,  feed_db_t *db);
+// feed_db_status_t cgtfs_db_create_table(const char *name, int field_num, const char **field_names, const char *key_field,  feed_db_t *db);
 
 #endif

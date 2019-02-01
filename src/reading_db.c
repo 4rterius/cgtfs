@@ -1,6 +1,6 @@
 #include "reading_db.h"
 
-feed_db_status_t read_all_agencies_db(FILE *fp, feed_db_t *db) {
+int read_all_agencies_db(FILE *fp, feed_db_t *db) {
 
     agency_t record;
 
@@ -15,8 +15,6 @@ feed_db_status_t read_all_agencies_db(FILE *fp, feed_db_t *db) {
         free(record_values);
         return (record_count < 0) ? -1 : 0;
     }
-
-    const char table_name[] = "agencies";
     
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
