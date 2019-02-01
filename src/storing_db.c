@@ -1,6 +1,6 @@
-#include "writing_db.h"
+#include "storing_db.h"
 
-feed_db_status_t write_agency_db(agency_t *record, feed_db_t *db) {
+feed_db_status_t store_agency_db(agency_t *record, feed_db_t *db) {
     sqlite3_stmt *stmt;
     char qr[] = "INSERT INTO agency ("
                     "agency_id, agency_name,"

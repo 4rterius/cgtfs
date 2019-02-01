@@ -20,6 +20,6 @@
 #include "database.h"
 #include "database_utils.h"
 
-feed_db_status_t write_agency_db(agency_t *record, feed_db_t *db);
+feed_db_status_t store_agency_db(agency_t *record, feed_db_t *db);
 
 #endif

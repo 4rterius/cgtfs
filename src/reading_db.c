@@ -20,7 +20,7 @@ int read_all_agencies_db(FILE *fp, feed_db_t *db) {
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
             read_agency(&record, field_count, (const char **)field_names, (const char **)record_values);
-            res = write_agency_db(&record, db);
+            res = store_agency_db(&record, db);
 
             free_cstr_arr(record_values, field_count);
 
