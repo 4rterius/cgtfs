@@ -3,6 +3,7 @@
 int read_all_agencies_db(FILE *fp, feed_db_t *db) {
 
     agency_t record;
+    feed_db_status_t res;
 
     char **record_values = NULL;
     int record_count = count_lines(fp) - 1;
@@ -19,9 +20,12 @@ int read_all_agencies_db(FILE *fp, feed_db_t *db) {
     for (int i = 0; i < record_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
             read_agency(&record, field_count, (const char **)field_names, (const char **)record_values);
-            // PLAN: Write record into the database.
+            res = write_agency_db(&record, db);
 
             free_cstr_arr(record_values, field_count);
+
+            if (res != FEED_DB_SUCCESS)
+                break;
         }
     }
 
