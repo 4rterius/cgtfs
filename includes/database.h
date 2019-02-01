@@ -27,9 +27,10 @@ typedef enum feed_db_status_t {
  * Initializes a give feed database.
  * @param db       Pointer to the feed database to serve.
  * @param db_path  /path/to/database
+ * @param writable 0 for make connection read-only, else for otherwise
  * @returns Result of the db operation.
  */
-feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path);
+feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
 
 /**
  * Empties the given database.
