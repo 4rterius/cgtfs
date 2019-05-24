@@ -1,5 +1,5 @@
-#ifndef CGTFS_WRITING_DB_H
-#define CGTFS_WRITING_DB_H
+#ifndef CGTFS_STORING_DB_H
+#define CGTFS_STORING_DB_H
 
 #include <stdio.h>
 
