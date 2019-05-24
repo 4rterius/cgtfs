@@ -19,6 +19,8 @@
 
 #include "database.h"
 #include "database_utils.h"
+#include "file_utils.h"
+#include "mem_utils.h"
 #include "storing_db.h"
 
 
