@@ -11,6 +11,6 @@
 #include "mem_utils.h"
 
 
-int fetch_all_agencies_db(feed_db_t *db, agency_t *records);
+int fetch_all_agencies_db(feed_db_t *db, agency_t **records);
 
 #endif
