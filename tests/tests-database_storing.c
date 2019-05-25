@@ -2,7 +2,7 @@
 #define CGTFS_TESTS_DATABASE_WRITING_C
 
 #include "greatest/greatest.h"
-#include "storing_db.h"
+#include "database/records/agency.h"
 
 TEST db_storing_agencies(void) {
     feed_db_t db;
