@@ -7,8 +7,8 @@
 
 #include "sqlite3/src/sqlite3.h"
 
-#include "database_types.h"
-#include "database.h"
+#include "database/database_types.h"
+#include "database/database.h"
 
 #define STATEMENT_BUF_LEN 1000
 

@@ -5,8 +5,8 @@
 #include <string.h>
 #include "sqlite3/src/sqlite3.h"
 
-#include "database_types.h"
-#include "database_utils.h"
+#include "database/database_types.h"
+#include "database/database_utils.h"
 
 
 /**

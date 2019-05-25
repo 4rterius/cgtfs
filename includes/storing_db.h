@@ -17,8 +17,8 @@
 #include "records/transfers.h"
 #include "records/trip.h"
 
-#include "database.h"
-#include "database_utils.h"
+#include "database/database.h"
+#include "database/database_utils.h"
 
 feed_db_status_t store_agency_db(agency_t *record, feed_db_t *db);
 

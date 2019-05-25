@@ -2,7 +2,7 @@
 #define CGTFS_TESTS_DATABASE_C
 
 #include "greatest/greatest.h"
-#include "database.h"
+#include "database/database.h"
 
 TEST db_init_close_writable(void) {
     feed_db_t db;

@@ -1,4 +1,4 @@
-#include "database_utils.h"
+#include "database/database_utils.h"
 
 // feed_db_status_t cgtfs_db_create_table(const char *name, int field_num, const char **field_names,
 //         const char *key_field,  feed_db_t *db) {

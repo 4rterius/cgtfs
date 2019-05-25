@@ -1,4 +1,4 @@
-#include "database.h"
+#include "database/database.h"
 
 feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable) {
     db->path = strdup(db_path);

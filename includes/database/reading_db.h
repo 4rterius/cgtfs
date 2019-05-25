@@ -17,8 +17,8 @@
 #include "records/transfers.h"
 #include "records/trip.h"
 
-#include "database.h"
-#include "database_utils.h"
+#include "database/database.h"
+#include "database/database_utils.h"
 #include "file_utils.h"
 #include "mem_utils.h"
 #include "storing_db.h"
