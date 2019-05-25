@@ -1,5 +1,5 @@
-#ifndef CGTFS_READING_DB_H
-#define CGTFS_READING_DB_H
+#ifndef CGTFS_DATABASE_STORING_H
+#define CGTFS_DATABASE_STORING_H
 
 #include <stdio.h>
 
@@ -11,6 +11,6 @@
 #include "mem_utils.h"
 
 
-int read_all_agencies_db(FILE *fp, feed_db_t *db);
+int store_all_agencies_db(FILE *fp, feed_db_t *db);
 
 #endif

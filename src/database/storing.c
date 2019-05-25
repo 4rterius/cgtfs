@@ -1,6 +1,6 @@
-#include "database/reading_db.h"
+#include "database/storing.h"
 
-int read_all_agencies_db(FILE *fp, feed_db_t *db) {
+int store_all_agencies_db(FILE *fp, feed_db_t *db) {
 
     agency_t record;
     feed_db_status_t res;

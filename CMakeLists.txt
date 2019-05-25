@@ -32,7 +32,7 @@ set(sources
 
   "src/database/database.c"
   "src/database/database_utils.c"
-  "src/database/reading_db.c"
+  "src/database/storing.c"
   
   "src/database/records/agency.c"
 
