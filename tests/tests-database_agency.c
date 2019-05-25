@@ -1,5 +1,5 @@
-#ifndef CGTFS_TESTS_DATABASE_WRITING_C
-#define CGTFS_TESTS_DATABASE_WRITING_C
+#ifndef CGTFS_TESTS_DATABASE_RECORDS_AGENCY_C
+#define CGTFS_TESTS_DATABASE_RECORDS_AGENCY_C
 
 #include "greatest/greatest.h"
 #include "database/records/agency.h"
