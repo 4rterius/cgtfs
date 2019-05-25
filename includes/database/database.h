@@ -20,10 +20,11 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
 
 /**
  * Creates the layout in the given database.
- * @param Feed database to work on.
+ * @param db        Feed database to work on.
+ * @param overwrite 0 to make error if tables already exist, else for otherwise.
  * @returns Result of the db operation.
  */
-feed_db_status_t setup_feed_db(feed_db_t *db);
+feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
 
 /**
  * Reads a CGTFS from the given directory to the given database.
