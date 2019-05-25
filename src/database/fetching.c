@@ -37,6 +37,7 @@ int fetch_all_agencies_db(feed_db_t *db, agency_t **records) {
         if (i >= record_count)
             break;
     }
-
+    
+    sqlite3_finalize(stmt);
     return record_count;
 }
