@@ -5,6 +5,7 @@
 
 #include "tests-database.c"
 #include "tests-database_storing.c"
+#include "tests-database_fetching.c"
 #include "tests-database_utils.c"
 #include "tests-database_agency.c"
 #include "tests-enum_parsing.c"
@@ -22,6 +23,7 @@ int main(int argc, char **argv) {
 
     RUN_SUITE(CGTFS_Database);
     RUN_SUITE(CGTFS_DatabaseStoring);
+    RUN_SUITE(CGTFS_DatabaseFetching);
     RUN_SUITE(CGTFS_DatabaseUtils);
     
     RUN_SUITE(CGTFS_DatabaseAgency);

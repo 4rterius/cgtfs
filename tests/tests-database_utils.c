@@ -7,27 +7,27 @@
 TEST db_count_rows_success(void) {
 
     feed_db_t db;
-    feed_db_status_t res;
+    // feed_db_status_t res;
 
-    res = init_feed_db(&db, "../tests/db/count_rows.db", 1);
+    /* res = */ init_feed_db(&db, "../tests/db/count_rows.db", 1);
 
     ASSERT_EQ_FMT(6, count_rows(&db, "some_table"), "%i");
     ASSERT_EQ_FMT(4, count_rows(&db, "other_table"), "%i");
     
-    res = free_feed_db(&db);
+    free_feed_db(&db);
     PASS();
 }
 
 TEST db_count_rows_error_bad_table(void) {
 
     feed_db_t db;
-    feed_db_status_t res;
+    // feed_db_status_t res;
 
-    res = init_feed_db(&db, "../tests/db/count_rows.db", 1);
+    /* res = */ init_feed_db(&db, "../tests/db/count_rows.db", 1);
     
     ASSERT_EQ_FMT(-1, count_rows(&db, "bad_table"), "%i");
     
-    res = free_feed_db(&db);
+    free_feed_db(&db);
     PASS();
 }
 
