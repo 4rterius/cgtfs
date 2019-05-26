@@ -10,6 +10,7 @@
 #include "tests-database_agency.c"
 #include "tests-database_calendar_dates.c"
 #include "tests-database_calendar.c"
+#include "tests-database_fare_attributes.c"
 #include "tests-enum_parsing.c"
 #include "tests-feed.c"
 #include "tests-file_reading.c"
@@ -31,6 +32,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_DatabaseAgency);
     RUN_SUITE(CGTFS_DatabaseCalendarDates);
     RUN_SUITE(CGTFS_DatabaseCalendarRecords);
+    RUN_SUITE(CGTFS_DatabaseFareAttributes);
 
     RUN_SUITE(CGTFS_EnumParsing);
     RUN_SUITE(CGTFS_Feed);

@@ -89,7 +89,7 @@ CREATE TABLE fare_attributes (
 	payment_method INT NOT NULL,
 	transfers INT NOT NULL,
 	agency_id TEXT,
-	transfer_duration INT
+	transfer_duration REAL
 );
 
 CREATE TABLE fare_rules (

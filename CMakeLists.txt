@@ -38,6 +38,7 @@ set(sources
   "src/database/records/agency.c"
   "src/database/records/calendar_dates.c"
   "src/database/records/calendar.c"
+  "src/database/records/fare_attributes.c"
 
   "src/feed.c"
   "src/reading.c"

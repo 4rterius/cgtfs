@@ -120,7 +120,7 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {
             "	payment_method INT NOT NULL, "
             "	transfers INT NOT NULL, "
             "	agency_id TEXT, "
-            "	transfer_duration INT "
+            "	transfer_duration REAL "
             ");\n"
             "CREATE TABLE fare_rules ( "
             "	fare_id TEXT NOT NULL, "
