@@ -36,6 +36,8 @@ set(sources
   "src/database/storing.c"
   
   "src/database/records/agency.c"
+  "src/database/records/calendar_dates.c"
+  "src/database/records/calendar.c"
 
   "src/feed.c"
   "src/reading.c"
