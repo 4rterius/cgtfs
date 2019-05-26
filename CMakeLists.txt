@@ -39,6 +39,8 @@ set(sources
   "src/database/records/calendar_dates.c"
   "src/database/records/calendar.c"
   "src/database/records/fare_attributes.c"
+  "src/database/records/fare_rule.c"
+  "src/database/records/feed_info.c"
 
   "src/feed.c"
   "src/reading.c"
