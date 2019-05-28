@@ -45,6 +45,8 @@ set(sources
   "src/database/records/route.c"
   "src/database/records/shape.c"
   "src/database/records/stop_time.c"
+  "src/database/records/stop.c"
+  "src/database/records/transfers.c"
 
   "src/feed.c"
   "src/reading.c"
