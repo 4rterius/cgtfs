@@ -43,6 +43,8 @@ set(sources
   "src/database/records/feed_info.c"
   "src/database/records/frequency.c"
   "src/database/records/route.c"
+  "src/database/records/shape.c"
+  "src/database/records/stop_time.c"
 
   "src/feed.c"
   "src/reading.c"
