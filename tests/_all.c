@@ -19,6 +19,7 @@
 #include "tests-database_stop_time.c"
 #include "tests-database_stop.c"
 #include "tests-database_transfers.c"
+#include "tests-database_trip.c"
 #include "tests-enum_parsing.c"
 #include "tests-feed.c"
 #include "tests-file_reading.c"
@@ -49,6 +50,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_DatabaseStopTime);
     RUN_SUITE(CGTFS_DatabaseStop);
     RUN_SUITE(CGTFS_DatabaseTransfers);
+    RUN_SUITE(CGTFS_DatabaseTrip);
 
     RUN_SUITE(CGTFS_EnumParsing);
     RUN_SUITE(CGTFS_Feed);
