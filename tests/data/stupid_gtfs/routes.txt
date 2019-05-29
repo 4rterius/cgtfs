@@ -1,0 +1,9 @@
+route_id,agency_id,route_short_name,route_long_name,route_desc,route_type,route_url,route_color,route_text_color,route_sort_order
+245,Pocono Pony,"101","Red",,3,http://ponytracker.availtec.com/InfoPoint/101,D9534F,FFFFFF,1
+246,Pocono Pony,"102","Blue",,3,http://ponytracker.availtec.com/InfoPoint/102,337AB7,FFFFFF,2
+247,Pocono Pony,"201","Orange",,3,http://ponytracker.availtec.com/InfoPoint/201,F0AD4E,000000,4
+248,Pocono Pony,"202","Yellow",,3,http://ponytracker.availtec.com/InfoPoint/202,FFFF66,000000,5
+249,Pocono Pony,"401","Toby",,3,http://ponytracker.availtec.com/InfoPoint/401,5BC0DE,FFFFFF,7
+259,Pocono Pony,"103","Silver",,3,http://ponytracker.availtec.com/InfoPoint/103,909090,FFFFFF,3
+262,Pocono Pony,"402","Eburgxprs",,3,http://ponytracker.availtec.com/InfoPoint/402,7030A0,FFFFFF,8
+263,Pocono Pony,"203","Violet",,3,http://ponytracker.availtec.com/InfoPoint/203,BA55D3,FFFFFF,6

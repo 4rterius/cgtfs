@@ -1,0 +1,5 @@
+route_id,service_id,trip_id,trip_headsign,direction_id,shape_id,wheelchair_accessible,bikes_allowed
+"186","174_10047","174_60085","Herrasmanni","1","4059314916","",""
+"186","174_10047","174_60086","Herrasmanni","1","4059314916","",""
+"186","174_10047","174_60087","Herrasmanni","1","4059314916","",""
+"186","174_10047","174_60088","Herrasmanni","1","4059314916","",""
