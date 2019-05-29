@@ -5,6 +5,10 @@
 #include "database/fetching.h"
 
 
+/** 
+ * IMPORTANT: CGTFS_DatabaseStoring suite MUST be run first...
+ * This suite checks that the previous suite did everything correctly...
+ */
 TEST db_all_agencies_fetch(void) {
 
     feed_db_t db;
@@ -12,7 +16,7 @@ TEST db_all_agencies_fetch(void) {
 
     agency_t *records;
 
-    /* res = */ init_feed_db(&db, "tests_store_agencies0.db", 1);
+    /* res = */ init_feed_db(&db, "tests_storing.db", 1);
     /* res = */ setup_feed_db(&db, 1);
 
     int retrieved_count = fetch_all_agencies_db(&db, &records);

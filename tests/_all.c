@@ -23,7 +23,7 @@ int main(int argc, char **argv) {
 
     RUN_SUITE(CGTFS_Database);
     RUN_SUITE(CGTFS_DatabaseStoring);
-    RUN_SUITE(CGTFS_DatabaseFetching);
+    RUN_SUITE(CGTFS_DatabaseFetching);  // Run CGTFS_DatabaseStoring first!
     RUN_SUITE(CGTFS_DatabaseUtils);
     
     RUN_SUITE(CGTFS_DatabaseAgency);
