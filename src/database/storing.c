@@ -17,6 +17,11 @@ int store_all_agencies_db(FILE *fp, feed_db_t *db) {
         free(record_values);
         return (lines_count < 0) ? -1 : 0;
     }
+
+    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
     
     for (int i = 0; i < lines_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
@@ -31,6 +36,8 @@ int store_all_agencies_db(FILE *fp, feed_db_t *db) {
                 break;
         }
     }
+
+    end_transaction(db);
 
     free_cstr_arr(field_names, field_count);
     return record_count;
@@ -53,6 +60,11 @@ int store_all_calendar_dates_db(FILE *fp, feed_db_t *db) {
         free(record_values);
         return (lines_count < 0) ? -1 : 0;
     }
+
+    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
     
     for (int i = 0; i < lines_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
@@ -67,6 +79,8 @@ int store_all_calendar_dates_db(FILE *fp, feed_db_t *db) {
                 break;
         }
     }
+
+    end_transaction(db);
 
     free_cstr_arr(field_names, field_count);
     return record_count;
