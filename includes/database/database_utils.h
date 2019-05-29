@@ -15,4 +15,7 @@
 feed_db_status_t count_rows(feed_db_t *db, const char *table_name);
 // feed_db_status_t cgtfs_db_create_table(const char *name, int field_num, const char **field_names, const char *key_field,  feed_db_t *db);
 
+feed_db_status_t begin_transaction(feed_db_t *db);
+feed_db_status_t end_transaction(feed_db_t *db);
+
 #endif

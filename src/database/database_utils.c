@@ -23,6 +23,33 @@ feed_db_status_t count_rows(feed_db_t *db, const char *table_name) {
 }
 
 
+feed_db_status_t begin_transaction(feed_db_t *db) {
+    char *err_msg = 0;
+    db->rc = sqlite3_exec(db->conn, "BEGIN TRANSACTION;", NULL, NULL, &err_msg);
+    
+    if (db->rc != SQLITE_OK) {
+        db->error_msg = strdup(err_msg);
+        free(err_msg);
+        return FEED_DB_ERROR;
+    }
+
+    return FEED_DB_SUCCESS;
+}
+
+feed_db_status_t end_transaction(feed_db_t *db) {
+    char *err_msg = 0;
+    db->rc = sqlite3_exec(db->conn, "END TRANSACTION;", NULL, NULL, &err_msg);
+    
+    if (db->rc != SQLITE_OK) {
+        db->error_msg = strdup(err_msg);
+        free(err_msg);
+        return FEED_DB_ERROR;
+    }
+
+    return FEED_DB_SUCCESS;
+}
+
+
 // feed_db_status_t cgtfs_db_create_table(const char *name, int field_num, const char **field_names,
 //         const char *key_field,  feed_db_t *db) {
 //     char sql[STATEMENT_BUF_LEN];
