@@ -290,7 +290,7 @@ SUITE(CGTFS_DatabaseStoring) {
     RUN_TEST(db_all_shapes_store);
     RUN_TEST(db_all_stop_times_store);
     RUN_TEST(db_all_stops_store);
-    RUN_TEST(db_all_stop_times_store);
+    RUN_TEST(db_all_stop_times_store);  // TODO: remove
     RUN_TEST(db_all_transfers_store);
     RUN_TEST(db_all_trips_store);
 }
