@@ -21,9 +21,9 @@ TEST db_all_agencies_fetch(void) {
 
     int retrieved_count = fetch_all_agencies_db(&db, &records);
 
-    // printf("\n");
+    // printf("\nRetrieved: %i...\n", retrieved_count);
     // for (int i = 0; i < retrieved_count; i++) {
-    //     printf("      agency #%i: {.id = %s, .name = %s}\n", i, records[i].id, records[i].name);
+    //     printf("\n      agency #%i: {.id = %s, .name = %s}\n\n", i, records[i].id, records[i].name);
     // }
 
     agency_t expected[4] = {
