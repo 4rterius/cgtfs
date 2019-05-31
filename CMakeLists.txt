@@ -95,7 +95,7 @@ target_link_libraries(tests cgtfs sqlite3)
 
 add_executable(bench tests/_bench.c)
 add_dependencies(bench tests)
-target_link_libraries(bench cgtfs)
+target_link_libraries(bench cgtfs sqlite3)
 
 ## Examples
 ## -----------------------------------------------------------------
