@@ -54,10 +54,32 @@ TEST db_init_close_readable_success(void) {
     PASS();
 }
 
+TEST db_store(void) {
+
+    feed_db_t db;
+    feed_db_status_t res;
+    
+    res = init_feed_db(&db, "tests_feed.db", 1);
+    if (res != FEED_DB_SUCCESS)
+        FAILm("Failed to initialize a database `tests_feed.db` (writable)");
+
+    res = setup_feed_db(&db, 1);
+    if (res != FEED_DB_SUCCESS)
+        FAILm("Failed to create a table layout at `tests_feed.db` (writable)");
+
+    res = store_feed_db("../tests/data/stupid_gtfs", &db);
+
+    ASSERT_EQ(FEED_DB_SUCCESS, res);
+
+    free_feed_db(&db);
+    PASS();
+}
+
 SUITE(CGTFS_Database) {
     RUN_TEST(db_init_close_writable);
     RUN_TEST(db_init_close_readable_error);
     RUN_TEST(db_init_close_readable_success);
+    RUN_TEST(db_store);
 }
 
 

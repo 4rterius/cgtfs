@@ -5,8 +5,11 @@
 #include <string.h>
 #include "sqlite3/src/sqlite3.h"
 
+#include "feed.h"
 #include "database/database_types.h"
 #include "database/database_utils.h"
+#include "database/storing.h"
+#include "database/fetching.h"
 
 
 /**
@@ -28,11 +31,19 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
 
 /**
  * Reads a CGTFS from the given directory to the given database.
- * @param db   The database to write into.
  * @param dir  The GTFS directory to read.
+ * @param db   The database to store into.
  * @returns Result of the db operation.
  */
-feed_db_status_t read_feed_db_dir(feed_db_t *db, const char *gtfs_dir);
+feed_db_status_t store_feed_db(const char *dir, feed_db_t *db);
+
+/**
+ * Reads a GTFS database to an in-memory feed instance.
+ * @param db    The database to read from.
+ * @param feed  The feed_t instance to read into.
+ * @returns Result of the db operation.
+ */
+feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed);
 
 /**
  * Frees the memory taken by a feed database struct and closes the connection.
