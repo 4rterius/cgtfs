@@ -341,6 +341,105 @@ TEST db_all_stop_times_fetch(void) {
     PASS();
 }
 
+TEST db_all_stops_fetch(void) {
+
+    FILE *fp = fopen("../tests/data/stupid_gtfs/stops.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/stupid_gtfs/stops.txt` test file");
+    } else {
+        stop_t *expected;
+        int expected_count = read_all_stops(fp, &expected);
+
+        ASSERT_EQ_FMT(6, expected_count, "%i");
+
+
+        feed_db_t db;
+        stop_t *records;
+
+        init_feed_db(&db, "tests_storing.db", 1);
+        setup_feed_db(&db, 1);
+
+        int retrieved_count = fetch_all_stops_db(&db, &records);
+        
+        ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
+        for (int i = 0; i < retrieved_count; i++)
+            ASSERT(!equal_stop(&(expected[i]), &(records[i])));
+
+
+        free_feed_db(&db);
+        if (retrieved_count > 0) free(records);
+        if (expected_count > 0) free(expected);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
+TEST db_all_transfers_fetch(void) {
+
+    FILE *fp = fopen("../tests/data/stupid_gtfs/transfers.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/stupid_gtfs/transfers.txt` test file");
+    } else {
+        transfer_t *expected;
+        int expected_count = read_all_transfers(fp, &expected);
+
+        ASSERT_EQ_FMT(4, expected_count, "%i");
+
+
+        feed_db_t db;
+        transfer_t *records;
+
+        init_feed_db(&db, "tests_storing.db", 1);
+        setup_feed_db(&db, 1);
+
+        int retrieved_count = fetch_all_transfers_db(&db, &records);
+        
+        ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
+        for (int i = 0; i < retrieved_count; i++)
+            ASSERT(!equal_transfer(&(expected[i]), &(records[i])));
+
+
+        free_feed_db(&db);
+        if (retrieved_count > 0) free(records);
+        if (expected_count > 0) free(expected);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
+TEST db_all_trips_fetch(void) {
+
+    FILE *fp = fopen("../tests/data/stupid_gtfs/trips.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/stupid_gtfs/trips.txt` test file");
+    } else {
+        trip_t *expected;
+        int expected_count = read_all_trips(fp, &expected);
+
+        ASSERT_EQ_FMT(4, expected_count, "%i");
+
+
+        feed_db_t db;
+        trip_t *records;
+
+        init_feed_db(&db, "tests_storing.db", 1);
+        setup_feed_db(&db, 1);
+
+        int retrieved_count = fetch_all_trips_db(&db, &records);
+        
+        ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
+        for (int i = 0; i < retrieved_count; i++)
+            ASSERT(!equal_trip(&(expected[i]), &(records[i])));
+
+
+        free_feed_db(&db);
+        if (retrieved_count > 0) free(records);
+        if (expected_count > 0) free(expected);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
 SUITE(CGTFS_DatabaseFetching) {
     RUN_TEST(db_all_agencies_fetch);
     RUN_TEST(db_all_calendar_dates_fetch);
@@ -352,6 +451,9 @@ SUITE(CGTFS_DatabaseFetching) {
     RUN_TEST(db_all_routes_fetch);
     RUN_TEST(db_all_shapes_fetch);
     RUN_TEST(db_all_stop_times_fetch);
+    RUN_TEST(db_all_stops_fetch);
+    RUN_TEST(db_all_transfers_fetch);
+    RUN_TEST(db_all_trips_fetch);
 }
 
 #endif

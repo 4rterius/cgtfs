@@ -449,143 +449,142 @@ int fetch_all_stop_times_db(feed_db_t *db, stop_time_t **records) {
     return record_count;
 }
 
-// int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
+int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
     
-//     agency_t record;
-//     feed_db_status_t res;
+    stop_t record;
+    feed_db_status_t res;
 
-//     int record_count = count_rows(db, "agency");
-//     int i = 0;
+    int record_count = count_rows(db, "stops");
+    int i = 0;
 
-//     if (record_count < 1) {
-//         return record_count;
-//     }
+    if (record_count < 1) {
+        return record_count;
+    }
 
-//     sqlite3_stmt *stmt;
-//     char qr[] = "SELECT "
-//                     "agency_id, agency_name,"
-//                     "agency_url, agency_timezone,"
-//                     "agency_lang, agency_phone,"
-//                     "agency_fare_url, agency_email "
-//                 "FROM `agency`;";
+    sqlite3_stmt *stmt;
+    char qr[] = "SELECT "
+                    "stop_id, stop_code, stop_name, stop_desc,"
+                    "stop_lat, stop_lon,"
+                    "zone_id, stop_url,"
+                    "location_type, parent_station, stop_timezone, wheelchair_boarding "
+                "FROM `stops`;";
 
-//     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
+    sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
-//     *records = malloc(record_count * sizeof(**records));
+    *records = malloc(record_count * sizeof(**records));
 
-//     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-//         init_agency(&record);
+    while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        init_stop(&record);
 
-//         strcpy(record.id, sqlite3_column_text(stmt, 0));
-//         strcpy(record.name, sqlite3_column_text(stmt, 1));
-//         strcpy(record.url, sqlite3_column_text(stmt, 2));
-//         strcpy(record.timezone, sqlite3_column_text(stmt, 3));
-//         strcpy(record.lang, sqlite3_column_text(stmt, 4));
-//         strcpy(record.phone, sqlite3_column_text(stmt, 5));
-//         strcpy(record.fare_url, sqlite3_column_text(stmt, 6));
-//         strcpy(record.email, sqlite3_column_text(stmt, 7));
+        strcpy(record.id, sqlite3_column_text(stmt, 0));
+        strcpy(record.code, sqlite3_column_text(stmt, 1));
+        strcpy(record.name, sqlite3_column_text(stmt, 2));
+        strcpy(record.desc, sqlite3_column_text(stmt, 3));
+        record.lat = sqlite3_column_double(stmt, 4);
+        record.lon = sqlite3_column_double(stmt, 5);
+        strcpy(record.zone_id, sqlite3_column_text(stmt, 6));
+        strcpy(record.url, sqlite3_column_text(stmt, 7));
+        record.location_type = (location_type_t)sqlite3_column_int(stmt, 8);
+        strcpy(record.parent_station, sqlite3_column_text(stmt, 9));
+        strcpy(record.timezone, sqlite3_column_text(stmt, 10));
+        record.wheelchair_boarding = (wheelchair_boarding_t)sqlite3_column_int(stmt, 11);
 
-//         (*records)[i] = record;
-//         i++;
+        (*records)[i] = record;
+        i++;
 
-//         if (i >= record_count)
-//             break;
-//     }
+        if (i >= record_count)
+            break;
+    }
     
-//     sqlite3_finalize(stmt);
-//     return record_count;
-// }
+    sqlite3_finalize(stmt);
+    return record_count;
+}
 
-// int fetch_all_transfers_db(feed_db_t *db, transfer_t **records) {
+int fetch_all_transfers_db(feed_db_t *db, transfer_t **records) {
     
-//     agency_t record;
-//     feed_db_status_t res;
+    transfer_t record;
+    feed_db_status_t res;
 
-//     int record_count = count_rows(db, "agency");
-//     int i = 0;
+    int record_count = count_rows(db, "transfers");
+    int i = 0;
 
-//     if (record_count < 1) {
-//         return record_count;
-//     }
+    if (record_count < 1) {
+        return record_count;
+    }
 
-//     sqlite3_stmt *stmt;
-//     char qr[] = "SELECT "
-//                     "agency_id, agency_name,"
-//                     "agency_url, agency_timezone,"
-//                     "agency_lang, agency_phone,"
-//                     "agency_fare_url, agency_email "
-//                 "FROM `agency`;";
+    sqlite3_stmt *stmt;
+    char qr[] = "SELECT "
+                    "from_stop_id, to_stop_id, transfer_type, min_transfer_time "
+                "FROM `transfers`;";
 
-//     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
+    sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
-//     *records = malloc(record_count * sizeof(**records));
+    *records = malloc(record_count * sizeof(**records));
 
-//     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-//         init_agency(&record);
+    while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        init_transfer(&record);
 
-//         strcpy(record.id, sqlite3_column_text(stmt, 0));
-//         strcpy(record.name, sqlite3_column_text(stmt, 1));
-//         strcpy(record.url, sqlite3_column_text(stmt, 2));
-//         strcpy(record.timezone, sqlite3_column_text(stmt, 3));
-//         strcpy(record.lang, sqlite3_column_text(stmt, 4));
-//         strcpy(record.phone, sqlite3_column_text(stmt, 5));
-//         strcpy(record.fare_url, sqlite3_column_text(stmt, 6));
-//         strcpy(record.email, sqlite3_column_text(stmt, 7));
+        strcpy(record.from_stop_id, sqlite3_column_text(stmt, 0));
+        strcpy(record.to_stop_id, sqlite3_column_text(stmt, 1));
+        record.transfer_type = (transfer_type_t)sqlite3_column_int(stmt, 2);
+        record.min_transfer_time = sqlite3_column_int(stmt, 3);
 
-//         (*records)[i] = record;
-//         i++;
+        (*records)[i] = record;
+        i++;
 
-//         if (i >= record_count)
-//             break;
-//     }
+        if (i >= record_count)
+            break;
+    }
     
-//     sqlite3_finalize(stmt);
-//     return record_count;
-// }
+    sqlite3_finalize(stmt);
+    return record_count;
+}
 
-// int fetch_all_trips_db(feed_db_t *db, trip_t **records) {
+int fetch_all_trips_db(feed_db_t *db, trip_t **records) {
     
-//     agency_t record;
-//     feed_db_status_t res;
+    trip_t record;
+    feed_db_status_t res;
 
-//     int record_count = count_rows(db, "agency");
-//     int i = 0;
+    int record_count = count_rows(db, "trips");
+    int i = 0;
 
-//     if (record_count < 1) {
-//         return record_count;
-//     }
+    if (record_count < 1) {
+        return record_count;
+    }
 
-//     sqlite3_stmt *stmt;
-//     char qr[] = "SELECT "
-//                     "agency_id, agency_name,"
-//                     "agency_url, agency_timezone,"
-//                     "agency_lang, agency_phone,"
-//                     "agency_fare_url, agency_email "
-//                 "FROM `agency`;";
+    sqlite3_stmt *stmt;
+    char qr[] = "SELECT "
+                    "route_id, service_id, trip_id,"
+                    "trip_headsign, trip_short_name,"
+                    "direction_id, block_id, shape_id,"
+                    "wheelchair_accessible, bikes_allowed "
+                "FROM `trips`;";
 
-//     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
+    sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
-//     *records = malloc(record_count * sizeof(**records));
+    *records = malloc(record_count * sizeof(**records));
 
-//     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
-//         init_agency(&record);
+    while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        init_trip(&record);
 
-//         strcpy(record.id, sqlite3_column_text(stmt, 0));
-//         strcpy(record.name, sqlite3_column_text(stmt, 1));
-//         strcpy(record.url, sqlite3_column_text(stmt, 2));
-//         strcpy(record.timezone, sqlite3_column_text(stmt, 3));
-//         strcpy(record.lang, sqlite3_column_text(stmt, 4));
-//         strcpy(record.phone, sqlite3_column_text(stmt, 5));
-//         strcpy(record.fare_url, sqlite3_column_text(stmt, 6));
-//         strcpy(record.email, sqlite3_column_text(stmt, 7));
+        strcpy(record.route_id, sqlite3_column_text(stmt, 0));
+        strcpy(record.service_id, sqlite3_column_text(stmt, 1));
+        strcpy(record.id, sqlite3_column_text(stmt, 2));
+        strcpy(record.headsign, sqlite3_column_text(stmt, 3));
+        strcpy(record.short_name, sqlite3_column_text(stmt, 4));
+        record.direction_id = sqlite3_column_int(stmt, 5);
+        strcpy(record.block_id, sqlite3_column_text(stmt, 6));
+        strcpy(record.shape_id, sqlite3_column_text(stmt, 7));
+        record.wheelchair_accessible = (wheelchair_accessible_t)sqlite3_column_int(stmt, 8);
+        record.bikes_allowed = (bikes_allowed_t)sqlite3_column_int(stmt, 9);
 
-//         (*records)[i] = record;
-//         i++;
+        (*records)[i] = record;
+        i++;
 
-//         if (i >= record_count)
-//             break;
-//     }
+        if (i >= record_count)
+            break;
+    }
     
-//     sqlite3_finalize(stmt);
-//     return record_count;
-// }
+    sqlite3_finalize(stmt);
+    return record_count;
+}
