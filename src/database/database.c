@@ -65,6 +65,25 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db) {
     feed_t instance;
     init_feed(&instance);
 
+    #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
+    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+        free(agencies_fname);
+        free(calendar_dates_fname);
+        free(calendar_records_fname);
+        free(fare_attributes_fname);
+        free(fare_rules_fname);
+        free(feed_info_fname);
+        free(frequencies_fname);
+        free(routes_fname);
+        free(shapes_fname);
+        free(stop_times_fname);
+        free(stops_fname);
+        free(transfers_fname);
+        free(trips_fname);
+
+        return FEED_DB_ERROR;
+    }
+    #endif
 
     FILE *fp_agencies = fopen(agencies_fname, "r");
     if (fp_agencies) {
@@ -169,6 +188,10 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db) {
     } else {
         instance.trips_count = -1;
     }
+
+    #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
+    end_transaction(db);
+    #endif
 
 
     free(agencies_fname);

@@ -1,6 +1,8 @@
 #ifndef CGTFS_BENCH_FEED_C
 #define CGTFS_BENCH_FEED_C
 
+#define CGTFS_STORING_BATCH_TRANSACTIONS_OFF
+
 #include "_utils.c"
 #include "feed.h"
 #include "database/database.h"
@@ -72,7 +74,7 @@ void bench_db_1(void) {
     
     bm_run_1(&res, _bm_db_1);
     bm_run_10(&res, _bm_db_1);
-    // bm_run_100(&res, _bm_feed_2);
+    // bm_run_100(&res, _bm_db_1);
     // bm_run_1000(&res, _bm_feed_2);
 
     bm_display_results(&res, "StupidGTFS feed dir -> db parsing");
