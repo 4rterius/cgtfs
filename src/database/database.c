@@ -33,7 +33,7 @@ feed_db_status_t free_feed_db(feed_db_t *db) {
     return FEED_DB_SUCCESS;
 }
 
-feed_db_status_t store_feed_db(const char *dir, feed_db_t *db) {
+feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter) {
     char *agencies_fname;
     char *calendar_dates_fname;
     char *calendar_records_fname;
@@ -193,6 +193,10 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db) {
     end_transaction(db);
     #endif
 
+    
+    if (feed_counter != NULL)
+        *feed_counter = instance;
+
 
     free(agencies_fname);
     free(calendar_dates_fname);
@@ -208,6 +212,10 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db) {
     free(transfers_fname);
     free(trips_fname);
 
+    return FEED_DB_SUCCESS;
+}
+
+feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed) {
     return FEED_DB_SUCCESS;
 }
 

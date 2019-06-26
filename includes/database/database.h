@@ -31,11 +31,12 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
 
 /**
  * Reads a CGTFS from the given directory to the given database.
- * @param dir  The GTFS directory to read.
- * @param db   The database to store into.
+ * @param dir           The GTFS directory to read.
+ * @param db            The database to store into.
+ * @param feed_counter  A feed instance to write stored records counts to. Pass NULL to skip.
  * @returns Result of the db operation.
  */
-feed_db_status_t store_feed_db(const char *dir, feed_db_t *db);
+feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter);
 
 /**
  * Reads a GTFS database to an in-memory feed instance.

@@ -39,7 +39,7 @@ void _bm_db_1() {
     if (res != FEED_DB_SUCCESS)
         perror("BENCHMARK #3 failed @ setup\n");
 
-    res = store_feed_db("../tests/data/stupid_gtfs", &db);  // ../tests/data/stupid_gtfs
+    res = store_feed_db("../tests/data/stupid_gtfs", &db, NULL);  // ../tests/data/stupid_gtfs
     if (res != FEED_DB_SUCCESS)
         perror("BENCHMARK #3 failed @ store\n");
 
