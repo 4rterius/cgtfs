@@ -108,9 +108,12 @@ add_executable(example_1 examples/example_1.c)
 add_dependencies(example_1 tests)
 target_link_libraries(example_1 cgtfs)
 
+add_executable(example_2 examples/example_2.c)
+add_dependencies(example_2 tests)
+target_link_libraries(example_2 cgtfs sqlite3)
 
 
 ## Some more settings
 ## -----------------------------------------------------------------
 
-set_target_properties(cgtfs tests bench example_0 example_1 PROPERTIES C_STANDARD 99)
+set_target_properties(cgtfs tests bench example_0 example_1 example_2 PROPERTIES C_STANDARD 99)
