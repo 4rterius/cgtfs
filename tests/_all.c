@@ -1,6 +1,8 @@
 #ifndef CGTFS_TESTS__ALL_C
 #define CGTFS_TESTS__ALL_C
 
+// #define CGTFS_STORING_BATCH_TRANSACTIONS_OFF
+
 #include "greatest/greatest.h"
 
 #include "tests-database.c"

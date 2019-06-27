@@ -111,12 +111,49 @@ TEST db_store_counter(void) {
     PASS();
 }
 
+TEST db_fetch(void) {
+
+    feed_t feed;
+    feed_db_t db;
+    feed_db_status_t res;
+
+    init_feed(&feed);
+
+    res = init_feed_db(&db, "tests_feed_2_counter.db", 0);
+    if (res != FEED_DB_SUCCESS)
+        FAILm("Failed to initialize a database `tests_feed_2_counter.db` (non-writable)");
+
+    res = fetch_feed_db(&db, &feed);
+    
+    ASSERT_EQ(FEED_DB_SUCCESS, res);
+    ASSERT_EQ_FMT(4, feed.agency_count, "%i");
+    ASSERT_EQ_FMT(4, feed.calendar_records_count, "%i");
+    ASSERT_EQ_FMT(9, feed.calendar_dates_count, "%i");
+    ASSERT_EQ_FMT(2, feed.fare_attributes_count, "%i");
+    ASSERT_EQ_FMT(4, feed.fare_rules_count, "%i");
+    ASSERT_EQ_FMT(1, feed.feed_info_count, "%i");
+    ASSERT_EQ_FMT(11, feed.frequencies_count, "%i");
+    ASSERT_EQ_FMT(8, feed.routes_count, "%i");
+    ASSERT_EQ_FMT(10, feed.shapes_count, "%i");
+    ASSERT_EQ_FMT(28, feed.stop_times_count, "%i");
+    ASSERT_EQ_FMT(6, feed.stops_count, "%i");
+    ASSERT_EQ_FMT(4, feed.transfers_count, "%i");
+    ASSERT_EQ_FMT(4, feed.trips_count, "%i");
+    
+    free_feed_db(&db);
+    free_feed(&feed);
+    
+    PASS();
+}
+
+
 SUITE(CGTFS_Database) {
     RUN_TEST(db_init_close_writable);
     RUN_TEST(db_init_close_readable_error);
     RUN_TEST(db_init_close_readable_success);
     RUN_TEST(db_store_no_counter);
-    RUN_TEST(db_store_counter);
+    RUN_TEST(db_store_counter); // These two tests must come together AND in this order
+    RUN_TEST(db_fetch);         // as db_fetch() uses the db file created by db_store_counter.
 }
 
 

@@ -216,6 +216,21 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
 }
 
 feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed) {
+
+    feed->agency_count = fetch_all_agencies_db(db, &(feed->agencies));
+    feed->calendar_dates_count = fetch_all_calendar_dates_db(db, &(feed->calendar_dates));
+    feed->calendar_records_count = fetch_all_calendar_records_db(db, &(feed->calendar_records));
+    feed->fare_attributes_count = fetch_all_fare_attributes_db(db, &(feed->fare_attributes));
+    feed->fare_rules_count = fetch_all_fare_rules_db(db, &(feed->fare_rules));
+    feed->feed_info_count = fetch_all_feed_info_db(db, &(feed->feed_info));
+    feed->frequencies_count = fetch_all_frequencies_db(db, &(feed->frequencies));
+    feed->routes_count = fetch_all_routes_db(db, &(feed->routes));
+    feed->shapes_count = fetch_all_shapes_db(db, &(feed->shapes));
+    feed->stop_times_count = fetch_all_stop_times_db(db, &(feed->stop_times));
+    feed->stops_count = fetch_all_stops_db(db, &(feed->stops));
+    feed->transfers_count = fetch_all_transfers_db(db, &(feed->transfers));
+    feed->trips_count = fetch_all_trips_db(db, &(feed->trips));
+    
     return FEED_DB_SUCCESS;
 }
 
