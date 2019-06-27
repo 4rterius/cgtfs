@@ -75,6 +75,27 @@ TEST db_store_no_counter(void) {
     PASS();
 }
 
+TEST db_store_partial(void) {
+
+    feed_db_t db;
+    feed_db_status_t res;
+    
+    res = init_feed_db(&db, "tests_feed_3_partial.db", 1);
+    if (res != FEED_DB_SUCCESS)
+        FAILm("Failed to initialize a database `tests_feed_3_partial.db` (writable)");
+
+    res = setup_feed_db(&db, 1);
+    if (res != FEED_DB_SUCCESS)
+        FAILm("Failed to create a table layout at `tests_feed_3_partial.db` (writable)");
+
+    res = store_feed_db("../tests/data/google_sample", &db, NULL);
+
+    ASSERT_EQ(FEED_DB_PARTIAL, res);
+
+    free_feed_db(&db);
+    PASS();
+}
+
 TEST db_store_counter(void) {
 
     feed_db_t db;
@@ -152,6 +173,7 @@ SUITE(CGTFS_Database) {
     RUN_TEST(db_init_close_readable_error);
     RUN_TEST(db_init_close_readable_success);
     RUN_TEST(db_store_no_counter);
+    RUN_TEST(db_store_partial);
     RUN_TEST(db_store_counter); // These two tests must come together AND in this order
     RUN_TEST(db_fetch);         // as db_fetch() uses the db file created by db_store_counter.
 }

@@ -20,7 +20,8 @@ typedef struct feed_db_t {
  */
 typedef enum feed_db_status_t {
     FEED_DB_ERROR,
-    FEED_DB_SUCCESS
+    FEED_DB_SUCCESS,
+    FEED_DB_PARTIAL
 } feed_db_status_t;
 
 #endif

@@ -34,6 +34,9 @@ feed_db_status_t free_feed_db(feed_db_t *db) {
 }
 
 feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter) {
+
+    feed_db_status_t result = FEED_DB_SUCCESS;
+
     char *agencies_fname;
     char *calendar_dates_fname;
     char *calendar_records_fname;
@@ -91,6 +94,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_agencies);
     } else {
         instance.agency_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_calendar_dates = fopen(calendar_dates_fname, "r");
@@ -99,6 +103,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_calendar_dates);
     } else {
         instance.calendar_dates_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_calendar_records = fopen(calendar_records_fname, "r");
@@ -107,6 +112,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_calendar_records);
     } else {
         instance.calendar_records_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_fare_attributes = fopen(fare_attributes_fname, "r");
@@ -115,6 +121,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_fare_attributes);
     } else {
         instance.fare_attributes_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_fare_rules = fopen(fare_rules_fname, "r");
@@ -123,6 +130,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_fare_rules);
     } else {
         instance.fare_rules_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_feed_info = fopen(feed_info_fname, "r");
@@ -131,6 +139,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_feed_info);
     } else {
         instance.feed_info_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_frequencies = fopen(frequencies_fname, "r");
@@ -139,6 +148,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_frequencies);
     } else {
         instance.frequencies_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_routes = fopen(routes_fname, "r");
@@ -147,6 +157,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_routes);
     } else {
         instance.routes_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_shapes = fopen(shapes_fname, "r");
@@ -155,6 +166,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_shapes);
     } else {
         instance.shapes_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_stop_times = fopen(stop_times_fname, "r");
@@ -163,6 +175,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_stop_times);
     } else {
         instance.stop_times_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_stops = fopen(stops_fname, "r");
@@ -171,6 +184,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_stops);
     } else {
         instance.stops_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_transfers = fopen(transfers_fname, "r");
@@ -179,6 +193,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_transfers);
     } else {
         instance.transfers_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     FILE *fp_trips = fopen(trips_fname, "r");
@@ -187,6 +202,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         fclose(fp_trips);
     } else {
         instance.trips_count = -1;
+        result = FEED_DB_PARTIAL;
     }
 
     #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
@@ -212,7 +228,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     free(transfers_fname);
     free(trips_fname);
 
-    return FEED_DB_SUCCESS;
+    return result;
 }
 
 feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed) {
