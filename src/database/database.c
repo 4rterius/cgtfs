@@ -231,8 +231,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     return result;
 }
 
-feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed) {
-
+void fetch_feed_db(feed_db_t *db, feed_t *feed) {
     feed->agency_count = fetch_all_agencies_db(db, &(feed->agencies));
     feed->calendar_dates_count = fetch_all_calendar_dates_db(db, &(feed->calendar_dates));
     feed->calendar_records_count = fetch_all_calendar_records_db(db, &(feed->calendar_records));
@@ -246,8 +245,6 @@ feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed) {
     feed->stops_count = fetch_all_stops_db(db, &(feed->stops));
     feed->transfers_count = fetch_all_transfers_db(db, &(feed->transfers));
     feed->trips_count = fetch_all_trips_db(db, &(feed->trips));
-    
-    return FEED_DB_SUCCESS;
 }
 
 feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {

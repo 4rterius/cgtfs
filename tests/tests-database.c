@@ -144,9 +144,8 @@ TEST db_fetch(void) {
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_2_counter.db` (non-writable)");
 
-    res = fetch_feed_db(&db, &feed);
+    fetch_feed_db(&db, &feed);
     
-    ASSERT_EQ(FEED_DB_SUCCESS, res);
     ASSERT_EQ_FMT(4, feed.agency_count, "%i");
     ASSERT_EQ_FMT(4, feed.calendar_records_count, "%i");
     ASSERT_EQ_FMT(9, feed.calendar_dates_count, "%i");

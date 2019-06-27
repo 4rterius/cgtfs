@@ -1,6 +1,6 @@
 #include "database/database_utils.h"
 
-feed_db_status_t count_rows(feed_db_t *db, const char *table_name) {   
+int count_rows(feed_db_t *db, const char *table_name) {   
     int count = -1; 
     sqlite3_stmt *stmt;
     

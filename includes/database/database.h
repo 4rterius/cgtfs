@@ -42,9 +42,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
  * Reads a GTFS database to an in-memory feed instance.
  * @param db    The database to read from.
  * @param feed  The feed_t instance to read into.
- * @returns Result of the db operation.
  */
-feed_db_status_t fetch_feed_db(feed_db_t *db, feed_t *feed);
+void fetch_feed_db(feed_db_t *db, feed_t *feed);
 
 /**
  * Frees the memory taken by a feed database struct and closes the connection.
