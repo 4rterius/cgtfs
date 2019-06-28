@@ -52,7 +52,10 @@ Mkfile.old
 dkms.conf
 
 # Documentation
-docs/doxygen/
+docs/doxygen/html/
+docs/doxygen/latex/
+docs/doxygen/rtf/
+docs/doxygen/xml/
 
 # Auto-downloaded stuff
 third_party/sqlite3/sqlite3/
