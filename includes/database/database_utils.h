@@ -12,10 +12,34 @@
 
 #define STATEMENT_BUF_LEN 1000
 
-int count_rows(feed_db_t *db, const char *table_name);
-// feed_db_status_t cgtfs_db_create_table(const char *name, int field_num, const char **field_names, const char *key_field,  feed_db_t *db);
 
+/**
+ * Counts the number of records in the given db table.
+ * 
+ * @param[in]    db            Feed database instance to connect to.
+ * @param[in]    table_name    Name of the table to process.
+ * 
+ * @returns      -1 on error, number of records on success.
+ */
+int count_rows(feed_db_t *db, const char *table_name);
+
+
+/**
+ * Starts a sqlite3 transaction.
+ * 
+ * @param[in,out]    db    Feed database instance to operate on.
+ * 
+ * @returns          Success or failure of the operation.
+ */
 feed_db_status_t begin_transaction(feed_db_t *db);
+
+/**
+ * Ends a sqlite3 transaction.
+ * 
+ * @param[in,out]    db    Feed database instance to operate on.
+ * 
+ * @returns          Success or failure of the operation.
+ */
 feed_db_status_t end_transaction(feed_db_t *db);
 
 #endif

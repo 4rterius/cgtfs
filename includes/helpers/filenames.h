@@ -28,9 +28,9 @@
  * 
  * Writes `NULL` into `out` if either of `dirname` or `filename` are NULLs.
  * 
- * @param[out] out      String pointer to write the resulting path into.
- * @param[in]  dirname  Directory name.
- * @param[in]  filename File name.
+ * @param[out]    out         String pointer to write the resulting path into.
+ * @param[in]     dirname     Directory name.
+ * @param[in]     filename    File name.
  */
 void make_filepath(char **out, const char *dirname, const char *filename);
 

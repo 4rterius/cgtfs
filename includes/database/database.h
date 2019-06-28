@@ -14,41 +14,55 @@
 
 /**
  * Initializes a give feed database.
- * @param db       Pointer to the feed database to serve.
- * @param db_path  /path/to/database
- * @param writable 0 for make connection read-only, else for otherwise
- * @returns Result of the db operation.
+ * 
+ * @param[in,out]    db          Pointer to the feed database instance to operate on.
+ * @param[in]        db_path     /path/to/database.file
+ * @param[in]        writable    0 for make connection read-only, else for otherwise
+ * 
+ * @returns          Result of the operation.
  */
 feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
 
 /**
  * Creates the layout in the given database.
- * @param db        Feed database to work on.
- * @param overwrite 0 to make error if tables already exist, else for otherwise.
- * @returns Result of the db operation.
+ * 
+ * @param[in,out]    db           Feed database to operate on.
+ * @param[in]        overwrite    0 to make error if tables already exist, else for otherwise.
+ * 
+ * @returns          Result of the operation.
  */
 feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
 
 /**
- * Reads a CGTFS from the given directory to the given database.
- * @param dir           The GTFS directory to read.
- * @param db            The database to store into.
- * @param feed_counter  A feed instance to write stored records counts to. Pass NULL to skip.
- * @returns Result of the db operation.
+ * Reads an unpacked GTFS feed 
+ * from the given directory to the given database.
+ * 
+ * Pass NULL to `feed_counter` when there's no need 
+ * to get the count of stored records.
+ * 
+ * @param[in]     dir             Directory to read.
+ * @param[out]    db              Feed database instance to store into.
+ * @param[out]    feed_counter    Feed instance to write stored records counts to.
+ * 
+ * @returns       Result of the db operation.
  */
 feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter);
 
 /**
- * Reads a GTFS database to an in-memory feed instance.
- * @param db    The database to read from.
- * @param feed  The feed_t instance to read into.
+ * Reads a GTFS database to a feed instance.
+ * 
+ * @param[in]     db      Feed database instance to read from.
+ * @param[out]    feed    Feed instance to read into.
  */
 void fetch_feed_db(feed_db_t *db, feed_t *feed);
 
 /**
- * Frees the memory taken by a feed database struct and closes the connection.
- * @param db Feed database struct to clear.
- * @returns Result of the db operation.
+ * Frees the memory taken by a feed database instance 
+ * and closes the connection.
+ * 
+ * @param[in,out]    db    Feed database struct to clear.
+ * 
+ * @returns          Result of the db operation.
  */
 feed_db_status_t free_feed_db(feed_db_t *db);
 
