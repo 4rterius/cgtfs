@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Route entity handling functionality.
+ */
+
 #ifndef CGTFS_ROUTE_H
 #define CGTFS_ROUTE_H
 

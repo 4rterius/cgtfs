@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Core feed database entity functionality.
+ */
+
 #ifndef CGTFS_DATABASE_H
 #define CGTFS_DATABASE_H
 

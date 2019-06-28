@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Stop time entity handling functionality.
+ */
+
 #ifndef CGTFS_STOP_TIME_H
 #define CGTFS_STOP_TIME_H
 

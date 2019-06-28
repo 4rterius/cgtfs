@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Frequency entity handling functionality.
+ */
+
 #ifndef CGTFS_FREQUENCY_H
 #define CGTFS_FREQUENCY_H
 

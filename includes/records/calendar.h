@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Calendar record entity handling functionality.
+ */
+
 #ifndef CGTFS_CALENDAR_H
 #define CGTFS_CALENDAR_H
 

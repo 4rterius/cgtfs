@@ -1,3 +1,10 @@
+/**
+ * @file
+ * @brief    File reading functionality.
+ * 
+ * Defines functions to parse entire feed files into record arrays.
+ */
+
 #ifndef CGTFS_READING_H
 #define CGTFS_READING_H
 

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Shape entity handling functionality.
+ */
+
 #ifndef CGTFS_SHAPE_H
 #define CGTFS_SHAPE_H
 

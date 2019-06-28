@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    File names and paths handling utilities.
+ */
+
 #ifndef CGTFS_FILENAMES_H
 #define CGTFS_FILENAMES_H
 

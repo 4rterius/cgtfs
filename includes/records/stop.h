@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Stop entity handling functionality.
+ */
+
 #ifndef CGTFS_STOP_H
 #define CGTFS_STOP_H
 

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Trip entity handling functionality.
+ */
+
 #ifndef CGTFS_TRIP_H
 #define CGTFS_TRIP_H
 

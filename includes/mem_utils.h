@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Memory handling utilities.
+ */
+
 #ifndef CGTFS_MEM_UTILS_H
 #define CGTFS_MEM_UTILS_H
 

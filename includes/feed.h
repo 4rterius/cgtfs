@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Core feed entity functionality.
+ */
+
 #ifndef CGTFS_DATASET_H
 #define CGTFS_DATASET_H
 

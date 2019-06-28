@@ -1,3 +1,11 @@
+/**
+ * @file
+ * @brief    Batch database content retrieving functionality.
+ * 
+ * Defines functions which retrieve feed database tables
+ * in their entirety and populate arrays of records.
+ */
+
 #ifndef CGTFS_DATABASE_FETCHING_H
 #define CGTFS_DATABASE_FETCHING_H
 

@@ -1,3 +1,11 @@
+/**
+ * @file
+ * @brief    Batch database content storing functionality.
+ * 
+ * Defines functions which read feed files
+ * in their entirety and populate the database tables.
+ */
+
 #ifndef CGTFS_DATABASE_STORING_H
 #define CGTFS_DATABASE_STORING_H
 

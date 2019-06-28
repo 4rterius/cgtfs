@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Agency entity handling functionality.
+ */
+
 #ifndef CGTFS_AGENCY_H
 #define CGTFS_AGENCY_H
 

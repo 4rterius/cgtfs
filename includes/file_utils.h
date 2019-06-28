@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    File I/O utilities.
+ */
+
 #ifndef CGTFS_READING_UTILS_H
 #define CGTFS_READING_UTILS_H
 

@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Core types for feed database functionality.
+ */
+
 #ifndef CGTFS_DATABASE_TYPES_H
 #define CGTFS_DATABASE_TYPES_H
 

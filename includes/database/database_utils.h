@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Feed database handling utilities.
+ */
+
 #ifndef CGTFS_DATABASE_UTILS_H
 #define CGTFS_DATABASE_UTILS_H
 

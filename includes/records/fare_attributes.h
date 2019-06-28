@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Fare attribute entity handling functionality.
+ */
+
 #ifndef CGTFS_FARE_ATTRIBUTES_H
 #define CGTFS_FARE_ATTRIBUTES_H
 

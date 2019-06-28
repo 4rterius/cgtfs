@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Fare rule entity handling functionality.
+ */
+
 #ifndef CGTFS_FARE_RULE_H
 #define CGTFS_FARE_RULE_H
 

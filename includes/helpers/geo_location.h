@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Geographical location utilities.
+ */
+
 #ifndef CGTFS_GEO_LOCATION_H
 #define CGTFS_GEO_LOCATION_H
 

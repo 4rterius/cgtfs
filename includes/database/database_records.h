@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Includes of all database record handling files.
+ */
+
 #include "database/records/agency.h"
 #include "database/records/calendar_dates.h"
 #include "database/records/calendar.h"

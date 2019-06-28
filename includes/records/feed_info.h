@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Feed info entity handling functionality.
+ */
+
 #ifndef CGTFS_FEED_INFO_H
 #define CGTFS_FEED_INFO_H
 

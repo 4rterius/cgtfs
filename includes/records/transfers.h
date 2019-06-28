@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Transfer entity handling functionality.
+ */
+
 #ifndef CGTFS_TRANSFERS_H
 #define CGTFS_TRANSFERS_H
 

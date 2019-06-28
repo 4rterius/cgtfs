@@ -1,3 +1,11 @@
+/**
+ * @file
+ * @brief    Haversine formula utility.
+ * 
+ * Does not directly relate to GTFS, 
+ * but is likely necessary for location comparison handling.
+ */
+
 #ifndef CGTFS_HAVERSINE_H
 #define CGTFS_HAVERSINE_H
 
