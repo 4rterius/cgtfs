@@ -374,10 +374,17 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {
             "	feed_contact_url TEXT "
             "); ";
 
-        db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &(db->error_msg));
+        char *error_msg;
+        db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &error_msg);
 
-        if (db->rc)
+        if (db->rc) {
+            if (error_msg != NULL) {
+                db->error_msg = strdup(error_msg);
+                sqlite3_free(error_msg);
+            }
             return FEED_DB_ERROR;
+        }
+
         return FEED_DB_SUCCESS;
     } else {
         char sql[] = ""
@@ -505,10 +512,17 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {
             "	feed_contact_url TEXT "
             "); ";
 
-        db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &(db->error_msg));
+        char *error_msg;
+        db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &error_msg);
 
-        if (db->rc)
+        if (db->rc) {
+            if (error_msg != NULL) {
+                db->error_msg = strdup(error_msg);
+                sqlite3_free(error_msg);
+            }
             return FEED_DB_ERROR;
+        }
+
         return FEED_DB_SUCCESS;
     }
 }

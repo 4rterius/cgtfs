@@ -29,7 +29,7 @@ feed_db_status_t begin_transaction(feed_db_t *db) {
     
     if (db->rc != SQLITE_OK) {
         db->error_msg = strdup(err_msg);
-        free(err_msg);
+        sqlite3_free(err_msg);
         return FEED_DB_ERROR;
     }
 
@@ -42,7 +42,7 @@ feed_db_status_t end_transaction(feed_db_t *db) {
     
     if (db->rc != SQLITE_OK) {
         db->error_msg = strdup(err_msg);
-        free(err_msg);
+        sqlite3_free(err_msg);
         return FEED_DB_ERROR;
     }
 
