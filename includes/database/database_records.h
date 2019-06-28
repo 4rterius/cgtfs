@@ -3,6 +3,13 @@
  * @brief    Includes of all database record handling files.
  */
 
+/**
+ * @ingroup     Database
+ * @defgroup    Database__RecordStoring    Record storing
+ * @brief       Functions which store enitities 
+ *              into the feed database on a singular basis.
+ */
+
 #include "database/records/agency.h"
 #include "database/records/calendar_dates.h"
 #include "database/records/calendar.h"

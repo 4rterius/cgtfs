@@ -18,6 +18,17 @@
 
 
 /**
+ * @defgroup    Database    Database layer
+ * @brief       CGTFS' database functionality.
+ */
+
+/**
+ * @ingroup     Database
+ * @defgroup    Database__FeedEntity    Feed entity
+ * @brief       The core entity around the database connection.
+ */
+
+/**
  * Initializes a give feed database.
  * 
  * @param[in,out]    db          Unitialized feed database instance to operate on.
@@ -25,6 +36,8 @@
  * @param[in]        writable    0 for make connection read-only, else for otherwise
  * 
  * @returns          Result of the operation.
+ * 
+ * @ingroup          Database__FeedEntity
  */
 feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
 
@@ -35,6 +48,8 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
  * @param[in]        overwrite    0 to make error if tables already exist, else for otherwise.
  * 
  * @returns          Result of the operation.
+ * 
+ * @ingroup          Database__FeedEntity
  */
 feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
 
@@ -50,6 +65,8 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
  * @param[out]    feed_counter    Initialized feed instance to write stored records counts to.
  * 
  * @returns       Result of the db operation.
+ * 
+ * @ingroup          Database__FeedEntity
  */
 feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter);
 
@@ -58,6 +75,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
  * 
  * @param[in]     db      Initialized feed database instance to read from.
  * @param[out]    feed    Initialized feed instance to read into.
+ * 
+ * @ingroup          Database__FeedEntity
  */
 void fetch_feed_db(feed_db_t *db, feed_t *feed);
 
@@ -68,6 +87,8 @@ void fetch_feed_db(feed_db_t *db, feed_t *feed);
  * @param[in,out]    db    Initialized feed database instance to clear.
  * 
  * @returns          Result of the db operation.
+ * 
+ * @ingroup          Database__FeedEntity
  */
 feed_db_status_t free_feed_db(feed_db_t *db);
 

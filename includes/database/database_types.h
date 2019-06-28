@@ -10,7 +10,18 @@
 
 
 /**
+ * @ingroup     Database
+ * @defgroup    Database__Types    Types
+ * @brief       Core types used in feed database manipulation.
+ * 
+ * Required header: `database_types.h`
+ */
+
+
+/**
  * Base struct of all db processes to encapsulate the DB realization.
+ * 
+ * @ingroup    Database__Types
  */
 typedef struct feed_db_t {
     char *path;         ///< /path/to/database.file
@@ -22,6 +33,8 @@ typedef struct feed_db_t {
 
 /**
  * Possible outcomes of feed db operations.
+ * 
+ * @ingroup    Database__Types
  */
 typedef enum feed_db_status_t {
     FEED_DB_ERROR = 0,      ///< Miserably failed, check error message or return code.
