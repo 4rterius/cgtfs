@@ -63,7 +63,7 @@ typedef struct {
  * Initializes a feed structure with default values
  * (pointers/arrays with NULLs, *_count fields with 0-s).
  * 
- * @param[in,out]    feed    Pointer to the feed to initialize.
+ * @param[in,out]    feed    Unitialized feed instance.
  */
 void init_feed(feed_t *feed);
 
@@ -71,7 +71,7 @@ void init_feed(feed_t *feed);
  * Reads an unpacked GTFS feed from the given folder 
  * into the given feed instance.
  * 
- * @param[out]    instance               Pointer to the feed to read data into.
+ * @param[out]    instance               Initialized feed instance to read data into.
  * @param[in]     feed_directory_path    /path/to/unpacked/gtfs/feed
  * 
  * @returns 0
@@ -81,15 +81,15 @@ int read_feed(feed_t *instance, const char *feed_directory_path);
 /**
  * Frees the memory taken by the given feed structure.
  * 
- * @param[in,out]    feed    Pointer to the feed to free.
+ * @param[in,out]    feed    Initialized feed instance to free.
  */
 void free_feed(feed_t *feed);
 
 /**
  * Compares two feed instances.
  * 
- * @param[in]    a    First feed.
- * @param[in]    b    Second feed.
+ * @param[in]    a    First feed instance.
+ * @param[in]    b    Second feed instance.
  * 
  * @returns      0 if feeds are equal, non-zero if not.
  */
