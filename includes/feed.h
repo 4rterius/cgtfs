@@ -25,6 +25,19 @@
 #include "helpers/filenames.h"
 #include "reading.h"
 
+
+/**
+ * @defgroup    Core    Core layer
+ * @brief       CGTFS' basic functionality.
+ */
+
+/**
+ * @ingroup Core
+ * @defgroup    Core__FeedEntity    Feed entity
+ * @brief       The core entity representing a GTFS feed.
+ */
+
+
 /**
  * A GTFS feed entity that encapsulates all data of a single GTFS feed.
  * 
@@ -33,6 +46,8 @@
  * and an integer field to store the number of the file's records (zero if no file or no records).
  * 
  * @see https://developers.google.com/transit/gtfs/reference/
+ * 
+ * @ingroup    Core__FeedEntity
  */
 typedef struct {
     agency_t *agencies;
@@ -69,6 +84,8 @@ typedef struct {
  * (pointers/arrays with NULLs, *_count fields with 0-s).
  * 
  * @param[in,out]    feed    Unitialized feed instance.
+ * 
+ * @ingroup          Core__FeedEntity
  */
 void init_feed(feed_t *feed);
 
@@ -80,6 +97,8 @@ void init_feed(feed_t *feed);
  * @param[in]     feed_directory_path    /path/to/unpacked/gtfs/feed
  * 
  * @returns 0
+ * 
+ * @ingroup       Core__FeedEntity
  */
 int read_feed(feed_t *instance, const char *feed_directory_path);
 
@@ -97,6 +116,8 @@ void free_feed(feed_t *feed);
  * @param[in]    b    Second feed instance.
  * 
  * @returns      0 if feeds are equal, non-zero if not.
+ * 
+ * @ingroup      Core__FeedEntity
  */
 int equal_feeds(const feed_t *a, const feed_t *b);
 

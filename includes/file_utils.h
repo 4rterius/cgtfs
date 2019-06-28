@@ -10,10 +10,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 /**
- * @def      LINE_MAX_LEN
- * @brief    Max reasonable length of a line or a record (!).
- * @note     Obviously, increase/decrease if needed.
+ * @ingroup     Utilities
+ * @defgroup    Utilities__File    File utilities
+ * @brief       File I/O utilities.
+ */
+
+/**
+ * @def        LINE_MAX_LEN
+ * @brief      Max reasonable length of a line or a record (!).
+ * @note       Obviously, increase/decrease if needed.
+ * 
+ * @ingroup    Utilities__File
  */
 #define LINE_MAX_LEN 10000
 
@@ -24,7 +33,9 @@
  * @param[in]     fp             Opened file connection to read from.
  * @param[out]    field_names    Pointer to the string array to read field names into.
  * 
- * @returns 0 on file reading error, number of fields on success.
+ * @returns       0 on file reading error, number of fields on success.
+ * 
+ * @ingroup       Utilities__File
  */
 int read_header(FILE *fp, char ***field_names);
 
@@ -39,6 +50,8 @@ int read_header(FILE *fp, char ***field_names);
  * @param[out]    record_values    Pointer to the string array to read record values into.
  * 
  * @returns       -1 on the file reading error, 1 on success.
+ * 
+ * @ingroup       Utilities__File
  */
 int read_record(FILE *fp, const int fields_number, char ***record_values);
 
@@ -49,6 +62,8 @@ int read_record(FILE *fp, const int fields_number, char ***record_values);
  * @param[in]    fp    Opened file connection to count line in.
  * 
  * @returns      -1 on the file reading error, number of lines on success.
+ * 
+ * @ingroup       Utilities__File
  */
 int count_lines(FILE *fp);
 

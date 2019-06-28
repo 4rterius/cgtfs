@@ -20,7 +20,7 @@
 
 /**
  * @ingroup     Database Utilities
- * @defgroup    Database__Utils    Utilities
+ * @defgroup    Database__Utils    Database utilities
  * @brief       Database-related utilities
  */
 
