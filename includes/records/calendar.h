@@ -12,6 +12,8 @@
 
 /**
  * Whether service is available on a given day.
+ * 
+ * @ingroup    Core__EntityEnums
  */
 typedef enum {
     SA_UNAVAILABLE = 0,  ///< Service is unavailable.
@@ -21,9 +23,12 @@ typedef enum {
 
 /**
  * calendar.txt record
- * @see init_calendar_record()
- * @see read_calendar_record()
- * @see https://developers.google.com/transit/gtfs/reference/#calendartxt
+ * 
+ * @see        init_calendar_record()
+ * @see        read_calendar_record()
+ * @see        https://developers.google.com/transit/gtfs/reference/#calendartxt
+ * 
+ * @ingroup    Core__EntityTypes
  */
 typedef struct {
     char service_id[65];               ///< [Required] Unique ID that identifies a set of dates when the service is available with these params
@@ -43,31 +48,45 @@ typedef struct {
 /**
  * Parses the service_availability_t value from given string
  * with regard for the default value as per GTFS reference.
- * @param[in] value Char array (string) to parse the enumerator from.
- * @returns An service_availability_t value;
+ * 
+ * @param[in]    value    Char array (string) to parse the enumerator from.
+ * 
+ * @returns      An service_availability_t value;
+ * 
+ * @ingroup      Core__EntityEnums
  */
 service_availability_t parse_service_availability(const char *value);
 
 /**
  * Initializes the given calendar record with empty/default values.
- * @param[out] record Calendar pointer to initialize.
+ * 
+ * @param[out]    record    Calendar pointer to initialize.
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void init_calendar_record(calendar_record_t *record);
 
 /**
  * Reads given datafields and field names into the given calendar record struct
- * @param[out] record        The pointer to write into
- * @param[in]  field_count   Number of rows (columns) the record has
- * @param[in]  field_names   Names of the fields
- * @param[in]  field_values  Contents of the record
+ * 
+ * @param[out]    record          The pointer to write into
+ * @param[in]     field_count     Number of rows (columns) the record has
+ * @param[in]     field_names     Names of the fields
+ * @param[in]     field_values    Contents of the record
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void read_calendar_record(calendar_record_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * @param[in] a  First structure
- * @param[in] b  Second structure
- * @returns 0 if structures are equal, non-zero otherwise.
+ * 
+ * @param[in]    a    First structure
+ * @param[in]    b    Second structure
+ * 
+ * @returns      0 if structures are equal, non-zero otherwise.
+ * 
+ * @ingroup      Core__EntityFunctions
  */
 int equal_calendar_record(const calendar_record_t *a, const calendar_record_t *b);
 

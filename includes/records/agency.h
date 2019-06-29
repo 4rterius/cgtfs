@@ -12,9 +12,12 @@
 
 /**
  * agency.txt record
- * @see init_agency()
- * @see read_agency()
- * @see https://developers.google.com/transit/gtfs/reference/#agencytxt
+ * 
+ * @see        init_agency()
+ * @see        read_agency()
+ * @see        https://developers.google.com/transit/gtfs/reference/#agencytxt
+ * 
+ * @ingroup    Core__EntityTypes
  */
 typedef struct {
     char id[65];        ///< [Optional] Unique agency ID
@@ -31,24 +34,34 @@ typedef struct {
 
 /**
  * Initializes the given agency record with empty/default values.
- * @param[out] record Agency pointer to initialize.
+ * 
+ * @param[out]    record    Agency pointer to initialize.
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void init_agency(agency_t *record);
 
 /**
  * Reads given datafields and field names into the given agency record struct
- * @param[out] record        The pointer to write into
- * @param[in]  field_count   Number of rows (columns) the record has
- * @param[in]  field_names   Names of the fields
- * @param[in]  field_values  Contents of the record
+ * 
+ * @param[out]    record          The pointer to write into
+ * @param[in]     field_count     Number of rows (columns) the record has
+ * @param[in]     field_names     Names of the fields
+ * @param[in]     field_values    Contents of the record
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void read_agency(agency_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * @param[in] a  First structure
- * @param[in] b  Second structure
- * @returns 0 if structures are equal, non-zero otherwise.
+ * 
+ * @param[in]    a    First structure
+ * @param[in]    b    Second structure
+ * 
+ * @returns      0 if structures are equal, non-zero otherwise.
+ * 
+ * @ingroup      Core__EntityFunctions
  */
 int equal_agency(const agency_t *a, const agency_t *b);
 

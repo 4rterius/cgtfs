@@ -13,6 +13,8 @@
 
 /**
  * What kind of a location the entity is.
+ * 
+ * @ingroup    Core__EntityEnums
  */
 typedef enum {
     LT_STOP = 0,                   ///< Stop.
@@ -23,6 +25,8 @@ typedef enum {
 
 /**
  * Whether wheelchair boardings/entrances are possible.
+ * 
+ * @ingroup    Core__EntityEnums
  */
 typedef enum {
     WB_UNKNOWN_OR_INHERITED = 0,  ///< No information available or the parent's value applies.
@@ -33,9 +37,12 @@ typedef enum {
 
 /**
  * stops.txt record
- * @see init_stop()
- * @see read_stop()
- * @see https://developers.google.com/transit/gtfs/reference/#stopstxt
+ * 
+ * @see        init_stop()
+ * @see        read_stop()
+ * @see        https://developers.google.com/transit/gtfs/reference/#stopstxt
+ * 
+ * @ingroup    Core__EntityTypes
  */
 typedef struct {
     char id[65];                                ///< [Required] Unique ID that identifies this stop.
@@ -56,39 +63,56 @@ typedef struct {
 /**
  * Parses the location_type_t value from given string
  * with regard for the default value as per GTFS reference.
- * @param[in] value Char array (string) to parse the enumerator from.
- * @returns An location_type_t value;
+ * 
+ * @param[in]    value    Char array (string) to parse the enumerator from.
+ * 
+ * @returns      An location_type_t value.
+ * 
+ * @ingroup      Core__EntityEnums
  */
 location_type_t parse_location_type(const char *value);
 
 /**
  * Parses the wheelchair_boarding_t value from given string
  * with regard for the default value as per GTFS reference.
- * @param[in] value Char array (string) to parse the enumerator from.
- * @returns An wheelchair_boarding_t value;
+ * 
+ * @param[in]    value    Char array (string) to parse the enumerator from.
+ * 
+ * @returns      An wheelchair_boarding_t value.
+ * 
+ * @ingroup      Core__EntityEnums
  */
 wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
 
 /**
  * Initializes the given stop record with empty/default values.
- * @param[out] record Stop record pointer to initialize.
+ * 
+ * @param[out]    record    Stop record pointer to initialize.
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void init_stop(stop_t *record);
 
 /**
  * Reads given datafields and field names into the given stop struct.
- * @param[out] record        The pointer to write into.
- * @param[in]  field_count   Number of rows (columns) the record has.
- * @param[in]  field_names   Names of the fields.
- * @param[in]  field_values  Contents of the record.
+ * 
+ * @param[out]    record          The pointer to write into.
+ * @param[in]     field_count     Number of rows (columns) the record has.
+ * @param[in]     field_names     Names of the fields.
+ * @param[in]     field_values    Contents of the record.
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void read_stop(stop_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * @param[in] a  First structure
- * @param[in] b  Second structure
- * @returns 0 if structures are equal, non-zero otherwise.
+ * 
+ * @param[in]    a    First structure
+ * @param[in]    b    Second structure
+ * @returns      0 if structures are equal, non-zero otherwise.
+ * 
+ * @ingroup      Core__EntityFunctions
  */
 int equal_stop(const stop_t *a, const stop_t *b);
 

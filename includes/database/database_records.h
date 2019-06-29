@@ -5,7 +5,7 @@
 
 /**
  * @ingroup     Database
- * @defgroup    Database__RecordStoring    Record storing
+ * @defgroup    Database__EntityStoring    Entity storing
  * @brief       Functions which store enitities 
  *              into the feed database on a singular basis.
  */

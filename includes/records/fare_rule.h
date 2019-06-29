@@ -12,9 +12,12 @@
 
 /**
  * fare_rules.txt record
- * @see init_fare_rule()
- * @see read_fare_rule()
- * @see https://developers.google.com/transit/gtfs/reference/#fare_rulestxt
+ * 
+ * @see        init_fare_rule()
+ * @see        read_fare_rule()
+ * @see        https://developers.google.com/transit/gtfs/reference/#fare_rulestxt
+ * 
+ * @ingroup    Core__EntityTypes
  */
 typedef struct {
     char fare_id[65];         ///< [Required] Unique ID that identifies the fare class.
@@ -27,24 +30,34 @@ typedef struct {
 
 /**
  * Initializes the given fare rules record with empty/default values.
- * @param[out] record Fare rules record pointer to initialize.
+ * 
+ * @param[out]    record    Fare rules record pointer to initialize.
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void init_fare_rule(fare_rule_t *record);
 
 /**
  * Reads given datafields and field names into the given fare rules struct.
- * @param[out] record        The pointer to write into.
- * @param[in]  field_count   Number of rows (columns) the record has.
- * @param[in]  field_names   Names of the fields.
- * @param[in]  field_values  Contents of the record.
+ * 
+ * @param[out]    record          The pointer to write into.
+ * @param[in]     field_count     Number of rows (columns) the record has.
+ * @param[in]     field_names     Names of the fields.
+ * @param[in]     field_values    Contents of the record.
+ * 
+ * @ingroup       Core__EntityFunctions
  */
 void read_fare_rule(fare_rule_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * @param[in] a  First structure
- * @param[in] b  Second structure
- * @returns 0 if structures are equal, non-zero otherwise.
+ * 
+ * @param[in]    a    First structure
+ * @param[in]    b    Second structure
+ * 
+ * @returns      0 if structures are equal, non-zero otherwise.
+ * 
+ * @ingroup      Core__EntityFunctions
  */
 int equal_fare_rule(const fare_rule_t *a, const fare_rule_t *b);
 

@@ -5,8 +5,27 @@
 
 /**
  * @ingroup     Core
- * @defgroup    Core__Records    Record entities handling
- * @brief       Functions which handle basic GTFS entities.
+ * @defgroup    Core__Entity    GTFS entities
+ * @brief       Functions which handle GTFS entities.
+ */
+
+/**
+ * @ingroup     Core__Entity
+ * @defgroup    Core__EntityTypes    Core types
+ * @brief       Structures representing basic GTFS entities.
+ */
+
+/**
+ * @ingroup     Core__Entity
+ * @defgroup    Core__EntityFunctions    Entity handling
+ * @brief       Functions for manipulating @ref Core__EntityTypes
+ */
+
+/**
+ * @ingroup     Core__Entity
+ * @defgroup    Core__EntityEnums    Field enumerations
+ * @brief       Enumerations for fields which can only have one 
+ *              of a limited set of numeric values.
  */
 
 #include "records/agency.h"

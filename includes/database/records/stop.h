@@ -17,7 +17,7 @@
  * @param[in]    record    Record to store.
  * @param[in]    db        Target feed database instance.
  * 
- * @ingroup      Database__RecordStoring
+ * @ingroup      Database__EntityStoring
  */
 feed_db_status_t store_stop_db(stop_t *record, feed_db_t *db);
 
