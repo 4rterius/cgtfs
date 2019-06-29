@@ -8,60 +8,21 @@ Some example source code is located in the `examples/` folder of the library's s
 
 ### Reading a feed into memory
 
-```c
-#include <stdio.h>
-#include "feed.h"
+*Note: usage shown in this example is not recommended for parsing a real feed, as it __will__ take __a lot of__ memory for any substantially big amounts of data.*
 
-// Example 0: read all feed data into memory
-void some_function(void) {
-    feed_t amazing_feed;
-    
-    init_feed(&amazing_feed);
-    read_feed(&amazing_feed, "/path/to/unpacked/gtfs/");
+@include example_0.c
 
-    if (amazing_feed.agency_count > 0)
-        printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
-    else
-        perror("Failed to open agency.txt or the file has no records");
-    
-    free_feed(&amazing_feed);
-}
-```
+### An entity file reading
 
-### Reading all bus stops and printing out their information
+Read all bus stops and print out their information
 
-```c
-#include <stdio.h>
-#include "helpers/filenames.h"
-#include "reading.h"
+@include example_1.c
 
-// Example 1: read all bus stops into memory
-void another_function(void) {
-    char *stops_filename;
-    make_filepath(&stops_filename, "/path/to/unpacked/gtfs/", "stops.txt");
+### Database-backed querying
 
-    int stops_count = 0;
-    stop_t *stops;
+Store a gtfs folder as a database and query it for first 10 stop time records with arrival time within the next 10 minutes.
 
-    FILE *fp = fopen(stops_filename, "r");
-    if (fp) {
-        stops_count = read_all_stops(fp, &stops);
-        fclose(fp);
-    }
-
-    for (int i = 0; i < stops_count; i++) {
-        printf("=== Stop %i:\n", i + 1);
-        printf(" -> stop_id == %s\n", stops[i].id);
-        printf(" -> stop_name == %s\n", stops[i].name);
-        printf(" -> stop_lat == %Lf\n", stops[i].lat);
-        printf(" -> stop_lon == %Lf\n", stops[i].lon);
-        printf("\n");
-    }
-
-    if (stops_count > 0) free(stops);
-    free(stops_filename);
-}
-```
+@include example_2.c
 
 ## Build process and dependencies
 
