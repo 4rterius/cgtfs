@@ -1,8 +1,12 @@
-# CGTFS - C library to read static GTFS feeds
+# CGTFS - a C library to read static GTFS feeds {#mainpage}
 
 A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) format.
 
 ## Examples
+
+Some example source code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful.
+
+### Reading a feed into memory
 
 ```c
 #include <stdio.h>
@@ -23,6 +27,8 @@ void some_function(void) {
     free_feed(&amazing_feed);
 }
 ```
+
+### Reading all bus stops and printing out their information
 
 ```c
 #include <stdio.h>
@@ -61,7 +67,10 @@ void another_function(void) {
 
 ### Dependencies
 
-As of the last README update, the library has no dependencies, as was the development goal. However, it means that extraction of GTFS .zip needs to be done separately.
+One of the development goals was to keep the dependencies as minimal as possible. So far, CGTFS has following dependencies:
+
+  - [greatest](https://github.com/silentbicycle/greatest) for tests
+  - [sqlite3](https://www.sqlite.org/index.html) for fast & efficient querying *built through [a special cmake-friendly repo](https://github.com/rakhack/sqlite3-cmake)*
 
 ### Build process
 
@@ -72,18 +81,26 @@ $ cd /path/to/cgtfs/
 $ mkdir build && cd build/
 $ cmake .. && cmake --build .
 
-$ ./tests    # on Linux; tests executable location on Windows may vary
+$ ./tests    # on Linux; tests executable location on Windows may vary, e.g. Debug/tests.exe
 ```
 
-### Documentation
+## Documentation
 
-The library is heavily documented via code comments. To compile them into HTML, just run `doxygen`. The following section provides a brief overview of the API.
+The library is heavily documented via code comments. You are encouraged to compile them into HTML.
 
-*However, this file is guaranteed to contain up-to-date information only on releases, so it is advised to download the latest relase from Releases page and read README.md of the release's latest commit.*
+```
+$ mkdir docs/doxygen/
+$ doxygen
+```
 
-## API overview
+*Note: by default, doxygen is configured to output RTF and LaTeX documentation as well. Turn off LaTeX if it is not installed on your system.*
 
-This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
+*Note 2: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
+
+### API overview
+
+An overview of the library's interface is provided in a separate section. See @ref api_overview.
+
 
 ## Useful links
 

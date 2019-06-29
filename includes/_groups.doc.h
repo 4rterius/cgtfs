@@ -54,15 +54,21 @@
 
 /**
  * @ingroup     Core__Entity
+ * @defgroup    Core__EntityEnums    Field enumerations
+ * @brief       Enumerations for fields which can only have one 
+ *              of a limited set of numeric values.
+ */
+
+/**
+ * @ingroup     Core__Entity
  * @defgroup    Core__EntityFunctions    Entity handling
  * @brief       Functions for manipulating @ref Core__EntityTypes
  */
 
 /**
  * @ingroup     Core__Entity
- * @defgroup    Core__EntityEnums    Field enumerations
- * @brief       Enumerations for fields which can only have one 
- *              of a limited set of numeric values.
+ * @defgroup    Core__EntityFileReading    Batch entity reading
+ * @brief       Functions to parse entire feed files into record arrays.
  */
 
 /**
@@ -160,13 +166,19 @@
 
 /**
  * @ingroup     Database
- * @defgroup    Database__TableFetching    Table fetching
+ * @defgroup    Database__TableOps    Table operations
+ * @brief       Functions for manipulating entire feed database tables.
+ */
+
+/**
+ * @ingroup     Database__TableOps
+ * @defgroup    Database__TableFetching    Fetching
  * @brief       Functions for retrieving entire database tables.
  */
 
 /**
- * @ingroup     Database
- * @defgroup    Database__TableStoring    Table storing
+ * @ingroup     Database__TableOps
+ * @defgroup    Database__TableStoring    Storing
  * @brief       Functions for storing entire database tables.
  */
 

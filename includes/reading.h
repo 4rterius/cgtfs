@@ -31,6 +31,8 @@
  * @param[out]    records    Array of agency_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_agencies(FILE *fp, agency_t **records);
 
@@ -41,6 +43,8 @@ int read_all_agencies(FILE *fp, agency_t **records);
  * @param[out]    records    Array of calendar_date_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_calendar_dates(FILE *fp, calendar_date_t **records);
 
@@ -51,6 +55,8 @@ int read_all_calendar_dates(FILE *fp, calendar_date_t **records);
  * @param[out]    records    Array of calendar_record_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_calendar_records(FILE *fp, calendar_record_t **records);
 
@@ -61,6 +67,8 @@ int read_all_calendar_records(FILE *fp, calendar_record_t **records);
  * @param[out]    records    Array of fare_attributes_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_fare_attributes(FILE *fp, fare_attributes_t **records);
 
@@ -71,6 +79,8 @@ int read_all_fare_attributes(FILE *fp, fare_attributes_t **records);
  * @param[out]    records    Array of fare_rule_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_fare_rules(FILE *fp, fare_rule_t **records);
 
@@ -81,6 +91,8 @@ int read_all_fare_rules(FILE *fp, fare_rule_t **records);
  * @param[out]    records    Array of feed_info_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_feed_info(FILE *fp, feed_info_t **records);
 
@@ -91,6 +103,8 @@ int read_all_feed_info(FILE *fp, feed_info_t **records);
  * @param[out]    records    Array of frequency_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_frequencies(FILE *fp, frequency_t **records);
 
@@ -101,6 +115,8 @@ int read_all_frequencies(FILE *fp, frequency_t **records);
  * @param[out]    records    Array of route_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_routes(FILE *fp, route_t **records);
 
@@ -111,6 +127,8 @@ int read_all_routes(FILE *fp, route_t **records);
  * @param[out]    records    Array of shape_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_shapes(FILE *fp, shape_t **records);
 
@@ -121,6 +139,8 @@ int read_all_shapes(FILE *fp, shape_t **records);
  * @param[out]    records    Array of stop_time_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_stop_times(FILE *fp, stop_time_t **records);
 
@@ -131,6 +151,8 @@ int read_all_stop_times(FILE *fp, stop_time_t **records);
  * @param[out]    records    Array of stop_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_stops(FILE *fp, stop_t **records);
 
@@ -141,6 +163,8 @@ int read_all_stops(FILE *fp, stop_t **records);
  * @param[out]    records    Array of transfer_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_transfers(FILE *fp, transfer_t **records);
 
@@ -151,6 +175,8 @@ int read_all_transfers(FILE *fp, transfer_t **records);
  * @param[out]    records    Array of trip_t records.
  * 
  * @returns       -1 on failure/error, number of records on success.
+ * 
+ * @ingroup       Core__EntityFileReading
  */
 int read_all_trips(FILE *fp, trip_t **records);
 
