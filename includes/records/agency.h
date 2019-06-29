@@ -17,7 +17,7 @@
  * @see        read_agency()
  * @see        https://developers.google.com/transit/gtfs/reference/#agencytxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Agency
  */
 typedef struct {
     char id[65];        ///< [Optional] Unique agency ID
@@ -37,7 +37,7 @@ typedef struct {
  * 
  * @param[out]    record    Agency pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Agency
  */
 void init_agency(agency_t *record);
 
@@ -49,7 +49,7 @@ void init_agency(agency_t *record);
  * @param[in]     field_names     Names of the fields
  * @param[in]     field_values    Contents of the record
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Agency
  */
 void read_agency(agency_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -61,7 +61,7 @@ void read_agency(agency_t *record, int field_count, const char **field_names, co
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Agency
  */
 int equal_agency(const agency_t *a, const agency_t *b);
 

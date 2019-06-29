@@ -13,7 +13,7 @@
 /**
  * Whether service is available on a given day.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__CalendarRecord
  */
 typedef enum {
     SA_UNAVAILABLE = 0,  ///< Service is unavailable.
@@ -28,7 +28,7 @@ typedef enum {
  * @see        read_calendar_record()
  * @see        https://developers.google.com/transit/gtfs/reference/#calendartxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__CalendarRecord
  */
 typedef struct {
     char service_id[65];               ///< [Required] Unique ID that identifies a set of dates when the service is available with these params
@@ -53,7 +53,7 @@ typedef struct {
  * 
  * @returns      An service_availability_t value;
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__CalendarRecord
  */
 service_availability_t parse_service_availability(const char *value);
 
@@ -62,7 +62,7 @@ service_availability_t parse_service_availability(const char *value);
  * 
  * @param[out]    record    Calendar pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__CalendarRecord
  */
 void init_calendar_record(calendar_record_t *record);
 
@@ -74,7 +74,7 @@ void init_calendar_record(calendar_record_t *record);
  * @param[in]     field_names     Names of the fields
  * @param[in]     field_values    Contents of the record
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__CalendarRecord
  */
 void read_calendar_record(calendar_record_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -86,7 +86,7 @@ void read_calendar_record(calendar_record_t *record, int field_count, const char
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__CalendarRecord
  */
 int equal_calendar_record(const calendar_record_t *a, const calendar_record_t *b);
 

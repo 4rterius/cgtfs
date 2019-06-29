@@ -14,7 +14,7 @@
 /**
  * Whether it is possible to access a trip using wheelchairs.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Trip
  */
 typedef enum {
     WA_UNKNOWN = 0,
@@ -26,7 +26,7 @@ typedef enum {
 /**
  * Whether bikes are allowed on a trip.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Trip
  */
 typedef enum {
     BA_UNKNOWN = 0,
@@ -42,7 +42,7 @@ typedef enum {
  * @see        read_trip()
  * @see        https://developers.google.com/transit/gtfs/reference/#tripstxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Trip
  */
 typedef struct {
     char route_id[65];                              ///< Unique ID that identifies the route of the trip.
@@ -66,7 +66,7 @@ typedef struct {
  * 
  * @returns      An wheelchair_accessible_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Trip
  */
 wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
 
@@ -78,7 +78,7 @@ wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
  * 
  * @returns      An bikes_allowed_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Trip
  */
 bikes_allowed_t parse_bike_allowance(const char *value);
 
@@ -87,7 +87,7 @@ bikes_allowed_t parse_bike_allowance(const char *value);
  * 
  * @param[out]    record    Trip record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Trip
  */
 void init_trip(trip_t *record);
 
@@ -99,7 +99,7 @@ void init_trip(trip_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Trip
  */
 void read_trip(trip_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -111,7 +111,7 @@ void read_trip(trip_t *record, int field_count, const char **field_names, const 
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Trip
  */
 int equal_trip(const trip_t *a, const trip_t *b);
 

@@ -14,7 +14,7 @@
 /**
  * When the fare must be paid by the customer.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__FareAttributes
  */
 typedef enum {
     PM_ON_BOARD = 0,    ///< Fare is paid on board.
@@ -25,7 +25,7 @@ typedef enum {
 /**
  * Number of transfers allowed on the fare.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__FareAttributes
  */
 typedef enum {
     TS_NOT_ALLOWED = 0,  ///< Zero
@@ -42,7 +42,7 @@ typedef enum {
  * @see        read_fare_attributes()
  * @see        https://developers.google.com/transit/gtfs/reference/#fare_attributestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__FareAttributes
  */
 typedef struct {
     char fare_id[65];                 ///< [Required] Unique ID that identifies the fare class.
@@ -64,7 +64,7 @@ typedef struct {
  * 
  * @returns      An payment_method_t value;
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__FareAttributes
  */
 payment_method_t parse_payment_method(const char *value);
 
@@ -76,7 +76,7 @@ payment_method_t parse_payment_method(const char *value);
  * 
  * @returns      An transfers_state_t value;
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__FareAttributes
  */
 transfers_state_t parse_transfer_state(const char *value);
 
@@ -85,7 +85,7 @@ transfers_state_t parse_transfer_state(const char *value);
  * 
  * @param[out]    record    Fare attributes record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__FareAttributes
  */
 void init_fare_attributes(fare_attributes_t *record);
 
@@ -97,7 +97,7 @@ void init_fare_attributes(fare_attributes_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__FareAttributes
  */
 void read_fare_attributes(fare_attributes_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -109,7 +109,7 @@ void read_fare_attributes(fare_attributes_t *record, int field_count, const char
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__FareAttributes
  */
 int equal_fare_attributes(const fare_attributes_t *a, const fare_attributes_t *b);
 

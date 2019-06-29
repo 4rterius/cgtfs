@@ -13,7 +13,7 @@
 /**
  * What kind of exception does calendar_date_t present.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__CalendarDate
  */
 typedef enum {
     ET_ADDED = 1,    ///< Service is added.
@@ -28,7 +28,7 @@ typedef enum {
  * @see        read_calendar_date()
  * @see        https://developers.google.com/transit/gtfs/reference/#calendar_datestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__CalendarDate
  */
 typedef struct {
     char service_id[65];              ///< [Required] Unique ID that identifies a set of dates to which the exception applies
@@ -46,7 +46,7 @@ typedef struct {
  * 
  * @returns      An exception_type_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__CalendarDate
  */
 exception_type_t parse_exception_type(const char *value);
 
@@ -55,7 +55,7 @@ exception_type_t parse_exception_type(const char *value);
  * 
  * @param[out]    record    Calendar date pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__CalendarDate
  */
 void init_calendar_date(calendar_date_t *record);
 
@@ -67,7 +67,7 @@ void init_calendar_date(calendar_date_t *record);
  * @param[in]     field_names     Names of the fields
  * @param[in]     field_values    Contents of the record
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__CalendarDate
  */
 void read_calendar_date(calendar_date_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -79,7 +79,7 @@ void read_calendar_date(calendar_date_t *record, int field_count, const char **f
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__CalendarDate
  */
 int equal_calendar_date(const calendar_date_t *a, const calendar_date_t *b);
 

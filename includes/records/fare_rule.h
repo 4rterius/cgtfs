@@ -17,7 +17,7 @@
  * @see        read_fare_rule()
  * @see        https://developers.google.com/transit/gtfs/reference/#fare_rulestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__FareRule
  */
 typedef struct {
     char fare_id[65];         ///< [Required] Unique ID that identifies the fare class.
@@ -33,7 +33,7 @@ typedef struct {
  * 
  * @param[out]    record    Fare rules record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__FareRule
  */
 void init_fare_rule(fare_rule_t *record);
 
@@ -45,7 +45,7 @@ void init_fare_rule(fare_rule_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__FareRule
  */
 void read_fare_rule(fare_rule_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -57,7 +57,7 @@ void read_fare_rule(fare_rule_t *record, int field_count, const char **field_nam
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__FareRule
  */
 int equal_fare_rule(const fare_rule_t *a, const fare_rule_t *b);
 

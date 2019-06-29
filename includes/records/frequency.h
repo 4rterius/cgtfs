@@ -14,7 +14,7 @@
 /**
  * Whether timepoints are considered exact or approximate.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Frequency
  */
 typedef enum {
     TE_NOT_EXACT = 0,  ///< Approximate (default behavior; when the field is empty)
@@ -29,7 +29,7 @@ typedef enum {
  * @see        read_frequency()
  * @see        https://developers.google.com/transit/gtfs/reference/#frequenciestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Frequency
  */
 typedef struct {
     char trip_id[65];              ///< [Required] A unique ID of the trip on which the frequency applies.
@@ -48,7 +48,7 @@ typedef struct {
  * 
  * @returns      An time_exactness_t value;
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Frequency
  */
 time_exactness_t parse_time_exactness(const char *value);
 
@@ -57,7 +57,7 @@ time_exactness_t parse_time_exactness(const char *value);
  * 
  * @param[out]    record    Frequency record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Frequency
  */
 void init_frequency(frequency_t *record);
 
@@ -69,7 +69,7 @@ void init_frequency(frequency_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Frequency
  */
 void read_frequency(frequency_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -81,7 +81,7 @@ void read_frequency(frequency_t *record, int field_count, const char **field_nam
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Frequency
  */
 int equal_frequency(const frequency_t *a, const frequency_t *b);
 

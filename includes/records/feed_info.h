@@ -17,7 +17,7 @@
  * @see        read_feed_info()
  * @see        https://developers.google.com/transit/gtfs/reference/#feed_infotxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__FeedInfo
  */
 typedef struct {
     char feed_publisher_name[65];  ///< [Required] Full name of the organization publishing the feed.
@@ -37,7 +37,7 @@ typedef struct {
  * 
  * @param[out]    record    Feed info record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__FeedInfo
  */
 void init_feed_info(feed_info_t *record);
 
@@ -49,7 +49,7 @@ void init_feed_info(feed_info_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__FeedInfo
  */
 void read_feed_info(feed_info_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -61,7 +61,7 @@ void read_feed_info(feed_info_t *record, int field_count, const char **field_nam
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__FeedInfo
  */
 int equal_feed_info(const feed_info_t *a, const feed_info_t *b);
 

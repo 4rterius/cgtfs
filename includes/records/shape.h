@@ -18,7 +18,7 @@
  * @see        read_shape()
  * @see        https://developers.google.com/transit/gtfs/reference/#shapestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Shape
  */
 typedef struct {
     char id[65];               ///< [Required] Unique ID that identifies the shape.
@@ -34,7 +34,7 @@ typedef struct {
  * 
  * @param[out]    record    Shape record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Shape
  */
 void init_shape(shape_t *record);
 
@@ -46,7 +46,7 @@ void init_shape(shape_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Shape
  */
 void read_shape(shape_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -58,7 +58,7 @@ void read_shape(shape_t *record, int field_count, const char **field_names, cons
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Shape
  */
 int equal_shape(const shape_t *a, const shape_t *b);
 

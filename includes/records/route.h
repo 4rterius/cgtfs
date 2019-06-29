@@ -14,7 +14,7 @@
 /**
  * The kind of transport the route serves.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Route
  */
 typedef enum {
     RT_STREET_LEVEL = 0,  ///< Any light rail or street level system within a metropolitan area.
@@ -35,7 +35,7 @@ typedef enum {
  * @see        read_route()
  * @see        https://developers.google.com/transit/gtfs/reference/#routestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Route
  */
 typedef struct {
     char id[65];          ///< [Required] Unique ID that identifies the route.
@@ -59,7 +59,7 @@ typedef struct {
  * 
  * @returns      An route_type_t value;
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Route
  */
 route_type_t parse_route_type(const char *value);
 
@@ -68,7 +68,7 @@ route_type_t parse_route_type(const char *value);
  * 
  * @param[out]    record    Route record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Route
  */
 void init_route(route_t *record);
 
@@ -80,7 +80,7 @@ void init_route(route_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Route
  */
 void read_route(route_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -92,7 +92,7 @@ void read_route(route_t *record, int field_count, const char **field_names, cons
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Route
  */
 int equal_route(const route_t *a, const route_t *b);
 

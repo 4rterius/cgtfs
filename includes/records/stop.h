@@ -14,7 +14,7 @@
 /**
  * What kind of a location the entity is.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Stop
  */
 typedef enum {
     LT_STOP = 0,                   ///< Stop.
@@ -26,7 +26,7 @@ typedef enum {
 /**
  * Whether wheelchair boardings/entrances are possible.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Stop
  */
 typedef enum {
     WB_UNKNOWN_OR_INHERITED = 0,  ///< No information available or the parent's value applies.
@@ -42,7 +42,7 @@ typedef enum {
  * @see        read_stop()
  * @see        https://developers.google.com/transit/gtfs/reference/#stopstxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Stop
  */
 typedef struct {
     char id[65];                                ///< [Required] Unique ID that identifies this stop.
@@ -68,7 +68,7 @@ typedef struct {
  * 
  * @returns      An location_type_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Stop
  */
 location_type_t parse_location_type(const char *value);
 
@@ -80,7 +80,7 @@ location_type_t parse_location_type(const char *value);
  * 
  * @returns      An wheelchair_boarding_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Stop
  */
 wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
 
@@ -89,7 +89,7 @@ wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
  * 
  * @param[out]    record    Stop record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Stop
  */
 void init_stop(stop_t *record);
 
@@ -101,7 +101,7 @@ void init_stop(stop_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Stop
  */
 void read_stop(stop_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -112,7 +112,7 @@ void read_stop(stop_t *record, int field_count, const char **field_names, const 
  * @param[in]    b    Second structure
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Stop
  */
 int equal_stop(const stop_t *a, const stop_t *b);
 

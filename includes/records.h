@@ -28,6 +28,82 @@
  *              of a limited set of numeric values.
  */
 
+/**
+ * @ingroup     Core__Entity
+ * @defgroup    Core__EntityList    Entities (grouped)
+ * @brief       A convenience module of entities' documentation
+ */
+
+
+
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Agency    Agency
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__CalendarDate    Calendar date
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__CalendarRecord    Calendar record
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__FareAttributes    Fare attributes
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__FareRule    Fare rule
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__FeedInfo    Feed information
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Frequency    Frequency
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Route    Route
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Shape    Shape
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__StopTime    Stop time
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Stop    Stop
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Transfer    Transfer
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Trip    Trip
+ */
+
+
+
 #include "records/agency.h"
 #include "records/calendar_dates.h"
 #include "records/calendar.h"

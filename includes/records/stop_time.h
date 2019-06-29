@@ -15,7 +15,7 @@
  * Whether passangers are picked up / dropped off at the stop
  * normally, never, or only on special arrangements.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__StopTime
  */
 typedef enum {
     ST_REGULAR = 0,         ///< Regularly scheduled pickup.
@@ -28,7 +28,7 @@ typedef enum {
 /**
  * Whether timepoints are considered exact or approximate.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__StopTime
  */
 typedef enum {
     TP_APPROXIMATE = 0,  ///< Approximate (default behavior; when the field is empty).
@@ -43,7 +43,7 @@ typedef enum {
  * @see        read_stop_time()
  * @see        https://developers.google.com/transit/gtfs/reference/#stop_timestxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__StopTime
  */
 typedef struct {
     char trip_id[65];                 ///< [Required] Unique ID that identifies the trip.
@@ -68,7 +68,7 @@ typedef struct {
  * 
  * @returns      An stop_type_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__StopTime
  */
 stop_type_t parse_stop_type(const char *value);
 
@@ -80,7 +80,7 @@ stop_type_t parse_stop_type(const char *value);
  * 
  * @returns      An timepoint_precision_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__StopTime
  */
 timepoint_precision_t parse_timepoint_precision(const char *value);
 
@@ -89,7 +89,7 @@ timepoint_precision_t parse_timepoint_precision(const char *value);
  * 
  * @param[out]    record    Stop time record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__StopTime
  */
 void init_stop_time(stop_time_t *record);
 
@@ -101,7 +101,7 @@ void init_stop_time(stop_time_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__StopTime
  */
 void read_stop_time(stop_time_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -113,7 +113,7 @@ void read_stop_time(stop_time_t *record, int field_count, const char **field_nam
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__StopTime
  */
 int equal_stop_time(const stop_time_t *a, const stop_time_t *b);
 

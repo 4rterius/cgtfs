@@ -14,7 +14,7 @@
 /**
  * Whether a transfer between two stops is possible and how.
  * 
- * @ingroup    Core__EntityEnums
+ * @ingroup    Core__EntityEnums Core__EntityList__Transfer
  */
 typedef enum {
     TT_RECOMMENDED = 0,    ///< This is a recommended transfer point between routes (also on empty field value).
@@ -31,7 +31,7 @@ typedef enum {
  * @see        read_transfer()
  * @see        https://developers.google.com/transit/gtfs/reference/#transferstxt
  * 
- * @ingroup    Core__EntityTypes
+ * @ingroup    Core__EntityTypes Core__EntityList__Transfer
  */
 typedef struct {
     char from_stop_id[65];           ///< [Required] Unique ID that identifies a stop where connection between routes starts.
@@ -49,7 +49,7 @@ typedef struct {
  * 
  * @returns      An transfer_type_t value.
  * 
- * @ingroup      Core__EntityEnums
+ * @ingroup      Core__EntityEnums Core__EntityList__Transfer
  */
 transfer_type_t parse_transfer_type(const char *value);
 
@@ -58,7 +58,7 @@ transfer_type_t parse_transfer_type(const char *value);
  * 
  * @param[out]    record    Transfer record pointer to initialize.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Transfer
  */
 void init_transfer(transfer_t *record);
 
@@ -70,7 +70,7 @@ void init_transfer(transfer_t *record);
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
  * 
- * @ingroup       Core__EntityFunctions
+ * @ingroup       Core__EntityFunctions Core__EntityList__Transfer
  */
 void read_transfer(transfer_t *record, int field_count, const char **field_names, const char **field_values);
 
@@ -82,7 +82,7 @@ void read_transfer(transfer_t *record, int field_count, const char **field_names
  * 
  * @returns      0 if structures are equal, non-zero otherwise.
  * 
- * @ingroup      Core__EntityFunctions
+ * @ingroup      Core__EntityFunctions Core__EntityList__Transfer
  */
 int equal_transfer(const transfer_t *a, const transfer_t *b);
 
