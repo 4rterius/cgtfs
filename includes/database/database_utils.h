@@ -19,12 +19,6 @@
 
 
 /**
- * @ingroup     Database Utilities
- * @defgroup    Database__Utils    Database utilities
- * @brief       Database-related utilities
- */
-
-/**
  * Counts the number of records in the given db table.
  * 
  * @param[in]    db            Initialized feed database instance to connect to.
@@ -32,7 +26,7 @@
  * 
  * @returns      -1 on error, number of records on success.
  * 
- * @ingroup      Database__Utils
+ * @ingroup      Utils__Database
  */
 int count_rows(feed_db_t *db, const char *table_name);
 
@@ -44,7 +38,7 @@ int count_rows(feed_db_t *db, const char *table_name);
  * 
  * @returns          Success or failure of the operation.
  * 
- * @ingroup          Database__Utils
+ * @ingroup          Utils__Database
  */
 feed_db_status_t begin_transaction(feed_db_t *db);
 
@@ -55,7 +49,7 @@ feed_db_status_t begin_transaction(feed_db_t *db);
  * 
  * @returns          Success or failure of the operation.
  * 
- * @ingroup          Database__Utils
+ * @ingroup          Utils__Database
  */
 feed_db_status_t end_transaction(feed_db_t *db);
 

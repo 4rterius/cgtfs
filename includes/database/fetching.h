@@ -20,13 +20,6 @@
 
 
 /**
- * @ingroup     Database
- * @defgroup    Database__TableFetching    Table fetching
- * @brief       Functions for retrieving entire database tables.
- */
-
-
-/**
  * Populates a given array of agency_t records 
  * from a given feed database instance.
  * 

@@ -10,15 +10,6 @@
 
 
 /**
- * @ingroup     Database
- * @defgroup    Database__Types    Types
- * @brief       Core types used in feed database manipulation.
- * 
- * Required header: `database_types.h`
- */
-
-
-/**
  * Base struct of all db processes to encapsulate the DB realization.
  * 
  * @ingroup    Database__Types

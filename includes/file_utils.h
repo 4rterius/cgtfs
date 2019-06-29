@@ -12,12 +12,6 @@
 
 
 /**
- * @ingroup     Utilities
- * @defgroup    Utilities__File    File utilities
- * @brief       File I/O utilities.
- */
-
-/**
  * @def        LINE_MAX_LEN
  * @brief      Max reasonable length of a line or a record (!).
  * @note       Obviously, increase/decrease if needed.

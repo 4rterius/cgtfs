@@ -18,17 +18,6 @@
 
 
 /**
- * @defgroup    Database    Database layer
- * @brief       CGTFS' database functionality.
- */
-
-/**
- * @ingroup     Database
- * @defgroup    Database__FeedEntity    Feed entity
- * @brief       The core entity around the database connection.
- */
-
-/**
  * Initializes a give feed database.
  * 
  * @param[in,out]    db          Unitialized feed database instance to operate on.

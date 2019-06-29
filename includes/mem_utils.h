@@ -10,12 +10,6 @@
 
 
 /**
- * @ingroup     Utilities
- * @defgroup    Utilities__Memory    Memory utilities
- * @brief       Memory handling utilities.
- */
-
-/**
  * Frees memory taken by a c-string array.
  * 
  * @param[in,out]    arr    Array to free.

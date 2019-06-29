@@ -20,13 +20,6 @@
 
 
 /**
- * @ingroup     Database
- * @defgroup    Database__TableStoring    Table storing
- * @brief       Functions for storing entire database tables.
- */
-
-
-/**
  * Stores a file of agency_t records 
  * into a given feed database instance.
  * 

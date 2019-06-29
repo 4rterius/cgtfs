@@ -27,18 +27,6 @@
 
 
 /**
- * @defgroup    Core    Core layer
- * @brief       CGTFS' basic functionality.
- */
-
-/**
- * @ingroup Core
- * @defgroup    Core__FeedEntity    Feed entity
- * @brief       The core entity representing a GTFS feed.
- */
-
-
-/**
  * A GTFS feed entity that encapsulates all data of a single GTFS feed.
  * 
  * For each of the GTFS feed files,
