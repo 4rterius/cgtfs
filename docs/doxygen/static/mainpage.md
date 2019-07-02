@@ -54,7 +54,7 @@ $ mkdir docs/doxygen/
 $ doxygen
 ```
 
-*Note: by default, doxygen is configured to output RTF and LaTeX documentation as well. Turn off LaTeX if it is not installed on your system.*
+*Note: by default, doxygen is configured to output LaTeX documentation as well. Turn off LaTeX if it is not installed on your system. (./Doxyfile:1648)*
 
 *Note 2: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
 

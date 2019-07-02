@@ -22,7 +22,7 @@
  * 
  * @param[in,out]    db          Unitialized feed database instance to operate on.
  * @param[in]        db_path     /path/to/database.file
- * @param[in]        writable    0 for make connection read-only, else for otherwise
+ * @param[in]        writable    0 to make connection read-only, else for otherwise
  * 
  * @returns          Result of the operation.
  * 
@@ -34,7 +34,7 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
  * Creates the layout in the given database.
  * 
  * @param[in,out]    db           Initialized feed database to operate on.
- * @param[in]        overwrite    0 to make error if tables already exist, else for otherwise.
+ * @param[in]        overwrite    0 to produce error if tables already exist, else for otherwise.
  * 
  * @returns          Result of the operation.
  * 

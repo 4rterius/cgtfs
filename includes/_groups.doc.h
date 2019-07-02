@@ -54,27 +54,14 @@
 
 /**
  * @ingroup     Core__Entity
- * @defgroup    Core__EntityEnums    Field enumerations
- * @brief       Enumerations for fields which can only have one 
- *              of a limited set of numeric values.
- */
-
-/**
- * @ingroup     Core__Entity
- * @defgroup    Core__EntityFunctions    Entity handling
- * @brief       Functions for manipulating @ref Core__EntityTypes
+ * @defgroup    Core__EntityList    Entities handling
+ * @brief       Functionality related to each particular entity.
  */
 
 /**
  * @ingroup     Core__Entity
  * @defgroup    Core__EntityFileReading    Batch entity reading
  * @brief       Functions to parse entire feed files into record arrays.
- */
-
-/**
- * @ingroup     Core__Entity
- * @defgroup    Core__EntityList    Entities (grouped)
- * @brief       A convenience module of entities' documentation
  */
 
 
