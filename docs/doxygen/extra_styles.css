@@ -1,0 +1,8 @@
+div.textblock {
+    line-height: 1.8em;
+}
+
+div.fragment {
+    overflow-x: auto;
+    padding: .4em 0;
+}
