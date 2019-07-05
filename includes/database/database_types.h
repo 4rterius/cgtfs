@@ -12,7 +12,7 @@
 /**
  * Base struct of all db processes to encapsulate the DB realization.
  * 
- * @ingroup    Database__Types
+ * @ingroup    Database__Types Database__FeedEntity
  */
 typedef struct feed_db_t {
     char *path;         ///< /path/to/database.file

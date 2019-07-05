@@ -59,7 +59,7 @@
  */
 
 /**
- * @ingroup     Core__Entity
+ * @ingroup     Core
  * @defgroup    Core__EntityFileReading    Batch entity reading
  * @brief       Functions to parse entire feed files into record arrays.
  */
