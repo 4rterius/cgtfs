@@ -4,8 +4,10 @@
   <navindex>
     <tab type="mainpage" visible="yes" title=""/>
     <tab type="user" url="@ref api_overview" visible="yes" title="Overview"/>
-    <tab type="modules" visible="yes" title="" intro=""/>
-    <tab type="pages" visible="yes" title="Pages" intro=""/>
+    <tab type="user" url="#" visible="yes" title="Documentation">
+      <tab type="modules" visible="yes" title="" intro=""/>
+      <tab type="pages" visible="yes" title="" intro=""/>
+    </tab>
     <tab type="namespaces" visible="yes" title="">
       <tab type="namespacelist" visible="yes" title="" intro=""/>
       <tab type="namespacemembers" visible="yes" title="" intro=""/>
