@@ -39,6 +39,7 @@ The library should compile on `gcc >= 4.8.4`, `clang >= 5.0.0` and latest Micros
 
 ```
 $ cd /path/to/cgtfs/
+$ git submodule update --init --recursive
 $ mkdir build && cd build/
 $ cmake .. && cmake --build .
 
@@ -50,7 +51,6 @@ $ ./tests    # on Linux; tests executable location on Windows may vary, e.g. Deb
 The library is heavily documented via code comments. You are encouraged to compile them into HTML.
 
 ```
-$ mkdir docs/doxygen/
 $ doxygen
 ```
 
@@ -77,3 +77,5 @@ Files under the `tests/data/google_sample` directory constitute [an example Goog
 Files under the `tests/data/pocono_pony` contain the open data publicly provided by [Monroe County Transportation Authority](https://www.gomcta.com/index.php) under the [Monroe County Transportation Authority Transit Data Developer Terms of Use](https://www.gomcta.com/developerapi.php).
 
 Other files under the `tests/data` directory may contain elements of the [open data](http://www.lsl.fi/lisatietoa/avoin-data/) publicly provided by [Lahden Seudun Liikenne](http://www.lsl.fi/) under the [Creative Commons Attribution 4.0 License](https://creativecommons.org/licenses/by/4.0/deed.fi).
+
+Usage of the public data provided by Google, Monroe County Transportation Authority and Lahden Seudun Liikenne does not suggest endorsement by any of the aforementioned licensors.

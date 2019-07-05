@@ -34,10 +34,6 @@ The terms used throughout the library code and documentation differ from those d
 | File | *not defined* | A `*.txt` file, a part of the feed, holding information about all the feed's *entities* of a single type. |
 | Database | n/a | A single *SQLite* database file, created using the supplied SQL schema (preferably, the creation of the database is left to the library, see the database section). |
 
-@subsection ApiOverview__Introduction__Principles Principles
-
-Lorem ipsum
-
 @section ApiOverview__Structure Structure
 
 The library's API is divided into two so called layers, additional auxiliary functionality and loosely related helpers: 
