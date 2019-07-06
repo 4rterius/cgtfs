@@ -1,14 +1,15 @@
-# CGTFS - C library to read static GTFS feeds
+# CGTFS - a C library to read static GTFS feeds
 
 ![Release version plate](https://img.shields.io/github/release/rakhack/cgtfs.svg)
-![Build Status](https://travis-ci.com/rakhack/cgtfs.svg?branch=master)
+[![Build Status](https://travis-ci.com/rakhack/cgtfs.svg?branch=master)](https://travis-ci.com/rakhack/cgtfs)
+[![Build status](https://ci.appveyor.com/api/projects/status/etnrf1pg2g0a20jn/branch/master?svg=true)](https://ci.appveyor.com/project/rakhack/cgtfs/branch/master)
 ![License: MIT plate](https://img.shields.io/github/license/rakhack/cgtfs.svg)
 
 A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) format.
 
 ## Table of contents
 
-- [CGTFS - C library to read static GTFS feeds](#CGTFS---C-library-to-read-static-GTFS-feeds)
+- [CGTFS - a C library to read static GTFS feeds](#CGTFS---a-C-library-to-read-static-GTFS-feeds)
   - [Table of contents](#Table-of-contents)
   - [Examples](#Examples)
   - [Build process and dependencies](#Build-process-and-dependencies)
@@ -22,6 +23,27 @@ A thin and fast low-level library which reads GTFS static feeds. This library pr
 ## Examples
 
 Some example source code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful.
+
+The most primitive example (not production-recommended):
+
+```c
+#include <stdio.h>
+#include "feed.h"
+
+// Example 0: read all feed data into memory
+void some_function(void) {
+    feed_t amazing_feed;
+    init_feed(&amazing_feed);
+    read_feed(&amazing_feed, "../tests/data/google_sample");
+
+    if (amazing_feed.agency_count > 0)
+        printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
+    else
+        perror("Failed to open agency.txt or the file has no records");
+    
+    free_feed(&amazing_feed);
+}
+```
 
 ## Build process and dependencies
 
@@ -48,7 +70,9 @@ $ ./tests    # on Linux; tests executable location on Windows may vary, e.g. Rel
 
 ### Documentation
 
-The library is heavily documented via code comments. You are encouraged to compile them into HTML.
+The library is heavily documented via code comments. At releases and important waypoints, the documentation is compiled and commited to the repo. It is [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html).
+
+However, in order to get the most actual documentation, you are encouraged to compile it yourself.
 
 ```
 $ doxygen
