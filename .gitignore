@@ -52,7 +52,7 @@ Mkfile.old
 dkms.conf
 
 # Documentation
-docs/doxygen/html/
+#docs/doxygen/html/
 docs/doxygen/latex/
 docs/doxygen/rtf/
 docs/doxygen/xml/
