@@ -1,8 +1,15 @@
 #ifndef CGTFS_TESTS__ALL_C
 #define CGTFS_TESTS__ALL_C
 
+// #define CGTFS_STORING_BATCH_TRANSACTIONS_OFF
+
 #include "greatest/greatest.h"
 
+#include "tests-database.c"
+#include "tests-database_storing.c"
+#include "tests-database_fetching.c"
+#include "tests-database_utils.c"
+#include "tests-database_records.c"
 #include "tests-enum_parsing.c"
 #include "tests-feed.c"
 #include "tests-file_reading.c"
@@ -15,6 +22,25 @@ GREATEST_MAIN_DEFS();
 
 int main(int argc, char **argv) {
     GREATEST_MAIN_BEGIN();
+
+    RUN_SUITE(CGTFS_Database);
+    RUN_SUITE(CGTFS_DatabaseStoring);
+    RUN_SUITE(CGTFS_DatabaseFetching);  // Run CGTFS_DatabaseStoring first!
+    RUN_SUITE(CGTFS_DatabaseUtils);
+    
+    RUN_SUITE(CGTFS_DatabaseAgency);
+    RUN_SUITE(CGTFS_DatabaseCalendarDates);
+    RUN_SUITE(CGTFS_DatabaseCalendarRecords);
+    RUN_SUITE(CGTFS_DatabaseFareAttributes);
+    RUN_SUITE(CGTFS_DatabaseFareFule);
+    RUN_SUITE(CGTFS_DatabaseFeedInfo);
+    RUN_SUITE(CGTFS_DatabaseFrequency);
+    RUN_SUITE(CGTFS_DatabaseRoute);
+    RUN_SUITE(CGTFS_DatabaseShape);
+    RUN_SUITE(CGTFS_DatabaseStopTime);
+    RUN_SUITE(CGTFS_DatabaseStop);
+    RUN_SUITE(CGTFS_DatabaseTransfers);
+    RUN_SUITE(CGTFS_DatabaseTrip);
 
     RUN_SUITE(CGTFS_EnumParsing);
     RUN_SUITE(CGTFS_Feed);

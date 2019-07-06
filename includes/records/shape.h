@@ -1,3 +1,8 @@
+/**
+ * @file
+ * @brief    Shape entity handling functionality.
+ */
+
 #ifndef CGTFS_SHAPE_H
 #define CGTFS_SHAPE_H
 
@@ -8,9 +13,12 @@
 
 /**
  * shapes.txt record
- * @see init_shape()
- * @see read_shape()
- * @see https://developers.google.com/transit/gtfs/reference/#shapestxt
+ * 
+ * @see        init_shape()
+ * @see        read_shape()
+ * @see        https://developers.google.com/transit/gtfs/reference/#shapestxt
+ * 
+ * @ingroup    Core__EntityTypes Core__EntityList__Shape
  */
 typedef struct {
     char id[65];               ///< [Required] Unique ID that identifies the shape.
@@ -23,24 +31,34 @@ typedef struct {
 
 /**
  * Initializes the given shape record with empty/default values.
- * @param[out] record Shape record pointer to initialize.
+ * 
+ * @param[out]    record    Shape record pointer to initialize.
+ * 
+ * @ingroup       Core__EntityFunctions Core__EntityList__Shape
  */
 void init_shape(shape_t *record);
 
 /**
  * Reads given datafields and field names into the given shape struct.
- * @param[out] record        The pointer to write into.
- * @param[in]  field_count   Number of rows (columns) the record has.
- * @param[in]  field_names   Names of the fields.
- * @param[in]  field_values  Contents of the record.
+ * 
+ * @param[out]    record          The pointer to write into.
+ * @param[in]     field_count     Number of rows (columns) the record has.
+ * @param[in]     field_names     Names of the fields.
+ * @param[in]     field_values    Contents of the record.
+ * 
+ * @ingroup       Core__EntityFunctions Core__EntityList__Shape
  */
 void read_shape(shape_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * @param[in] a  First structure
- * @param[in] b  Second structure
- * @returns 0 if structures are equal, non-zero otherwise.
+ * 
+ * @param[in]    a    First structure
+ * @param[in]    b    Second structure
+ * 
+ * @returns      0 if structures are equal, non-zero otherwise.
+ * 
+ * @ingroup      Core__EntityFunctions Core__EntityList__Shape
  */
 int equal_shape(const shape_t *a, const shape_t *b);
 

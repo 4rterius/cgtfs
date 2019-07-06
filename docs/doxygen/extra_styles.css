@@ -1,0 +1,38 @@
+div.textblock {
+    line-height: 1.8em;
+}
+
+div.fragment {
+    overflow-x: auto;
+    padding: .4em;
+}
+
+hr.footer {
+    margin-bottom: 0;
+}
+
+address.footer {
+    text-align: center;
+    padding: 1.5em .5em 2.5em;
+}
+
+    address.footer > small {
+        display: block;
+        padding-top: .5em;
+    }
+
+    address.footer > small.desc {
+        color: #424242;
+    }
+
+        address.footer > small.desc > a {
+            color: inherit;
+        }
+
+    address.footer > small.links {
+        font-size: .8em;
+    }
+
+    address.footer > small.links > a {
+        padding: 0 .5em;
+    }

@@ -41,6 +41,8 @@ TEST feed_comparison(void) {
     free_feed(&f1);
     free_feed(&f2);
     free_feed(&f3);
+
+    PASS();
 }
 
 

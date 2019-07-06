@@ -6,6 +6,7 @@
 int main(int argc, char **argv) {
     bench_feed_1();
     bench_feed_2();
+    bench_db_1();
     return 0;
 }
 
