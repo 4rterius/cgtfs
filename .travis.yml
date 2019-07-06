@@ -13,7 +13,7 @@ branches:
     - development
 
 before_script:
-  - mkdir build/ && cd build/ && cmake ..
+  - mkdir build/ && cd build/ && cmake -DCMAKE_BUILD_TYPE=Debug ..
 
 script:
   - cmake --build . && ./tests

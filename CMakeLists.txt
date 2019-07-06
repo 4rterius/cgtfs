@@ -10,7 +10,8 @@ project(cgtfs VERSION 0.2.0 LANGUAGES C)
 ## Flags and settings
 ## -----------------------------------------------------------------
 
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -g")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wall -g")
+set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wall -O3 -s")
 
 set(sources
   "src/helpers/filenames.c"
