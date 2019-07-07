@@ -23,8 +23,12 @@ The scope of this library's functionality is illustrated by the following figure
   - [Build process and dependencies](#Build-process-and-dependencies)
     - [Dependencies](#Dependencies)
     - [Build process](#Build-process)
+      - [Linux](#Linux)
+      - [Windows](#Windows)
   - [Documentation](#Documentation)
     - [API overview](#API-overview)
+      - [Terms](#Terms)
+      - [Structure](#Structure)
   - [Useful links](#Useful-links)
   - [License and attribution](#License-and-attribution)
 
@@ -55,12 +59,12 @@ void some_function(void) {
 
     // Feed reading.
     //
-    // This function is a convenience wrapper for calling 
-    // file-scope reading functions, which read the entire 
+    // This function is a convenience wrapper for calling
+    // file-scope reading functions, which read the entire
     // *.txt files into arrays. This function passes pointers
     // to feed_t fields, and after reading stores the counts
     // of each parsed record type into _count fields.
-    // 
+    //
     // Obviously, takes **a lot** of memory.
     read_feed(&amazing_feed, "../tests/data/google_sample");
 
@@ -72,7 +76,7 @@ void some_function(void) {
         printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
     else
         perror("Failed to open agency.txt or the file has no records");
-    
+
     // Don't forget to call this function.
     // No, really :|
     free_feed(&amazing_feed);
@@ -92,8 +96,8 @@ int row_callback(void *, int column_count, char **data, char **column_names);
 
 
 /**
- * Example 2: 
- * 
+ * Example 2:
+ *
  * Store gtfs folder as a database and
  * query it for first 10 stop_time records
  * with arrival time within the next 10 minutes.
@@ -103,7 +107,7 @@ int row_callback(void *, int column_count, char **data, char **column_names);
 // CGTFS only handles creating the database,
 // setting up the layout and filling it with
 // feeds' data.
-const char *sql_query = 
+const char *sql_query =
     "SELECT stop_id, trip_id, arrival_time "
     "FROM stop_times "
     "WHERE arrival_time "
@@ -126,7 +130,7 @@ void some_database_manipulation(void) {
     // Calling free_feed_db(..) is recommended as soon
     // as the connection is no longer needed.
     //
-    // Opening the connection again is preferred to 
+    // Opening the connection again is preferred to
     // keeping stuff open and, thus, locked.
     //
     // The sign in `result < FEED_DB_SUCCESS` allows
@@ -155,8 +159,8 @@ void some_database_manipulation(void) {
     }
 
     // Feed storing.
-    // 
-    // This function reads every feed file 
+    //
+    // This function reads every feed file
     // and reads its records directly into the database,
     // without an intermediate array.
     //
@@ -178,7 +182,7 @@ void some_database_manipulation(void) {
         printf("Error while executing query: %s !\n", error_msg);
         goto clearup;
     }
-    
+
     printf("Success.\n");
 
     clearup:
@@ -189,7 +193,7 @@ void some_database_manipulation(void) {
 int row_callback(void *param, int column_count, char **data, char **column_names) {
     if (column_count < 3)
         return 1;
-    
+
     printf("<stop %s>\n", data[0]);
     printf("  Arrival time:  %s\n", data[2]);
     printf("  Trip id:       %s\n", data[1]);
@@ -211,15 +215,31 @@ One of the development goals was to keep the dependencies as minimal as possible
 
 The library should compile on `gcc >= 4.8.4`, `clang >= 5.0.0` and latest Microsoft's C/C++ compiler.
 
+Configuration: `Release` or `Debug`.
+
+#### Linux
 ```
 $ cd /path/to/cgtfs/
 $ git submodule update --init --recursive
 $ mkdir build && cd build/
-$ cmake -DCMAKE_BUILD_TYPE=Release ..    # produces an optimized & stripped binary without debug symbols, use Debug for development
+$ cmake -DCMAKE_BUILD_TYPE=%Configuration% ..
 $ cmake --build .
 
-$ ./tests    # on Linux; tests executable location on Windows may vary, e.g. Release/tests.exe
+$ ./tests
 ```
+
+#### Windows
+
+```
+cd \path\to\cgtfs\
+git submodule update --init --recursive
+mkdir build && cd build
+cmake ..
+cmake --build . --config %Configuration%
+
+%Configuration%\tests.exe
+```
+
 
 ## Documentation
 
@@ -239,7 +259,59 @@ $ doxygen
 
 This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
 
-A brief API overview can be found in the 'Overview' section of documentation compiled by doxygen.
+#### Terms
+
+The terms used throughout the library code and documentation differ from those defined by the [GTFS reference](https://developers.google.com/transit/gtfs/reference/#term-definitions). The following table illustrates the relation between differing CGTFS terms and reference terms, and their definitions, as well as terms used in the library and abscent from the reference.
+
+| CGTFS term | Reference term | Meaning and notes |
+| ---------- | -------------- | ----------------- |
+| Feed (entity/instance/object) | *not defined* | A data structure holding the entirety of a feed's data. *In the code and documentation, may be referred to as a feed entity, feed instance or feed object.* |
+| Directory | Dataset | A set of files which constitutes a GTFS feed. In some contexts, in the code documentation, terms *feed* and *directory* are interchangable. *Note: GTFS datasets are distributed in form of `*.zip` feed archives. This library, however, only works with unpacked feeds.* |
+| Entity (instance) | Record | A complete data structure containing information about a concrete GTFS entity (e.g. information about one route). The library uses the term *entity* to avoid ambiguity with database operations. _Note: however, *entity* is a more abstract term, thus a struct holding one entity's data is, in essense, an entity instance. This documentation may refer to structs simply as **entities** for shortness_. |
+| File | *not defined* | A `*.txt` file, a part of the feed, holding information about all the feed's *entities* of a single type. |
+| Database | n/a | A single *SQLite* database file, created using the supplied SQL schema (preferably, the creation of the database is left to the library, see the database section). |
+
+#### Structure
+
+The library's API is divided into two so called layers, additional auxiliary functionality and loosely related helpers:
+
+  - **Core layer** provides basic definitions and functions for handling GTFS feeds and entities, and includes:
+    - **feed object definition** to store data of an entire feed and functions for working with it:
+      - a function to initialize a feed object;
+      - a function to parse a feed object from a given directory path;
+      - a function to determine whether two feed objects are equal;
+    - field enumerations to represent types and values of the fields which can only take values from a limited set defined by the specification, e.g. [`routes.txt/route type`](https://developers.google.com/transit/gtfs/reference/#routestxt);
+      - functions to parse field enumeration values from a char array;
+    - **entity definitions** to represent e.g. an agency, a stop, a shape, etc. and **functions** for handling them;
+      - functions to initialize entity instances;
+      - functions to parse entity instances from a char array of field names and a char array of field values;
+      - functions to determine whether two entity instances are equal;
+    - **batch entity parsing functions** which parse an array of entities from a given `*.txt` file path;
+  - **Database layer** provides definitions and functions for working with entities defined in the *core layer* with/through/in a SQLite database instance, and includes:
+    - **definition of a connection to a sqlite database** and **functions** for working with it:
+      - a function to initialize a database connection;
+      - a function to free/close a database connection;
+      - a function to setup a database at an opened connection for a GTFS feed;
+    - storage transition functions:
+      - a **function** to store the contents of a feed from a specified directory into a specified database connection;
+      - a **function** to fetch the contents of a feed from a specified database connection into a specicfied feed object;
+    - an **enumeration** of general database operation results (success / failure / so-so);
+    - **functions** to store entities using a specified database connection;
+    - the so-called table operations:
+      - **batch entity storing functions** which parse an array of entities from a given `*.txt` file path into a database table (doing so directly, without keeping an intermediate array in the memory);
+      - **batch entity fetching functions** which retrieve an array of entities of a single type from a specified database connection;
+  - **Utilities** include:
+    - **functions** for reading CSV files;
+    - an assisting **function** for clearing a c-string array;
+    - utilitary **functions** for working a with sqlite database;
+  - **Helpers** include:
+    - several preprocessor definitions used across the library;
+    - a **function** for making a filepath from a directory and a file in it;
+    - a **function** for converting degrees into radians;
+    - a **geolocation definition** which holds a latitude value and a longitude value;
+      - a **function** for calculating a distance (in meters) between the two geolocation points.
+
+A more detailed documentation for each layer, definition and function can be found in the module documentation.
 
 ## Useful links
 

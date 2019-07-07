@@ -4,7 +4,7 @@
 include(ExternalProject)
 
 cmake_minimum_required(VERSION 3.0)
-project(cgtfs VERSION 0.2.0 LANGUAGES C)
+project(cgtfs VERSION 0.3.1 LANGUAGES C)
 
 
 ## Flags and settings
@@ -35,7 +35,7 @@ set(sources
   "src/database/database_utils.c"
   "src/database/fetching.c"
   "src/database/storing.c"
-  
+
   "src/database/records/agency.c"
   "src/database/records/calendar_dates.c"
   "src/database/records/calendar.c"

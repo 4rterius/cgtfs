@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['exception_5ftype_5ft',['exception_type_t',['../a02706.html#ga02b6747b0b6952ba02d324abbabbcde8',1,'calendar_dates.h']]]
+  ['exception_5ftype_5ft',['exception_type_t',['../a03714.html#ga02b6747b0b6952ba02d324abbabbcde8',1,'calendar_dates.h']]]
 ];
