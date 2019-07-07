@@ -7,9 +7,18 @@
 
 A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) format.
 
+Docs: [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html).
+
+## What this library can do
+
+<div>
+  <img width="400px" alt="Ways to parse/tranport data with CGTFS (scheme)" src="/docs/doxygen/static/df_straight.svg?raw=true&sanitize=true" />
+</div>
+
 ## Table of contents
 
 - [CGTFS - a C library to read static GTFS feeds](#CGTFS---a-C-library-to-read-static-GTFS-feeds)
+  - [What this library can do](#What-this-library-can-do)
   - [Table of contents](#Table-of-contents)
   - [Examples](#Examples)
   - [Build process and dependencies](#Build-process-and-dependencies)
