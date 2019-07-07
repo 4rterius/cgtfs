@@ -7,25 +7,24 @@
 
 A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) format.
 
-Docs: [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html).
+**Docs: [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html).**
 
-## What this library can do
+The scope of this library's functionality is illustrated by the following figure.
 
 <div>
-  <img width="400px" alt="Ways to parse/tranport data with CGTFS (scheme)" src="/docs/doxygen/static/df_straight.svg?raw=true&sanitize=true" />
+  <img width="500px" alt="Ways to parse/tranport data with CGTFS (scheme)" src="/docs/doxygen/static/df_straight.svg?raw=true&sanitize=true" />
 </div>
 
 ## Table of contents
 
 - [CGTFS - a C library to read static GTFS feeds](#CGTFS---a-C-library-to-read-static-GTFS-feeds)
-  - [What this library can do](#What-this-library-can-do)
   - [Table of contents](#Table-of-contents)
   - [Examples](#Examples)
   - [Build process and dependencies](#Build-process-and-dependencies)
     - [Dependencies](#Dependencies)
     - [Build process](#Build-process)
-    - [Documentation](#Documentation)
-  - [API overview](#API-overview)
+  - [Documentation](#Documentation)
+    - [API overview](#API-overview)
   - [Useful links](#Useful-links)
   - [License and attribution](#License-and-attribution)
 
@@ -77,7 +76,7 @@ $ cmake --build .
 $ ./tests    # on Linux; tests executable location on Windows may vary, e.g. Release/tests.exe
 ```
 
-### Documentation
+## Documentation
 
 The library is heavily documented via code comments. At releases and important waypoints, the documentation is compiled and commited to the repo. It is [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html).
 
@@ -91,7 +90,7 @@ $ doxygen
 
 *Note 2: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
 
-## API overview
+### API overview
 
 This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
 
