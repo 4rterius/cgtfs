@@ -37,14 +37,29 @@ One of the development goals was to keep the dependencies as minimal as possible
 
 The library should compile on `gcc >= 4.8.4`, `clang >= 5.0.0` and latest Microsoft's C/C++ compiler.
 
+Configuration: `Release` or `Debug`.
+
+#### Linux
 ```
 $ cd /path/to/cgtfs/
 $ git submodule update --init --recursive
 $ mkdir build && cd build/
-$ cmake -DCMAKE_BUILD_TYPE=Release ..    # produces an optimized & stripped binary without debug symbols, use Debug for development
+$ cmake -DCMAKE_BUILD_TYPE=%Configuration% ..
 $ cmake --build .
 
-$ ./tests    # on Linux; tests executable location on Windows may vary, e.g. Release/tests.exe
+$ ./tests
+```
+
+#### Windows
+
+```
+cd \path\to\cgtfs\
+git submodule update --init --recursive
+mkdir build && cd build
+cmake ..
+cmake --build . --config %Configuration%
+
+%Configuration%\tests.exe
 ```
 
 ## Documentation
