@@ -17,17 +17,17 @@
 /**
  * @defgroup    Utilities    Utilities
  * @brief       All utilitary functionality
- * 
- * Things which are not directly related to GTFS 
+ *
+ * Things which are not directly related to GTFS
  * but are crucial for the library operation.
  */
 
 /**
  * @defgroup    Helpers    Helpers
  * @brief       Minor auxiliary functionality
- * 
- * Things which are not directly related to GTFS 
- * and are not important enough 
+ *
+ * Things which are not directly related to GTFS
+ * and are not important enough
  * to be considered utilitary.
  */
 
@@ -56,6 +56,17 @@
  * @ingroup     Core__Entity
  * @defgroup    Core__EntityList    Entities handling
  * @brief       Functionality related to each particular entity.
+ *
+ * For each type of entity, CGTFS provides the following:
+ *
+ *   - typedef'ed structure (T);
+ *   - `init_T(T *)` function which initializes the struct's fields
+ *     with default values (strings with "", numerics with 0,
+ *     enumerations with default values);
+ *   - `read_T(T *, int, const char **, const char**)` function which can fill the structure from
+ *     an array of field names and field values (provided in the same order);
+ *   - typedef'ed enums for field enumerations (when present),
+ *     and functions for parsing the enumeration value from c-strings.
  */
 
 /**
@@ -147,7 +158,7 @@
 /**
  * @ingroup     Database
  * @defgroup    Database__EntityStoring    Entity storing
- * @brief       Functions which store enitities 
+ * @brief       Functions which store enitities
  *              into the feed database on a singular basis.
  */
 

@@ -40,6 +40,7 @@ The library should compile on `gcc >= 4.8.4`, `clang >= 5.0.0` and latest Micros
 Configuration: `Release` or `Debug`.
 
 #### Linux
+
 ```
 $ cd /path/to/cgtfs/
 $ git submodule update --init --recursive

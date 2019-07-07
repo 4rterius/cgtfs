@@ -11,7 +11,9 @@
 
 /**
  * Base struct of all db processes to encapsulate the DB realization.
- * 
+ *
+ * Initialized with init_feed_db() and freed/closed with free_feed_db() .
+ *
  * @ingroup    Database__Types Database__FeedEntity
  */
 typedef struct feed_db_t {
@@ -24,7 +26,7 @@ typedef struct feed_db_t {
 
 /**
  * Possible outcomes of feed db operations.
- * 
+ *
  * @ingroup    Database__Types
  */
 typedef enum feed_db_status_t {
