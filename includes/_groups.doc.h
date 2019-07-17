@@ -113,6 +113,16 @@
 
 /**
  * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Level    Level
+ */
+
+/**
+ * @ingroup     Core__EntityList
+ * @defgroup    Core__EntityList__Pathway    Pathway
+ */
+
+/**
+ * @ingroup     Core__EntityList
  * @defgroup    Core__EntityList__Route    Route
  */
 

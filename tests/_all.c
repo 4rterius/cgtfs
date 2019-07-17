@@ -27,7 +27,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_DatabaseStoring);
     RUN_SUITE(CGTFS_DatabaseFetching);  // Run CGTFS_DatabaseStoring first!
     RUN_SUITE(CGTFS_DatabaseUtils);
-    
+
     RUN_SUITE(CGTFS_DatabaseAgency);
     RUN_SUITE(CGTFS_DatabaseCalendarDates);
     RUN_SUITE(CGTFS_DatabaseCalendarRecords);
@@ -48,7 +48,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_Haversine);
 
     RUN_SUITE(CGTFS_FileUtils);
-    
+
     RUN_SUITE(CGTFS_RecordAgency);
     RUN_SUITE(CGTFS_RecordCalendarDate);
     RUN_SUITE(CGTFS_RecordCalendarRecord);
@@ -56,6 +56,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_RecordFareRule);
     RUN_SUITE(CGTFS_RecordFeedInfo);
     RUN_SUITE(CGTFS_RecordFrequency);
+    RUN_SUITE(CGTFS_RecordLevel);
     RUN_SUITE(CGTFS_RecordRoute);
     RUN_SUITE(CGTFS_RecordShape);
     RUN_SUITE(CGTFS_RecordStopTime);

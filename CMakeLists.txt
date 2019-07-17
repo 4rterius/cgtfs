@@ -24,6 +24,7 @@ set(sources
   "src/records/fare_rule.c"
   "src/records/feed_info.c"
   "src/records/frequency.c"
+  "src/records/level.c"
   "src/records/route.c"
   "src/records/shape.c"
   "src/records/stop_time.c"
