@@ -6,6 +6,7 @@
 #ifndef CGTFS_PATHWAY_H
 #define CGTFS_PATHWAY_H
 
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
 
@@ -49,18 +50,18 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__Pathway
  */
 typedef struct {
-    char id[65];              ///< [Required] Unique pathway ID
-    char from_stop_id[65];
-    char top_stop_id[65];
-    pathway_mode_t mode;
-    pathway_directions_t is_bidirectional;
-    double length;
-    int traversal_time;
-    int stair_count;
-    double max_slope;
-    double min_width;
-    char signposted_as[129];
-    char reversed_signposted_as[129];
+    char id[65];                              ///< [Required] Unique pathway ID
+    char from_stop_id[65];                    ///< [Required] Beginning of the pathway, a stop entity ID
+    char to_stop_id[65];                      ///< [Required] Ending of the pathway, a stop entity ID
+    pathway_mode_t mode;                      ///< [Required] Type of the pathway
+    pathway_directions_t is_bidirectional;    ///< [Required] Whether the pathway allows movement in both directions
+    double length;                            ///< [Optional] Horizontal length of the pathway (in meters)
+    int traversal_time;                       ///< [Optional] Average time it would take walk through the pathway (in seconds)
+    int stair_count;                          ///< [Optional] Number of stairs of the pathway
+    double max_slope;                         ///< [Optional] The maximum slope ratio of the pathway
+    double min_width;                         ///< [Optional] The minimum width of the pathway (meters)
+    char signposted_as[129];                  ///< [Optional] Exact text of the physical signage identifying the pathway
+    char reversed_signposted_as[129];         ///< [Optional] The same as signposted_at, but when travelling in the opposite direction
     int is_null;
 } pathway_t;
 

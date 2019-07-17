@@ -57,6 +57,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_RecordFeedInfo);
     RUN_SUITE(CGTFS_RecordFrequency);
     RUN_SUITE(CGTFS_RecordLevel);
+    RUN_SUITE(CGTFS_RecordPathway);
     RUN_SUITE(CGTFS_RecordRoute);
     RUN_SUITE(CGTFS_RecordShape);
     RUN_SUITE(CGTFS_RecordStopTime);
