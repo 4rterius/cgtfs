@@ -45,6 +45,8 @@ set(sources
   "src/database/records/fare_rule.c"
   "src/database/records/feed_info.c"
   "src/database/records/frequency.c"
+  "src/database/records/level.c"
+  "src/database/records/pathway.c"
   "src/database/records/route.c"
   "src/database/records/shape.c"
   "src/database/records/stop_time.c"

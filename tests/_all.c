@@ -35,6 +35,8 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_DatabaseFareFule);
     RUN_SUITE(CGTFS_DatabaseFeedInfo);
     RUN_SUITE(CGTFS_DatabaseFrequency);
+    RUN_SUITE(CGTFS_DatabaseLevel);
+    RUN_SUITE(CGTFS_DatabasePathway);
     RUN_SUITE(CGTFS_DatabaseRoute);
     RUN_SUITE(CGTFS_DatabaseShape);
     RUN_SUITE(CGTFS_DatabaseStopTime);
