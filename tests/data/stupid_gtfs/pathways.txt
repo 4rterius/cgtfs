@@ -1,0 +1,3 @@
+pathway_id,from_stop_id,to_stop_id,pathway_mode,is_bidirectional,length,traversal_time,stair_count,max_slope,min_width,signposted_as,reversed_signposted_as
+PW1,STP_A,STP_Z,1,1,250000.74,6000,3,0.083,2.1,Туда,Сюда
+PW9,STP_X,STP_C,6,0,15.6,100,-9,0,1.7,Сюда,Туда

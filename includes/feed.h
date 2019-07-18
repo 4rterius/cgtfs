@@ -54,6 +54,10 @@ typedef struct {
     int feed_info_count;  // 0 or 1 really, but for consistency sake.
     frequency_t *frequencies;
     int frequencies_count;
+    level_t *levels;
+    int levels_count;
+    pathway_t *pathways;
+    int pathways_count;
     route_t *routes;
     int routes_count;
     shape_t *shapes;

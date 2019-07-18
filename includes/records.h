@@ -10,6 +10,8 @@
 #include "records/fare_rule.h"
 #include "records/feed_info.h"
 #include "records/frequency.h"
+#include "records/level.h"
+#include "records/pathway.h"
 #include "records/route.h"
 #include "records/shape.h"
 #include "records/stop_time.h"

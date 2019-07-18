@@ -15,6 +15,10 @@ void init_feed(feed_t *feed) {
     feed->feed_info_count = 0;
     feed->frequencies = NULL;
     feed->frequencies_count = 0;
+    feed->levels = NULL;
+    feed->levels_count = 0;
+    feed->pathways = NULL;
+    feed->pathways_count = 0;
     feed->routes = NULL;
     feed->routes_count = 0;
     feed->shapes = NULL;
@@ -37,6 +41,8 @@ int read_feed(feed_t *instance, const char *feed_directory_path) {
     char *fare_rules_fname;
     char *feed_info_fname;
     char *frequencies_fname;
+    char *levels_fname;
+    char *pathways_fname;
     char *routes_fname;
     char *shapes_fname;
     char *stop_times_fname;
@@ -51,6 +57,8 @@ int read_feed(feed_t *instance, const char *feed_directory_path) {
     make_filepath(&fare_rules_fname, feed_directory_path, "fare_rules.txt");
     make_filepath(&feed_info_fname, feed_directory_path, "feed_info.txt");
     make_filepath(&frequencies_fname, feed_directory_path, "frequencies.txt");
+    make_filepath(&levels_fname, feed_directory_path, "levels.txt");
+    make_filepath(&pathways_fname, feed_directory_path, "pathways.txt");
     make_filepath(&routes_fname, feed_directory_path, "routes.txt");
     make_filepath(&shapes_fname, feed_directory_path, "shapes.txt");
     make_filepath(&stop_times_fname, feed_directory_path, "stop_times.txt");
@@ -116,6 +124,22 @@ int read_feed(feed_t *instance, const char *feed_directory_path) {
         instance->frequencies_count = -1;
     }
 
+    FILE *fp_levels = fopen(levels_fname, "r");
+    if (fp_levels) {
+        instance->levels_count = read_all_levels(fp_levels, &(instance->levels));
+        fclose(fp_levels);
+    } else {
+        instance->levels_count = -1;
+    }
+
+    FILE *fp_pathways = fopen(pathways_fname, "r");
+    if (fp_pathways) {
+        instance->pathways_count = read_all_pathways(fp_pathways, &(instance->pathways));
+        fclose(fp_pathways);
+    } else {
+        instance->pathways_count = -1;
+    }
+
     FILE *fp_routes = fopen(routes_fname, "r");
     if (fp_routes) {
         instance->routes_count = read_all_routes(fp_routes, &(instance->routes));
@@ -163,7 +187,7 @@ int read_feed(feed_t *instance, const char *feed_directory_path) {
     } else {
         instance->trips_count = -1;
     }
-    
+
 
     free(agencies_fname);
     free(calendar_dates_fname);
@@ -172,6 +196,8 @@ int read_feed(feed_t *instance, const char *feed_directory_path) {
     free(fare_rules_fname);
     free(feed_info_fname);
     free(frequencies_fname);
+    free(levels_fname);
+    free(pathways_fname);
     free(routes_fname);
     free(shapes_fname);
     free(stop_times_fname);
@@ -204,6 +230,12 @@ void free_feed(feed_t *feed) {
     if (feed->frequencies_count > 0) {
         free(feed->frequencies);
     }
+    if (feed->levels_count > 0) {
+        free(feed->levels);
+    }
+    if (feed->pathways_count > 0) {
+        free(feed->pathways);
+    }
     if (feed->routes_count > 0) {
         free(feed->routes);
     }
@@ -230,34 +262,40 @@ int equal_feeds(const feed_t *a, const feed_t *b) {
 
     if (a->calendar_dates_count != b->calendar_dates_count)
         return 1;
-        
+
     if (a->calendar_records_count != b->calendar_records_count)
         return 1;
 
     if (a->fare_attributes_count != b->fare_attributes_count)
         return 1;
-    
+
     if (a->fare_rules_count != b->fare_rules_count)
         return 1;
 
     if (a->feed_info_count != b->feed_info_count)
         return 1;
-    
+
     if (a->frequencies_count != b->frequencies_count)
         return 1;
-    
+
+    if (a->levels_count != b->levels_count)
+        return 1;
+
+    if (a->pathways_count != b->pathways_count)
+        return 1;
+
     if (a->routes_count != b->routes_count)
         return 1;
 
     if (a->shapes_count != b->shapes_count)
         return 1;
-    
+
     if (a->stop_times_count != b->stop_times_count)
         return 1;
-    
+
     if (a->stops_count != b->stops_count)
         return 1;
-    
+
     if (a->transfers_count != b->transfers_count)
         return 1;
 
@@ -291,6 +329,14 @@ int equal_feeds(const feed_t *a, const feed_t *b) {
 
     for (int i = 0; i < a->frequencies_count; i++)
         if (equal_frequency(&(a->frequencies[i]), &(b->frequencies[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->levels_count; i++)
+        if (equal_level(&(a->levels[i]), &(b->levels[i])) != 0)
+            return 1;
+
+    for (int i = 0; i < a->pathways_count; i++)
+        if (equal_pathway(&(a->pathways[i]), &(b->pathways[i])) != 0)
             return 1;
 
     for (int i = 0; i < a->routes_count; i++)
