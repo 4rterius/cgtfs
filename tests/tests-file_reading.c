@@ -235,6 +235,100 @@ TEST fr_frequencies(void) {
     PASS();
 }
 
+TEST fr_levels(void) {
+    FILE *fp = fopen("../tests/data/ext_levels.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/ext_levels.txt` test file");
+    } else {
+        level_t *records;
+        int record_count = read_all_levels(fp, &records);
+
+        ASSERT_EQ(4, record_count);
+
+        level_t expected[4] = {
+            {
+                .id = "LVL_001",
+                .index = 1.6,
+                .name = "Upper Level"
+            },
+            {
+                .id = "LVL_002",
+                .index = 1.0,
+                .name = "Mid Level"
+            },
+            {
+                .id = "LVL_003",
+                .index = 0,
+                .name = "Bottom Level"
+            },
+            {
+                .id = "LVL_004",
+                .index = -0.5,
+                .name = "Underground Level"
+            }
+        };
+
+        ASSERT(!equal_level(&(expected[0]), &(records[0])));
+        ASSERT(!equal_level(&(expected[1]), &(records[1])));
+        ASSERT(!equal_level(&(expected[2]), &(records[2])));
+        ASSERT(!equal_level(&(expected[3]), &(records[3])));
+
+        if (record_count > 0) free(records);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
+TEST fr_pathways(void) {
+    FILE *fp = fopen("../tests/data/ext_pathways.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/ext_pathways.txt` test file");
+    } else {
+        pathway_t *records;
+        int record_count = read_all_pathways(fp, &records);
+
+        ASSERT_EQ(2, record_count);
+
+        pathway_t expected[2] = {
+            {
+                .id = "PW1",
+                .from_stop_id = "STP_A",
+                .to_stop_id = "STP_Z",
+                .mode = PTMD_WALKWAY,
+                .is_bidirectional = PD_BIDIRECTIONAL,
+                .length = 250000.74,
+                .traversal_time = 6000,
+                .stair_count = 3,
+                .max_slope = 0.083,
+                .min_width = 2.1,
+                .signposted_as = "Туда",
+                .reversed_signposted_as = "Сюда"
+            },
+            {
+                .id = "PW9",
+                .from_stop_id = "STP_X",
+                .to_stop_id = "STP_C",
+                .mode = PTMD_PAYGATE,
+                .is_bidirectional = PD_UNIDIRECTIONAL,
+                .length = 15.6,
+                .traversal_time = 100,
+                .stair_count = -9,
+                .max_slope = 0,
+                .min_width = 1.7,
+                .signposted_as = "Сюда",
+                .reversed_signposted_as = "Туда"
+            }
+        };
+
+        ASSERT(!equal_pathway(&(expected[0]), &(records[0])));
+        ASSERT(!equal_pathway(&(expected[1]), &(records[1])));
+
+        if (record_count > 0) free(records);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
 TEST fr_routes(void) {
     FILE *fp = fopen("../tests/data/google_sample/routes.txt", "r");
     if (fp == NULL) {
@@ -489,6 +583,8 @@ SUITE(CGTFS_FileReading) {
     RUN_TEST(fr_fare_attributes);
     RUN_TEST(fr_fare_rules);
     RUN_TEST(fr_frequencies);
+    RUN_TEST(fr_levels);
+    RUN_TEST(fr_pathways);
     RUN_TEST(fr_routes);
     RUN_TEST(fr_shapes);
     RUN_TEST(fr_stop_times);
