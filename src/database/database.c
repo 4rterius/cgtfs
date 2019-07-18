@@ -5,7 +5,7 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable) 
     db->rc = -1;
     db->error_msg = NULL;
     db->open = 0;
-    
+
     db->rc = sqlite3_open_v2(db_path, &(db->conn),
         writable ? (SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE) : (SQLITE_OPEN_READONLY),
         NULL);
@@ -209,7 +209,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     end_transaction(db);
     #endif
 
-    
+
     if (feed_counter != NULL)
         *feed_counter = instance;
 
@@ -372,6 +372,25 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {
             "	feed_version TEXT, "
             "	feed_contact_email TEXT, "
             "	feed_contact_url TEXT "
+            ");\n"
+            "CREATE TABLE levels ( "
+            "	level_id TEXT NOT NULL, "
+            "	level_index DOUBLE NOT NULL, "
+            "	level_name TEXT "
+            ");\n"
+            "CREATE TABLE pathways ( "
+            "	pathway_id TEXT NOT NULL, "
+            "	from_stop_id TEXT NOT NULL, "
+            "	to_stop_id TEXT NOT NULL, "
+            "	pathway_mode INT NOT NULL, "
+            "	is_bidirectional INT NOT NULL, "
+            "	length DOUBLE, "
+            "	traversal_time INT, "
+            "	stair_count INT, "
+            "	max_slope DOUBLE, "
+            "	min_width DOUBLE, "
+            "	signposted_as TEXT, "
+            "	reversed_signposted_as TEXT "
             "); ";
 
         char *error_msg;
@@ -510,6 +529,25 @@ feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {
             "	feed_version TEXT, "
             "	feed_contact_email TEXT, "
             "	feed_contact_url TEXT "
+            ");\n"
+            "CREATE TABLE IF NOT EXISTS levels ( "
+            "	level_id TEXT NOT NULL, "
+            "	level_index DOUBLE NOT NULL, "
+            "	level_name TEXT "
+            ");\n"
+            "CREATE TABLE IF NOT EXISTS pathways ( "
+            "	pathway_id TEXT NOT NULL, "
+            "	from_stop_id TEXT NOT NULL, "
+            "	to_stop_id TEXT NOT NULL, "
+            "	pathway_mode INT NOT NULL, "
+            "	is_bidirectional INT NOT NULL, "
+            "	length DOUBLE, "
+            "	traversal_time INT, "
+            "	stair_count INT, "
+            "	max_slope DOUBLE, "
+            "	min_width DOUBLE, "
+            "	signposted_as TEXT, "
+            "	reversed_signposted_as TEXT "
             "); ";
 
         char *error_msg;

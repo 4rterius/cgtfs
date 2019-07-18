@@ -133,3 +133,24 @@ CREATE TABLE feed_info (
 	feed_contact_email TEXT,
 	feed_contact_url TEXT
 );
+
+CREATE TABLE levels (
+	level_id TEXT NOT NULL,
+	level_index DOUBLE NOT NULL,
+	level_name TEXT
+);
+
+CREATE TABLE pathways (
+	pathway_id TEXT NOT NULL,
+	from_stop_id TEXT NOT NULL,
+	to_stop_id TEXT NOT NULL,
+	pathway_mode INT NOT NULL,
+	is_bidirectional INT NOT NULL,
+	length DOUBLE,
+	traversal_time INT,
+	stair_count INT,
+	max_slope DOUBLE,
+	min_width DOUBLE,
+	signposted_as TEXT,
+	reversed_signposted_as TEXT
+);
