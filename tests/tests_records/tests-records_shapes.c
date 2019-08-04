@@ -50,9 +50,9 @@ TEST shape_compare(void) {
         .dist_traveled = 2.6
     };
 
-    ASSERT_EQ(0, equal_shape(&a, &b));
-    ASSERT_EQ(1, equal_shape(&a, &c));
-    ASSERT_EQ(1, equal_shape(&b, &c));
+    ASSERT_EQ(1, equal_shape(&a, &b));
+    ASSERT_EQ(0, equal_shape(&a, &c));
+    ASSERT_EQ(0, equal_shape(&b, &c));
 
     PASS();
 }

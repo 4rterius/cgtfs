@@ -15,7 +15,7 @@ TEST agency_read(void) {
         "1", "blahblah", "http://example.com/", "Europe/Moscow",
         "en", "0 000 000 00 00", "http://cash.me/outside", "ex@amp.le"
     };
-    
+
     agency_t a_1;
     read_agency(&a_1, FIELDS_NUM_1, (const char **)field_names, (const char **)field_values);
 
@@ -64,9 +64,9 @@ TEST agency_compare(void) {
         .email = "no-reply@example.com"
     };
 
-    ASSERT_EQ(0, equal_agency(&a, &b));
-    ASSERT_EQ(1, equal_agency(&a, &c));
-    ASSERT_EQ(1, equal_agency(&b, &c));
+    ASSERT_EQ(1, equal_agency(&a, &b));
+    ASSERT_EQ(0, equal_agency(&a, &c));
+    ASSERT_EQ(0, equal_agency(&b, &c));
 
     PASS();
 }

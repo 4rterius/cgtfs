@@ -54,11 +54,11 @@ TEST level_compare(void) {
         .index = 0.0
     };
 
-    ASSERT_EQ(0, equal_level(&a, &b));
-    ASSERT_EQ(1, equal_level(&a, &c));
-    ASSERT_EQ(1, equal_level(&b, &c));
-    ASSERT_EQ(1, equal_level(&b, &d));
-    ASSERT_EQ(1, equal_level(&b, &e));
+    ASSERT_EQ(1, equal_level(&a, &b));
+    ASSERT_EQ(0, equal_level(&a, &c));
+    ASSERT_EQ(0, equal_level(&b, &c));
+    ASSERT_EQ(0, equal_level(&b, &d));
+    ASSERT_EQ(0, equal_level(&b, &e));
 
     PASS();
 }

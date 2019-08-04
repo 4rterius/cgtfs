@@ -33,7 +33,7 @@ TEST db_all_agencies_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_agency(&(expected[i]), &(records[i])));
+            ASSERT(equal_agency(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -66,7 +66,7 @@ TEST db_all_calendar_dates_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_calendar_date(&(expected[i]), &(records[i])));
+            ASSERT(equal_calendar_date(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -99,7 +99,7 @@ TEST db_all_calendar_records_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_calendar_record(&(expected[i]), &(records[i])));
+            ASSERT(equal_calendar_record(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -132,7 +132,7 @@ TEST db_all_fare_attributes_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_fare_attributes(&(expected[i]), &(records[i])));
+            ASSERT(equal_fare_attributes(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -165,7 +165,7 @@ TEST db_all_fare_rules_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_fare_rule(&(expected[i]), &(records[i])));
+            ASSERT(equal_fare_rule(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -198,7 +198,7 @@ TEST db_all_feed_info_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_feed_info(&(expected[i]), &(records[i])));
+            ASSERT(equal_feed_info(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -231,7 +231,7 @@ TEST db_all_frequencies_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_frequency(&(expected[i]), &(records[i])));
+            ASSERT(equal_frequency(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -264,7 +264,7 @@ TEST db_all_levels_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_level(&(expected[i]), &(records[i])));
+            ASSERT(equal_level(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -297,7 +297,7 @@ TEST db_all_pathways_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_pathway(&(expected[i]), &(records[i])));
+            ASSERT(equal_pathway(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -330,7 +330,7 @@ TEST db_all_routes_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_route(&(expected[i]), &(records[i])));
+            ASSERT(equal_route(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -363,7 +363,7 @@ TEST db_all_shapes_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_shape(&(expected[i]), &(records[i])));
+            ASSERT(equal_shape(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -396,7 +396,7 @@ TEST db_all_stop_times_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_stop_time(&(expected[i]), &(records[i])));
+            ASSERT(equal_stop_time(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -429,7 +429,7 @@ TEST db_all_stops_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_stop(&(expected[i]), &(records[i])));
+            ASSERT(equal_stop(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -462,7 +462,7 @@ TEST db_all_transfers_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_transfer(&(expected[i]), &(records[i])));
+            ASSERT(equal_transfer(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);
@@ -495,7 +495,7 @@ TEST db_all_trips_fetch(void) {
 
         ASSERT_EQ_FMT(expected_count, retrieved_count, "%i");
         for (int i = 0; i < retrieved_count; i++)
-            ASSERT(!equal_trip(&(expected[i]), &(records[i])));
+            ASSERT(equal_trip(&(expected[i]), &(records[i])));
 
 
         free_feed_db(&db);

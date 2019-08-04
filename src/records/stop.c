@@ -103,7 +103,7 @@ void read_stop(stop_t *record, int field_count, const char **field_names, const 
 }
 
 int equal_stop(const stop_t *a, const stop_t *b) {
-    return !(!strcmp(a->id, b->id) &&
+    return (!strcmp(a->id, b->id) &&
              !strcmp(a->code, b->code) &&
              !strcmp(a->name, b->name) &&
              !strcmp(a->desc, b->desc) &&

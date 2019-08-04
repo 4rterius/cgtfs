@@ -246,20 +246,20 @@ TEST pathway_compare(void) {
         .reversed_signposted_as = "Something YZ"
     };
 
-    ASSERT_EQ(0, equal_pathway(&a, &b));
-    ASSERT_EQ(1, equal_pathway(&a, &c));
-    ASSERT_EQ(1, equal_pathway(&b, &c));
-    ASSERT_EQ(1, equal_pathway(&b, &d));
-    ASSERT_EQ(1, equal_pathway(&b, &e));
-    ASSERT_EQ(1, equal_pathway(&b, &f));
-    ASSERT_EQ(1, equal_pathway(&b, &g));
-    ASSERT_EQ(1, equal_pathway(&b, &h));
-    ASSERT_EQ(1, equal_pathway(&b, &i));
-    ASSERT_EQ(1, equal_pathway(&b, &j));
-    ASSERT_EQ(1, equal_pathway(&b, &k));
-    ASSERT_EQ(1, equal_pathway(&b, &l));
-    ASSERT_EQ(1, equal_pathway(&b, &m));
-    ASSERT_EQ(1, equal_pathway(&b, &n));
+    ASSERT_EQ(1, equal_pathway(&a, &b));
+    ASSERT_EQ(0, equal_pathway(&a, &c));
+    ASSERT_EQ(0, equal_pathway(&b, &c));
+    ASSERT_EQ(0, equal_pathway(&b, &d));
+    ASSERT_EQ(0, equal_pathway(&b, &e));
+    ASSERT_EQ(0, equal_pathway(&b, &f));
+    ASSERT_EQ(0, equal_pathway(&b, &g));
+    ASSERT_EQ(0, equal_pathway(&b, &h));
+    ASSERT_EQ(0, equal_pathway(&b, &i));
+    ASSERT_EQ(0, equal_pathway(&b, &j));
+    ASSERT_EQ(0, equal_pathway(&b, &k));
+    ASSERT_EQ(0, equal_pathway(&b, &l));
+    ASSERT_EQ(0, equal_pathway(&b, &m));
+    ASSERT_EQ(0, equal_pathway(&b, &n));
 
     PASS();
 }

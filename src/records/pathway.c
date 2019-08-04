@@ -120,7 +120,7 @@ void read_pathway(pathway_t *record, int field_count, const char **field_names, 
  * @ingroup      Core__EntityFunctions Core__EntityList__Pathway
  */
 int equal_pathway(const pathway_t *a, const pathway_t *b) {
-    return !(!strcmp(a->id, b->id) &&
+    return (!strcmp(a->id, b->id) &&
              !strcmp(a->from_stop_id, b->from_stop_id) &&
              !strcmp(a->to_stop_id, b->to_stop_id) &&
              !strcmp(a->signposted_as, b->signposted_as) &&

@@ -5,7 +5,7 @@
 #include "records/transfers.h"
 
 TEST transfer_read(void) {
-        
+
     #define FIELDS_NUM_12 4
     char *field_names[FIELDS_NUM_12] = {
         "from_stop_id", "to_stop_id", "transfer_type", "min_transfer_time"
@@ -16,7 +16,7 @@ TEST transfer_read(void) {
 
     transfer_t t_1;
     read_transfer(&t_1, FIELDS_NUM_12, (const char **)field_names, (const char **)field_values);
-    
+
     ASSERT_STR_EQ("S180", t_1.from_stop_id);
     ASSERT_STR_EQ("R360", t_1.to_stop_id);
     ASSERT_EQ(TT_TIME_REQUIRED, t_1.transfer_type);
@@ -47,9 +47,9 @@ TEST transfer_compare(void) {
         .min_transfer_time = 800
     };
 
-    ASSERT_EQ(0, equal_transfer(&a, &b));
-    ASSERT_EQ(1, equal_transfer(&a, &c));
-    ASSERT_EQ(1, equal_transfer(&b, &c));
+    ASSERT_EQ(1, equal_transfer(&a, &b));
+    ASSERT_EQ(0, equal_transfer(&a, &c));
+    ASSERT_EQ(0, equal_transfer(&b, &c));
 
     PASS();
 }

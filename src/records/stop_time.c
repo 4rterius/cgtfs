@@ -83,7 +83,7 @@ void read_stop_time(stop_time_t *record, int field_count, const char **field_nam
 }
 
 int equal_stop_time(const stop_time_t *a, const stop_time_t *b) {
-    return !(!strcmp(a->trip_id, b->trip_id) &&
+    return (!strcmp(a->trip_id, b->trip_id) &&
              !strcmp(a->arrival_time, b->arrival_time) &&
              !strcmp(a->departure_time, b->departure_time) &&
              !strcmp(a->stop_id, b->stop_id) &&

@@ -24,7 +24,7 @@ TEST fr_agency(void) {
             }
         };
 
-        ASSERT(!equal_agency(&(expected[0]), &(records[0])));
+        ASSERT(equal_agency(&(expected[0]), &(records[0])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -50,7 +50,7 @@ TEST fr_calendar_dates(void) {
             }
         };
 
-        ASSERT(!equal_calendar_date(&(expected[0]), &(records[0])));
+        ASSERT(equal_calendar_date(&(expected[0]), &(records[0])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -95,8 +95,8 @@ TEST fr_calendar_records(void) {
             },
         };
 
-        ASSERT(!equal_calendar_record(&(expected[0]), &(records[0])));
-        ASSERT(!equal_calendar_record(&(expected[1]), &(records[1])));
+        ASSERT(equal_calendar_record(&(expected[0]), &(records[0])));
+        ASSERT(equal_calendar_record(&(expected[1]), &(records[1])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -133,8 +133,8 @@ TEST fr_fare_attributes(void) {
             }
         };
 
-        ASSERT(!equal_fare_attributes(&(expected[0]), &(records[0])));
-        ASSERT(!equal_fare_attributes(&(expected[1]), &(records[1])));
+        ASSERT(equal_fare_attributes(&(expected[0]), &(records[0])));
+        ASSERT(equal_fare_attributes(&(expected[1]), &(records[1])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -183,10 +183,10 @@ TEST fr_fare_rules(void) {
             }
         };
 
-        ASSERT(!equal_fare_rule(&(expected[0]), &(records[0])));
-        ASSERT(!equal_fare_rule(&(expected[1]), &(records[1])));
-        ASSERT(!equal_fare_rule(&(expected[2]), &(records[2])));
-        ASSERT(!equal_fare_rule(&(expected[3]), &(records[3])));
+        ASSERT(equal_fare_rule(&(expected[0]), &(records[0])));
+        ASSERT(equal_fare_rule(&(expected[1]), &(records[1])));
+        ASSERT(equal_fare_rule(&(expected[2]), &(records[2])));
+        ASSERT(equal_fare_rule(&(expected[3]), &(records[3])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -225,9 +225,9 @@ TEST fr_frequencies(void) {
             }
         };
 
-        ASSERT(!equal_frequency(&(expected[0]), &(records[0])));
-        ASSERT(!equal_frequency(&(expected[1]), &(records[1])));
-        ASSERT(!equal_frequency(&(expected[2]), &(records[2])));
+        ASSERT(equal_frequency(&(expected[0]), &(records[0])));
+        ASSERT(equal_frequency(&(expected[1]), &(records[1])));
+        ASSERT(equal_frequency(&(expected[2]), &(records[2])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -268,10 +268,10 @@ TEST fr_levels(void) {
             }
         };
 
-        ASSERT(!equal_level(&(expected[0]), &(records[0])));
-        ASSERT(!equal_level(&(expected[1]), &(records[1])));
-        ASSERT(!equal_level(&(expected[2]), &(records[2])));
-        ASSERT(!equal_level(&(expected[3]), &(records[3])));
+        ASSERT(equal_level(&(expected[0]), &(records[0])));
+        ASSERT(equal_level(&(expected[1]), &(records[1])));
+        ASSERT(equal_level(&(expected[2]), &(records[2])));
+        ASSERT(equal_level(&(expected[3]), &(records[3])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -320,8 +320,8 @@ TEST fr_pathways(void) {
             }
         };
 
-        ASSERT(!equal_pathway(&(expected[0]), &(records[0])));
-        ASSERT(!equal_pathway(&(expected[1]), &(records[1])));
+        ASSERT(equal_pathway(&(expected[0]), &(records[0])));
+        ASSERT(equal_pathway(&(expected[1]), &(records[1])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -375,9 +375,9 @@ TEST fr_routes(void) {
             }
         };
 
-        ASSERT(!equal_route(&(expected[0]), &(records[0])));
-        ASSERT(!equal_route(&(expected[1]), &(records[1])));
-        ASSERT(!equal_route(&(expected[2]), &(records[2])));
+        ASSERT(equal_route(&(expected[0]), &(records[0])));
+        ASSERT(equal_route(&(expected[1]), &(records[1])));
+        ASSERT(equal_route(&(expected[2]), &(records[2])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -450,9 +450,9 @@ TEST fr_stop_times(void) {
             }
         };
 
-        ASSERT(!equal_stop_time(&(expected[0]), &(records[0])));
-        ASSERT(!equal_stop_time(&(expected[1]), &(records[1])));
-        ASSERT(!equal_stop_time(&(expected[2]), &(records[2])));
+        ASSERT(equal_stop_time(&(expected[0]), &(records[0])));
+        ASSERT(equal_stop_time(&(expected[1]), &(records[1])));
+        ASSERT(equal_stop_time(&(expected[2]), &(records[2])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -506,9 +506,9 @@ TEST fr_stops(void) {
             }
         };
 
-        ASSERT(!equal_stop(&(expected[0]), &(records[0])));
-        ASSERT(!equal_stop(&(expected[1]), &(records[1])));
-        ASSERT(!equal_stop(&(expected[2]), &(records[2])));
+        ASSERT(equal_stop(&(expected[0]), &(records[0])));
+        ASSERT(equal_stop(&(expected[1]), &(records[1])));
+        ASSERT(equal_stop(&(expected[2]), &(records[2])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);
@@ -570,9 +570,9 @@ TEST fr_trips(void) {
             }
         };
 
-        ASSERT(!equal_trip(&(expected[0]), &(records[0])));
-        ASSERT(!equal_trip(&(expected[1]), &(records[1])));
-        ASSERT(!equal_trip(&(expected[2]), &(records[2])));
+        ASSERT(equal_trip(&(expected[0]), &(records[0])));
+        ASSERT(equal_trip(&(expected[1]), &(records[1])));
+        ASSERT(equal_trip(&(expected[2]), &(records[2])));
 
         if (record_count > 0) free(records);
         if (fp) fclose(fp);

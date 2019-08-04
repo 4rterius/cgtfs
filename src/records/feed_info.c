@@ -51,7 +51,7 @@ void read_feed_info(feed_info_t *record, int field_count, const char **field_nam
 }
 
 int equal_feed_info(const feed_info_t *a, const feed_info_t *b) {
-    return !(!strcmp(a->feed_publisher_name, b->feed_publisher_name) &&
+    return (!strcmp(a->feed_publisher_name, b->feed_publisher_name) &&
              !strcmp(a->feed_publisher_url, b->feed_publisher_url) &&
              !strcmp(a->feed_lang, b->feed_lang) &&
              !strcmp(a->feed_start_date, b->feed_start_date) &&

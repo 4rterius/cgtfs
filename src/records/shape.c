@@ -37,7 +37,7 @@ void read_shape(shape_t *record, int field_count, const char **field_names, cons
 }
 
 int equal_shape(const shape_t *a, const shape_t *b) {
-    return !(!strcmp(a->id, b->id) &&
+    return (!strcmp(a->id, b->id) &&
              a->pt_lat == b->pt_lat &&
              a->pt_lon == b->pt_lon &&
              a->pt_sequence == b->pt_sequence &&

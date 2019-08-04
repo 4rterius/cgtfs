@@ -82,7 +82,7 @@ void read_route(route_t *record, int field_count, const char **field_names, cons
 }
 
 int equal_route(const route_t *a, const route_t *b) {
-    return !(!strcmp(a->id, b->id) &&
+    return (!strcmp(a->id, b->id) &&
              !strcmp(a->agency_id, b->agency_id) &&
              !strcmp(a->short_name, b->short_name) &&
              !strcmp(a->long_name, b->long_name) &&

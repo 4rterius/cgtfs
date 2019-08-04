@@ -28,7 +28,7 @@ TEST route_read(void) {
     ASSERT_STR_EQ("ff0000", r_1.text_color);
     ASSERT_EQ(RT_BUS, r_1.type);
     ASSERT_EQ(175, r_1.sort_order);
-    
+
     PASS();
 }
 
@@ -72,9 +72,9 @@ TEST route_compare(void) {
         .sort_order = 1
     };
 
-    ASSERT_EQ(0, equal_route(&a, &b));
-    ASSERT_EQ(1, equal_route(&a, &c));
-    ASSERT_EQ(1, equal_route(&b, &c));
+    ASSERT_EQ(1, equal_route(&a, &b));
+    ASSERT_EQ(0, equal_route(&a, &c));
+    ASSERT_EQ(0, equal_route(&b, &c));
 
     PASS();
 }

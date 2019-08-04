@@ -36,9 +36,9 @@ TEST feed_comparison(void) {
     read_feed(&f2, "../tests/data/stupid_gtfs");
     read_feed(&f3, "../tests/data/pocono_pony");
 
-    ASSERT_EQ_FMT(0, equal_feeds(&f1, &f2), "%i");
-    ASSERT_EQ_FMT(1, equal_feeds(&f1, &f3), "%i");
-    ASSERT_EQ_FMT(1, equal_feeds(&f2, &f3), "%i");
+    ASSERT_EQ_FMT(1, equal_feeds(&f1, &f2), "%i");
+    ASSERT_EQ_FMT(0, equal_feeds(&f1, &f3), "%i");
+    ASSERT_EQ_FMT(0, equal_feeds(&f2, &f3), "%i");
 
     free_feed(&f1);
     free_feed(&f2);

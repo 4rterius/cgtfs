@@ -45,7 +45,7 @@ void read_frequency(frequency_t *record, int field_count, const char **field_nam
 }
 
 int equal_frequency(const frequency_t *a, const frequency_t *b) {
-    return !(!strcmp(a->trip_id, b->trip_id) &&
+    return (!strcmp(a->trip_id, b->trip_id) &&
              !strcmp(a->start_time, b->start_time) &&
              !strcmp(a->end_time, b->end_time) &&
              a->headway_secs == b->headway_secs &&

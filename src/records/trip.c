@@ -83,7 +83,7 @@ void read_trip(trip_t *record, int field_count, const char **field_names, const 
 }
 
 int equal_trip(const trip_t *a, const trip_t *b) {
-    return !(!strcmp(a->route_id, b->route_id) &&
+    return (!strcmp(a->route_id, b->route_id) &&
              !strcmp(a->service_id, b->service_id) &&
              !strcmp(a->id, b->id) &&
              !strcmp(a->headsign, b->headsign) &&

@@ -68,7 +68,7 @@ void read_fare_attributes(fare_attributes_t *record, int field_count, const char
 }
 
 int equal_fare_attributes(const fare_attributes_t *a, const fare_attributes_t *b) {
-    return !(!strcmp(a->fare_id, b->fare_id) &&
+    return (!strcmp(a->fare_id, b->fare_id) &&
              !strcmp(a->currency_type, b->currency_type) &&
              !strcmp(a->agency_id, b->agency_id) &&
              a->price == b->price &&

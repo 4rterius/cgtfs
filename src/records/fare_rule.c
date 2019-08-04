@@ -36,7 +36,7 @@ void read_fare_rule(fare_rule_t *record, int field_count, const char **field_nam
 }
 
 int equal_fare_rule(const fare_rule_t *a, const fare_rule_t *b) {
-    return !(!strcmp(a->fare_id, b->fare_id) &&
+    return (!strcmp(a->fare_id, b->fare_id) &&
              !strcmp(a->route_id, b->route_id) &&
              !strcmp(a->origin_id, b->origin_id) &&
              !strcmp(a->destination_id, b->destination_id) &&

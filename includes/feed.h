@@ -117,7 +117,7 @@ void free_feed(feed_t *feed);
  * @param[in]    a    First feed instance.
  * @param[in]    b    Second feed instance.
  *
- * @returns      0 if feeds are equal, non-zero if not.
+ * @returns      1 (true) if feeds are equal, 0 if not.
  *
  * @ingroup      Core__FeedEntity
  */

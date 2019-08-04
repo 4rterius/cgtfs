@@ -95,9 +95,9 @@ TEST stop_compare(void) {
         .platform_code = "B"
     };
 
-    ASSERT_EQ(0, equal_stop(&a, &b));
-    ASSERT_EQ(1, equal_stop(&a, &c));
-    ASSERT_EQ(1, equal_stop(&b, &c));
+    ASSERT_EQ(1, equal_stop(&a, &b));
+    ASSERT_EQ(0, equal_stop(&a, &c));
+    ASSERT_EQ(0, equal_stop(&b, &c));
 
     PASS();
 }

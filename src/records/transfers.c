@@ -44,7 +44,7 @@ void read_transfer(transfer_t *record, int field_count, const char **field_names
 }
 
 int equal_transfer(const transfer_t *a, const transfer_t *b) {
-    return !(!strcmp(a->from_stop_id, b->from_stop_id) &&
+    return (!strcmp(a->from_stop_id, b->from_stop_id) &&
              !strcmp(a->to_stop_id, b->to_stop_id) &&
              a->transfer_type == b->transfer_type &&
              a->min_transfer_time == b->min_transfer_time);

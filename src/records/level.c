@@ -26,7 +26,7 @@ void read_level(level_t *record, int field_count, const char **field_names, cons
 }
 
 int equal_level(const level_t *a, const level_t *b) {
-    return !(!strcmp(a->id, b->id) &&
+    return (!strcmp(a->id, b->id) &&
              !strcmp(a->name, b->name) &&
              a->index == b->index);
 }

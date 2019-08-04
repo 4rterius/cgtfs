@@ -35,7 +35,7 @@ void read_calendar_date(calendar_date_t *record, int field_count, const char **f
 }
 
 int equal_calendar_date(const calendar_date_t *a, const calendar_date_t *b) {
-    return !(!strcmp(a->service_id, b->service_id) &&
+    return (!strcmp(a->service_id, b->service_id) &&
              !strcmp(a->date, b->date) &&
              a->exception_type == b->exception_type);
 }
