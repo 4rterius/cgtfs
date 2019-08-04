@@ -20,7 +20,9 @@ TEST db_stop_store(void) {
         .location_type = LT_STATION,
         .parent_station = "abcd",
         .timezone = "efgh",
-        .wheelchair_boarding = WB_NOT_POSSIBLE
+        .wheelchair_boarding = WB_NOT_POSSIBLE,
+        .level_id = "LVL01",
+        .platform_code = "A"
     };
 
     init_feed_db(&db, "tests_tdw0.db", 1);

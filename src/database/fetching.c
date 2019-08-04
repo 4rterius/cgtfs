@@ -555,7 +555,8 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
                     "stop_id, stop_code, stop_name, stop_desc,"
                     "stop_lat, stop_lon,"
                     "zone_id, stop_url,"
-                    "location_type, parent_station, stop_timezone, wheelchair_boarding "
+                    "location_type, parent_station, stop_timezone, wheelchair_boarding, "
+                    "level_id, platform_code "
                 "FROM `stops`;";
 
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
@@ -577,6 +578,8 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
         strcpy(record.parent_station, sqlite3_column_text(stmt, 9));
         strcpy(record.timezone, sqlite3_column_text(stmt, 10));
         record.wheelchair_boarding = (wheelchair_boarding_t)sqlite3_column_int(stmt, 11);
+        strcpy(record.level_id, sqlite3_column_text(stmt, 12));
+        strcpy(record.platform_code, sqlite3_column_text(stmt, 13));
 
         (*records)[i] = record;
         i++;

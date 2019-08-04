@@ -5,19 +5,21 @@
 #include "records/stop.h"
 
 TEST stop_read(void) {
-    
-    #define FIELDS_NUM_11 12
+
+    #define FIELDS_NUM_11 14
     char *field_names[FIELDS_NUM_11] = {
         "stop_id", "stop_code", "stop_name",
         "stop_desc", "stop_lat", "stop_lon",
         "zone_id", "stop_url", "location_type",
-        "parent_station", "stop_timezone", "wheelchair_boarding"
+        "parent_station", "stop_timezone", "wheelchair_boarding",
+        "level_id", "platform_code"
     };
     char *field_values[FIELDS_NUM_11] = {
         "S1", "SOMECODE", "Mission St, Silver Ave.",
         "The stop is located at the southwest corner of the intersection.", "37.728631", "-122.431282",
         "1", "http://example.com", "0",
-        "ST0", "Europe/Helsinki", "2"
+        "ST0", "Europe/Helsinki", "2",
+        "LVLID", "SOMECODE"
     };
 
     stop_t stp_1;
@@ -35,6 +37,8 @@ TEST stop_read(void) {
     ASSERT_EQ(-122.431282, stp_1.lon);
     ASSERT_EQ(LT_STOP, stp_1.location_type);
     ASSERT_EQ(WB_NOT_POSSIBLE, stp_1.wheelchair_boarding);
+    ASSERT_STR_EQ("LVLID", stp_1.level_id);
+    ASSERT_STR_EQ("SOMECODE", stp_1.platform_code);
 
     PASS();
 }
@@ -52,7 +56,9 @@ TEST stop_compare(void) {
         .location_type = LT_STOP,
         .parent_station = "",
         .timezone = "Europe/Helsinki",
-        .wheelchair_boarding = WB_NOT_SET
+        .wheelchair_boarding = WB_NOT_SET,
+        .level_id = "LVL01",
+        .platform_code = "A"
     };
 
     stop_t b = {
@@ -67,7 +73,9 @@ TEST stop_compare(void) {
         .location_type = LT_STOP,
         .parent_station = "",
         .timezone = "Europe/Helsinki",
-        .wheelchair_boarding = WB_NOT_SET
+        .wheelchair_boarding = WB_NOT_SET,
+        .level_id = "LVL01",
+        .platform_code = "A"
     };
 
     stop_t c = {
@@ -82,7 +90,9 @@ TEST stop_compare(void) {
         .location_type = LT_STOP,
         .parent_station = "",
         .timezone = "Europe/Helsinki",
-        .wheelchair_boarding = WB_NOT_SET
+        .wheelchair_boarding = WB_NOT_SET,
+        .level_id = "LVL00",
+        .platform_code = "B"
     };
 
     ASSERT_EQ(0, equal_stop(&a, &b));

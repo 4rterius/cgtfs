@@ -13,7 +13,7 @@
 
 /**
  * What kind of a location the entity is.
- * 
+ *
  * @ingroup    Core__EntityEnums Core__EntityList__Stop
  */
 typedef enum {
@@ -25,7 +25,7 @@ typedef enum {
 
 /**
  * Whether wheelchair boardings/entrances are possible.
- * 
+ *
  * @ingroup    Core__EntityEnums Core__EntityList__Stop
  */
 typedef enum {
@@ -37,11 +37,11 @@ typedef enum {
 
 /**
  * stops.txt record
- * 
+ *
  * @see        init_stop()
  * @see        read_stop()
  * @see        https://developers.google.com/transit/gtfs/reference/#stopstxt
- * 
+ *
  * @ingroup    Core__EntityTypes Core__EntityList__Stop
  */
 typedef struct {
@@ -57,17 +57,19 @@ typedef struct {
     char parent_station[65];                    ///< [Optional] Unique ID that identifies the parent station enitity if any.
     char timezone[65];                          ///< [Optional] Timezone in which the stop is located (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
     wheelchair_boarding_t wheelchair_boarding;  ///< [Optional] Whether wheelchair boardings are possible at the stop.
+    char level_id[65];                          ///< [Optional] Level of the location.
+    char platform_code[65];                     ///< [Optional] Platform identifier for a platform stop.
     int is_null;
 } stop_t;
 
 /**
  * Parses the location_type_t value from given string
  * with regard for the default value as per GTFS reference.
- * 
+ *
  * @param[in]    value    Char array (string) to parse the enumerator from.
- * 
+ *
  * @returns      An location_type_t value.
- * 
+ *
  * @ingroup      Core__EntityEnums Core__EntityList__Stop
  */
 location_type_t parse_location_type(const char *value);
@@ -75,43 +77,43 @@ location_type_t parse_location_type(const char *value);
 /**
  * Parses the wheelchair_boarding_t value from given string
  * with regard for the default value as per GTFS reference.
- * 
+ *
  * @param[in]    value    Char array (string) to parse the enumerator from.
- * 
+ *
  * @returns      An wheelchair_boarding_t value.
- * 
+ *
  * @ingroup      Core__EntityEnums Core__EntityList__Stop
  */
 wheelchair_boarding_t parse_wheelchair_boarding(const char *value);
 
 /**
  * Initializes the given stop record with empty/default values.
- * 
+ *
  * @param[out]    record    Stop record pointer to initialize.
- * 
+ *
  * @ingroup       Core__EntityFunctions Core__EntityList__Stop
  */
 void init_stop(stop_t *record);
 
 /**
  * Reads given datafields and field names into the given stop struct.
- * 
+ *
  * @param[out]    record          The pointer to write into.
  * @param[in]     field_count     Number of rows (columns) the record has.
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
- * 
+ *
  * @ingroup       Core__EntityFunctions Core__EntityList__Stop
  */
 void read_stop(stop_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * 
+ *
  * @param[in]    a    First structure
  * @param[in]    b    Second structure
  * @returns      0 if structures are equal, non-zero otherwise.
- * 
+ *
  * @ingroup      Core__EntityFunctions Core__EntityList__Stop
  */
 int equal_stop(const stop_t *a, const stop_t *b);

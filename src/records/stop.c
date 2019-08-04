@@ -35,6 +35,8 @@ void init_stop(stop_t *record){
     strcpy(record->parent_station, "");
     strcpy(record->timezone, "");
     record->wheelchair_boarding = WB_UNKNOWN_OR_INHERITED;
+    strcpy(record->level_id, "");
+    strcpy(record->platform_code, "");
     record->is_null = 1;
 }
 
@@ -103,6 +105,16 @@ void read_stop(stop_t *record, int field_count, const char **field_names, const 
             // assignment_counter++;
             continue;
         }
+        if (strcmp(field_names[i], "level_id") == 0) {
+            strcpy(record->level_id, field_values[i]);
+            // assignment_counter++;
+            continue;
+        }
+        if (strcmp(field_names[i], "platform_code") == 0) {
+            strcpy(record->platform_code, field_values[i]);
+            // assignment_counter++;
+            continue;
+        }
     }
 
     if (assignment_counter == 0)
@@ -120,6 +132,8 @@ int equal_stop(const stop_t *a, const stop_t *b) {
              !strcmp(a->url, b->url) &&
              !strcmp(a->parent_station, b->parent_station) &&
              !strcmp(a->timezone, b->timezone) &&
+             !strcmp(a->level_id, b->level_id) &&
+             !strcmp(a->platform_code, b->platform_code) &&
              a->lat == b->lat &&
              a->lon == b->lon &&
              a->location_type == b->location_type &&

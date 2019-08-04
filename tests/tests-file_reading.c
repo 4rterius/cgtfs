@@ -478,7 +478,9 @@ TEST fr_stops(void) {
                 .lat = 36.425288,
                 .lon = -117.133162,
                 .zone_id = "",
-                .url = ""
+                .url = "",
+                // .level_id = "LVL01",
+                // .platform_code = "A"
             },
             {
                 .id = "BEATTY_AIRPORT",
@@ -487,7 +489,9 @@ TEST fr_stops(void) {
                 .lat = 36.868446,
                 .lon = -116.784582,
                 .zone_id = "",
-                .url = ""
+                .url = "",
+                // .level_id = "LVL00",
+                // .platform_code = "B"
             },
             {
                 .id = "BULLFROG",
@@ -496,7 +500,9 @@ TEST fr_stops(void) {
                 .lat = 36.88108,
                 .lon = -116.81797,
                 .zone_id = "",
-                .url = ""
+                .url = "",
+                // .level_id = "LVL03",
+                // .platform_code = "C"
             }
         };
 

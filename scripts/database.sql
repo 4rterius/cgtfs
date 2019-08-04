@@ -21,7 +21,9 @@ CREATE TABLE stops (
 	location_type INT,
 	parent_station TEXT,
 	stop_timezone TEXT,
-	wheelchair_boarding INT
+	wheelchair_boarding INT,
+	level_id TEXT,
+	platform_code TEXT
 );
 
 CREATE TABLE routes (
