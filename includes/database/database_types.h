@@ -22,6 +22,7 @@ typedef struct feed_db_t {
     char *error_msg;    ///< Field for storing sqlite error messages. Populate with strdup()
     int rc;             ///< Field for storing sqlite return codes.
     int open;           ///< Whether this connection has been opened or not (0 || 1)
+    int in_transaction; ///< Whether CGTFS has started an unfinished transaction (0 || 1)
 } feed_db_t;
 
 /**

@@ -5,6 +5,7 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable) 
     db->rc = -1;
     db->error_msg = NULL;
     db->open = 0;
+    db->in_transaction = 0;
 
     db->rc = sqlite3_open_v2(db_path, &(db->conn),
         writable ? (SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE) : (SQLITE_OPEN_READONLY),
