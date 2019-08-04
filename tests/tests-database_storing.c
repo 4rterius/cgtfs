@@ -10,7 +10,7 @@ TEST db_all_agencies_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/agency.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -31,7 +31,7 @@ TEST db_all_calendar_dates_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/calendar_dates.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -52,7 +52,7 @@ TEST db_all_calendar_records_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/calendar.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -73,7 +73,7 @@ TEST db_all_fare_attributes_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/fare_attributes.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -94,7 +94,7 @@ TEST db_all_fare_rules_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/fare_rules.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -115,7 +115,7 @@ TEST db_all_feed_info_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/feed_info.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -136,7 +136,7 @@ TEST db_all_frequencies_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/frequencies.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -152,12 +152,54 @@ TEST db_all_frequencies_store(void) {
     PASS();
 }
 
+TEST db_all_levels_store(void) {
+    FILE *fp = fopen("../tests/data/stupid_gtfs/levels.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/stupid_gtfs/levels.txt` test file");
+    } else {
+
+        feed_db_t db;
+        // feed_db_status_t res;
+
+        /* res = */ init_feed_db(&db, "tests_storing.db", 1);
+        /* res = */ setup_feed_db(&db, 1);
+
+        int stored_count = store_all_levels_db(fp, &db);
+        ASSERT_EQ_FMT(4, stored_count, "%i");
+
+        free_feed_db(&db);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
+TEST db_all_pathways_store(void) {
+    FILE *fp = fopen("../tests/data/stupid_gtfs/pathways.txt", "r");
+    if (fp == NULL) {
+        FAILm("Couldn't open `data/stupid_gtfs/pathways.txt` test file");
+    } else {
+
+        feed_db_t db;
+        // feed_db_status_t res;
+
+        /* res = */ init_feed_db(&db, "tests_storing.db", 1);
+        /* res = */ setup_feed_db(&db, 1);
+
+        int stored_count = store_all_pathways_db(fp, &db);
+        ASSERT_EQ_FMT(2, stored_count, "%i");
+
+        free_feed_db(&db);
+        if (fp) fclose(fp);
+    }
+    PASS();
+}
+
 TEST db_all_routes_store(void) {
     FILE *fp = fopen("../tests/data/stupid_gtfs/routes.txt", "r");
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/routes.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -178,7 +220,7 @@ TEST db_all_shapes_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/shapes.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -199,7 +241,7 @@ TEST db_all_stop_times_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/stop_times.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -220,7 +262,7 @@ TEST db_all_stops_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/stops.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -241,7 +283,7 @@ TEST db_all_transfers_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/transfers.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -262,7 +304,7 @@ TEST db_all_trips_store(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/stupid_gtfs/trips.txt` test file");
     } else {
-        
+
         feed_db_t db;
         // feed_db_status_t res;
 
@@ -286,6 +328,8 @@ SUITE(CGTFS_DatabaseStoring) {
     RUN_TEST(db_all_fare_rules_store);
     RUN_TEST(db_all_feed_info_store);
     RUN_TEST(db_all_frequencies_store);
+    RUN_TEST(db_all_levels_store);
+    RUN_TEST(db_all_pathways_store);
     RUN_TEST(db_all_routes_store);
     RUN_TEST(db_all_shapes_store);
     RUN_TEST(db_all_stop_times_store);
