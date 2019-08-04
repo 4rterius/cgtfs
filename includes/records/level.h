@@ -24,7 +24,6 @@ typedef struct {
     char id[65];        ///< [Required] Unique level ID
     double index;       ///< [Required] Relative position of the level (higher above lower)
     char name[65];      ///< [Optional] Level name
-    int is_null;
 } level_t;
 
 

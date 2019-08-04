@@ -62,7 +62,6 @@ typedef struct {
     double min_width;                         ///< [Optional] The minimum width of the pathway (meters)
     char signposted_as[129];                  ///< [Optional] Exact text of the physical signage identifying the pathway
     char reversed_signposted_as[129];         ///< [Optional] The same as signposted_at, but when travelling in the opposite direction
-    int is_null;
 } pathway_t;
 
 /**

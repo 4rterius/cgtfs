@@ -33,70 +33,53 @@ void init_trip(trip_t *record) {
     strcpy(record->shape_id, "");
     record->wheelchair_accessible = WA_UNKNOWN;
     record->bikes_allowed = BA_UNKNOWN;
-    record->is_null = 1;
 }
 
 void read_trip(trip_t *record, int field_count, const char **field_names, const char **field_values) {
     init_trip(record);
-    int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "route_id") == 0) {
             strcpy(record->route_id, field_values[i]);
-            assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "service_id") == 0) {
             strcpy(record->service_id, field_values[i]);
-            assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "trip_id") == 0) {
             strcpy(record->id, field_values[i]);
-            assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "trip_headsign") == 0) {
             strcpy(record->headsign, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "trip_short_name") == 0) {
             strcpy(record->short_name, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "direction_id") == 0) {
             record->direction_id = (unsigned int)strtoul(field_values[i], NULL, 0);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "block_id") == 0) {
             strcpy(record->block_id, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "shape_id") == 0) {
             strcpy(record->shape_id, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "wheelchair_accessible") == 0) {
             record->wheelchair_accessible = parse_wheelchair_accessibility(field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "bikes_allowed") == 0) {
             record->bikes_allowed = parse_bike_allowance(field_values[i]);
-            // assignment_counter++;
             continue;
         }
     }
-
-    if (assignment_counter == 0)
-        record->is_null = 1;
-    else
-        record->is_null = 0;
 }
 
 int equal_trip(const trip_t *a, const trip_t *b) {

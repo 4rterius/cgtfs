@@ -59,7 +59,6 @@ typedef struct {
     wheelchair_boarding_t wheelchair_boarding;  ///< [Optional] Whether wheelchair boardings are possible at the stop.
     char level_id[65];                          ///< [Optional] Level of the location.
     char platform_code[65];                     ///< [Optional] Platform identifier for a platform stop.
-    int is_null;
 } stop_t;
 
 /**

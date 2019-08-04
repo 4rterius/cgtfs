@@ -41,41 +41,34 @@ void init_pathway(pathway_t *record) {
     record->min_width = 0.0,
     strcpy(record->signposted_as, "");
     strcpy(record->reversed_signposted_as, "");
-    record->is_null = 1;
 }
 
 void read_pathway(pathway_t *record, int field_count, const char **field_names, const char **field_values) {
     init_pathway(record);
-    int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "pathway_id") == 0) {
             strcpy(record->id, field_values[i]);
-            assignment_counter++;
             continue;
         }
 
         if (strcmp(field_names[i], "from_stop_id") == 0) {
             strcpy(record->from_stop_id, field_values[i]);
-            assignment_counter++;
             continue;
         }
 
         if (strcmp(field_names[i], "to_stop_id") == 0) {
             strcpy(record->to_stop_id, field_values[i]);
-            assignment_counter++;
             continue;
         }
 
         if (strcmp(field_names[i], "pathway_mode") == 0) {
             record->mode = parse_pathway_mode(field_values[i]);
-            assignment_counter++;
             continue;
         }
 
         if (strcmp(field_names[i], "is_bidirectional") == 0) {
             record->is_bidirectional = parse_pathway_directions(field_values[i]);
-            assignment_counter++;
             continue;
         }
 
@@ -114,11 +107,6 @@ void read_pathway(pathway_t *record, int field_count, const char **field_names, 
             continue;
         }
     }
-
-    if (assignment_counter == 0)
-        record->is_null = 1;
-    else
-        record->is_null = 0;
 }
 
 /**

@@ -13,7 +13,7 @@
 
 /**
  * Whether it is possible to access a trip using wheelchairs.
- * 
+ *
  * @ingroup    Core__EntityEnums Core__EntityList__Trip
  */
 typedef enum {
@@ -25,7 +25,7 @@ typedef enum {
 
 /**
  * Whether bikes are allowed on a trip.
- * 
+ *
  * @ingroup    Core__EntityEnums Core__EntityList__Trip
  */
 typedef enum {
@@ -37,11 +37,11 @@ typedef enum {
 
 /**
  * trips.txt record
- * 
+ *
  * @see        init_trip()
  * @see        read_trip()
  * @see        https://developers.google.com/transit/gtfs/reference/#tripstxt
- * 
+ *
  * @ingroup    Core__EntityTypes Core__EntityList__Trip
  */
 typedef struct {
@@ -55,17 +55,16 @@ typedef struct {
     char shape_id[65];                              ///< Unique ID that identifies the shape for the trip.
     wheelchair_accessible_t wheelchair_accessible;  ///< Whether the vehicle used on the trip can accommodate a rider in a wheelchair.
     bikes_allowed_t bikes_allowed;                  ///< Whether the vehicle used on the trip can accommodate a bicycle.
-    int is_null;
 } trip_t;
 
 /**
  * Parses the wheelchair_accessible_t value from given string
  * with regard for the default value as per GTFS reference.
- * 
+ *
  * @param[in]    value    Char array (string) to parse the enumerator from.
- * 
+ *
  * @returns      An wheelchair_accessible_t value.
- * 
+ *
  * @ingroup      Core__EntityEnums Core__EntityList__Trip
  */
 wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
@@ -73,44 +72,44 @@ wheelchair_accessible_t parse_wheelchair_accessibility(const char *value);
 /**
  * Parses the bikes_allowed_t value from given string
  * with regard for the default value as per GTFS reference.
- * 
+ *
  * @param[in]    value    Char array (string) to parse the enumerator from.
- * 
+ *
  * @returns      An bikes_allowed_t value.
- * 
+ *
  * @ingroup      Core__EntityEnums Core__EntityList__Trip
  */
 bikes_allowed_t parse_bike_allowance(const char *value);
 
 /**
  * Initializes the given trip record with empty/default values.
- * 
+ *
  * @param[out]    record    Trip record pointer to initialize.
- * 
+ *
  * @ingroup       Core__EntityFunctions Core__EntityList__Trip
  */
 void init_trip(trip_t *record);
 
 /**
  * Reads given datafields and field names into the given trip struct.
- * 
+ *
  * @param[out]    record          The pointer to write into.
  * @param[in]     field_count     Number of rows (columns) the record has.
  * @param[in]     field_names     Names of the fields.
  * @param[in]     field_values    Contents of the record.
- * 
+ *
  * @ingroup       Core__EntityFunctions Core__EntityList__Trip
  */
 void read_trip(trip_t *record, int field_count, const char **field_names, const char **field_values);
 
 /**
  * Compares two structures.
- * 
+ *
  * @param[in]    a    First structure
  * @param[in]    b    Second structure
- * 
+ *
  * @returns      0 if structures are equal, non-zero otherwise.
- * 
+ *
  * @ingroup      Core__EntityFunctions Core__EntityList__Trip
  */
 int equal_trip(const trip_t *a, const trip_t *b);
