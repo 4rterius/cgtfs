@@ -17,20 +17,20 @@ The scope of this library's functionality is illustrated by the following figure
 
 ## Table of contents
 
-- [CGTFS - a C library to read static GTFS feeds](#CGTFS---a-C-library-to-read-static-GTFS-feeds)
-  - [Table of contents](#Table-of-contents)
-  - [Examples](#Examples)
-  - [Build process and dependencies](#Build-process-and-dependencies)
-    - [Dependencies](#Dependencies)
-    - [Build process](#Build-process)
-      - [Linux](#Linux)
-      - [Windows](#Windows)
-  - [Documentation](#Documentation)
-    - [API overview](#API-overview)
-      - [Terms](#Terms)
-      - [Structure](#Structure)
-  - [Useful links](#Useful-links)
-  - [License and attribution](#License-and-attribution)
+- [CGTFS - a C library to read static GTFS feeds](#cgtfs---a-c-library-to-read-static-gtfs-feeds)
+  - [Table of contents](#table-of-contents)
+  - [Examples](#examples)
+  - [Build process and dependencies](#build-process-and-dependencies)
+    - [Dependencies](#dependencies)
+    - [Build process](#build-process)
+      - [Linux](#linux)
+      - [Windows](#windows)
+  - [Documentation](#documentation)
+    - [API overview](#api-overview)
+      - [Terms](#terms)
+      - [Structure](#structure)
+  - [Useful links](#useful-links)
+  - [License and attribution](#license-and-attribution)
 
 ## Examples
 
@@ -152,7 +152,7 @@ void some_database_manipulation(void) {
     // it must be deleted (left to the developer).
     //
     // This function is most likely to be followed by store_feed_db(..) .
-    result = setup_feed_db(&database, 0);
+    result = setup_feed_db(&database);
     if (result < FEED_DB_SUCCESS) {
         printf("Failed to create the layout of the test database: %s !\n", database.error_msg);
         goto clearup;

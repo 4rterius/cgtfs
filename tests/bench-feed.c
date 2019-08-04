@@ -30,12 +30,12 @@ void _bm_db_1() {
     char db_name[26];
 
     snprintf(db_name, 26, "tests_bench_db_%i.db", _bm_db_1_run++);
-    
+
     res = init_feed_db(&db, db_name, 1);
     if (res != FEED_DB_SUCCESS)
         perror("BENCHMARK #3 failed @ init\n");
 
-    res = setup_feed_db(&db, 1);
+    res = setup_feed_db(&db);
     if (res != FEED_DB_SUCCESS)
         perror("BENCHMARK #3 failed @ setup\n");
 
@@ -49,7 +49,7 @@ void _bm_db_1() {
 
 void bench_feed_1(void) {
     bm_results_t res = bm_init_results();
-    
+
     bm_run_1(&res, _bm_feed_1);
     bm_run_10(&res, _bm_feed_1);
     bm_run_100(&res, _bm_feed_1);
@@ -60,7 +60,7 @@ void bench_feed_1(void) {
 
 void bench_feed_2(void) {
     bm_results_t res = bm_init_results();
-    
+
     bm_run_1(&res, _bm_feed_2);
     bm_run_10(&res, _bm_feed_2);
     // bm_run_100(&res, _bm_feed_2);
@@ -71,7 +71,7 @@ void bench_feed_2(void) {
 
 void bench_db_1(void) {
     bm_results_t res = bm_init_results();
-    
+
     bm_run_1(&res, _bm_db_1);
     bm_run_10(&res, _bm_db_1);
     // bm_run_100(&res, _bm_db_1);

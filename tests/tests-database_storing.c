@@ -15,7 +15,7 @@ TEST db_all_agencies_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_agencies_db(fp, &db);
         ASSERT_EQ(4, stored_count);
@@ -36,7 +36,7 @@ TEST db_all_calendar_dates_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_calendar_dates_db(fp, &db);
         ASSERT_EQ_FMT(9, stored_count, "%i");
@@ -57,7 +57,7 @@ TEST db_all_calendar_records_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_calendar_records_db(fp, &db);
         ASSERT_EQ_FMT(4, stored_count, "%i");
@@ -78,7 +78,7 @@ TEST db_all_fare_attributes_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_fare_attributes_db(fp, &db);
         ASSERT_EQ_FMT(2, stored_count, "%i");
@@ -99,7 +99,7 @@ TEST db_all_fare_rules_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_fare_rules_db(fp, &db);
         ASSERT_EQ_FMT(4, stored_count, "%i");
@@ -120,7 +120,7 @@ TEST db_all_feed_info_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_feed_info_db(fp, &db);
         ASSERT_EQ_FMT(1, stored_count, "%i");
@@ -141,7 +141,7 @@ TEST db_all_frequencies_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_frequencies_db(fp, &db);
         ASSERT_EQ_FMT(11, stored_count, "%i");
@@ -162,7 +162,7 @@ TEST db_all_levels_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_levels_db(fp, &db);
         ASSERT_EQ_FMT(4, stored_count, "%i");
@@ -183,7 +183,7 @@ TEST db_all_pathways_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_pathways_db(fp, &db);
         ASSERT_EQ_FMT(2, stored_count, "%i");
@@ -204,7 +204,7 @@ TEST db_all_routes_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_routes_db(fp, &db);
         ASSERT_EQ_FMT(8, stored_count, "%i");
@@ -225,7 +225,7 @@ TEST db_all_shapes_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_shapes_db(fp, &db);
         ASSERT_EQ_FMT(10, stored_count, "%i");
@@ -246,7 +246,7 @@ TEST db_all_stop_times_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_stop_times_db(fp, &db);
         ASSERT_EQ_FMT(28, stored_count, "%i");
@@ -267,7 +267,7 @@ TEST db_all_stops_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_stops_db(fp, &db);
         ASSERT_EQ_FMT(6, stored_count, "%i");
@@ -288,7 +288,7 @@ TEST db_all_transfers_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_transfers_db(fp, &db);
         ASSERT_EQ_FMT(4, stored_count, "%i");
@@ -309,7 +309,7 @@ TEST db_all_trips_store(void) {
         // feed_db_status_t res;
 
         /* res = */ init_feed_db(&db, "tests_storing.db", 1);
-        /* res = */ setup_feed_db(&db, 1);
+        /* res = */ setup_feed_db(&db);
 
         int stored_count = store_all_trips_db(fp, &db);
         ASSERT_EQ_FMT(4, stored_count, "%i");

@@ -22,7 +22,7 @@ TEST db_trip_store(void) {
     };
 
     init_feed_db(&db, "tests_tdw0.db", 1);
-    setup_feed_db(&db, 1);
+    setup_feed_db(&db);
 
     res = store_trip_db(&record, &db);
     ASSERT_EQ_FMTm(db.error_msg, FEED_DB_SUCCESS, res, "%i");

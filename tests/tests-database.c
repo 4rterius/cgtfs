@@ -11,7 +11,7 @@ TEST db_init_close_writable(void) {
     res = init_feed_db(&db, "tests_db_init_0.db", 1);
     ASSERT_EQ_FMTm(db.error_msg, FEED_DB_SUCCESS, res, "%i");
 
-    res = setup_feed_db(&db, 1);
+    res = setup_feed_db(&db);
     ASSERT_EQ_FMTm(db.error_msg, FEED_DB_SUCCESS, res, "%i");
 
     res = free_feed_db(&db);
@@ -38,7 +38,7 @@ TEST db_init_close_readable_success(void) {
     // Preparation
     feed_db_t _db;
     ASSERT_EQ(FEED_DB_SUCCESS, init_feed_db(&_db, "tests_db_init_2.db", 1));
-    ASSERT_EQ(FEED_DB_SUCCESS, setup_feed_db(&_db, 1));
+    ASSERT_EQ(FEED_DB_SUCCESS, setup_feed_db(&_db));
     ASSERT_EQ(FEED_DB_SUCCESS, free_feed_db(&_db));
     // End
 
@@ -63,7 +63,7 @@ TEST db_store_no_counter(void) {
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_1_no_counter.db` (writable)");
 
-    res = setup_feed_db(&db, 1);
+    res = setup_feed_db(&db);
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to create a table layout at `tests_feed_1_no_counter.db` (writable)");
 
@@ -84,7 +84,7 @@ TEST db_store_partial(void) {
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_3_partial.db` (writable)");
 
-    res = setup_feed_db(&db, 1);
+    res = setup_feed_db(&db);
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to create a table layout at `tests_feed_3_partial.db` (writable)");
 
@@ -107,7 +107,7 @@ TEST db_store_counter(void) {
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_2_counter.db` (writable)");
 
-    res = setup_feed_db(&db, 1);
+    res = setup_feed_db(&db);
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to create a table layout at `tests_feed_2_counter.db` (writable)");
 

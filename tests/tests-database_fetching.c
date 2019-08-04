@@ -27,7 +27,7 @@ TEST db_all_agencies_fetch(void) {
         agency_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_agencies_db(&db, &records);
 
@@ -60,7 +60,7 @@ TEST db_all_calendar_dates_fetch(void) {
         calendar_date_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_calendar_dates_db(&db, &records);
 
@@ -93,7 +93,7 @@ TEST db_all_calendar_records_fetch(void) {
         calendar_record_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_calendar_records_db(&db, &records);
 
@@ -126,7 +126,7 @@ TEST db_all_fare_attributes_fetch(void) {
         fare_attributes_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_fare_attributes_db(&db, &records);
 
@@ -159,7 +159,7 @@ TEST db_all_fare_rules_fetch(void) {
         fare_rule_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_fare_rules_db(&db, &records);
 
@@ -192,7 +192,7 @@ TEST db_all_feed_info_fetch(void) {
         feed_info_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_feed_info_db(&db, &records);
 
@@ -225,7 +225,7 @@ TEST db_all_frequencies_fetch(void) {
         frequency_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_frequencies_db(&db, &records);
 
@@ -258,7 +258,7 @@ TEST db_all_levels_fetch(void) {
         level_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_levels_db(&db, &records);
 
@@ -291,7 +291,7 @@ TEST db_all_pathways_fetch(void) {
         pathway_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_pathways_db(&db, &records);
 
@@ -324,7 +324,7 @@ TEST db_all_routes_fetch(void) {
         route_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_routes_db(&db, &records);
 
@@ -357,7 +357,7 @@ TEST db_all_shapes_fetch(void) {
         shape_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_shapes_db(&db, &records);
 
@@ -390,7 +390,7 @@ TEST db_all_stop_times_fetch(void) {
         stop_time_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_stop_times_db(&db, &records);
 
@@ -423,7 +423,7 @@ TEST db_all_stops_fetch(void) {
         stop_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_stops_db(&db, &records);
 
@@ -456,7 +456,7 @@ TEST db_all_transfers_fetch(void) {
         transfer_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_transfers_db(&db, &records);
 
@@ -489,7 +489,7 @@ TEST db_all_trips_fetch(void) {
         trip_t *records;
 
         init_feed_db(&db, "tests_storing.db", 1);
-        setup_feed_db(&db, 1);
+        setup_feed_db(&db);
 
         int retrieved_count = fetch_all_trips_db(&db, &records);
 
