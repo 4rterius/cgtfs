@@ -44,6 +44,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     char *fare_rules_fname;
     char *feed_info_fname;
     char *frequencies_fname;
+    char *levels_fname;
+    char *pathways_fname;
     char *routes_fname;
     char *shapes_fname;
     char *stop_times_fname;
@@ -58,6 +60,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     make_filepath(&fare_rules_fname, dir, "fare_rules.txt");
     make_filepath(&feed_info_fname, dir, "feed_info.txt");
     make_filepath(&frequencies_fname, dir, "frequencies.txt");
+    make_filepath(&levels_fname, dir, "levels.txt");
+    make_filepath(&pathways_fname, dir, "pathways.txt");
     make_filepath(&routes_fname, dir, "routes.txt");
     make_filepath(&shapes_fname, dir, "shapes.txt");
     make_filepath(&stop_times_fname, dir, "stop_times.txt");
@@ -77,6 +81,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         free(fare_rules_fname);
         free(feed_info_fname);
         free(frequencies_fname);
+        free(levels_fname);
+        free(pathways_fname);
         free(routes_fname);
         free(shapes_fname);
         free(stop_times_fname);
@@ -151,6 +157,24 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         result = FEED_DB_PARTIAL;
     }
 
+    FILE *fp_levels = fopen(levels_fname, "r");
+    if (fp_levels) {
+        instance.levels_count = store_all_levels_db(fp_levels, db);
+        fclose(fp_levels);
+    } else {
+        instance.levels_count = -1;
+        result = FEED_DB_PARTIAL;
+    }
+
+    FILE *fp_pathways = fopen(pathways_fname, "r");
+    if (fp_pathways) {
+        instance.pathways_count = store_all_pathways_db(fp_pathways, db);
+        fclose(fp_pathways);
+    } else {
+        instance.pathways_count = -1;
+        result = FEED_DB_PARTIAL;
+    }
+
     FILE *fp_routes = fopen(routes_fname, "r");
     if (fp_routes) {
         instance.routes_count = store_all_routes_db(fp_routes, db);
@@ -221,6 +245,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     free(fare_rules_fname);
     free(feed_info_fname);
     free(frequencies_fname);
+    free(levels_fname);
+    free(pathways_fname);
     free(routes_fname);
     free(shapes_fname);
     free(stop_times_fname);
@@ -239,6 +265,8 @@ void fetch_feed_db(feed_db_t *db, feed_t *feed) {
     feed->fare_rules_count = fetch_all_fare_rules_db(db, &(feed->fare_rules));
     feed->feed_info_count = fetch_all_feed_info_db(db, &(feed->feed_info));
     feed->frequencies_count = fetch_all_frequencies_db(db, &(feed->frequencies));
+    feed->levels_count = fetch_all_levels_db(db, &(feed->levels));
+    feed->pathways_count = fetch_all_pathways_db(db, &(feed->pathways));
     feed->routes_count = fetch_all_routes_db(db, &(feed->routes));
     feed->shapes_count = fetch_all_shapes_db(db, &(feed->shapes));
     feed->stop_times_count = fetch_all_stop_times_db(db, &(feed->stop_times));

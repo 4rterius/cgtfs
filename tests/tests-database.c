@@ -58,7 +58,7 @@ TEST db_store_no_counter(void) {
 
     feed_db_t db;
     feed_db_status_t res;
-    
+
     res = init_feed_db(&db, "tests_feed_1_no_counter.db", 1);
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_1_no_counter.db` (writable)");
@@ -79,7 +79,7 @@ TEST db_store_partial(void) {
 
     feed_db_t db;
     feed_db_status_t res;
-    
+
     res = init_feed_db(&db, "tests_feed_3_partial.db", 1);
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_3_partial.db` (writable)");
@@ -102,7 +102,7 @@ TEST db_store_counter(void) {
     feed_db_status_t res;
 
     feed_t counter;
-    
+
     res = init_feed_db(&db, "tests_feed_2_counter.db", 1);
     if (res != FEED_DB_SUCCESS)
         FAILm("Failed to initialize a database `tests_feed_2_counter.db` (writable)");
@@ -121,6 +121,8 @@ TEST db_store_counter(void) {
     ASSERT_EQ_FMT(4, counter.fare_rules_count, "%i");
     ASSERT_EQ_FMT(1, counter.feed_info_count, "%i");
     ASSERT_EQ_FMT(11, counter.frequencies_count, "%i");
+    ASSERT_EQ_FMT(4, counter.levels_count, "%i");
+    ASSERT_EQ_FMT(2, counter.pathways_count, "%i");
     ASSERT_EQ_FMT(8, counter.routes_count, "%i");
     ASSERT_EQ_FMT(10, counter.shapes_count, "%i");
     ASSERT_EQ_FMT(28, counter.stop_times_count, "%i");
@@ -145,7 +147,7 @@ TEST db_fetch(void) {
         FAILm("Failed to initialize a database `tests_feed_2_counter.db` (non-writable)");
 
     fetch_feed_db(&db, &feed);
-    
+
     ASSERT_EQ_FMT(4, feed.agency_count, "%i");
     ASSERT_EQ_FMT(4, feed.calendar_records_count, "%i");
     ASSERT_EQ_FMT(9, feed.calendar_dates_count, "%i");
@@ -153,16 +155,18 @@ TEST db_fetch(void) {
     ASSERT_EQ_FMT(4, feed.fare_rules_count, "%i");
     ASSERT_EQ_FMT(1, feed.feed_info_count, "%i");
     ASSERT_EQ_FMT(11, feed.frequencies_count, "%i");
+    ASSERT_EQ_FMT(4, feed.levels_count, "%i");
+    ASSERT_EQ_FMT(2, feed.pathways_count, "%i");
     ASSERT_EQ_FMT(8, feed.routes_count, "%i");
     ASSERT_EQ_FMT(10, feed.shapes_count, "%i");
     ASSERT_EQ_FMT(28, feed.stop_times_count, "%i");
     ASSERT_EQ_FMT(6, feed.stops_count, "%i");
     ASSERT_EQ_FMT(4, feed.transfers_count, "%i");
     ASSERT_EQ_FMT(4, feed.trips_count, "%i");
-    
+
     free_feed_db(&db);
     free_feed(&feed);
-    
+
     PASS();
 }
 
