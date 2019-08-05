@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * Whether passangers are picked up / dropped off at the stop
@@ -46,16 +48,16 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__StopTime
  */
 typedef struct {
-    char trip_id[65];                 ///< [Required] Unique ID that identifies the trip.
-    char arrival_time[9];             ///< [Required] Time (HH:MM:SS) when a vehicle arrives to the stop for a particular trip.
-    char departure_time[9];           ///< [Required] Time (HH:MM:SS) when a vehicle departs from the stop for a particular trip.
-    char stop_id[65];                 ///< [Required] Unique ID that identifies the stop.
-    unsigned int stop_sequence;       ///< [Required] Number that identifies the order of stops for a trip.
-    char stop_headsign[65];           ///< [Optional] Text that appears to the passangers to identify the trip's destination.
-    stop_type_t pickup_type;          ///< [Optional] Whether and how are passangers picked up.
-    stop_type_t dropoff_type;         ///< [Optional] Whether and how are passangers dropped off.
-    double shape_dist_traveled;       ///< [Optional] How much distance the vehicle traveled up to the stop.
-    timepoint_precision_t timepoint;  ///< [Optional] Whether times are exact.
+    char trip_id[CGTFS_SL_IDS];          ///< [Required] Unique ID that identifies the trip.
+    char arrival_time[CGTFS_SL_TIM];     ///< [Required] Time (HH:MM:SS) when a vehicle arrives to the stop for a particular trip.
+    char departure_time[CGTFS_SL_TIM];   ///< [Required] Time (HH:MM:SS) when a vehicle departs from the stop for a particular trip.
+    char stop_id[CGTFS_SL_IDS];          ///< [Required] Unique ID that identifies the stop.
+    unsigned int stop_sequence;          ///< [Required] Number that identifies the order of stops for a trip.
+    char stop_headsign[CGTFS_SL_NAM];    ///< [Optional] Text that appears to the passangers to identify the trip's destination.
+    stop_type_t pickup_type;             ///< [Optional] Whether and how are passangers picked up.
+    stop_type_t dropoff_type;            ///< [Optional] Whether and how are passangers dropped off.
+    double shape_dist_traveled;          ///< [Optional] How much distance the vehicle traveled up to the stop.
+    timepoint_precision_t timepoint;     ///< [Optional] Whether times are exact.
 } stop_time_t;
 
 

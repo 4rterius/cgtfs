@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * shapes.txt record
@@ -21,11 +23,11 @@
  * @ingroup    Core__EntityTypes Core__EntityList__Shape
  */
 typedef struct {
-    char id[65];               ///< [Required] Unique ID that identifies the shape.
-    long double pt_lat;        ///< [Required] The shape point's latitude.
-    long double pt_lon;        ///< [Required] The shape point's longitude.
-    unsigned int pt_sequence;  ///< [Required] The shape point's sequence order withing the shape.
-    double dist_traveled;      ///< [Optional] Real distance travelled along the route up to the shape point.
+    char id[CGTFS_SL_IDS];      ///< [Required] Unique ID that identifies the shape.
+    long double pt_lat;         ///< [Required] The shape point's latitude.
+    long double pt_lon;         ///< [Required] The shape point's longitude.
+    unsigned int pt_sequence;   ///< [Required] The shape point's sequence order withing the shape.
+    double dist_traveled;       ///< [Optional] Real distance travelled along the route up to the shape point.
 } shape_t;
 
 /**

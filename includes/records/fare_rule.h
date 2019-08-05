@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * fare_rules.txt record
@@ -20,11 +22,11 @@
  * @ingroup    Core__EntityTypes Core__EntityList__FareRule
  */
 typedef struct {
-    char fare_id[65];         ///< [Required] Unique ID that identifies the fare class.
-    char route_id[65];        ///< [Optional] The route ID associated with the fare class.
-    char origin_id[65];       ///< [Optional] The origin zone ID associated with the fare class.
-    char destination_id[65];  ///< [Optional] The destination zone ID associated with the fare class.
-    char contains_id[65];     ///< [Optional] The passing-through zone ID associated with the fare class.
+    char fare_id[CGTFS_SL_IDS];         ///< [Required] Unique ID that identifies the fare class.
+    char route_id[CGTFS_SL_IDS];        ///< [Optional] The route ID associated with the fare class.
+    char origin_id[CGTFS_SL_IDS];       ///< [Optional] The origin zone ID associated with the fare class.
+    char destination_id[CGTFS_SL_IDS];  ///< [Optional] The destination zone ID associated with the fare class.
+    char contains_id[CGTFS_SL_IDS];     ///< [Optional] The passing-through zone ID associated with the fare class.
 } fare_rule_t;
 
 /**

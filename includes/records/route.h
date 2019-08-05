@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * The kind of transport the route serves.
@@ -38,16 +40,16 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__Route
  */
 typedef struct {
-    char id[65];          ///< [Required] Unique ID that identifies the route.
-    char agency_id[65];   ///< [Optional] Unique ID that identifies the agency handling the route.
-    char short_name[65];  ///< [Cond. required] Short name of the route.
-    char long_name[257];  ///< [Cond. required] More descriptive name of the route.
-    char desc[513];       ///< [Optional] Description of the route.
-    route_type_t type;    ///< [Required] What kind of vehicles does this route serve.
-    char url[129];        ///< [Optional] URL of the page about the route.
-    char color[7];        ///< [Optional] An RRGGBB color that corresponds to the route (default FFFFFF).
-    char text_color[7];   ///< [Optional] An RRGGBB color to be drawn against .color (default 000000).
-    int sort_order;       ///< [Optional] Position of the route in the presentation to customers.
+    char id[CGTFS_SL_IDS];            ///< [Required] Unique ID that identifies the route.
+    char agency_id[CGTFS_SL_IDS];     ///< [Optional] Unique ID that identifies the agency handling the route.
+    char short_name[CGTFS_SL_NAM];    ///< [Cond. required] Short name of the route.
+    char long_name[CGTFS_SL_TXT];     ///< [Cond. required] More descriptive name of the route.
+    char desc[CGTFS_SL_DSC];          ///< [Optional] Description of the route.
+    route_type_t type;                ///< [Required] What kind of vehicles does this route serve.
+    char url[CGTFS_SL_URL];           ///< [Optional] URL of the page about the route.
+    char color[CGTFS_SL_COL];         ///< [Optional] An RRGGBB color that corresponds to the route (default FFFFFF).
+    char text_color[CGTFS_SL_COL];    ///< [Optional] An RRGGBB color to be drawn against .color (default 000000).
+    int sort_order;                   ///< [Optional] Position of the route in the presentation to customers.
 } route_t;
 
 /**

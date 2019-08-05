@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * What kind of exception does calendar_date_t present.
@@ -31,9 +33,9 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__CalendarDate
  */
 typedef struct {
-    char service_id[65];              ///< [Required] Unique ID that identifies a set of dates to which the exception applies
-    char date[9];                     ///< [Required] The applicable date
-    exception_type_t exception_type;  ///< [Required] Whether the service is available on the given date
+    char service_id[CGTFS_SL_IDS];     ///< [Required] Unique ID that identifies a set of dates to which the exception applies
+    char date[CGTFS_SL_DAT];           ///< [Required] The applicable date
+    exception_type_t exception_type;   ///< [Required] Whether the service is available on the given date
 } calendar_date_t;
 
 

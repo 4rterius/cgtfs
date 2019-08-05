@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * level.txt record
@@ -21,9 +23,9 @@
  * @ingroup    Core__EntityTypes Core__EntityList__Level
  */
 typedef struct {
-    char id[65];        ///< [Required] Unique level ID
-    double index;       ///< [Required] Relative position of the level (higher above lower)
-    char name[65];      ///< [Optional] Level name
+    char id[CGTFS_SL_IDS];     ///< [Required] Unique level ID
+    double index;              ///< [Required] Relative position of the level (higher above lower)
+    char name[CGTFS_SL_NAM];   ///< [Optional] Level name
 } level_t;
 
 

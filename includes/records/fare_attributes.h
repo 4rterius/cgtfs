@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * When the fare must be paid by the customer.
@@ -45,13 +47,13 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__FareAttributes
  */
 typedef struct {
-    char fare_id[65];                 ///< [Required] Unique ID that identifies the fare class.
-    double price;                     ///< [Required] The fare price.
-    char currency_type[4];            ///< [Required] The currency in which the price is specified.
-    payment_method_t payment_method;  ///< [Required] When the fare must be paid.
-    transfers_state_t transfers;      ///< [Required] The number of transfers allowed on this fare.
-    char agency_id[65];               ///< [Optional] (If several agencies specified in the feed) The agency to which this fare applies.
-    double transfer_duration;         ///< [Optional] The length in seconds of possible transfer OR how long a ticket is valid.
+    char fare_id[CGTFS_SL_IDS];         ///< [Required] Unique ID that identifies the fare class.
+    double price;                       ///< [Required] The fare price.
+    char currency_type[CGTFS_SL_CUR];   ///< [Required] The currency in which the price is specified.
+    payment_method_t payment_method;    ///< [Required] When the fare must be paid.
+    transfers_state_t transfers;        ///< [Required] The number of transfers allowed on this fare.
+    char agency_id[CGTFS_SL_IDS];       ///< [Optional] (If several agencies specified in the feed) The agency to which this fare applies.
+    double transfer_duration;           ///< [Optional] The length in seconds of possible transfer OR how long a ticket is valid.
 } fare_attributes_t;
 
 

@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * Whether timepoints are considered exact or approximate.
@@ -32,11 +34,11 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__Frequency
  */
 typedef struct {
-    char trip_id[65];              ///< [Required] A unique ID of the trip on which the frequency applies.
-    char start_time[9];            ///< [Required] Time when the first vehicle departs from the first stop with the frequency.
-    char end_time[9];              ///< [Required] Time when the service changes to a different frequency / ends.
-    int headway_secs;              ///< [Required] Time between departures from the same stop.
-    time_exactness_t exact_times;  ///< [Optional] Whether times are exact.
+    char trip_id[CGTFS_SL_IDS];      ///< [Required] A unique ID of the trip on which the frequency applies.
+    char start_time[CGTFS_SL_TIM];   ///< [Required] Time when the first vehicle departs from the first stop with the frequency.
+    char end_time[CGTFS_SL_TIM];     ///< [Required] Time when the service changes to a different frequency / ends.
+    int headway_secs;                ///< [Required] Time between departures from the same stop.
+    time_exactness_t exact_times;    ///< [Optional] Whether times are exact.
 } frequency_t;
 
 /**

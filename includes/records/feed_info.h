@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * feed_info.txt record
@@ -20,14 +22,14 @@
  * @ingroup    Core__EntityTypes Core__EntityList__FeedInfo
  */
 typedef struct {
-    char feed_publisher_name[65];  ///< [Required] Full name of the organization publishing the feed.
-    char feed_publisher_url[129];  ///< [Required] URL of the publishing organization's website.
-    char feed_lang[65];            ///< [Required] Language of the feed (IETF BCP 47).
-    char feed_start_date[9];       ///< [Optional] The first date (YYYYMMDD) when the feed's info becomes valid/active.
-    char feed_end_date[9];         ///< [Optional] The last date (YYYYMMDD) when the feed's info is valid/active.
-    char feed_version[65];         ///< [Optional] String identifying the feed version.
-    char feed_contact_email[65];   ///< [Optional] Email address to contact regarding the GTFS dataset.
-    char feed_contact_url[129];    ///< [Optional] URL address to visit regatding the GTFS dataset.
+    char feed_publisher_name[CGTFS_SL_NAM];   ///< [Required] Full name of the organization publishing the feed.
+    char feed_publisher_url[CGTFS_SL_URL];    ///< [Required] URL of the publishing organization's website.
+    char feed_lang[CGTFS_SL_LNG];             ///< [Required] Language of the feed (IETF BCP 47).
+    char feed_start_date[CGTFS_SL_DAT];       ///< [Optional] The first date (YYYYMMDD) when the feed's info becomes valid/active.
+    char feed_end_date[CGTFS_SL_DAT];         ///< [Optional] The last date (YYYYMMDD) when the feed's info is valid/active.
+    char feed_version[CGTFS_SL_NAM];          ///< [Optional] String identifying the feed version.
+    char feed_contact_email[CGTFS_SL_EML];    ///< [Optional] Email address to contact regarding the GTFS dataset.
+    char feed_contact_url[CGTFS_SL_URL];      ///< [Optional] URL address to visit regatding the GTFS dataset.
 } feed_info_t;
 
 

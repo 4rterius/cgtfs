@@ -54,6 +54,12 @@
 
 /**
  * @ingroup     Core__Entity
+ * @defgroup    Core__EntityCstrlengthdefs    Entity c-string lengths
+ * @brief       Lengths of preallocated c-string buffers in GTFS entity fields.
+ */
+
+/**
+ * @ingroup     Core__Entity
  * @defgroup    Core__EntityList    Entities handling
  * @brief       Functionality related to each particular entity.
  *

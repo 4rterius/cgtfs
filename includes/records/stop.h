@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * What kind of a location the entity is.
@@ -45,20 +47,20 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__Stop
  */
 typedef struct {
-    char id[65];                                ///< [Required] Unique ID that identifies this stop.
-    char code[65];                              ///< [Optional] Unique short text that identifies this stop to passangers.
-    char name[65];                              ///< [Required] People-friendly name of the stop.
-    char desc[513];                             ///< [Optional] Description of the stop.
+    char id[CGTFS_SL_IDS];                      ///< [Required] Unique ID that identifies this stop.
+    char code[CGTFS_SL_NAM];                    ///< [Optional] Unique short text that identifies this stop to passangers.
+    char name[CGTFS_SL_NAM];                    ///< [Required] People-friendly name of the stop.
+    char desc[CGTFS_SL_DSC];                    ///< [Optional] Description of the stop.
     long double lat;                            ///< [Required] Latitude of the stop's location.
     long double lon;                            ///< [Required] Longitude of the stop's location.
-    char zone_id[65];                           ///< [Optional] ID of the zone in which the stop is located.
-    char url[129];                              ///< [Optional] URL address of a web page about this stop.
+    char zone_id[CGTFS_SL_IDS];                 ///< [Optional] ID of the zone in which the stop is located.
+    char url[CGTFS_SL_URL];                     ///< [Optional] URL address of a web page about this stop.
     location_type_t location_type;              ///< [Optional] What kind of a entity this record represents.
-    char parent_station[65];                    ///< [Optional] Unique ID that identifies the parent station enitity if any.
-    char timezone[65];                          ///< [Optional] Timezone in which the stop is located (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
+    char parent_station[CGTFS_SL_IDS];          ///< [Optional] Unique ID that identifies the parent station enitity if any.
+    char timezone[CGTFS_SL_TMZ];                ///< [Optional] Timezone in which the stop is located (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones).
     wheelchair_boarding_t wheelchair_boarding;  ///< [Optional] Whether wheelchair boardings are possible at the stop.
-    char level_id[65];                          ///< [Optional] Level of the location.
-    char platform_code[65];                     ///< [Optional] Platform identifier for a platform stop.
+    char level_id[CGTFS_SL_IDS];                ///< [Optional] Level of the location.
+    char platform_code[CGTFS_SL_NAM];           ///< [Optional] Platform identifier for a platform stop.
 } stop_t;
 
 /**

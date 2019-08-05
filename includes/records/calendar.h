@@ -9,6 +9,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * Whether service is available on a given day.
@@ -31,7 +33,7 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__CalendarRecord
  */
 typedef struct {
-    char service_id[65];               ///< [Required] Unique ID that identifies a set of dates when the service is available with these params
+    char service_id[CGTFS_SL_IDS];     ///< [Required] Unique ID that identifies a set of dates when the service is available with these params
     service_availability_t monday;     ///< [Required] Whether the service is available on Mondays
     service_availability_t tuesday;    ///< [Required] Whether the service is available on Tuesdays
     service_availability_t wednesday;  ///< [Required] Whether the service is available on Wednesdays
@@ -39,8 +41,8 @@ typedef struct {
     service_availability_t friday;     ///< [Required] Whether the service is available on Fridays
     service_availability_t saturday;   ///< [Required] Whether the service is available on Saturdays
     service_availability_t sunday;     ///< [Required] Whether the service is available on Sundays
-    char start_date[9];                ///< [Required] The YYYYMMDD date when the service starts
-    char end_date[9];                  ///< [Required] The YYYYMMDD date when the service ends
+    char start_date[CGTFS_SL_DAT];     ///< [Required] The YYYYMMDD date when the service starts
+    char end_date[CGTFS_SL_DAT];       ///< [Required] The YYYYMMDD date when the service ends
 } calendar_record_t;
 
 

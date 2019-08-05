@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * Whether it is possible to access a trip using wheelchairs.
@@ -45,14 +47,14 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__Trip
  */
 typedef struct {
-    char route_id[65];                              ///< Unique ID that identifies the route of the trip.
-    char service_id[65];                            ///< Unique ID that identifies a set of dates when the service is available.
-    char id[65];                                    ///< Unique ID that identifies the trip.
-    char headsign[65];                              ///< Text that appears to the passangers to identify the trip's destination.
-    char short_name[65];                            ///< Text that appears to the passangers to identify the trip.
+    char route_id[CGTFS_SL_IDS];                    ///< Unique ID that identifies the route of the trip.
+    char service_id[CGTFS_SL_IDS];                  ///< Unique ID that identifies a set of dates when the service is available.
+    char id[CGTFS_SL_IDS];                          ///< Unique ID that identifies the trip.
+    char headsign[CGTFS_SL_NAM];                    ///< Text that appears to the passangers to identify the trip's destination.
+    char short_name[CGTFS_SL_NAM];                  ///< Text that appears to the passangers to identify the trip.
     unsigned int direction_id;                      ///< Binary value that indicates the direction of travel of this trip.
-    char block_id[65];                              ///< Unique ID that identifies the block to which the trip belongs.
-    char shape_id[65];                              ///< Unique ID that identifies the shape for the trip.
+    char block_id[CGTFS_SL_IDS];                    ///< Unique ID that identifies the block to which the trip belongs.
+    char shape_id[CGTFS_SL_IDS];                    ///< Unique ID that identifies the shape for the trip.
     wheelchair_accessible_t wheelchair_accessible;  ///< Whether the vehicle used on the trip can accommodate a rider in a wheelchair.
     bikes_allowed_t bikes_allowed;                  ///< Whether the vehicle used on the trip can accommodate a bicycle.
 } trip_t;

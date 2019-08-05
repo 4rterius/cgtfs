@@ -10,6 +10,8 @@
 #include <stdio.h>
 #include <string.h>
 
+#include "xstrlengths.h"
+
 
 /**
  * Whether a transfer between two stops is possible and how.
@@ -34,10 +36,10 @@ typedef enum {
  * @ingroup    Core__EntityTypes Core__EntityList__Transfer
  */
 typedef struct {
-    char from_stop_id[65];           ///< [Required] Unique ID that identifies a stop where connection between routes starts.
-    char to_stop_id[65];             ///< [Required] Unique ID that identifies a stop where connection between routes ends.
-    transfer_type_t transfer_type;   ///< [Required] Whether and how the transfer is possible.
-    unsigned int min_transfer_time;  ///< [Optional] Amount of time needed to transfer between routes at these stops (if possible).
+    char from_stop_id[CGTFS_SL_IDS];   ///< [Required] Unique ID that identifies a stop where connection between routes starts.
+    char to_stop_id[CGTFS_SL_IDS];     ///< [Required] Unique ID that identifies a stop where connection between routes ends.
+    transfer_type_t transfer_type;     ///< [Required] Whether and how the transfer is possible.
+    unsigned int min_transfer_time;    ///< [Optional] Amount of time needed to transfer between routes at these stops (if possible).
 } transfer_t;
 
 /**
