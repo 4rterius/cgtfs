@@ -1,10 +1,10 @@
-version: '0.2.0+{build}'
+version: '0.4.0+{build}'
 
 image: Visual Studio 2017
 
 platform:
   - x64
- 
+
 configuration:
   - Debug
 

@@ -1,11 +1,11 @@
 #include "database/fetching.h"
 
 int fetch_all_agencies_db(feed_db_t *db, agency_t **records) {
-    
+
     agency_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "agency");
+    int record_count = count_rows_db(db, "agency");
     int i = 0;
 
     if (record_count < 1) {
@@ -42,17 +42,17 @@ int fetch_all_agencies_db(feed_db_t *db, agency_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_calendar_dates_db(feed_db_t *db, calendar_date_t **records) {
-    
+
     calendar_date_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "calendar_dates");
+    int record_count = count_rows_db(db, "calendar_dates");
     int i = 0;
 
     if (record_count < 1) {
@@ -81,17 +81,17 @@ int fetch_all_calendar_dates_db(feed_db_t *db, calendar_date_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_calendar_records_db(feed_db_t *db, calendar_record_t **records) {
-    
+
     calendar_record_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "calendar");
+    int record_count = count_rows_db(db, "calendar");
     int i = 0;
 
     if (record_count < 1) {
@@ -129,17 +129,17 @@ int fetch_all_calendar_records_db(feed_db_t *db, calendar_record_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_fare_attributes_db(feed_db_t *db, fare_attributes_t **records) {
-    
+
     fare_attributes_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "fare_attributes");
+    int record_count = count_rows_db(db, "fare_attributes");
     int i = 0;
 
     if (record_count < 1) {
@@ -173,17 +173,17 @@ int fetch_all_fare_attributes_db(feed_db_t *db, fare_attributes_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_fare_rules_db(feed_db_t *db, fare_rule_t **records) {
-    
+
     fare_rule_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "fare_rules");
+    int record_count = count_rows_db(db, "fare_rules");
     int i = 0;
 
     if (record_count < 1) {
@@ -214,17 +214,17 @@ int fetch_all_fare_rules_db(feed_db_t *db, fare_rule_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_feed_info_db(feed_db_t *db, feed_info_t **records) {
-    
+
     feed_info_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "feed_info");
+    int record_count = count_rows_db(db, "feed_info");
     int i = 0;
 
     if (record_count < 1) {
@@ -260,17 +260,17 @@ int fetch_all_feed_info_db(feed_db_t *db, feed_info_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_frequencies_db(feed_db_t *db, frequency_t **records) {
-    
+
     frequency_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "frequencies");
+    int record_count = count_rows_db(db, "frequencies");
     int i = 0;
 
     if (record_count < 1) {
@@ -302,17 +302,106 @@ int fetch_all_frequencies_db(feed_db_t *db, frequency_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
+    sqlite3_finalize(stmt);
+    return record_count;
+}
+
+int fetch_all_levels_db(feed_db_t *db, level_t **records) {
+
+    level_t record;
+    feed_db_status_t res;
+
+    int record_count = count_rows_db(db, "levels");
+    int i = 0;
+
+    if (record_count < 1) {
+        return record_count;
+    }
+
+    sqlite3_stmt *stmt;
+    char qr[] = "SELECT "
+                    "level_id, level_index, level_name "
+                "FROM `levels`;";
+
+    sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
+
+    *records = malloc(record_count * sizeof(**records));
+
+    while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        init_level(&record);
+
+        strcpy(record.id, sqlite3_column_text(stmt, 0));
+        record.index = sqlite3_column_double(stmt, 1);
+        strcpy(record.name, sqlite3_column_text(stmt, 2));
+
+        (*records)[i] = record;
+        i++;
+
+        if (i >= record_count)
+            break;
+    }
+
+    sqlite3_finalize(stmt);
+    return record_count;
+}
+
+int fetch_all_pathways_db(feed_db_t *db, pathway_t **records) {
+
+    pathway_t record;
+    feed_db_status_t res;
+
+    int record_count = count_rows_db(db, "pathways");
+    int i = 0;
+
+    if (record_count < 1) {
+        return record_count;
+    }
+
+    sqlite3_stmt *stmt;
+    char qr[] = "SELECT "
+                    "pathway_id, from_stop_id, to_stop_id,"
+                    "pathway_mode, is_bidirectional, length, traversal_time, stair_count, max_slope, min_width,"
+                    "signposted_as, reversed_signposted_as "
+                "FROM `pathways`;";
+
+    sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
+
+    *records = malloc(record_count * sizeof(**records));
+
+    while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
+        init_pathway(&record);
+
+        strcpy(record.id, sqlite3_column_text(stmt, 0));
+        strcpy(record.from_stop_id, sqlite3_column_text(stmt, 1));
+        strcpy(record.to_stop_id, sqlite3_column_text(stmt, 2));
+        record.mode = (pathway_mode_t)sqlite3_column_int(stmt, 3);
+        record.is_bidirectional = (pathway_directions_t)sqlite3_column_int(stmt, 4);
+        record.length = sqlite3_column_double(stmt, 5);
+        record.traversal_time = sqlite3_column_double(stmt, 6);
+        record.stair_count = sqlite3_column_double(stmt, 7);
+        record.max_slope = sqlite3_column_double(stmt, 8);
+        record.min_width = sqlite3_column_double(stmt, 9);
+        strcpy(record.signposted_as, sqlite3_column_text(stmt, 10));
+        strcpy(record.reversed_signposted_as, sqlite3_column_text(stmt, 11));
+
+        (*records)[i] = record;
+        i++;
+
+        if (i >= record_count)
+            break;
+    }
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_routes_db(feed_db_t *db, route_t **records) {
-    
+
     route_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "routes");
+    int record_count = count_rows_db(db, "routes");
     int i = 0;
 
     if (record_count < 1) {
@@ -352,17 +441,17 @@ int fetch_all_routes_db(feed_db_t *db, route_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_shapes_db(feed_db_t *db, shape_t **records) {
-    
+
     shape_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "shapes");
+    int record_count = count_rows_db(db, "shapes");
     int i = 0;
 
     if (record_count < 1) {
@@ -395,17 +484,17 @@ int fetch_all_shapes_db(feed_db_t *db, shape_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_stop_times_db(feed_db_t *db, stop_time_t **records) {
-    
+
     stop_time_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "stop_times");
+    int record_count = count_rows_db(db, "stop_times");
     int i = 0;
 
     if (record_count < 1) {
@@ -444,17 +533,17 @@ int fetch_all_stop_times_db(feed_db_t *db, stop_time_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
-    
+
     stop_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "stops");
+    int record_count = count_rows_db(db, "stops");
     int i = 0;
 
     if (record_count < 1) {
@@ -466,7 +555,8 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
                     "stop_id, stop_code, stop_name, stop_desc,"
                     "stop_lat, stop_lon,"
                     "zone_id, stop_url,"
-                    "location_type, parent_station, stop_timezone, wheelchair_boarding "
+                    "location_type, parent_station, stop_timezone, wheelchair_boarding, "
+                    "level_id, platform_code "
                 "FROM `stops`;";
 
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
@@ -488,6 +578,8 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
         strcpy(record.parent_station, sqlite3_column_text(stmt, 9));
         strcpy(record.timezone, sqlite3_column_text(stmt, 10));
         record.wheelchair_boarding = (wheelchair_boarding_t)sqlite3_column_int(stmt, 11);
+        strcpy(record.level_id, sqlite3_column_text(stmt, 12));
+        strcpy(record.platform_code, sqlite3_column_text(stmt, 13));
 
         (*records)[i] = record;
         i++;
@@ -495,17 +587,17 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_transfers_db(feed_db_t *db, transfer_t **records) {
-    
+
     transfer_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "transfers");
+    int record_count = count_rows_db(db, "transfers");
     int i = 0;
 
     if (record_count < 1) {
@@ -535,17 +627,17 @@ int fetch_all_transfers_db(feed_db_t *db, transfer_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }
 
 int fetch_all_trips_db(feed_db_t *db, trip_t **records) {
-    
+
     trip_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "trips");
+    int record_count = count_rows_db(db, "trips");
     int i = 0;
 
     if (record_count < 1) {
@@ -584,7 +676,7 @@ int fetch_all_trips_db(feed_db_t *db, trip_t **records) {
         if (i >= record_count)
             break;
     }
-    
+
     sqlite3_finalize(stmt);
     return record_count;
 }

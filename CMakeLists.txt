@@ -4,7 +4,7 @@
 include(ExternalProject)
 
 cmake_minimum_required(VERSION 3.0)
-project(cgtfs VERSION 0.3.1 LANGUAGES C)
+project(cgtfs VERSION 0.4.0 LANGUAGES C)
 
 
 ## Flags and settings
@@ -24,6 +24,8 @@ set(sources
   "src/records/fare_rule.c"
   "src/records/feed_info.c"
   "src/records/frequency.c"
+  "src/records/level.c"
+  "src/records/pathway.c"
   "src/records/route.c"
   "src/records/shape.c"
   "src/records/stop_time.c"
@@ -43,6 +45,8 @@ set(sources
   "src/database/records/fare_rule.c"
   "src/database/records/feed_info.c"
   "src/database/records/frequency.c"
+  "src/database/records/level.c"
+  "src/database/records/pathway.c"
   "src/database/records/route.c"
   "src/database/records/shape.c"
   "src/database/records/stop_time.c"

@@ -1,7 +1,7 @@
 #include "helpers/filenames.h"
 
 void make_filepath(char **out, const char *dirname, const char *filename) {
-    
+
     if (dirname == NULL || filename == NULL) {
         *out = NULL;
         return;
@@ -16,10 +16,10 @@ void make_filepath(char **out, const char *dirname, const char *filename) {
     char last_dirname_char = '\0';
     if (strlen(_dirname) > 0)
         last_dirname_char = _dirname[strlen(_dirname) - 1];
-    
+
     if (last_dirname_char == *FILENAME_SEPARATOR)
         _dirname[strlen(_dirname) - 1] = '\0';
-    
+
     snprintf(*out, res_len, "%s%s%s", _dirname, FILENAME_SEPARATOR, filename);
 
     free(_dirname);

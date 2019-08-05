@@ -5,7 +5,7 @@
 #include "records/trip.h"
 
 TEST trip_read(void) {
-    
+
     #define FIELDS_NUM_13 10
     char *field_names[FIELDS_NUM_13] = {
         "route_id", "service_id", "trip_id", "trip_headsign", "trip_short_name",
@@ -73,9 +73,9 @@ TEST trip_compare(void) {
         .bikes_allowed = BA_POSSIBLE
     };
 
-    ASSERT_EQ(0, equal_trip(&a, &b));
-    ASSERT_EQ(1, equal_trip(&a, &c));
-    ASSERT_EQ(1, equal_trip(&b, &c));
+    ASSERT_EQ(1, equal_trip(&a, &b));
+    ASSERT_EQ(0, equal_trip(&a, &c));
+    ASSERT_EQ(0, equal_trip(&b, &c));
 
     PASS();
 }

@@ -50,13 +50,12 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
  * the database file must be deleted (left to developer).
  *
  * @param[in,out]    db           Initialized feed database to operate on.
- * @param[in]        overwrite    0 to produce error if tables already exist, else for otherwise.
  *
  * @returns          FEED_DB_SUCCESS or FEED_DB_ERROR (self-explanatory).
  *
  * @ingroup          Database__FeedEntity
  */
-feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite);
+feed_db_status_t setup_feed_db(feed_db_t *db);
 
 /**
  * Reads an unpacked GTFS feed

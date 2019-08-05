@@ -6,12 +6,14 @@ feed_db_status_t store_stop_db(stop_t *record, feed_db_t *db) {
                     "stop_id, stop_code, stop_name, stop_desc,"
                     "stop_lat, stop_lon,"
                     "zone_id, stop_url,"
-                    "location_type, parent_station, stop_timezone, wheelchair_boarding"
+                    "location_type, parent_station, stop_timezone, wheelchair_boarding,"
+                    "level_id, platform_code"
                 ") values ("
                     "?1, ?2, ?3, ?4,"
                     "?5, ?6,"
                     "?7, ?8,"
-                    "?9, ?10, ?11, ?12"
+                    "?9, ?10, ?11, ?12,"
+                    "?13, ?14"
                 ");";
 
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
@@ -28,6 +30,8 @@ feed_db_status_t store_stop_db(stop_t *record, feed_db_t *db) {
     sqlite3_bind_text(stmt, 10, record->parent_station, -1, SQLITE_STATIC);
     sqlite3_bind_text(stmt, 11, record->timezone, -1, SQLITE_STATIC);
     sqlite3_bind_int(stmt, 12, (int)record->wheelchair_boarding);
+    sqlite3_bind_text(stmt, 13, record->level_id, -1, SQLITE_STATIC);
+    sqlite3_bind_text(stmt, 14, record->platform_code, -1, SQLITE_STATIC);
 
     db->rc = sqlite3_step(stmt);
     if (db->rc != SQLITE_DONE) {

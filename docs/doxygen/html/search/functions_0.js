@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['begin_5ftransaction',['begin_transaction',['../a08885.html#gac8cb134095e8a6e713752f9b50becac8',1,'database_utils.h']]]
+  ['begin_5ftransaction_5fdb',['begin_transaction_db',['../a00944.html#ga2f7a4dc769dd959880463c66bb582eea',1,'database_utils.h']]]
 ];

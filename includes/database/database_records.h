@@ -10,6 +10,8 @@
 #include "database/records/fare_rule.h"
 #include "database/records/feed_info.h"
 #include "database/records/frequency.h"
+#include "database/records/level.h"
+#include "database/records/pathway.h"
 #include "database/records/route.h"
 #include "database/records/shape.h"
 #include "database/records/stop_time.h"

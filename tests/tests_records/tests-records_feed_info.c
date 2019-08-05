@@ -65,9 +65,9 @@ TEST feed_info_compare(void) {
         .feed_contact_url = "https://some.url/"
     };
 
-    ASSERT_EQ(0, equal_feed_info(&a, &b));
-    ASSERT_EQ(1, equal_feed_info(&a, &c));
-    ASSERT_EQ(1, equal_feed_info(&b, &c));
+    ASSERT_EQ(1, equal_feed_info(&a, &b));
+    ASSERT_EQ(0, equal_feed_info(&a, &c));
+    ASSERT_EQ(0, equal_feed_info(&b, &c));
 
     PASS();
 }

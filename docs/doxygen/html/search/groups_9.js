@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['route',['Route',['../a08871.html',1,'']]]
+  ['memory_20utilities',['Memory utilities',['../a00943.html',1,'']]]
 ];

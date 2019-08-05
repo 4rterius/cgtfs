@@ -50,9 +50,9 @@ TEST frequency_compare(void) {
         .exact_times = TE_EXACT
     };
 
-    ASSERT_EQ(0, equal_frequency(&a, &b));
-    ASSERT_EQ(1, equal_frequency(&a, &c));
-    ASSERT_EQ(1, equal_frequency(&b, &c));
+    ASSERT_EQ(1, equal_frequency(&a, &b));
+    ASSERT_EQ(0, equal_frequency(&a, &c));
+    ASSERT_EQ(0, equal_frequency(&b, &c));
 
     PASS();
 }

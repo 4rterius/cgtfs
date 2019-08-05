@@ -5,7 +5,7 @@ os: linux
 
 compiler:
   - gcc
-  - clang 
+  - clang
 
 branches:
   only:

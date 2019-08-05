@@ -9,64 +9,49 @@ void init_feed_info(feed_info_t *record) {
     strcpy(record->feed_version, "");
     strcpy(record->feed_contact_email, "");
     strcpy(record->feed_contact_url, "");
-    record->is_null = 1;
 }
 
 void read_feed_info(feed_info_t *record, int field_count, const char **field_names, const char **field_values) {
     init_feed_info(record);
-    int assignment_counter = 0;
 
     for (int i = 0; i < field_count; i++) {
         if (strcmp(field_names[i], "feed_publisher_name") == 0) {
             strcpy(record->feed_publisher_name, field_values[i]);
-            assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_publisher_url") == 0) {
             strcpy(record->feed_publisher_url, field_values[i]);
-            assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_lang") == 0) {
             strcpy(record->feed_lang, field_values[i]);
-            assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_start_date") == 0) {
             strcpy(record->feed_start_date, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_end_date") == 0) {
             strcpy(record->feed_end_date, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_version") == 0) {
             strcpy(record->feed_version, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_contact_email") == 0) {
             strcpy(record->feed_contact_email, field_values[i]);
-            // assignment_counter++;
             continue;
         }
         if (strcmp(field_names[i], "feed_contact_url") == 0) {
             strcpy(record->feed_contact_url, field_values[i]);
-            // assignment_counter++;
             continue;
         }
     }
-
-    if (assignment_counter == 0)
-        record->is_null = 1;
-    else
-        record->is_null = 0;
 }
 
 int equal_feed_info(const feed_info_t *a, const feed_info_t *b) {
-    return !(!strcmp(a->feed_publisher_name, b->feed_publisher_name) &&
+    return (!strcmp(a->feed_publisher_name, b->feed_publisher_name) &&
              !strcmp(a->feed_publisher_url, b->feed_publisher_url) &&
              !strcmp(a->feed_lang, b->feed_lang) &&
              !strcmp(a->feed_start_date, b->feed_start_date) &&

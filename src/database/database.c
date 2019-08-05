@@ -5,7 +5,8 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable) 
     db->rc = -1;
     db->error_msg = NULL;
     db->open = 0;
-    
+    db->in_transaction = 0;
+
     db->rc = sqlite3_open_v2(db_path, &(db->conn),
         writable ? (SQLITE_OPEN_CREATE | SQLITE_OPEN_READWRITE) : (SQLITE_OPEN_READONLY),
         NULL);
@@ -44,6 +45,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     char *fare_rules_fname;
     char *feed_info_fname;
     char *frequencies_fname;
+    char *levels_fname;
+    char *pathways_fname;
     char *routes_fname;
     char *shapes_fname;
     char *stop_times_fname;
@@ -58,6 +61,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     make_filepath(&fare_rules_fname, dir, "fare_rules.txt");
     make_filepath(&feed_info_fname, dir, "feed_info.txt");
     make_filepath(&frequencies_fname, dir, "frequencies.txt");
+    make_filepath(&levels_fname, dir, "levels.txt");
+    make_filepath(&pathways_fname, dir, "pathways.txt");
     make_filepath(&routes_fname, dir, "routes.txt");
     make_filepath(&shapes_fname, dir, "shapes.txt");
     make_filepath(&stop_times_fname, dir, "stop_times.txt");
@@ -69,7 +74,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     init_feed(&instance);
 
     #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free(agencies_fname);
         free(calendar_dates_fname);
         free(calendar_records_fname);
@@ -77,6 +82,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         free(fare_rules_fname);
         free(feed_info_fname);
         free(frequencies_fname);
+        free(levels_fname);
+        free(pathways_fname);
         free(routes_fname);
         free(shapes_fname);
         free(stop_times_fname);
@@ -151,6 +158,24 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
         result = FEED_DB_PARTIAL;
     }
 
+    FILE *fp_levels = fopen(levels_fname, "r");
+    if (fp_levels) {
+        instance.levels_count = store_all_levels_db(fp_levels, db);
+        fclose(fp_levels);
+    } else {
+        instance.levels_count = -1;
+        result = FEED_DB_PARTIAL;
+    }
+
+    FILE *fp_pathways = fopen(pathways_fname, "r");
+    if (fp_pathways) {
+        instance.pathways_count = store_all_pathways_db(fp_pathways, db);
+        fclose(fp_pathways);
+    } else {
+        instance.pathways_count = -1;
+        result = FEED_DB_PARTIAL;
+    }
+
     FILE *fp_routes = fopen(routes_fname, "r");
     if (fp_routes) {
         instance.routes_count = store_all_routes_db(fp_routes, db);
@@ -206,10 +231,10 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     }
 
     #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
-    
+
     if (feed_counter != NULL)
         *feed_counter = instance;
 
@@ -221,6 +246,8 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     free(fare_rules_fname);
     free(feed_info_fname);
     free(frequencies_fname);
+    free(levels_fname);
+    free(pathways_fname);
     free(routes_fname);
     free(shapes_fname);
     free(stop_times_fname);
@@ -239,6 +266,8 @@ void fetch_feed_db(feed_db_t *db, feed_t *feed) {
     feed->fare_rules_count = fetch_all_fare_rules_db(db, &(feed->fare_rules));
     feed->feed_info_count = fetch_all_feed_info_db(db, &(feed->feed_info));
     feed->frequencies_count = fetch_all_frequencies_db(db, &(feed->frequencies));
+    feed->levels_count = fetch_all_levels_db(db, &(feed->levels));
+    feed->pathways_count = fetch_all_pathways_db(db, &(feed->pathways));
     feed->routes_count = fetch_all_routes_db(db, &(feed->routes));
     feed->shapes_count = fetch_all_shapes_db(db, &(feed->shapes));
     feed->stop_times_count = fetch_all_stop_times_db(db, &(feed->stop_times));
@@ -247,282 +276,163 @@ void fetch_feed_db(feed_db_t *db, feed_t *feed) {
     feed->trips_count = fetch_all_trips_db(db, &(feed->trips));
 }
 
-feed_db_status_t setup_feed_db(feed_db_t *db, int overwrite) {
-    if (overwrite == 0) {
-        char sql[] = ""
-            "CREATE TABLE agency ( "
-            "	agency_id TEXT, "
-            "	agency_name TEXT PRIMARY KEY NOT NULL, "
-            "	agency_url TEXT NOT NULL, "
-            "	agency_timezone TEXT NOT NULL, "
-            "	agency_lang TEXT, "
-            "	agency_phone TEXT, "
-            "	agency_fare_url TEXT, "
-            "	agency_email TEXT "
-            ");\n"
-            "CREATE TABLE stops ( "
-            "	stop_id TEXT PRIMARY KEY NOT NULL, "
-            "	stop_code TEXT, "
-            "	stop_name TEXT NOT NULL, "
-            "	stop_desc TEXT, "
-            "	stop_lat DOUBLE NOT NULL, "
-            "	stop_lon DOUBLE NOT NULL, "
-            "	zone_id TEXT, "
-            "	stop_url TEXT, "
-            "	location_type INT, "
-            "	parent_station TEXT, "
-            "	stop_timezone TEXT, "
-            "	wheelchair_boarding INT "
-            ");\n"
-            "CREATE TABLE routes ( "
-            "	route_id TEXT PRIMARY KEY NOT NULL, "
-            "	agency_id TEXT, "
-            "	route_short_name TEXT, "
-            "	route_long_name TEXT, "
-            "	route_desc TEXT, "
-            "	route_type INT NOT NULL, "
-            "	route_url TEXT, "
-            "	route_color TEXT, "
-            "	route_text_color TEXT, "
-            "	route_sort_order INT "
-            ");\n"
-            "CREATE TABLE trips ( "
-            "	route_id TEXT NOT NULL, "
-            "	service_id TEXT NOT NULL, "
-            "	trip_id TEXT PRIMARY KEY NOT NULL, "
-            "	trip_headsign TEXT, "
-            "	trip_short_name TEXT, "
-            "	direction_id INT, "
-            "	block_id TEXT, "
-            "	shape_id TEXT, "
-            "	wheelchair_accessible INT, "
-            "	bikes_allowed INT "
-            ");\n"
-            "CREATE TABLE stop_times ( "
-            "	trip_id TEXT NOT NULL, "
-            "	arrival_time TEXT NOT NULL, "
-            "	departure_time TEXT NOT NULL, "
-            "	stop_id TEXT NOT NULL, "
-            "	stop_sequence INT NOT NULL, "
-            "	stop_headsign TEXT, "
-            "	pickup_type INT, "
-            "	drop_off_type INT, "
-            "	shape_dist_traveled REAL, "
-            "	timepoint INT "
-            ");\n"
-            "CREATE TABLE calendar ( "
-            "	service_id TEXT PRIMARY KEY NOT NULL, "
-            "	monday INT NOT NULL, "
-            "	tuesday INT NOT NULL, "
-            "	wednesday INT NOT NULL, "
-            "	thursday INT NOT NULL, "
-            "	friday INT NOT NULL, "
-            "	saturday INT NOT NULL, "
-            "	sunday INT NOT NULL, "
-            "	start_date TEXT NOT NULL, "
-            "	end_date TEXT NOT NULL "
-            ");\n"
-            "CREATE TABLE calendar_dates ( "
-            "	service_id TEXT NOT NULL, "
-            "	date TEXT NOT NULL, "
-            "	exception_type INT NOT NULL "
-            ");\n"
-            "CREATE TABLE fare_attributes ( "
-            "	fare_id TEXT NOT NULL, "
-            "	price REAL NOT NULL, "
-            "	currency_type TEXT NOT NULL, "
-            "	payment_method INT NOT NULL, "
-            "	transfers INT NOT NULL, "
-            "	agency_id TEXT, "
-            "	transfer_duration REAL "
-            ");\n"
-            "CREATE TABLE fare_rules ( "
-            "	fare_id TEXT NOT NULL, "
-            "	route_id TEXT, "
-            "	origin_id TEXT, "
-            "	destination_id TEXT, "
-            "	contains_id TEXT "
-            ");\n"
-            "CREATE TABLE shapes ( "
-            "	shape_id TEXT NOT NULL, "
-            "	shape_pt_lat DOUBLE NOT NULL, "
-            "	shape_pt_lon DOUBLE NOT NULL, "
-            "	shape_pt_sequence INT NOT NULL, "
-            "	shape_dist_traveled REAL "
-            ");\n"
-            "CREATE TABLE frequencies ( "
-            "	trip_id TEXT NOT NULL, "
-            "	start_time TEXT NOT NULL, "
-            "	end_time TEXT NOT NULL, "
-            "	headway_secs INT NOT NULL, "
-            "	exact_times INT "
-            ");\n"
-            "CREATE TABLE transfers ( "
-            "	from_stop_id TEXT NOT NULL, "
-            "	to_stop_id TEXT NOT NULL, "
-            "	transfer_type INT NOT NULL, "
-            "	min_transfer_time INT "
-            ");\n"
-            "CREATE TABLE feed_info ( "
-            "	feed_publisher_name TEXT NOT NULL, "
-            "	feed_publisher_url TEXT NOT NULL, "
-            "	feed_lang TEXT NOT NULL, "
-            "	feed_start_date TEXT, "
-            "	feed_end_date TEXT, "
-            "	feed_version TEXT, "
-            "	feed_contact_email TEXT, "
-            "	feed_contact_url TEXT "
-            "); ";
+feed_db_status_t setup_feed_db(feed_db_t *db) {
+    char sql[] = ""
+        "CREATE TABLE agency ( "
+        "	agency_id TEXT, "
+        "	agency_name TEXT PRIMARY KEY NOT NULL, "
+        "	agency_url TEXT NOT NULL, "
+        "	agency_timezone TEXT NOT NULL, "
+        "	agency_lang TEXT, "
+        "	agency_phone TEXT, "
+        "	agency_fare_url TEXT, "
+        "	agency_email TEXT "
+        ");\n"
+        "CREATE TABLE stops ( "
+        "	stop_id TEXT PRIMARY KEY NOT NULL, "
+        "	stop_code TEXT, "
+        "	stop_name TEXT NOT NULL, "
+        "	stop_desc TEXT, "
+        "	stop_lat DOUBLE NOT NULL, "
+        "	stop_lon DOUBLE NOT NULL, "
+        "	zone_id TEXT, "
+        "	stop_url TEXT, "
+        "	location_type INT, "
+        "	parent_station TEXT, "
+        "	stop_timezone TEXT, "
+        "	wheelchair_boarding INT, "
+        "   level_id TEXT, "
+        "   platform_code TEXT "
+        ");\n"
+        "CREATE TABLE routes ( "
+        "	route_id TEXT PRIMARY KEY NOT NULL, "
+        "	agency_id TEXT, "
+        "	route_short_name TEXT, "
+        "	route_long_name TEXT, "
+        "	route_desc TEXT, "
+        "	route_type INT NOT NULL, "
+        "	route_url TEXT, "
+        "	route_color TEXT, "
+        "	route_text_color TEXT, "
+        "	route_sort_order INT "
+        ");\n"
+        "CREATE TABLE trips ( "
+        "	route_id TEXT NOT NULL, "
+        "	service_id TEXT NOT NULL, "
+        "	trip_id TEXT PRIMARY KEY NOT NULL, "
+        "	trip_headsign TEXT, "
+        "	trip_short_name TEXT, "
+        "	direction_id INT, "
+        "	block_id TEXT, "
+        "	shape_id TEXT, "
+        "	wheelchair_accessible INT, "
+        "	bikes_allowed INT "
+        ");\n"
+        "CREATE TABLE stop_times ( "
+        "	trip_id TEXT NOT NULL, "
+        "	arrival_time TEXT NOT NULL, "
+        "	departure_time TEXT NOT NULL, "
+        "	stop_id TEXT NOT NULL, "
+        "	stop_sequence INT NOT NULL, "
+        "	stop_headsign TEXT, "
+        "	pickup_type INT, "
+        "	drop_off_type INT, "
+        "	shape_dist_traveled REAL, "
+        "	timepoint INT "
+        ");\n"
+        "CREATE TABLE calendar ( "
+        "	service_id TEXT PRIMARY KEY NOT NULL, "
+        "	monday INT NOT NULL, "
+        "	tuesday INT NOT NULL, "
+        "	wednesday INT NOT NULL, "
+        "	thursday INT NOT NULL, "
+        "	friday INT NOT NULL, "
+        "	saturday INT NOT NULL, "
+        "	sunday INT NOT NULL, "
+        "	start_date TEXT NOT NULL, "
+        "	end_date TEXT NOT NULL "
+        ");\n"
+        "CREATE TABLE calendar_dates ( "
+        "	service_id TEXT NOT NULL, "
+        "	date TEXT NOT NULL, "
+        "	exception_type INT NOT NULL "
+        ");\n"
+        "CREATE TABLE fare_attributes ( "
+        "	fare_id TEXT NOT NULL, "
+        "	price REAL NOT NULL, "
+        "	currency_type TEXT NOT NULL, "
+        "	payment_method INT NOT NULL, "
+        "	transfers INT NOT NULL, "
+        "	agency_id TEXT, "
+        "	transfer_duration REAL "
+        ");\n"
+        "CREATE TABLE fare_rules ( "
+        "	fare_id TEXT NOT NULL, "
+        "	route_id TEXT, "
+        "	origin_id TEXT, "
+        "	destination_id TEXT, "
+        "	contains_id TEXT "
+        ");\n"
+        "CREATE TABLE shapes ( "
+        "	shape_id TEXT NOT NULL, "
+        "	shape_pt_lat DOUBLE NOT NULL, "
+        "	shape_pt_lon DOUBLE NOT NULL, "
+        "	shape_pt_sequence INT NOT NULL, "
+        "	shape_dist_traveled REAL "
+        ");\n"
+        "CREATE TABLE frequencies ( "
+        "	trip_id TEXT NOT NULL, "
+        "	start_time TEXT NOT NULL, "
+        "	end_time TEXT NOT NULL, "
+        "	headway_secs INT NOT NULL, "
+        "	exact_times INT "
+        ");\n"
+        "CREATE TABLE transfers ( "
+        "	from_stop_id TEXT NOT NULL, "
+        "	to_stop_id TEXT NOT NULL, "
+        "	transfer_type INT NOT NULL, "
+        "	min_transfer_time INT "
+        ");\n"
+        "CREATE TABLE feed_info ( "
+        "	feed_publisher_name TEXT NOT NULL, "
+        "	feed_publisher_url TEXT NOT NULL, "
+        "	feed_lang TEXT NOT NULL, "
+        "	feed_start_date TEXT, "
+        "	feed_end_date TEXT, "
+        "	feed_version TEXT, "
+        "	feed_contact_email TEXT, "
+        "	feed_contact_url TEXT "
+        ");\n"
+        "CREATE TABLE levels ( "
+        "	level_id TEXT NOT NULL, "
+        "	level_index DOUBLE NOT NULL, "
+        "	level_name TEXT "
+        ");\n"
+        "CREATE TABLE pathways ( "
+        "	pathway_id TEXT NOT NULL, "
+        "	from_stop_id TEXT NOT NULL, "
+        "	to_stop_id TEXT NOT NULL, "
+        "	pathway_mode INT NOT NULL, "
+        "	is_bidirectional INT NOT NULL, "
+        "	length DOUBLE, "
+        "	traversal_time INT, "
+        "	stair_count INT, "
+        "	max_slope DOUBLE, "
+        "	min_width DOUBLE, "
+        "	signposted_as TEXT, "
+        "	reversed_signposted_as TEXT "
+        "); ";
 
-        char *error_msg;
-        db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &error_msg);
+    char *error_msg;
+    db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &error_msg);
 
-        if (db->rc) {
-            if (error_msg != NULL) {
-                db->error_msg = strdup(error_msg);
-                sqlite3_free(error_msg);
-            }
-            return FEED_DB_ERROR;
+    if (db->rc) {
+        if (error_msg != NULL) {
+            db->error_msg = strdup(error_msg);
+            sqlite3_free(error_msg);
         }
-
-        return FEED_DB_SUCCESS;
-    } else {
-        char sql[] = ""
-            "CREATE TABLE IF NOT EXISTS agency ( "
-            "	agency_id TEXT, "
-            "	agency_name TEXT PRIMARY KEY NOT NULL, "
-            "	agency_url TEXT NOT NULL, "
-            "	agency_timezone TEXT NOT NULL, "
-            "	agency_lang TEXT, "
-            "	agency_phone TEXT, "
-            "	agency_fare_url TEXT, "
-            "	agency_email TEXT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS stops ( "
-            "	stop_id TEXT PRIMARY KEY NOT NULL, "
-            "	stop_code TEXT, "
-            "	stop_name TEXT NOT NULL, "
-            "	stop_desc TEXT, "
-            "	stop_lat DOUBLE NOT NULL, "
-            "	stop_lon DOUBLE NOT NULL, "
-            "	zone_id TEXT, "
-            "	stop_url TEXT, "
-            "	location_type INT, "
-            "	parent_station TEXT, "
-            "	stop_timezone TEXT, "
-            "	wheelchair_boarding INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS routes ( "
-            "	route_id TEXT PRIMARY KEY NOT NULL, "
-            "	agency_id TEXT, "
-            "	route_short_name TEXT, "
-            "	route_long_name TEXT, "
-            "	route_desc TEXT, "
-            "	route_type INT NOT NULL, "
-            "	route_url TEXT, "
-            "	route_color TEXT, "
-            "	route_text_color TEXT, "
-            "	route_sort_order INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS trips ( "
-            "	route_id TEXT NOT NULL, "
-            "	service_id TEXT NOT NULL, "
-            "	trip_id TEXT PRIMARY KEY NOT NULL, "
-            "	trip_headsign TEXT, "
-            "	trip_short_name TEXT, "
-            "	direction_id INT, "
-            "	block_id TEXT, "
-            "	shape_id TEXT, "
-            "	wheelchair_accessible INT, "
-            "	bikes_allowed INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS stop_times ( "
-            "	trip_id TEXT NOT NULL, "
-            "	arrival_time TEXT NOT NULL, "
-            "	departure_time TEXT NOT NULL, "
-            "	stop_id TEXT NOT NULL, "
-            "	stop_sequence INT NOT NULL, "
-            "	stop_headsign TEXT, "
-            "	pickup_type INT, "
-            "	drop_off_type INT, "
-            "	shape_dist_traveled REAL, "
-            "	timepoint INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS calendar ( "
-            "	service_id TEXT PRIMARY KEY NOT NULL, "
-            "	monday INT NOT NULL, "
-            "	tuesday INT NOT NULL, "
-            "	wednesday INT NOT NULL, "
-            "	thursday INT NOT NULL, "
-            "	friday INT NOT NULL, "
-            "	saturday INT NOT NULL, "
-            "	sunday INT NOT NULL, "
-            "	start_date TEXT NOT NULL, "
-            "	end_date TEXT NOT NULL "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS calendar_dates ( "
-            "	service_id TEXT NOT NULL, "
-            "	date TEXT NOT NULL, "
-            "	exception_type INT NOT NULL "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS fare_attributes ( "
-            "	fare_id TEXT NOT NULL, "
-            "	price REAL NOT NULL, "
-            "	currency_type TEXT NOT NULL, "
-            "	payment_method INT NOT NULL, "
-            "	transfers INT NOT NULL, "
-            "	agency_id TEXT, "
-            "	transfer_duration INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS fare_rules ( "
-            "	fare_id TEXT NOT NULL, "
-            "	route_id TEXT, "
-            "	origin_id TEXT, "
-            "	destination_id TEXT, "
-            "	contains_id TEXT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS shapes ( "
-            "	shape_id TEXT NOT NULL, "
-            "	shape_pt_lat DOUBLE NOT NULL, "
-            "	shape_pt_lon DOUBLE NOT NULL, "
-            "	shape_pt_sequence INT NOT NULL, "
-            "	shape_dist_traveled REAL "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS frequencies ( "
-            "	trip_id TEXT NOT NULL, "
-            "	start_time TEXT NOT NULL, "
-            "	end_time TEXT NOT NULL, "
-            "	headway_secs INT NOT NULL, "
-            "	exact_times INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS transfers ( "
-            "	from_stop_id TEXT NOT NULL, "
-            "	to_stop_id TEXT NOT NULL, "
-            "	transfer_type INT NOT NULL, "
-            "	min_transfer_time INT "
-            ");\n"
-            "CREATE TABLE IF NOT EXISTS feed_info ( "
-            "	feed_publisher_name TEXT NOT NULL, "
-            "	feed_publisher_url TEXT NOT NULL, "
-            "	feed_lang TEXT NOT NULL, "
-            "	feed_start_date TEXT, "
-            "	feed_end_date TEXT, "
-            "	feed_version TEXT, "
-            "	feed_contact_email TEXT, "
-            "	feed_contact_url TEXT "
-            "); ";
-
-        char *error_msg;
-        db->rc = sqlite3_exec(db->conn, sql, NULL, NULL, &error_msg);
-
-        if (db->rc) {
-            if (error_msg != NULL) {
-                db->error_msg = strdup(error_msg);
-                sqlite3_free(error_msg);
-            }
-            return FEED_DB_ERROR;
-        }
-
-        return FEED_DB_SUCCESS;
+        return FEED_DB_ERROR;
     }
+
+    return FEED_DB_SUCCESS;
 }

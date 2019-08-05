@@ -5,7 +5,7 @@
 #include "records/stop_time.h"
 
 TEST stop_time_read(void) {
-        
+
     #define FIELDS_NUM_10 10
     char *field_names[FIELDS_NUM_10] = {
         "trip_id", "arrival_time", "departure_time", "stop_id", "stop_sequence",
@@ -73,9 +73,9 @@ TEST stop_time_compare(void) {
         .timepoint = TP_NOT_SET
     };
 
-    ASSERT_EQ(0, equal_stop_time(&a, &b));
-    ASSERT_EQ(1, equal_stop_time(&a, &c));
-    ASSERT_EQ(1, equal_stop_time(&b, &c));
+    ASSERT_EQ(1, equal_stop_time(&a, &b));
+    ASSERT_EQ(0, equal_stop_time(&a, &c));
+    ASSERT_EQ(0, equal_stop_time(&b, &c));
 
     PASS();
 }

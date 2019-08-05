@@ -8,8 +8,8 @@ int row_callback(void *, int column_count, char **data, char **column_names);
 
 
 /**
- * Example 2: 
- * 
+ * Example 2:
+ *
  * Store gtfs folder as a database and
  * query it for first 10 stop_time records
  * with arrival time within the next 10 minutes.
@@ -19,7 +19,7 @@ int row_callback(void *, int column_count, char **data, char **column_names);
 // CGTFS only handles creating the database,
 // setting up the layout and filling it with
 // feeds' data.
-const char *sql_query = 
+const char *sql_query =
     "SELECT stop_id, trip_id, arrival_time "
     "FROM stop_times "
     "WHERE arrival_time "
@@ -42,7 +42,7 @@ void some_database_manipulation(void) {
     // Calling free_feed_db(..) is recommended as soon
     // as the connection is no longer needed.
     //
-    // Opening the connection again is preferred to 
+    // Opening the connection again is preferred to
     // keeping stuff open and, thus, locked.
     //
     // The sign in `result < FEED_DB_SUCCESS` allows
@@ -64,15 +64,15 @@ void some_database_manipulation(void) {
     // it must be deleted (left to the developer).
     //
     // This function is most likely to be followed by store_feed_db(..) .
-    result = setup_feed_db(&database, 0);
+    result = setup_feed_db(&database);
     if (result < FEED_DB_SUCCESS) {
         printf("Failed to create the layout of the test database: %s !\n", database.error_msg);
         goto clearup;
     }
 
     // Feed storing.
-    // 
-    // This function reads every feed file 
+    //
+    // This function reads every feed file
     // and reads its records directly into the database,
     // without an intermediate array.
     //
@@ -94,7 +94,7 @@ void some_database_manipulation(void) {
         printf("Error while executing query: %s !\n", error_msg);
         goto clearup;
     }
-    
+
     printf("Success.\n");
 
     clearup:
@@ -105,7 +105,7 @@ void some_database_manipulation(void) {
 int row_callback(void *param, int column_count, char **data, char **column_names) {
     if (column_count < 3)
         return 1;
-    
+
     printf("<stop %s>\n", data[0]);
     printf("  Arrival time:  %s\n", data[2]);
     printf("  Trip id:       %s\n", data[1]);

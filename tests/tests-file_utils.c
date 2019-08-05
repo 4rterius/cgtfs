@@ -97,7 +97,7 @@ TEST file_utils_read_header_2_empty(void) {
 
 TEST file_utils_read_header_3_badfile(void) {
     FILE *fp = fopen("../tests/data/doesntexist.txt", "r");
-    
+
     char **field_names;
     int field_count = 0;
 

@@ -1,0 +1,5 @@
+level_id,level_index,level_name
+LVL_001,1.6,Upper Level
+LVL_002,1,Mid Level
+LVL_003,0,Bottom Level
+LVL_004,-0.5,Underground Level

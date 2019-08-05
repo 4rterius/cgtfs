@@ -51,9 +51,9 @@ TEST fare_rule_compare(void) {
         .contains_id = ""
     };
 
-    ASSERT_EQ(0, equal_fare_rule(&a, &b));
-    ASSERT_EQ(1, equal_fare_rule(&a, &c));
-    ASSERT_EQ(1, equal_fare_rule(&b, &c));
+    ASSERT_EQ(1, equal_fare_rule(&a, &b));
+    ASSERT_EQ(0, equal_fare_rule(&a, &c));
+    ASSERT_EQ(0, equal_fare_rule(&b, &c));
 
     PASS();
 }

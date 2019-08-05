@@ -51,7 +51,7 @@ TEST filenames_passed_null(void) {
 
     if (filepath2)
         free(filepath2);
-    
+
     PASS();
 }
 

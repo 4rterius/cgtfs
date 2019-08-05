@@ -54,6 +54,10 @@ typedef struct {
     int feed_info_count;  // 0 or 1 really, but for consistency sake.
     frequency_t *frequencies;
     int frequencies_count;
+    level_t *levels;
+    int levels_count;
+    pathway_t *pathways;
+    int pathways_count;
     route_t *routes;
     int routes_count;
     shape_t *shapes;
@@ -113,7 +117,7 @@ void free_feed(feed_t *feed);
  * @param[in]    a    First feed instance.
  * @param[in]    b    Second feed instance.
  *
- * @returns      0 if feeds are equal, non-zero if not.
+ * @returns      1 (true) if feeds are equal, 0 if not.
  *
  * @ingroup      Core__FeedEntity
  */

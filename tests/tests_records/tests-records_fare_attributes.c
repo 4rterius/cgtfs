@@ -58,9 +58,9 @@ TEST fare_attributes_compare(void) {
         .transfer_duration = 60.0
     };
 
-    ASSERT_EQ(0, equal_fare_attributes(&a, &b));
-    ASSERT_EQ(1, equal_fare_attributes(&a, &c));
-    ASSERT_EQ(1, equal_fare_attributes(&b, &c));
+    ASSERT_EQ(1, equal_fare_attributes(&a, &b));
+    ASSERT_EQ(0, equal_fare_attributes(&a, &c));
+    ASSERT_EQ(0, equal_fare_attributes(&b, &c));
 
     PASS();
 }

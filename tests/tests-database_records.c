@@ -10,6 +10,8 @@
 #include "tests_database_records/tests-database_records_fare_rule.c"  // fare_rules
 #include "tests_database_records/tests-database_records_feed_info.c"
 #include "tests_database_records/tests-database_records_frequency.c"  // frequencies
+#include "tests_database_records/tests-database_records_level.c"
+#include "tests_database_records/tests-database_records_pathway.c"
 #include "tests_database_records/tests-database_records_route.c"  // routes
 #include "tests_database_records/tests-database_records_shape.c"  // shapes
 #include "tests_database_records/tests-database_records_stop_time.c"  // stop_times

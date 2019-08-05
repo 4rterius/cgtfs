@@ -20,11 +20,13 @@ TEST db_stop_store(void) {
         .location_type = LT_STATION,
         .parent_station = "abcd",
         .timezone = "efgh",
-        .wheelchair_boarding = WB_NOT_POSSIBLE
+        .wheelchair_boarding = WB_NOT_POSSIBLE,
+        .level_id = "LVL01",
+        .platform_code = "A"
     };
 
     init_feed_db(&db, "tests_tdw0.db", 1);
-    setup_feed_db(&db, 1);
+    setup_feed_db(&db);
 
     res = store_stop_db(&record, &db);
     ASSERT_EQ_FMTm(db.error_msg, FEED_DB_SUCCESS, res, "%i");
