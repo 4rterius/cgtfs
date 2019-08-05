@@ -4,7 +4,7 @@
 include(ExternalProject)
 
 cmake_minimum_required(VERSION 3.0)
-project(cgtfs VERSION 0.3.1 LANGUAGES C)
+project(cgtfs VERSION 0.4.0 LANGUAGES C)
 
 
 ## Flags and settings

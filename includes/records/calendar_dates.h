@@ -78,7 +78,7 @@ void read_calendar_date(calendar_date_t *record, int field_count, const char **f
  * @param[in]    a    First structure
  * @param[in]    b    Second structure
  *
- * @returns      0 if structures are equal, non-zero otherwise.
+ * @returns      0 if the structures differ and 1 otherwise
  *
  * @ingroup      Core__EntityFunctions Core__EntityList__CalendarDate
  */
