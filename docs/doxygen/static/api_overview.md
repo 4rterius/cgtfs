@@ -36,7 +36,7 @@ The terms used throughout the library code and documentation differ from those d
 
 @section ApiOverview__Structure Structure
 
-The library's API is divided into two so called layers, additional auxiliary functionality and loosely related helpers: 
+The library's API is divided into two so called layers, additional auxiliary functionality and loosely related helpers:
 
   - @ref Core "Core layer" provides basic definitions and functions for handling GTFS feeds and entities, and includes:
     - @ref Core__FeedEntity "feed object definition" to store data of an entire feed and functions for working with it:

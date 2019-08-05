@@ -82,20 +82,20 @@ void bm_display_results(const bm_results_t *results, const char *msg) {
 
     if (results->iter10 >= 0)
         printf(" -> 10       iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter10, 10, results->iter10 / (long double)10);
-    
+
     if (results->iter100 >= 0)
         printf(" -> 100      iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter100, 100, results->iter100 / (long double)100);
 
-    if (results->iter1000 >= 0)    
+    if (results->iter1000 >= 0)
         printf(" -> 1000     iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter1000, 1000, results->iter1000 / (long double)1000.0);
 
     if (results->iter10000 >= 0)
         printf(" -> 10000    iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter10000, 10000, results->iter10000 / (long double)10000.0);
-    
+
     if (results->iter100000 >= 0)
         printf(" -> 100000   iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter100000, 100000, results->iter100000 / (long double)100000.0);
 
-    if (results->iter1000000 >= 0)    
+    if (results->iter1000000 >= 0)
         printf(" -> 1000000  iterations:   %Lf sec. / %i iter. = %Lf\n", results->iter1000000, 1000000, results->iter1000000 / (long double)1000000.0);
 
     printf("---------\n");

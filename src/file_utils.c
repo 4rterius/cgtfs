@@ -30,7 +30,7 @@ int read_header(FILE *fp, char ***field_names) {
             h_field[++h_field_len - 1] = chr;
         }
     }
-    
+
     return h_field_index;
 }
 
@@ -42,7 +42,7 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
     memset(r_field, 0, LINE_MAX_LEN);
-    
+
     *record_values = malloc(fields_number * sizeof(char *));
     for (unsigned i = 0; i < fields_number; i++)
         (*record_values)[i] = strdup("");
@@ -61,7 +61,7 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
 
     strcat(record, "\n");  // fixes the error that happens when the last record isn't followed by a newline
                            // (then the last record field fails to be parsed)
-    
+
     while ((chr = record[++chr_pos - 1])) {
         if (chr == '"') {
             if (in_quotes == 0) {

@@ -8,7 +8,7 @@
 
 /**
  * A semantic presentation of a geographical location.
- * 
+ *
  * @ingroup    Helpers
  */
 typedef struct {
