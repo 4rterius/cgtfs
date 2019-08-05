@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['service_5favailability_5ft',['service_availability_t',['../a14116.html#ga9c9f702bf34e236fb116402153ff9663',1,'calendar.h']]],
-  ['stop_5ftype_5ft',['stop_type_t',['../a14125.html#gaa3d84f1c96083eedad31b55880ef4965',1,'stop_time.h']]]
+  ['service_5favailability_5ft',['service_availability_t',['../a00923.html#ga9c9f702bf34e236fb116402153ff9663',1,'calendar.h']]],
+  ['stop_5ftype_5ft',['stop_type_t',['../a00932.html#gaa3d84f1c96083eedad31b55880ef4965',1,'stop_time.h']]]
 ];
