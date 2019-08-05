@@ -19,7 +19,7 @@ int store_all_agencies_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -41,7 +41,7 @@ int store_all_agencies_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -67,7 +67,7 @@ int store_all_calendar_dates_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -89,7 +89,7 @@ int store_all_calendar_dates_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -115,7 +115,7 @@ int store_all_calendar_records_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -137,7 +137,7 @@ int store_all_calendar_records_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -163,7 +163,7 @@ int store_all_fare_attributes_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -185,7 +185,7 @@ int store_all_fare_attributes_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -211,7 +211,7 @@ int store_all_fare_rules_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -233,7 +233,7 @@ int store_all_fare_rules_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -259,7 +259,7 @@ int store_all_feed_info_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -281,7 +281,7 @@ int store_all_feed_info_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -307,7 +307,7 @@ int store_all_frequencies_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -329,7 +329,7 @@ int store_all_frequencies_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -355,7 +355,7 @@ int store_all_levels_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -377,7 +377,7 @@ int store_all_levels_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -403,7 +403,7 @@ int store_all_pathways_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -425,7 +425,7 @@ int store_all_pathways_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -451,7 +451,7 @@ int store_all_routes_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -473,7 +473,7 @@ int store_all_routes_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -499,7 +499,7 @@ int store_all_shapes_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -521,7 +521,7 @@ int store_all_shapes_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -547,7 +547,7 @@ int store_all_stop_times_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -569,7 +569,7 @@ int store_all_stop_times_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -595,7 +595,7 @@ int store_all_stops_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -617,7 +617,7 @@ int store_all_stops_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -643,7 +643,7 @@ int store_all_transfers_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -665,7 +665,7 @@ int store_all_transfers_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);
@@ -691,7 +691,7 @@ int store_all_trips_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free_cstr_arr(field_names, field_count);
         return -1;
     }
@@ -713,7 +713,7 @@ int store_all_trips_db(FILE *fp, feed_db_t *db) {
     }
 
     #ifndef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
     free_cstr_arr(field_names, field_count);

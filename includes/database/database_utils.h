@@ -28,7 +28,7 @@
  *
  * @ingroup      Utils__Database
  */
-int count_rows(feed_db_t *db, const char *table_name);
+int count_rows_db(feed_db_t *db, const char *table_name);
 
 
 /**
@@ -43,7 +43,7 @@ int count_rows(feed_db_t *db, const char *table_name);
  *
  * @ingroup          Utils__Database
  */
-feed_db_status_t begin_transaction(feed_db_t *db);
+feed_db_status_t begin_transaction_db(feed_db_t *db);
 
 /**
  * Ends a sqlite3 transaction.
@@ -57,6 +57,6 @@ feed_db_status_t begin_transaction(feed_db_t *db);
  *
  * @ingroup          Utils__Database
  */
-feed_db_status_t end_transaction(feed_db_t *db);
+feed_db_status_t end_transaction_db(feed_db_t *db);
 
 #endif

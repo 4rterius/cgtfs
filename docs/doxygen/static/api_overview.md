@@ -34,6 +34,30 @@ The terms used throughout the library code and documentation differ from those d
 | File | *not defined* | A `*.txt` file, a part of the feed, holding information about all the feed's *entities* of a single type. |
 | Database | n/a | A single *SQLite* database file, created using the supplied SQL schema (preferably, the creation of the database is left to the library, see the database section). |
 
+@section ApiOverview__Principles Principles
+
+There are several core principles which could help in understanding the vast interface of the library. Some of them have been enforced from the beginning, others may be gradually integrated into the API.
+
+  - All structs and enumerations have names ending with `_t`.
+  - All enumerations have members with names reflecting the enumeration's name.
+    - Entity field enumerations start with the first letters of the enumeration's name, e.g. `payment_method_t` has elements `PM_ON_BOARD`, `PM_BEFOREHAND` and `PM_NOT_SET`.
+      - There are exceptions at naming conflicts, e.g. `pathway_mode_t`, which would have to start its members' names with `PM` but uses `PTMD` instead.
+      - Additionally, all entity field enumerations have `..._NOT_SET` members.
+  - All structs have `init_...()` functions for initializing them. These functions MUST be called before the first use of the structure.
+    - Feed entity and record entity structs also have `read_...()` and `equal_...()` functions.
+    - Structs which need deallocation after use have `free_...()` functions.
+  - All functions which have to do something with database operations have `_db` postfix.
+
+@section ApiOverview__Strings String storage
+
+String values in CGTFS are stored in memory using statically allocated c-strings. Hence, parsing an unsually long string value may lead to a fatal crash. Default string field lengths are rather sensible but might by too big (bloating the RAM used significantly) or too small (causing crash).
+
+To mitigate that, all string field length definitions are located in the `xstrlengths.h` header. Actual field length definitions are heavily commented in the lower part of the file. By default, they are using `CGTFS_SL_BASE_` definitions found in the upper part of the file. There are three possible usage cases:
+
+  1. All left as it is in hopes for lucky circumstances.
+  2. Definition `CGTFS_SL_MODE_PREPARATION` is uncommented, reserving an obstinate amount of memory for all fields.
+  3. Maximum length of each field type is deduced from the supposed data sources (useful if you're working with the data form a specific agency). This is left to the developer.
+
 @section ApiOverview__Structure Structure
 
 The library's API is divided into two so called layers, additional auxiliary functionality and loosely related helpers:

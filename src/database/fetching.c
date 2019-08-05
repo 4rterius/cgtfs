@@ -5,7 +5,7 @@ int fetch_all_agencies_db(feed_db_t *db, agency_t **records) {
     agency_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "agency");
+    int record_count = count_rows_db(db, "agency");
     int i = 0;
 
     if (record_count < 1) {
@@ -52,7 +52,7 @@ int fetch_all_calendar_dates_db(feed_db_t *db, calendar_date_t **records) {
     calendar_date_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "calendar_dates");
+    int record_count = count_rows_db(db, "calendar_dates");
     int i = 0;
 
     if (record_count < 1) {
@@ -91,7 +91,7 @@ int fetch_all_calendar_records_db(feed_db_t *db, calendar_record_t **records) {
     calendar_record_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "calendar");
+    int record_count = count_rows_db(db, "calendar");
     int i = 0;
 
     if (record_count < 1) {
@@ -139,7 +139,7 @@ int fetch_all_fare_attributes_db(feed_db_t *db, fare_attributes_t **records) {
     fare_attributes_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "fare_attributes");
+    int record_count = count_rows_db(db, "fare_attributes");
     int i = 0;
 
     if (record_count < 1) {
@@ -183,7 +183,7 @@ int fetch_all_fare_rules_db(feed_db_t *db, fare_rule_t **records) {
     fare_rule_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "fare_rules");
+    int record_count = count_rows_db(db, "fare_rules");
     int i = 0;
 
     if (record_count < 1) {
@@ -224,7 +224,7 @@ int fetch_all_feed_info_db(feed_db_t *db, feed_info_t **records) {
     feed_info_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "feed_info");
+    int record_count = count_rows_db(db, "feed_info");
     int i = 0;
 
     if (record_count < 1) {
@@ -270,7 +270,7 @@ int fetch_all_frequencies_db(feed_db_t *db, frequency_t **records) {
     frequency_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "frequencies");
+    int record_count = count_rows_db(db, "frequencies");
     int i = 0;
 
     if (record_count < 1) {
@@ -312,7 +312,7 @@ int fetch_all_levels_db(feed_db_t *db, level_t **records) {
     level_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "levels");
+    int record_count = count_rows_db(db, "levels");
     int i = 0;
 
     if (record_count < 1) {
@@ -351,7 +351,7 @@ int fetch_all_pathways_db(feed_db_t *db, pathway_t **records) {
     pathway_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "pathways");
+    int record_count = count_rows_db(db, "pathways");
     int i = 0;
 
     if (record_count < 1) {
@@ -401,7 +401,7 @@ int fetch_all_routes_db(feed_db_t *db, route_t **records) {
     route_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "routes");
+    int record_count = count_rows_db(db, "routes");
     int i = 0;
 
     if (record_count < 1) {
@@ -451,7 +451,7 @@ int fetch_all_shapes_db(feed_db_t *db, shape_t **records) {
     shape_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "shapes");
+    int record_count = count_rows_db(db, "shapes");
     int i = 0;
 
     if (record_count < 1) {
@@ -494,7 +494,7 @@ int fetch_all_stop_times_db(feed_db_t *db, stop_time_t **records) {
     stop_time_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "stop_times");
+    int record_count = count_rows_db(db, "stop_times");
     int i = 0;
 
     if (record_count < 1) {
@@ -543,7 +543,7 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
     stop_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "stops");
+    int record_count = count_rows_db(db, "stops");
     int i = 0;
 
     if (record_count < 1) {
@@ -597,7 +597,7 @@ int fetch_all_transfers_db(feed_db_t *db, transfer_t **records) {
     transfer_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "transfers");
+    int record_count = count_rows_db(db, "transfers");
     int i = 0;
 
     if (record_count < 1) {
@@ -637,7 +637,7 @@ int fetch_all_trips_db(feed_db_t *db, trip_t **records) {
     trip_t record;
     feed_db_status_t res;
 
-    int record_count = count_rows(db, "trips");
+    int record_count = count_rows_db(db, "trips");
     int i = 0;
 
     if (record_count < 1) {

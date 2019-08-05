@@ -1,6 +1,6 @@
 #include "database/database_utils.h"
 
-int count_rows(feed_db_t *db, const char *table_name) {
+int count_rows_db(feed_db_t *db, const char *table_name) {
     int count = -1;
     sqlite3_stmt *stmt;
 
@@ -23,7 +23,7 @@ int count_rows(feed_db_t *db, const char *table_name) {
 }
 
 
-feed_db_status_t begin_transaction(feed_db_t *db) {
+feed_db_status_t begin_transaction_db(feed_db_t *db) {
 
     if (db->in_transaction != 0) {
         db->error_msg = strdup("cgtfs has already opened an unfinished transaction");
@@ -44,7 +44,7 @@ feed_db_status_t begin_transaction(feed_db_t *db) {
     return FEED_DB_SUCCESS;
 }
 
-feed_db_status_t end_transaction(feed_db_t *db) {
+feed_db_status_t end_transaction_db(feed_db_t *db) {
 
     if (db->in_transaction == 0) {
         db->error_msg = strdup("cgtfs has not opened an unfinished transaction");

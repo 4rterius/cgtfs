@@ -74,7 +74,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     init_feed(&instance);
 
     #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    if ((res = begin_transaction(db)) == FEED_DB_ERROR) {
+    if ((res = begin_transaction_db(db)) == FEED_DB_ERROR) {
         free(agencies_fname);
         free(calendar_dates_fname);
         free(calendar_records_fname);
@@ -231,7 +231,7 @@ feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_coun
     }
 
     #ifdef CGTFS_STORING_BATCH_TRANSACTIONS_OFF
-    end_transaction(db);
+    end_transaction_db(db);
     #endif
 
 
