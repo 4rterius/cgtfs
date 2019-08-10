@@ -4,8 +4,8 @@
 #include "bench-feed.c"
 
 int main(int argc, char **argv) {
-    bench_feed_2();
-    bench_db_1();
+    bench_feed_1();
+    bench_db_1_semantic();
     return 0;
 }
 

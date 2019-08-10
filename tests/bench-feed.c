@@ -7,7 +7,7 @@
 #include "feed.h"
 #include "database/database.h"
 
-void _bm_feed_2() {
+void _bm_feed_1() {
     feed_t f;
     init_feed(&f);
     read_feed(&f, "../tests/data/pocono_pony");
@@ -39,22 +39,22 @@ void _bm_db_1() {
     free_feed_db(&db);
 }
 
-void bench_feed_2(void) {
+void bench_feed_1(void) {
     bm_results_t res = bm_init_results();
 
-    bm_run_1(&res, _bm_feed_2);
-    bm_run_10(&res, _bm_feed_2);
+    bm_run_1(&res, _bm_feed_1);
+    bm_run_10(&res, _bm_feed_1);
 
-    bm_display_results(&res, "Pocono Pony feed parsing");
+    bm_display_results(&res, "Pocono Pony feed dir -> memory parsing");
 }
 
-void bench_db_1(void) {
+void bench_db_1_semantic(void) {
     bm_results_t res = bm_init_results();
 
     bm_run_1(&res, _bm_db_1);
     bm_run_10(&res, _bm_db_1);
 
-    bm_display_results(&res, "StupidGTFS feed dir -> db parsing");
+    bm_display_results(&res, "StupidGTFS feed dir -> db parsing (semantic)");
 }
 
 #endif
