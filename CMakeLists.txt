@@ -10,7 +10,7 @@ project(cgtfs VERSION 0.4.0 LANGUAGES C)
 ## Flags and settings
 ## -----------------------------------------------------------------
 
-set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wall -g")
+set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} -Wall -O0 -g")
 set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} -Wall -O3 -s")
 
 set(sources
@@ -121,4 +121,4 @@ target_link_libraries(example_2 cgtfs sqlite3)
 ## Some more settings
 ## -----------------------------------------------------------------
 
-set_target_properties(cgtfs tests bench example_0 example_1 example_2 PROPERTIES C_STANDARD 99)
+set_target_properties(cgtfs tests bench example_0 example_1 example_2 PROPERTIES C_STANDARD 11)
