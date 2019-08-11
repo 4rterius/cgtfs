@@ -34,7 +34,100 @@ feed_db_status_t free_feed_db(feed_db_t *db) {
     return FEED_DB_SUCCESS;
 }
 
+feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db_t *db) {
+    FILE *fp = fopen(path, "r");
+
+    if (!fp) {
+        db->error_msg = strdup("Failed to open .csv file");
+        return FEED_DB_ERROR;
+    }
+
+    char **record_values = NULL;
+    int lines_count = count_lines(fp) - 1;
+    int record_count = 0;
+
+    char **field_names = NULL;
+    int field_count = read_header(fp, &field_names);
+
+    if (lines_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        free(record_values);
+
+        db->error_msg = strdup("No lines in the .csv file");
+        return FEED_DB_ERROR;
+    }
+
+    char *sql_creation_query_beginning = "CREATE TABLE IF NOT EXISTS ";
+    char *sql_creation_query_middle = " ( ";
+    char *sql_creation_query_ending = ");";
+
+    int sql_creation_query_length = strlen(sql_creation_query_beginning) + strlen(table) + strlen(sql_creation_query_middle) + strlen(sql_creation_query_ending);
+    for (int i = 0; i < field_count; i++)
+        sql_creation_query_length += strlen(field_names[i]) + 7;
+
+    char *sql_creation_query = malloc(sql_creation_query_length * sizeof(char));
+    int cx = 0;
+
+    cx += snprintf(sql_creation_query, sql_creation_query_length, "%s%s%s", sql_creation_query_beginning, table, sql_creation_query_middle);
+    for (int i = 0; i < field_count - 1; i++)
+        cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s TEXT, ", field_names[i]);
+    cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s TEXT ", field_names[field_count - 1]);
+    cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s", sql_creation_query_ending);
+
+    // printf("\n (%i) byte-s: %s\n", sql_creation_query_length, sql_creation_query);
+
+    char *error_msg;
+    db->rc = sqlite3_exec(db->conn, sql_creation_query, NULL, NULL, &error_msg);
+
+    if (db->rc) {
+        if (error_msg != NULL) {
+            db->error_msg = strdup(error_msg);
+            sqlite3_free(error_msg);
+        }
+        return FEED_DB_ERROR;
+    }
+
+    sqlite3_stmt *stmt;
+    char *sql_insert_query_beginning = "INSERT INTO ";
+    char *sql_insert_query_middle1 = " ( ";
+    char *sql_insert_query_middle2 = " ) VALUES (";
+    char *sql_insert_query_ending = ");";
+    int sql_insert_query_length = strlen(sql_insert_query_beginning) + strlen(table) + strlen(sql_insert_query_middle1) + strlen(sql_insert_query_middle2) + strlen(sql_insert_query_ending);
+
+    // TODO: 1. Bake INSERT statement in its generic form (with ?xx);
+
+    for (int i = 0; i < lines_count; i++) {
+        if (read_record(fp, field_count, &record_values) > 0) {
+            // TODO: 2. Substitute ?xx in the statement with actual values;
+            // TODO: 3. Execute the statement.
+            record_count++;
+        }
+        free_cstr_arr(record_values, field_count);
+    }
+
+    // TODO: 4. Finalize the statement.
+
+    free_cstr_arr(field_names, field_count);
+
+    return FEED_DB_SUCCESS;
+}
+
 feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
+    char **filenames;
+    int filecount = 0;
+
+    filecount = list_txt_files(dir, &filenames);
+
+    for (int i = 0; i < filecount; i++) {
+        // printf(" - File %i has name '%s'\n", i, filenames[i]);
+
+        // Step 2. Open each file.
+        //   Step 3. Read header.
+        //   Step 4. Create table.
+        //   Step 5. Read records to table.
+    }
+
+    free_cstr_arr(filenames, filecount);
     return FEED_DB_SUCCESS;
 }
 
