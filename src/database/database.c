@@ -34,6 +34,10 @@ feed_db_status_t free_feed_db(feed_db_t *db) {
     return FEED_DB_SUCCESS;
 }
 
+feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
+    return FEED_DB_SUCCESS;
+}
+
 feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter) {
 
     feed_db_status_t result = FEED_DB_SUCCESS;

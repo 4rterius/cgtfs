@@ -58,6 +58,22 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
 feed_db_status_t setup_feed_db(feed_db_t *db);
 
 /**
+ * Imports an unpacked GTFS feed
+ * from the given directory to the given database
+ * non-semantically.
+ *
+ * Direct CSV -> SQLite parsing.
+ *
+ * @param[in]     dir    /path/to/unpacked/gtfs/
+ * @param[out]    db     Initialized feed database instance to store into.
+ *
+ * @returns       FEED_DB_SUCCESS if the import went well, FEED_DB_ERROR otherwise.
+ *
+ * @ingroup       Database__FeedEntity
+ */
+feed_db_status_t import_feed_db(const char *dir, feed_db_t *db);
+
+/**
  * Reads an unpacked GTFS feed
  * from the given directory to the given database.
  *

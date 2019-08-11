@@ -118,3 +118,48 @@ int count_lines(FILE *fp) {
 
     return lines;
 }
+
+int list_txt_files(char *dir_path, char ***file_names) {
+    #ifdef __unix__
+        return __list_txt_files__unix(dir_path, file_names);
+    #endif
+    #ifdef _WIN32
+        return __list_txt_files__win(dir_path, file_names);
+    #endif
+    return -1;
+}
+
+#ifdef __unix__
+int __list_txt_files__unix(char *dir_path, char ***file_names) {
+    int count = 0;
+    char *dotpos = NULL;
+
+    *file_names = malloc(sizeof(char *));
+
+    struct dirent *dir_entry;
+    DIR *dir_ptr;
+
+    dir_ptr = opendir(dir_path);
+    if (dir_ptr == NULL)
+        return -1;
+
+    while ((dir_entry = readdir(dir_ptr))) {
+        // https://stackoverflow.com/a/10347734
+        dotpos = strrchr(dir_entry->d_name, '.');
+        if (dotpos && !strcmp(dotpos, ".txt")) {
+            *file_names = realloc(*file_names, (count + 1) * sizeof(char *));
+            (*file_names)[count] = strdup(dir_entry->d_name);
+            count++;
+        }
+    }
+
+    closedir(dir_ptr);
+    return count;
+}
+#endif
+
+#ifdef _WIN32
+int __list_txt_files__win(char *dir_path, char ***file_names) {
+    return -1;
+}
+#endif
