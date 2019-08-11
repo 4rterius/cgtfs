@@ -82,19 +82,19 @@ void bm_display_results(const bm_results_t *results, const char *msg) {
     printf("Benchmark results for %s:\n", msg);
 
     if (results->run1 > 0)
-        printf(" -> 1        iteration:    %Li ns. / %i iter. => %Lf ms.\n", results->iter1, 1, (long double)results->iter1 / 1000000);
+        printf(" -> 1        iteration:    %lli ns. / %i iter. => %Lf ms.\n", results->iter1, 1, (long double)results->iter1 / 1000000);
 
     if (results->run10 > 0)
-        printf(" -> 10       iterations:   %Li ns. / %i iter. => %Lf ms.\n", results->iter10, 10, (long double)results->iter10 / 10 / 1000000);
+        printf(" -> 10       iterations:   %lli ns. / %i iter. => %Lf ms.\n", results->iter10, 10, (long double)results->iter10 / 10 / 1000000);
 
     if (results->run100 > 0)
-        printf(" -> 100      iterations:   %Li ns. / %i iter. => %Lf ms.\n", results->iter100, 100, (long double)results->iter100 / 100 / 1000000);
+        printf(" -> 100      iterations:   %lli ns. / %i iter. => %Lf ms.\n", results->iter100, 100, (long double)results->iter100 / 100 / 1000000);
 
     if (results->run1000 > 0)
-        printf(" -> 1000     iterations:   %Li ns. / %i iter. => %Lf ms.\n", results->iter1000, 1000, (long double)results->iter1000 / 1000 / 1000000);
+        printf(" -> 1000     iterations:   %lli ns. / %i iter. => %Lf ms.\n", results->iter1000, 1000, (long double)results->iter1000 / 1000 / 1000000);
 
     if (results->run10000 > 0)
-        printf(" -> 10000     iterations:   %Li ns. / %i iter. => %Lf ms.\n", results->iter10000, 10000, (long double)results->iter10000 / 10000 / 1000000);
+        printf(" -> 10000     iterations:   %lli ns. / %i iter. => %Lf ms.\n", results->iter10000, 10000, (long double)results->iter10000 / 10000 / 1000000);
 
     printf("---------\n");
 }
