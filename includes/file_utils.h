@@ -13,6 +13,12 @@
 #ifdef __unix__
 #include <dirent.h>
 #endif
+#ifdef _WIN32
+#include <windows.h>
+#include <tchar.h>
+#include <strsafe.h>
+#pragma comment(lib, "User32.lib")
+#endif
 
 
 /**

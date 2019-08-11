@@ -160,6 +160,51 @@ int __list_txt_files__unix(char *dir_path, char ***file_names) {
 
 #ifdef _WIN32
 int __list_txt_files__win(char *dir_path, char ***file_names) {
-    return -1;
+    int count = 0;
+    char *dotpos = NULL;
+
+    // OMFG MICROSOFT WHYYYY
+
+    WIN32_FIND_DATA find_data;
+    TCHAR search_dir_path[MAX_PATH];
+    HANDLE h_find = INVALID_HANDLE_VALUE;
+    size_t length_of_arg;
+    unsigned long err = 0;
+
+    StringCchLength(dir_path, MAX_PATH, &length_of_arg);
+    if (length_of_arg > (MAX_PATH - 3))
+        return -1;
+
+    StringCchCopy(search_dir_path, MAX_PATH, dir_path);
+    StringCchCat(search_dir_path, MAX_PATH, TEXT("\\*"));
+
+    h_find = FindFirstFile(search_dir_path, &find_data);
+    if (h_find == INVALID_HANDLE_VALUE)
+        return -1;
+
+    *file_names = malloc(sizeof(char *));
+    do {
+        if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
+            continue;
+
+        // https://stackoverflow.com/a/10347734
+        dotpos = strrchr(find_data.cFileName, '.');
+        if (dotpos && !strcmp(dotpos, ".txt")) {
+            *file_names = realloc(*file_names, (count + 1) * sizeof(char *));
+            (*file_names)[count] = strdup(find_data.cFileName);
+            count++;
+        }
+    } while (FindNextFile(h_find, &find_data) != 0);
+
+    err = GetLastError();
+    if (err != ERROR_NO_MORE_FILES)
+        return -1;
+
+    FindClose(h_find);
+
+    // shameless copypaste from
+    // https://docs.microsoft.com/en-us/windows/win32/fileio/listing-the-files-in-a-directory
+
+    return count;
 }
 #endif
