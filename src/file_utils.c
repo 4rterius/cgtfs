@@ -134,14 +134,14 @@ int __list_txt_files__unix(char *dir_path, char ***file_names) {
     int count = 0;
     char *dotpos = NULL;
 
-    *file_names = malloc(sizeof(char *));
-
     struct dirent *dir_entry;
     DIR *dir_ptr;
 
     dir_ptr = opendir(dir_path);
     if (dir_ptr == NULL)
         return -1;
+
+    *file_names = malloc(sizeof(char *));
 
     while ((dir_entry = readdir(dir_ptr))) {
         // https://stackoverflow.com/a/10347734

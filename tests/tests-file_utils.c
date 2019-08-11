@@ -294,8 +294,14 @@ TEST file_utils_list_files_1(void) {
 
     ASSERT_EQ_FMT(CGTFS_FILE_UTILS_LIST_1_SIZE, file_count, "%i");
 
-    for (int i = 0; i < CGTFS_FILE_UTILS_LIST_1_SIZE; i++)
-        ASSERT_STR_EQ(expected_fnames[i], files[i]);
+    for (int i = 0; i < CGTFS_FILE_UTILS_LIST_1_SIZE; i++) {
+        int it_in_expected = 0;
+        for (int j = 0; j < file_count; j++) {
+            if (!strcmp(files[j], expected_fnames[i]))
+                it_in_expected = 1;
+        }
+        if (it_in_expected == 0) FAILm("An expected filename not found in the result array");
+    }
 
     if (file_count > -1)
         free_cstr_arr(files, file_count);
