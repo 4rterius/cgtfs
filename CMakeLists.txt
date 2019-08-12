@@ -58,6 +58,7 @@ set(sources
   "src/reading.c"
   "src/file_utils.c"
   "src/mem_utils.c"
+  "src/str_utils.c"
 )
 
 set(include_dirs
