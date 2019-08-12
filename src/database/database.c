@@ -74,7 +74,7 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
     cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s TEXT ", field_names[field_count - 1]);
     cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s", sql_creation_query_ending);
 
-    // printf("\n (%i) byte-s: %s\n", sql_creation_query_length, sql_creation_query);
+    // printf("\n SQL_CREATE_TABLE: (%i) byte-s: %s\n", sql_creation_query_length, sql_creation_query);
 
     char *error_msg;
     db->rc = sqlite3_exec(db->conn, sql_creation_query, NULL, NULL, &error_msg);
@@ -89,24 +89,52 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
 
     sqlite3_stmt *stmt;
     char *sql_insert_query_beginning = "INSERT INTO ";
-    char *sql_insert_query_middle1 = " ( ";
-    char *sql_insert_query_middle2 = " ) VALUES (";
+    char *sql_insert_query_middle = " VALUES (";
     char *sql_insert_query_ending = ");";
-    int sql_insert_query_length = strlen(sql_insert_query_beginning) + strlen(table) + strlen(sql_insert_query_middle1) + strlen(sql_insert_query_middle2) + strlen(sql_insert_query_ending);
 
-    // TODO: 1. Bake INSERT statement in its generic form (with ?xx);
+    int sql_insert_query_length = strlen(sql_insert_query_beginning) + strlen(table) + strlen(sql_insert_query_middle) + strlen(sql_insert_query_ending);
+    for (int i = 0; i < field_count; i++) {
+        sql_insert_query_length += 4;
+        if (i > 9)
+            sql_insert_query_length += 1;
+    }
+
+    char *sql_insert_query = malloc(sql_insert_query_length * sizeof(char));
+    int ix = 0;
+
+    ix += snprintf(sql_insert_query, sql_insert_query_length, "%s%s%s", sql_insert_query_beginning, table, sql_insert_query_middle);
+    for (int i = 0; i < field_count - 1; i++)
+        ix += snprintf(sql_insert_query + ix, sql_insert_query_length, "?%i, ", i + 1);
+    ix += snprintf(sql_insert_query + ix, sql_insert_query_length, "?%i ", field_count - 1 + 1);
+    ix += snprintf(sql_insert_query + ix, sql_insert_query_length, "%s", sql_insert_query_ending);
+
+    sqlite3_prepare_v2(db->conn, sql_insert_query, -1, &stmt, NULL);
+
+    // printf("\n SQL_INSERT_VALUE: (%i) byte-s: %s\n", sql_insert_query_length, sql_insert_query);
 
     for (int i = 0; i < lines_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            // TODO: 2. Substitute ?xx in the statement with actual values;
-            // TODO: 3. Execute the statement.
+            for (int j = 0; j < field_count; j++) {
+                // printf("\n   binding value %s, (len %i) to pos %i...\n", record_values[j], strlen(record_values[j]), j + 1);
+                sqlite3_bind_text(stmt, j + 1, record_values[j], -1, SQLITE_STATIC);
+            }
+
+            db->rc = sqlite3_step(stmt);
+            if (db->rc != SQLITE_DONE) {
+                free_cstr_arr(record_values, field_count);
+                db->error_msg = strdup(sqlite3_errmsg(db->conn));
+                sqlite3_finalize(stmt);
+                return FEED_DB_ERROR;
+            }
+
+            sqlite3_clear_bindings(stmt);
+            sqlite3_reset(stmt);
             record_count++;
         }
         free_cstr_arr(record_values, field_count);
     }
 
-    // TODO: 4. Finalize the statement.
-
+    sqlite3_finalize(stmt);
     free_cstr_arr(field_names, field_count);
 
     return FEED_DB_SUCCESS;
