@@ -125,15 +125,18 @@ feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
     char **filenames;
     int filecount = 0;
 
+    char *full_file_name;
+
     filecount = list_txt_files(dir, &filenames);
 
     for (int i = 0; i < filecount; i++) {
-        // printf(" - File %i has name '%s'\n", i, filenames[i]);
-
-        // Step 2. Open each file.
-        //   Step 3. Read header.
-        //   Step 4. Create table.
-        //   Step 5. Read records to table.
+        make_filepath(&full_file_name, dir, filenames[i]);
+        if (FEED_DB_SUCCESS != import_csv_file_db(full_file_name, get_filename_no_ext(filenames[i], *FILENAME_SEPARATOR), db)) {
+            free(full_file_name);
+            free_cstr_arr(filenames, filecount);
+            return FEED_DB_ERROR;
+        }
+        free(full_file_name);
     }
 
     free_cstr_arr(filenames, filecount);

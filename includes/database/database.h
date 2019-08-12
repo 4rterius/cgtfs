@@ -11,6 +11,7 @@
 #include "sqlite3/src/sqlite3.h"
 
 #include "feed.h"
+#include "str_utils.h"
 #include "database/database_types.h"
 #include "database/database_utils.h"
 #include "database/storing.h"

@@ -61,8 +61,6 @@ TEST db_import(void) {
     res = init_feed_db(&db, "tests_feed_import.db", 1);
     res = import_feed_db("../tests/data/stupid_gtfs", &db);
 
-    res = import_csv_file_db("../tests/data/stupid_gtfs/stop_times.txt", "stop_times", &db);
-
     ASSERT_EQm(db.error_msg, FEED_DB_SUCCESS, res);
 
     free_feed_db(&db);
