@@ -30,6 +30,9 @@
  */
 int count_rows_db(feed_db_t *db, const char *table_name);
 
+void bake_create_uni_query_db(const char *table_name, int field_count, char **field_names, char **query);
+void bake_insert_uni_query_db(const char *table_name, int field_count, char **query);
+
 
 /**
  * Starts a sqlite3 transaction.

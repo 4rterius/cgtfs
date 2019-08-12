@@ -52,75 +52,51 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
     if (lines_count < 0) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
+        fclose(fp);
 
         db->error_msg = strdup("No lines in the .csv file");
         return FEED_DB_ERROR;
     }
 
-    char *sql_creation_query_beginning = "CREATE TABLE IF NOT EXISTS ";
-    char *sql_creation_query_middle = " ( ";
-    char *sql_creation_query_ending = ");";
+    begin_transaction_db(db);
 
-    int sql_creation_query_length = strlen(sql_creation_query_beginning) + strlen(table) + strlen(sql_creation_query_middle) + strlen(sql_creation_query_ending);
-    for (int i = 0; i < field_count; i++)
-        sql_creation_query_length += strlen(field_names[i]) + 7;
-
-    char *sql_creation_query = malloc(sql_creation_query_length * sizeof(char));
-    int cx = 0;
-
-    cx += snprintf(sql_creation_query, sql_creation_query_length, "%s%s%s", sql_creation_query_beginning, table, sql_creation_query_middle);
-    for (int i = 0; i < field_count - 1; i++)
-        cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s TEXT, ", field_names[i]);
-    cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s TEXT ", field_names[field_count - 1]);
-    cx += snprintf(sql_creation_query + cx, sql_creation_query_length, "%s", sql_creation_query_ending);
-
-    // printf("\n SQL_CREATE_TABLE: (%i) byte-s: %s\n", sql_creation_query_length, sql_creation_query);
+    char *create_query;
+    bake_create_uni_query_db(table, field_count, field_names, &create_query);
 
     char *error_msg;
-    db->rc = sqlite3_exec(db->conn, sql_creation_query, NULL, NULL, &error_msg);
+    db->rc = sqlite3_exec(db->conn, create_query, NULL, NULL, &error_msg);
+
+    free(create_query);
 
     if (db->rc) {
         if (error_msg != NULL) {
             db->error_msg = strdup(error_msg);
             sqlite3_free(error_msg);
+        } else {
+            db->error_msg = strdup("Failed to create a table");
         }
+        fclose(fp);
+        free_cstr_arr(field_names, field_count);
+        free(record_values);
         return FEED_DB_ERROR;
     }
 
+    char *insert_query;
+    bake_insert_uni_query_db(table, field_count, &insert_query);
+
     sqlite3_stmt *stmt;
-    char *sql_insert_query_beginning = "INSERT INTO ";
-    char *sql_insert_query_middle = " VALUES (";
-    char *sql_insert_query_ending = ");";
-
-    int sql_insert_query_length = strlen(sql_insert_query_beginning) + strlen(table) + strlen(sql_insert_query_middle) + strlen(sql_insert_query_ending);
-    for (int i = 0; i < field_count; i++) {
-        sql_insert_query_length += 4;
-        if (i > 9)
-            sql_insert_query_length += 1;
-    }
-
-    char *sql_insert_query = malloc(sql_insert_query_length * sizeof(char));
-    int ix = 0;
-
-    ix += snprintf(sql_insert_query, sql_insert_query_length, "%s%s%s", sql_insert_query_beginning, table, sql_insert_query_middle);
-    for (int i = 0; i < field_count - 1; i++)
-        ix += snprintf(sql_insert_query + ix, sql_insert_query_length, "?%i, ", i + 1);
-    ix += snprintf(sql_insert_query + ix, sql_insert_query_length, "?%i ", field_count - 1 + 1);
-    ix += snprintf(sql_insert_query + ix, sql_insert_query_length, "%s", sql_insert_query_ending);
-
-    sqlite3_prepare_v2(db->conn, sql_insert_query, -1, &stmt, NULL);
-
-    // printf("\n SQL_INSERT_VALUE: (%i) byte-s: %s\n", sql_insert_query_length, sql_insert_query);
+    sqlite3_prepare_v2(db->conn, insert_query, -1, &stmt, NULL);
 
     for (int i = 0; i < lines_count; i++) {
         if (read_record(fp, field_count, &record_values) > 0) {
-            for (int j = 0; j < field_count; j++) {
-                // printf("\n   binding value %s, (len %i) to pos %i...\n", record_values[j], strlen(record_values[j]), j + 1);
+            for (int j = 0; j < field_count; j++)
                 sqlite3_bind_text(stmt, j + 1, record_values[j], -1, SQLITE_STATIC);
-            }
 
             db->rc = sqlite3_step(stmt);
             if (db->rc != SQLITE_DONE) {
+                fclose(fp);
+                free(insert_query);
+                free_cstr_arr(field_names, field_count);
                 free_cstr_arr(record_values, field_count);
                 db->error_msg = strdup(sqlite3_errmsg(db->conn));
                 sqlite3_finalize(stmt);
@@ -135,7 +111,12 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
     }
 
     sqlite3_finalize(stmt);
+
+    end_transaction_db(db);
+
+    free(insert_query);
     free_cstr_arr(field_names, field_count);
+    fclose(fp);
 
     return FEED_DB_SUCCESS;
 }
