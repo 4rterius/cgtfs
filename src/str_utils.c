@@ -17,25 +17,50 @@ char *get_filename_no_ext(char *src, char path_separator) {
     lastsep = strrchr(opstr, path_separator);
 
     if (lastdot && lastsep) {
+        // printf("\n lastdot = %li; lastsep = %li; lastdot-lastsep = %li \n", lastdot - opstr, lastsep - opstr, lastdot - lastsep);
         if (lastsep < lastdot) {
-            *lastdot = '\0';
-            opstr = lastsep + 1;
+            if ((retstr = malloc(lastdot - lastsep)) == NULL) {
+                free(opstr);
+                return NULL;
+            }
+            strncpy(retstr, lastsep + 1, lastdot - lastsep - 1);
+            retstr[lastdot - lastsep - 1] = '\0';
+            free(opstr);
+        } else {
+            if ((retstr = malloc(opstr + strlen(opstr) - lastsep)) == NULL) {
+                free(opstr);
+                return NULL;
+            }
+
+            strncpy(retstr, lastsep + 1, opstr + strlen(opstr) - lastsep);
+            free(opstr);
         }
     }
 
     if (lastdot && !lastsep) {
-        *lastdot = '\0';
+        if ((retstr = malloc(lastdot - opstr + 1)) == NULL) {
+            free(opstr);
+            return NULL;
+        }
+
+        strncpy(retstr, opstr, lastdot - opstr);
+        retstr[lastdot - opstr] = '\0';
+        free(opstr);
     }
 
     if (!lastdot && lastsep) {
-         opstr = lastsep + 1;
+        if ((retstr = malloc(opstr + strlen(opstr) - lastsep)) == NULL) {
+            free(opstr);
+            return NULL;
+        }
+
+        strncpy(retstr, lastsep + 1, opstr + strlen(opstr) - lastsep);
+        free(opstr);
     }
 
     if (!lastdot && !lastsep) {
-
+        return opstr;
     }
 
-    // printf("\nallocated: %li byte(s), freed: %li byte(s)\n", strlen(src) + 1, strlen(opstr) + 1);
-
-    return opstr;
+    return retstr;
 }
