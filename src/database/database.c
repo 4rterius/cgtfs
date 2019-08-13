@@ -124,16 +124,21 @@ feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
     int filecount = 0;
 
     char *full_file_name;
+    char *table_file_name;
 
     filecount = list_txt_files(dir, &filenames);
 
     for (int i = 0; i < filecount; i++) {
         make_filepath(&full_file_name, dir, filenames[i]);
-        if (FEED_DB_SUCCESS != import_csv_file_db(full_file_name, get_filename_no_ext(filenames[i], *FILENAME_SEPARATOR), db)) {
+        table_file_name = get_filename_no_ext(filenames[i], *FILENAME_SEPARATOR);
+
+        if (FEED_DB_SUCCESS != import_csv_file_db(full_file_name, table_file_name, db)) {
+            free(table_file_name);
             free(full_file_name);
             free_cstr_arr(filenames, filecount);
             return FEED_DB_ERROR;
         }
+        free(table_file_name);
         free(full_file_name);
     }
 
