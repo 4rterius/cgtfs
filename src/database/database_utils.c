@@ -27,7 +27,7 @@ void bake_create_uni_query_db(const char *table_name, int field_count, char **fi
     char *query_middle = " ( ";
     char *query_ending = ");";
 
-    int query_length = strlen(query_beginning) + strlen(table_name) + strlen(query_middle) + strlen(query_ending);
+    int query_length = strlen(query_beginning) + strlen(table_name) + strlen(query_middle) + strlen(query_ending) + 1;
     for (int i = 0; i < field_count; i++)
         query_length += strlen(field_names[i]) + 7;
 
@@ -46,7 +46,7 @@ void bake_insert_uni_query_db(const char *table_name, int field_count, char **qu
     char *query_middle = " VALUES (";
     char *query_ending = ");";
 
-    int sql_insert_query_length = strlen(query_beginning) + strlen(table_name) + strlen(query_middle) + strlen(query_ending);
+    int sql_insert_query_length = strlen(query_beginning) + strlen(table_name) + strlen(query_middle) + strlen(query_ending) + 1;
     for (int i = 0; i < field_count; i++)
         sql_insert_query_length += 4 + ((i > 9) ? 1 : 0);
 

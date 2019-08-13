@@ -67,6 +67,7 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
     db->rc = sqlite3_exec(db->conn, create_query, NULL, NULL, &error_msg);
 
     free(create_query);
+    free_cstr_arr(field_names, field_count);
 
     if (db->rc) {
         if (error_msg != NULL) {
@@ -76,7 +77,6 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
             db->error_msg = strdup("Failed to create a table");
         }
         fclose(fp);
-        free_cstr_arr(field_names, field_count);
         free(record_values);
         return FEED_DB_ERROR;
     }
@@ -96,7 +96,6 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
             if (db->rc != SQLITE_DONE) {
                 fclose(fp);
                 free(insert_query);
-                free_cstr_arr(field_names, field_count);
                 free_cstr_arr(record_values, field_count);
                 db->error_msg = strdup(sqlite3_errmsg(db->conn));
                 sqlite3_finalize(stmt);
@@ -115,7 +114,6 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
     end_transaction_db(db);
 
     free(insert_query);
-    free_cstr_arr(field_names, field_count);
     fclose(fp);
 
     return FEED_DB_SUCCESS;
