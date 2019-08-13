@@ -85,9 +85,9 @@ int count_lines(FILE *fp);
  *
  * @ingroup       Utilities__File
  */
-int list_txt_files(char *dir_path, char ***file_names);
+int list_txt_files(const char *dir_path, char ***file_names);
 
-int __list_txt_files__unix(char *dir_path, char ***file_names);
-int __list_txt_files__win(char *dir_path, char ***file_names);
+int __list_txt_files__unix(const char *dir_path, char ***file_names);
+int __list_txt_files__win(const char *dir_path, char ***file_names);
 
 #endif

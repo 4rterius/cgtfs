@@ -3,6 +3,8 @@
 
 #define CGTFS_STORING_BATCH_TRANSACTIONS_OFF
 
+#define CGTFS_BENCHMARKING_FEED_PATH "../tests/data/pocono_pony"
+
 #include "_utils.c"
 #include "feed.h"
 #include "database/database.h"
@@ -10,7 +12,7 @@
 void _bm_feed_1() {
     feed_t f;
     init_feed(&f);
-    read_feed(&f, "../tests/data/pocono_pony");
+    read_feed(&f, CGTFS_BENCHMARKING_FEED_PATH);
     free_feed(&f);
 }
 
@@ -32,8 +34,8 @@ void _bm_db_1() {
     if (res != FEED_DB_SUCCESS)
         perror("BENCHMARK #3 failed @ setup\n");
 
-    res = store_feed_db("../tests/data/stupid_gtfs", &db, NULL);  // ../tests/data/stupid_gtfs
-    if (res != FEED_DB_SUCCESS)
+    res = store_feed_db(CGTFS_BENCHMARKING_FEED_PATH, &db, NULL);  // ../tests/data/stupid_gtfs
+    if (res < FEED_DB_SUCCESS)
         perror("BENCHMARK #3 failed @ store\n");
 
     free_feed_db(&db);
@@ -53,8 +55,8 @@ void _bm_db_2() {
     if (res != FEED_DB_SUCCESS)
         perror("BENCHMARK #4 failed @ init\n");
 
-    res = import_feed_db("../tests/data/stupid_gtfs", &db);
-    if (res != FEED_DB_SUCCESS)
+    res = import_feed_db(CGTFS_BENCHMARKING_FEED_PATH, &db);
+    if (res < FEED_DB_SUCCESS)
         perror("BENCHMARK #4 failed @ import\n");
 
     free_feed_db(&db);
@@ -66,7 +68,7 @@ void bench_feed_1(void) {
     bm_run_1(&res, _bm_feed_1);
     bm_run_10(&res, _bm_feed_1);
 
-    bm_display_results(&res, "Pocono Pony feed dir -> memory parsing");
+    bm_display_results(&res, "/ feed dir -> memory parsing");
 }
 
 void bench_db_1_semantic(void) {
@@ -75,7 +77,7 @@ void bench_db_1_semantic(void) {
     bm_run_1(&res, _bm_db_1);
     bm_run_10(&res, _bm_db_1);
 
-    bm_display_results(&res, "StupidGTFS feed dir -> db parsing (semantic)");
+    bm_display_results(&res, "/ feed dir -> db parsing (semantic)");
 }
 
 void bench_db_2_nonsemantic(void) {
@@ -84,7 +86,7 @@ void bench_db_2_nonsemantic(void) {
     bm_run_1(&res, _bm_db_2);
     bm_run_10(&res, _bm_db_2);
 
-    bm_display_results(&res, "StupidGTFS feed dir -> db parsing (non-semantic)");
+    bm_display_results(&res, "/ feed dir -> db parsing (non-semantic)");
 }
 
 #endif

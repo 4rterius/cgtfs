@@ -119,7 +119,7 @@ int count_lines(FILE *fp) {
     return lines;
 }
 
-int list_txt_files(char *dir_path, char ***file_names) {
+int list_txt_files(const char *dir_path, char ***file_names) {
     #ifdef __unix__
         return __list_txt_files__unix(dir_path, file_names);
     #endif
@@ -130,7 +130,7 @@ int list_txt_files(char *dir_path, char ***file_names) {
 }
 
 #ifdef __unix__
-int __list_txt_files__unix(char *dir_path, char ***file_names) {
+int __list_txt_files__unix(const char *dir_path, char ***file_names) {
     int count = 0;
     char *dotpos = NULL;
 
@@ -159,7 +159,7 @@ int __list_txt_files__unix(char *dir_path, char ***file_names) {
 #endif
 
 #ifdef _WIN32
-int __list_txt_files__win(char *dir_path, char ***file_names) {
+int __list_txt_files__win(const char *dir_path, char ***file_names) {
     int count = 0;
     char *dotpos = NULL;
 
