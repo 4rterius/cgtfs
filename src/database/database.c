@@ -58,7 +58,7 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
         return FEED_DB_ERROR;
     }
 
-    begin_transaction_db(db);
+    // begin_transaction_db(db);
 
     char *create_query;
     bake_create_uni_query_db(table, field_count, field_names, &create_query);
@@ -111,7 +111,7 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
 
     sqlite3_finalize(stmt);
 
-    end_transaction_db(db);
+    // end_transaction_db(db);
 
     free(insert_query);
     fclose(fp);
@@ -128,6 +128,8 @@ feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
 
     filecount = list_txt_files(dir, &filenames);
 
+    begin_transaction_db(db);
+
     for (int i = 0; i < filecount; i++) {
         make_filepath(&full_file_name, dir, filenames[i]);
         table_file_name = get_filename_no_ext(filenames[i], *FILENAME_SEPARATOR);
@@ -141,6 +143,8 @@ feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
         free(table_file_name);
         free(full_file_name);
     }
+
+    end_transaction_db(db);
 
     free_cstr_arr(filenames, filecount);
     return FEED_DB_SUCCESS;
