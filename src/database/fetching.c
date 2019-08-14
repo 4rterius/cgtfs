@@ -23,6 +23,10 @@ int fetch_all_agencies_db(feed_db_t *db, agency_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_agency(&record);
@@ -67,6 +71,10 @@ int fetch_all_calendar_dates_db(feed_db_t *db, calendar_date_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_calendar_date(&record);
@@ -108,6 +116,10 @@ int fetch_all_calendar_records_db(feed_db_t *db, calendar_record_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_calendar_record(&record);
@@ -155,6 +167,10 @@ int fetch_all_fare_attributes_db(feed_db_t *db, fare_attributes_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_fare_attributes(&record);
@@ -198,6 +214,10 @@ int fetch_all_fare_rules_db(feed_db_t *db, fare_rule_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_fare_rule(&record);
@@ -241,6 +261,10 @@ int fetch_all_feed_info_db(feed_db_t *db, feed_info_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_feed_info(&record);
@@ -286,6 +310,10 @@ int fetch_all_frequencies_db(feed_db_t *db, frequency_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_frequency(&record);
@@ -327,6 +355,10 @@ int fetch_all_levels_db(feed_db_t *db, level_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_level(&record);
@@ -368,6 +400,10 @@ int fetch_all_pathways_db(feed_db_t *db, pathway_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_pathway(&record);
@@ -420,6 +456,10 @@ int fetch_all_routes_db(feed_db_t *db, route_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_route(&record);
@@ -468,6 +508,10 @@ int fetch_all_shapes_db(feed_db_t *db, shape_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_shape(&record);
@@ -512,6 +556,10 @@ int fetch_all_stop_times_db(feed_db_t *db, stop_time_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_stop_time(&record);
@@ -562,6 +610,10 @@ int fetch_all_stops_db(feed_db_t *db, stop_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_stop(&record);
@@ -612,6 +664,10 @@ int fetch_all_transfers_db(feed_db_t *db, transfer_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_transfer(&record);
@@ -655,6 +711,10 @@ int fetch_all_trips_db(feed_db_t *db, trip_t **records) {
     sqlite3_prepare_v2(db->conn, qr, -1, &stmt, NULL);
 
     *records = malloc(record_count * sizeof(**records));
+    if (*records == NULL) {
+        sqlite3_finalize(stmt);
+        return -1;
+    }
 
     while ((db->rc = sqlite3_step(stmt)) == SQLITE_ROW) {
         init_trip(&record);

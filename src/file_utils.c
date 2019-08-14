@@ -7,6 +7,9 @@ int read_header(FILE *fp, char ***field_names) {
     int h_field_len = 0;
 
     *field_names = malloc(sizeof(char *));
+    if (*field_names == NULL) {
+        return 0;
+    }
     memset(h_field, 0, LINE_MAX_LEN);
 
     if (fp == NULL)
@@ -44,6 +47,9 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
     memset(r_field, 0, LINE_MAX_LEN);
 
     *record_values = malloc(fields_number * sizeof(char *));
+    if (*record_values == NULL) {
+        return -1;
+    }
     for (unsigned i = 0; i < fields_number; i++)
         (*record_values)[i] = strdup("");
 
@@ -143,6 +149,11 @@ int __list_txt_files__unix(const char *dir_path, char ***file_names) {
 
     *file_names = malloc(sizeof(char *));
 
+    if (*file_names == NULL) {
+        closedir(dir_ptr);
+        return -1;
+    }
+
     while ((dir_entry = readdir(dir_ptr))) {
         // https://stackoverflow.com/a/10347734
         dotpos = strrchr(dir_entry->d_name, '.');
@@ -183,6 +194,10 @@ int __list_txt_files__win(const char *dir_path, char ***file_names) {
         return -1;
 
     *file_names = malloc(sizeof(char *));
+    if (*file_names == NULL) {
+        FindClose(h_find);
+        return -1;
+    }
     do {
         if (find_data.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY)
             continue;

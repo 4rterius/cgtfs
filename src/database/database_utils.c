@@ -6,6 +6,10 @@ int count_rows_db(feed_db_t *db, const char *table_name) {
 
     int query_buf_len = 25 + strlen(table_name);
     char *query_buf = malloc(sizeof(char) * query_buf_len);
+    if (query_buf == NULL) {
+        return -1;
+    }
+
     snprintf(query_buf, query_buf_len, "SELECT count(*) FROM `%s`;", table_name);
 
     sqlite3_prepare_v2(db->conn, query_buf, -1, &stmt, NULL);
@@ -32,6 +36,9 @@ void bake_create_uni_query_db(const char *table_name, int field_count, char **fi
         query_length += strlen(field_names[i]) + 7;
 
     *query = malloc(query_length * sizeof(char));
+    if (*query == NULL) {
+        return;
+    }
     int insert_pos = 0;
 
     insert_pos += snprintf(*query, query_length, "%s%s%s", query_beginning, table_name, query_middle);
@@ -52,6 +59,9 @@ void bake_insert_uni_query_db(const char *table_name, int field_count, char **qu
 
 
     *query = malloc(sql_insert_query_length * sizeof(char));
+    if (*query == NULL) {
+        return;
+    }
     int insert_pos = 0;
 
     insert_pos += snprintf(*query, sql_insert_query_length, "%s%s%s", query_beginning, table_name, query_middle);
