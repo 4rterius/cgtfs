@@ -84,11 +84,149 @@ Also, see the following functions:
 
 ### Reading to memory
 
+The most primitive and the fastest parsing method stores a GTFS feed in the application memory. The amount of memory needed is much bigger than the size of the feed itself, due to static string field memory allocation.
+
+Reading is done with the read_feed() function, taking a pointer to the database entity instance (see above) and a path to the directory with an unpacked GTFS feed. Always returns zero.
+
+An example below shows the most primitive use case.
+
+@include example_0.c
+
 ### Non-semantic import to database
+
+Potentially the most used feature of the library. Reads all `*.txt` files in the given directory and parses their contents as if they were CSV files (which they are, actually). Is reasonably fast for a CSV parser. Realized in two functions.
+
+  - import_csv_file_db() which parses a CSV file at the given path into the given table in the given database. Creates the tables.
+  - import_feed_db() which is, basically, a convenience wrapper for the previous function, calling it for every file it finds in the given directory path. Table names are deduced from the filenames (stripping the `.txt` part).
+
+```c
+#include "feed.h"
+#include "database/database.h"
+
+#define IS_WRITABLE = 1
+
+int some_db_func(void) {
+    feed_db_t my_db;
+    feed_db_status_t res;
+
+    res = init_feed_db(&my_db, "/path/to/database/file", IS_WRITABLE);
+
+    if (res < FEED_DB_SUCCESS) {
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    res = import_feed_db("/path/to/unpacked/gtfs/feed", &my_db);
+
+    if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    // Something done with the data in the database pointed to by my_db connection.
+
+    free_feed_db(&my_db);
+    return 1;
+}
+```
+
+Also, see the following functions:
+
+  - get_filename_no_ext() - strips all but the base filename from a given path,
+  - make_filepath() - combines a given directory with a given filename.
 
 ### Semantic parsing to database
 
+Another option for parsing a GTFS directory into a database. Unlike the prevous one, actually parses every @ref Core__EntityList "record" it finds. Hence, it is much (4+ times) slower than non-semantic parsing. As it parses data into reference-defined structs before storing them in the database, all non-standard files and fields are ignored; all files and fields which are not present leave empty tables or columns, respectively.
+
+Done by store_feed_db() function, which takes the same arguments as import_feed_db(), and an optional `feed_t *feed_counter` argument, which, if not `NULL`, stores the numbers of parsed records once the function has returned a successful `feed_db_status_t` value. Unlike its non-semantic counterpart, the function requires a call to setup_feed_db() before usage to create the target database layout.
+
+```c
+#include "feed.h"
+#include "database/database.h"
+
+#define IS_WRITABLE = 1
+
+int some_db_func(void) {
+    feed_db_t my_db;
+    feed_db_status_t res;
+
+    res = init_feed_db(&my_db, "/path/to/database/file", IS_WRITABLE);
+
+    if (res < FEED_DB_SUCCESS) {
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    res = setup_feed_db(&my_db);
+
+    if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    res = store_feed_db("/path/to/unpacked/gtfs/feed", &my_db, NULL);
+
+    if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    // Something done with the data in the database pointed to by my_db connection.
+
+    free_feed_db(&my_db);
+    return 1;
+}
+```
+
+Also, if you have come as far as you did, see:
+
+  - the entire database feed entity @ref Database__FeedEntity "documentation module".
+
+
 ### Fetching from database into memory
+
+The function fetch_feed_db() provides a way to get *all* database records stored by CGTFS back to memory. Since the library does not provide GTFS file writing functionality, it can be seen as a counterpart for store_feed_db() function. Takes a database connection entity pointer and a feed entity pointer, and gets data from the former into the latter. Does not return anything, the success of the operation can be found by checking the resulting number of records in the feed entity pointed to by the value passed as the function's first argument.
+
+```c
+#include "feed.h"
+#include "database/database.h"
+
+#define IS_WRITABLE = 0
+
+int some_db_func(void) {
+    feed_t my_feed;
+    feed_db_t my_db;
+    feed_db_status_t res;
+
+    res = init_feed_db(&my_db, "/path/to/database/file", IS_WRITABLE);
+
+    if (res < FEED_DB_SUCCESS) {
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    init_feed(&my_feed);
+    res = fetch_feed_db(&my_db, &my_feed);
+
+    if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    free_feed_db(&my_db);
+
+    // Something done with the data in my_feed.
+
+    free_feed(&my_feed);
+    return 1;
+}
+```
+
 
 ## Performance
 

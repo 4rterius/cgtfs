@@ -223,6 +223,8 @@ A more detailed documentation for each layer, definition and function can be fou
 
 ## A small performance showcase
 
+The following listing provides output from the CGTFS ./bench executable, ran on several GTFS feeds on a Win10 i7-8550U NVMe machine through WSL 1.
+
 ```
 # Pocono Pony (1.65 mb)
 
