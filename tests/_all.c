@@ -17,6 +17,7 @@
 #include "tests-haversine.c"
 #include "tests-file_utils.c"
 #include "tests-records.c"
+#include "tests-str_utils.c"
 
 GREATEST_MAIN_DEFS();
 
@@ -50,6 +51,7 @@ int main(int argc, char **argv) {
     RUN_SUITE(CGTFS_Haversine);
 
     RUN_SUITE(CGTFS_FileUtils);
+    RUN_SUITE(CGTFS_StrUtils);
 
     RUN_SUITE(CGTFS_RecordAgency);
     RUN_SUITE(CGTFS_RecordCalendarDate);

@@ -211,6 +211,12 @@
  */
 
 /**
+ * @ingroup     Utilities
+ * @defgroup    Utilities__String    String utilities
+ * @brief       String handling utilities.
+ */
+
+/**
  * @ingroup     Utilities Database
  * @defgroup    Utils__Database    Database utilities
  * @brief       Database-related utilities

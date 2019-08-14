@@ -272,6 +272,61 @@ TEST file_utils_count_lines_3_badfile(void) {
     PASS();
 }
 
+TEST file_utils_list_files_1(void) {
+    char **files;
+    int file_count = list_txt_files("../tests/data/google_sample", &files);
+
+    #define CGTFS_FILE_UTILS_LIST_1_SIZE 11
+
+    char *expected_fnames[CGTFS_FILE_UTILS_LIST_1_SIZE] = {
+        "agency.txt",
+        "calendar.txt",
+        "calendar_dates.txt",
+        "fare_attributes.txt",
+        "fare_rules.txt",
+        "frequencies.txt",
+        "routes.txt",
+        "shapes.txt",
+        "stops.txt",
+        "stop_times.txt",
+        "trips.txt"
+    };
+
+    ASSERT_EQ_FMT(CGTFS_FILE_UTILS_LIST_1_SIZE, file_count, "%i");
+
+    for (int i = 0; i < CGTFS_FILE_UTILS_LIST_1_SIZE; i++) {
+        int it_in_expected = 0;
+        for (int j = 0; j < file_count; j++) {
+            if (!strcmp(files[j], expected_fnames[i]))
+                it_in_expected = 1;
+        }
+        if (it_in_expected == 0) FAILm("An expected filename not found in the result array");
+    }
+
+    if (file_count > -1)
+        free_cstr_arr(files, file_count);
+    PASS();
+}
+
+TEST file_utils_list_files_2_nofiles(void) {
+    char **files;
+    int file_count = list_txt_files("../tests/data/no_txt_files_dir", &files);
+
+    ASSERT_EQ_FMT(0, file_count, "%i");
+    if (file_count > -1)
+        free_cstr_arr(files, file_count);
+    PASS();
+}
+
+TEST file_utils_list_files_3_nodir(void) {
+    char **files;
+    int file_count = list_txt_files("../tests/data/dir_not_found", &files);
+
+    ASSERT_EQ_FMT(-1, file_count, "%i");
+    if (file_count > -1)
+        free_cstr_arr(files, file_count);
+    PASS();
+}
 
 
 SUITE(CGTFS_FileUtils) {
@@ -288,6 +343,10 @@ SUITE(CGTFS_FileUtils) {
     RUN_TEST(file_utils_count_lines_1);
     RUN_TEST(file_utils_count_lines_2);
     RUN_TEST(file_utils_count_lines_3_badfile);
+
+    RUN_TEST(file_utils_list_files_1);
+    RUN_TEST(file_utils_list_files_2_nofiles);
+    RUN_TEST(file_utils_list_files_3_nodir);
 }
 
 #endif

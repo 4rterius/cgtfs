@@ -11,6 +11,7 @@
 #include "sqlite3/src/sqlite3.h"
 
 #include "feed.h"
+#include "str_utils.h"
 #include "database/database_types.h"
 #include "database/database_utils.h"
 #include "database/storing.h"
@@ -56,6 +57,37 @@ feed_db_status_t init_feed_db(feed_db_t *db, const char *db_path, int writable);
  * @ingroup          Database__FeedEntity
  */
 feed_db_status_t setup_feed_db(feed_db_t *db);
+
+/**
+ * Imports a .csv file into the given database.
+ *
+ * Direct CSV -> SQLite parsing.
+ *
+ * @param[in]     path     /path/to/gtfs/record/file.txt
+ * @param[in]     table    Name of the table to import the data into (will be created if doesn't exist).
+ * @param[out]    db       Initialized feed database instance to store into.
+ *
+ * @returns       FEED_DB_SUCCESS if the import went well, FEED_DB_ERROR otherwise.
+ *
+ * @ingroup       Database__FeedEntity
+ */
+feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db_t *db);
+
+/**
+ * Imports an unpacked GTFS feed
+ * from the given directory to the given database
+ * non-semantically.
+ *
+ * Direct CSV -> SQLite parsing.
+ *
+ * @param[in]     dir    /path/to/unpacked/gtfs/
+ * @param[out]    db     Initialized feed database instance to store into.
+ *
+ * @returns       FEED_DB_SUCCESS if the import went well, FEED_DB_ERROR otherwise.
+ *
+ * @ingroup       Database__FeedEntity
+ */
+feed_db_status_t import_feed_db(const char *dir, feed_db_t *db);
 
 /**
  * Reads an unpacked GTFS feed

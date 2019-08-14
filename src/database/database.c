@@ -34,6 +34,122 @@ feed_db_status_t free_feed_db(feed_db_t *db) {
     return FEED_DB_SUCCESS;
 }
 
+feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db_t *db) {
+    FILE *fp = fopen(path, "r");
+
+    if (!fp) {
+        db->error_msg = strdup("Failed to open .csv file");
+        return FEED_DB_ERROR;
+    }
+
+    char **record_values = NULL;
+    int lines_count = count_lines(fp) - 1;
+    int record_count = 0;
+
+    char **field_names = NULL;
+    int field_count = read_header(fp, &field_names);
+
+    if (lines_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        free(record_values);
+        fclose(fp);
+
+        db->error_msg = strdup("No lines in the .csv file");
+        return FEED_DB_ERROR;
+    }
+
+    // begin_transaction_db(db);
+
+    char *create_query;
+    bake_create_uni_query_db(table, field_count, field_names, &create_query);
+
+    char *error_msg;
+    db->rc = sqlite3_exec(db->conn, create_query, NULL, NULL, &error_msg);
+
+    free(create_query);
+    free_cstr_arr(field_names, field_count);
+
+    if (db->rc) {
+        if (error_msg != NULL) {
+            db->error_msg = strdup(error_msg);
+            sqlite3_free(error_msg);
+        } else {
+            db->error_msg = strdup("Failed to create a table");
+        }
+        fclose(fp);
+        free(record_values);
+        return FEED_DB_ERROR;
+    }
+
+    char *insert_query;
+    bake_insert_uni_query_db(table, field_count, &insert_query);
+
+    sqlite3_stmt *stmt;
+    sqlite3_prepare_v2(db->conn, insert_query, -1, &stmt, NULL);
+
+    for (int i = 0; i < lines_count; i++) {
+        if (read_record(fp, field_count, &record_values) > 0) {
+            for (int j = 0; j < field_count; j++)
+                sqlite3_bind_text(stmt, j + 1, record_values[j], -1, SQLITE_STATIC);
+
+            db->rc = sqlite3_step(stmt);
+            if (db->rc != SQLITE_DONE) {
+                fclose(fp);
+                free(insert_query);
+                free_cstr_arr(record_values, field_count);
+                db->error_msg = strdup(sqlite3_errmsg(db->conn));
+                sqlite3_finalize(stmt);
+                return FEED_DB_ERROR;
+            }
+
+            sqlite3_clear_bindings(stmt);
+            sqlite3_reset(stmt);
+            record_count++;
+        }
+        free_cstr_arr(record_values, field_count);
+    }
+
+    sqlite3_finalize(stmt);
+
+    // end_transaction_db(db);
+
+    free(insert_query);
+    fclose(fp);
+
+    return FEED_DB_SUCCESS;
+}
+
+feed_db_status_t import_feed_db(const char *dir, feed_db_t *db) {
+    char **filenames;
+    int filecount = 0;
+
+    char *full_file_name;
+    char *table_file_name;
+
+    filecount = list_txt_files(dir, &filenames);
+
+    begin_transaction_db(db);
+
+    for (int i = 0; i < filecount; i++) {
+        make_filepath(&full_file_name, dir, filenames[i]);
+        table_file_name = get_filename_no_ext(filenames[i], *FILENAME_SEPARATOR);
+
+        if (FEED_DB_SUCCESS != import_csv_file_db(full_file_name, table_file_name, db)) {
+            free(table_file_name);
+            free(full_file_name);
+            free_cstr_arr(filenames, filecount);
+            return FEED_DB_ERROR;
+        }
+        free(table_file_name);
+        free(full_file_name);
+    }
+
+    end_transaction_db(db);
+
+    free_cstr_arr(filenames, filecount);
+    return FEED_DB_SUCCESS;
+}
+
 feed_db_status_t store_feed_db(const char *dir, feed_db_t *db, feed_t *feed_counter) {
 
     feed_db_status_t result = FEED_DB_SUCCESS;

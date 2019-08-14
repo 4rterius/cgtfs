@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['dg_5fto_5frad',['dg_to_rad',['../a00914.html#gae324b27e0934fc7c9646721394e2f671',1,'haversine.h']]]
+  ['count_5flines',['count_lines',['../a00183.html#gabfcabcae3f12fd1816d1b551c462f289',1,'file_utils.h']]],
+  ['count_5frows_5fdb',['count_rows_db',['../a00186.html#ga34aef407e52a019e69675151d237159a',1,'database_utils.h']]]
 ];

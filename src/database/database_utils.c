@@ -22,6 +22,44 @@ int count_rows_db(feed_db_t *db, const char *table_name) {
     return count;
 }
 
+void bake_create_uni_query_db(const char *table_name, int field_count, char **field_names, char **query) {
+    char *query_beginning = "CREATE TABLE IF NOT EXISTS ";
+    char *query_middle = " ( ";
+    char *query_ending = ");";
+
+    int query_length = strlen(query_beginning) + strlen(table_name) + strlen(query_middle) + strlen(query_ending) + 1;
+    for (int i = 0; i < field_count; i++)
+        query_length += strlen(field_names[i]) + 7;
+
+    *query = malloc(query_length * sizeof(char));
+    int insert_pos = 0;
+
+    insert_pos += snprintf(*query, query_length, "%s%s%s", query_beginning, table_name, query_middle);
+    for (int i = 0; i < field_count - 1; i++)
+        insert_pos += snprintf(*query + insert_pos, query_length, "%s TEXT, ", field_names[i]);
+    insert_pos += snprintf(*query + insert_pos, query_length, "%s TEXT ", field_names[field_count - 1]);
+    insert_pos += snprintf(*query + insert_pos, query_length, "%s", query_ending);
+}
+
+void bake_insert_uni_query_db(const char *table_name, int field_count, char **query) {
+    char *query_beginning = "INSERT INTO ";
+    char *query_middle = " VALUES (";
+    char *query_ending = ");";
+
+    int sql_insert_query_length = strlen(query_beginning) + strlen(table_name) + strlen(query_middle) + strlen(query_ending) + 1;
+    for (int i = 0; i < field_count; i++)
+        sql_insert_query_length += 4 + ((i > 9) ? 1 : 0);
+
+
+    *query = malloc(sql_insert_query_length * sizeof(char));
+    int insert_pos = 0;
+
+    insert_pos += snprintf(*query, sql_insert_query_length, "%s%s%s", query_beginning, table_name, query_middle);
+    for (int i = 0; i < field_count - 1; i++)
+        insert_pos += snprintf(*query + insert_pos, sql_insert_query_length, "?%i, ", i + 1);
+    insert_pos += snprintf(*query + insert_pos, sql_insert_query_length, "?%i ", field_count - 1 + 1);
+    insert_pos += snprintf(*query + insert_pos, sql_insert_query_length, "%s", query_ending);
+}
 
 feed_db_status_t begin_transaction_db(feed_db_t *db) {
 

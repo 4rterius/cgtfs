@@ -26,19 +26,20 @@ The scope of this library's functionality is illustrated by the following figure
       - [Linux](#linux)
       - [Windows](#windows)
   - [Documentation](#documentation)
+    - [Terms](#terms)
     - [API overview](#api-overview)
-      - [Terms](#terms)
       - [Principles](#principles)
       - [String storage](#string-storage)
       - [Structure](#structure)
+  - [A small performance showcase](#a-small-performance-showcase)
   - [Useful links](#useful-links)
   - [License and attribution](#license-and-attribution)
 
 ## Examples
 
-Some example source code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful.
+Some example code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful, but you should consider that the testing code does not properly handle memory deallocation and error recovery.
 
-The most primitive example:
+The most primitive example, the only one provided here for brevity:
 
 ```c
 #include <stdio.h>
@@ -85,125 +86,6 @@ void some_function(void) {
 }
 ```
 
-A database setup and querying example (something like this is a likely use case):
-
-```c
-#include <stdio.h>
-
-#include "feed.h"
-#include "database/database.h"
-
-
-int row_callback(void *, int column_count, char **data, char **column_names);
-
-
-/**
- * Example 2:
- *
- * Store gtfs folder as a database and
- * query it for first 10 stop_time records
- * with arrival time within the next 10 minutes.
- */
-
-// The querying itself is done via SQL.
-// CGTFS only handles creating the database,
-// setting up the layout and filling it with
-// feeds' data.
-const char *sql_query =
-    "SELECT stop_id, trip_id, arrival_time "
-    "FROM stop_times "
-    "WHERE arrival_time "
-        "BETWEEN time('now', 'localtime') "
-        "AND time('now', '+10 minutes', 'localtime') "
-    "LIMIT 10;";
-
-void some_database_manipulation(void) {
-    char *error_msg = NULL;
-
-    feed_db_t database;
-    feed_db_status_t result;
-
-    // Database connection initialization.
-    //
-    // This function sets up default values
-    // for the connection struct
-    // and opens the connection.
-    //
-    // Calling free_feed_db(..) is recommended as soon
-    // as the connection is no longer needed.
-    //
-    // Opening the connection again is preferred to
-    // keeping stuff open and, thus, locked.
-    //
-    // The sign in `result < FEED_DB_SUCCESS` allows
-    // the result of operation to be FEED_DB_PARTIAL (see docs),
-    // though for now, it only really matters with store_feed_db(..) .
-    result = init_feed_db(&database, "example2.db", 1);
-    if (result < FEED_DB_SUCCESS) {
-        printf("Failed to create/open a test database: %s !\n", database.error_msg);
-        goto clearup;
-    }
-
-    // Database layout setup.
-    //
-    // This function is, basically, a wrapper around a giant SQL query.
-    // Ideally, it is done every once in a set time interval (day, probably),
-    // as there is no need to do it every time some information is needed.
-    //
-    // Every time the database is updated,
-    // it must be deleted (left to the developer).
-    //
-    // This function is most likely to be followed by store_feed_db(..) .
-    result = setup_feed_db(&database);
-    if (result < FEED_DB_SUCCESS) {
-        printf("Failed to create the layout of the test database: %s !\n", database.error_msg);
-        goto clearup;
-    }
-
-    // Feed storing.
-    //
-    // This function reads every feed file
-    // and reads its records directly into the database,
-    // without an intermediate array.
-    //
-    // Unless CGTFS_STORING_BATCH_TRANSACTIONS_OFF is defined, each
-    // file's contents are stored in a single transaction.
-    //
-    // Both FEED_DB_SUCCESS and FEED_DB_PARTIAL are acceptable results.
-    // Use equality sign only if your feed has records in EVERY possible
-    // feed file.
-    result = store_feed_db("../tests/data/pocono_pony", &database, NULL);
-    if (result < FEED_DB_SUCCESS) {
-        printf("Failed to store a test gtfs directory: data/pocono_pony: %s !\n", database.error_msg);
-        goto clearup;
-    }
-
-    // The querying itself.
-    database.rc = sqlite3_exec(database.conn, sql_query, row_callback, NULL, &error_msg);
-    if (error_msg != NULL) {
-        printf("Error while executing query: %s !\n", error_msg);
-        goto clearup;
-    }
-
-    printf("Success.\n");
-
-    clearup:
-    sqlite3_free(error_msg);
-    free_feed_db(&database);
-}
-
-int row_callback(void *param, int column_count, char **data, char **column_names) {
-    if (column_count < 3)
-        return 1;
-
-    printf("<stop %s>\n", data[0]);
-    printf("  Arrival time:  %s\n", data[2]);
-    printf("  Trip id:       %s\n", data[1]);
-
-    return 0;
-}
-```
-
 ## Build process and dependencies
 
 ### Dependencies
@@ -245,23 +127,15 @@ cmake --build . --config %Configuration%
 
 ## Documentation
 
-The library is heavily documented via code comments. At releases and important waypoints, the documentation is compiled and commited to the repo. It is [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html).
-
-However, in order to get the most actual documentation, you are encouraged to compile it yourself.
+The library is heavily documented via code comments. At releases and important waypoints, the documentation is compiled and commited to the repo. It is [available online](https://rakhack.github.io/cgtfs/doxygen/html/index.html). However, in order to get the most actual documentation, you are encouraged to compile it yourself.
 
 ```
 $ doxygen
 ```
 
-*Note: by default, doxygen is configured to output LaTeX documentation as well. Turn off LaTeX if it is not installed on your system. (./Doxyfile:1648)*
+*Please note: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
 
-*Note 2: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
-
-### API overview
-
-This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
-
-#### Terms
+### Terms
 
 The terms used throughout the library code and documentation differ from those defined by the [GTFS reference](https://developers.google.com/transit/gtfs/reference/#term-definitions). The following table illustrates the relation between differing CGTFS terms and reference terms, and their definitions, as well as terms used in the library and abscent from the reference.
 
@@ -272,6 +146,10 @@ The terms used throughout the library code and documentation differ from those d
 | Entity (instance) | Record | A complete data structure containing information about a concrete GTFS entity (e.g. information about one route). The library uses the term *entity* to avoid ambiguity with database operations. _Note: however, *entity* is a more abstract term, thus a struct holding one entity's data is, in essense, an entity instance. This documentation may refer to structs simply as **entities** for shortness_. |
 | File | *not defined* | A `*.txt` file, a part of the feed, holding information about all the feed's *entities* of a single type. |
 | Database | n/a | A single *SQLite* database file, created using the supplied SQL schema (preferably, the creation of the database is left to the library, see the database section). |
+
+### API overview
+
+This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
 
 #### Principles
 
@@ -294,8 +172,8 @@ String values in CGTFS are stored in memory using statically allocated c-strings
 To mitigate that, all string field length definitions are located in the `xstrlengths.h` header. Actual field length definitions are heavily commented in the lower part of the file. By default, they are using `CGTFS_SL_BASE_` definitions found in the upper part of the file. There are three possible usage cases:
 
   1. All left as it is in hopes for lucky circumstances.
-  2. Definition `CGTFS_SL_MODE_PREPARATION` is uncommented, reserving an obstinate amount of memory for all fields.
-  3. Maximum length of each field type is deduced from the supposed data sources (useful if you're working with the data form a specific agency). This is left to the developer.
+  2. Definition `CGTFS_SL_MODE_PREPARATION` is uncommented, reserving an insensible amount of memory for all fields.
+  3. Maximum length of each field type is deduced from the supposed data sources (useful if you're working with the data from a specific agency). This is left to the developer.
 
 #### Structure
 
@@ -319,7 +197,8 @@ The library's API is divided into two so called layers, additional auxiliary fun
       - a function to free/close a database connection;
       - a function to setup a database at an opened connection for a GTFS feed;
     - storage transition functions:
-      - a **function** to store the contents of a feed from a specified directory into a specified database connection;
+      - a **function** to store the contents of a feed from a specified directory into a specified database connection (non-semantically, storing all values as TEXT) *(see note below)*;
+      - a **function** to store the contents of a feed from a specified directory into a specified database connection (semantically, parsing every record) *(see note below)*;
       - a **function** to fetch the contents of a feed from a specified database connection into a specicfied feed object;
     - an **enumeration** of general database operation results (success / failure / so-so);
     - **functions** to store entities using a specified database connection;
@@ -332,12 +211,75 @@ The library's API is divided into two so called layers, additional auxiliary fun
     - utilitary **functions** for working a with sqlite database;
   - **Helpers** include:
     - several preprocessor definitions used across the library;
+    - a **function** for extracting filename without extension from a given path;
     - a **function** for making a filepath from a directory and a file in it;
     - a **function** for converting degrees into radians;
     - a **geolocation definition** which holds a latitude value and a longitude value;
       - a **function** for calculating a distance (in meters) between the two geolocation points.
 
+_Note: CGTFS provides two ways of parsing a directory into a database, semantic and non-semantic. Semantic stores all values according to the specification, creating a reference-defined database layout and filling it with data of according types. Non-semantic directly translates GTFS *.txt files as CSVs into the database, creating a layout based on file headers and storing all data as text. See more in the related documentation page._
+
 A more detailed documentation for each layer, definition and function can be found in the module documentation.
+
+## A small performance showcase
+
+The following listing provides output from the CGTFS ./bench executable, ran on several GTFS feeds on a Win10 i7-8550U NVMe machine through WSL 1.
+
+```
+# Pocono Pony (1.65 mb)
+
+Benchmark results for / feed dir -> memory parsing:
+ -> 1        iteration:    235690500 ns. / 1 iter. => 235.690500 ms.
+ -> 10       iterations:   1522158000 ns. / 10 iter. => 152.215800 ms.
+---------
+
+Benchmark results for / feed dir -> db parsing (semantic):
+ -> 1        iteration:    3559970000 ns. / 1 iter. => 3559.970000 ms.
+ -> 10       iterations:   33531279900 ns. / 10 iter. => 3353.127990 ms.
+---------
+
+Benchmark results for / feed dir -> db parsing (non-semantic):
+ -> 1        iteration:    468014300 ns. / 1 iter. => 468.014300 ms.
+ -> 10       iterations:   5315382000 ns. / 10 iter. => 531.538200 ms.
+---------
+
+
+# LSL (20.6 mb)
+
+Benchmark results for / feed dir -> memory parsing:
+ -> 1        iteration:    2053141000 ns. / 1 iter. => 2053.141000 ms.
+ -> 10       iterations:   19250407600 ns. / 10 iter. => 1925.040760 ms.
+---------
+
+Benchmark results for / feed dir -> db parsing (semantic):
+ -> 1        iteration:    14864547700 ns. / 1 iter. => 14864.547700 ms.
+ -> 10       iterations:   151779149800 ns. / 10 iter. => 15177.914980 ms.
+---------
+
+Benchmark results for / feed dir -> db parsing (non-semantic):
+ -> 1        iteration:    3478527500 ns. / 1 iter. => 3478.527500 ms.
+ -> 10       iterations:   34999966400 ns. / 10 iter. => 3499.996640 ms.
+---------
+
+
+# MTA NYC Transit Subway (63.4 mb)
+
+Benchmark results for / feed dir -> memory parsing:
+ -> 1        iteration:    5560275600 ns. / 1 iter. => 5560.275600 ms.
+ -> 10       iterations:   53092411900 ns. / 10 iter. => 5309.241190 ms.
+---------
+
+Benchmark results for / feed dir -> db parsing (semantic):
+ -> 1        iteration:    40642734000 ns. / 1 iter. => 40642.734000 ms.
+ -> 10       iterations:   376395287900 ns. / 10 iter. => 37639.528790 ms.
+---------
+
+Benchmark results for / feed dir -> db parsing (non-semantic):
+ -> 1        iteration:    9276035200 ns. / 1 iter. => 9276.035200 ms.
+ -> 10       iterations:   91401069000 ns. / 10 iter. => 9140.106900 ms.
+---------
+
+```
 
 ## Useful links
 

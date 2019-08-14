@@ -54,6 +54,19 @@ TEST db_init_close_readable_success(void) {
     PASS();
 }
 
+TEST db_import(void) {
+    feed_db_t db;
+    feed_db_status_t res;
+
+    res = init_feed_db(&db, "tests_feed_import.db", 1);
+    res = import_feed_db("../tests/data/stupid_gtfs", &db);
+
+    ASSERT_EQm(db.error_msg, FEED_DB_SUCCESS, res);
+
+    free_feed_db(&db);
+    PASS();
+}
+
 TEST db_store_no_counter(void) {
 
     feed_db_t db;
@@ -175,6 +188,7 @@ SUITE(CGTFS_Database) {
     RUN_TEST(db_init_close_writable);
     RUN_TEST(db_init_close_readable_error);
     RUN_TEST(db_init_close_readable_success);
+    RUN_TEST(db_import);
     RUN_TEST(db_store_no_counter);
     RUN_TEST(db_store_partial);
     RUN_TEST(db_store_counter); // These two tests must come together AND in this order
