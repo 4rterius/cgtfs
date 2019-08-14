@@ -63,7 +63,7 @@ feed_db_status_t setup_feed_db(feed_db_t *db);
  *
  * Direct CSV -> SQLite parsing.
  *
- * @param[in]     dir      /path/to/unpacked/gtfs/
+ * @param[in]     path     /path/to/gtfs/record/file.txt
  * @param[in]     table    Name of the table to import the data into (will be created if doesn't exist).
  * @param[out]    db       Initialized feed database instance to store into.
  *
