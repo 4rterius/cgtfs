@@ -2,28 +2,6 @@
 
 A thin and fast low-level library which reads GTFS static feeds. This library provides a readable and intuitive C interface for parsing data provided in the Google's [General Transit Feed Specification](https://developers.google.com/transit/gtfs/) format.
 
-## Examples
-
-Some example source code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful.
-
-### Reading a feed into memory
-
-*Note: usage shown in this example is not recommended for parsing a real feed, as it __will__ take __a lot of__ memory for any substantially big amounts of data.*
-
-@include example_0.c
-
-### An entity file reading
-
-Read all bus stops and print out their information
-
-@include example_1.c
-
-### Database-backed querying
-
-Store a gtfs folder as a database and query it for first 10 stop time records with arrival time within the next 10 minutes.
-
-@include example_2.c
-
 ## Build process and dependencies
 
 ### Dependencies
@@ -71,14 +49,11 @@ The library is heavily documented via code comments. You are encouraged to compi
 $ doxygen
 ```
 
-*Note: by default, doxygen is configured to output LaTeX documentation as well. Turn off LaTeX if it is not installed on your system. (./Doxyfile:1648)*
+If you want to get started with this library by reading only one (1) file, you are out of luck. But you can get by reading just three (2 more) files:
 
-*Note 2: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
-
-### API overview
-
-An overview of the library's interface is provided in a separate section. See @ref api_overview.
-
+  1. this page
+  2. @ref data_transition
+  3. @ref api_overview
 
 ## Useful links
 

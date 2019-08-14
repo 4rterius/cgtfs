@@ -1,6 +1,6 @@
 # API (brief) overview {#api_overview}
 
-*Please note: up to release `1.0.0`, the library's API is a subject to a change without backwards-compatibility concerns.*
+If you are looking for a very brief introduction, @ref data_transition "data transition guide" might be a better starting point. However, having gone through this file would prove highly benefitial when using the library.
 
 @section ApiOverview__Introduction Basics
 
@@ -80,7 +80,8 @@ The library's API is divided into two so called layers, additional auxiliary fun
       - a function to free/close a database connection;
       - a function to setup a database at an opened connection for a GTFS feed;
     - storage transition functions:
-      - a @ref store_feed_db "function" to store the contents of a feed from a specified directory into a specified database connection;
+      - a @ref import_feed_db "function" to <strong>semantically</strong> store the contents of a feed from a specified directory into a specified database connection (see note below);
+      - a @ref store_feed_db "function" to <strong>non-semantically</strong> store the contents of a feed from a specified directory into a specified database connection (see note below);
       - a @ref fetch_feed_db "function" to fetch the contents of a feed from a specified database connection into a specicfied feed object;
     - an @ref feed_db_status_t "enumeration" of general database operation results (success / failure / so-so);
     - @ref Database__EntityStoring "functions" to store entities using a specified database connection;
@@ -93,10 +94,37 @@ The library's API is divided into two so called layers, additional auxiliary fun
     - utilitary @ref Utils__Database "functions" for working a with sqlite database;
   - @ref Helpers "Helpers" include:
     - several preprocessor definitions used across the library;
+    - a @ref get_filename_no_ext "function" for extracting filename without extension from a given path;
     - a @ref make_filepath "function" for making a filepath from a directory and a file in it;
     - a @ref dg_to_rad "function" for converting degrees into radians;
     - a @ref geo_location_t "geolocation definition" which holds a latitude value and a longitude value;
       - a @ref haversine_distance "function" for calculating a distance (in meters) between the two geolocation points.
 
+_Note: CGTFS provides two ways of parsing a directory into a database, semantic and non-semantic. Semantic stores all values according to the specification, creating a reference-defined database layout and filling it with data of according types. Non-semantic directly translates GTFS *.txt files as CSVs into the database, creating a layout based on file headers and storing all data as text. See more in the related documentation page._
+
+_Another note: up to release `1.0.0`, the library's API is a subject to a change without backwards-compatibility concerns._
+
 A more detailed documentation for each layer, definition and function can be found in the module documentation, linked throughout the list.
 
+
+@section ApiOverview__Examples Examples
+
+Some example source code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful.
+
+@subsection ApiOverview__Examples__0 Reading a feed into memory
+
+Usage shown in this example is not recommended for parsing a real feed, as it **will** take **a lot of** memory for any substantially big amounts of data.
+
+@include example_0.c
+
+@subsection ApiOverview__Examples__1 An entity file reading
+
+Read all bus stops and print out their information
+
+@include example_1.c
+
+@subsection ApiOverview__Examples__2 Database-backed querying
+
+Store a gtfs folder as a database and query it for first 10 stop time records with arrival time within the next 10 minutes.
+
+@include example_2.c
