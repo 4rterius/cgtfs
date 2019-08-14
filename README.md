@@ -26,8 +26,8 @@ The scope of this library's functionality is illustrated by the following figure
       - [Linux](#linux)
       - [Windows](#windows)
   - [Documentation](#documentation)
+    - [Terms](#terms)
     - [API overview](#api-overview)
-      - [Terms](#terms)
       - [Principles](#principles)
       - [String storage](#string-storage)
       - [Structure](#structure)
@@ -37,7 +37,7 @@ The scope of this library's functionality is illustrated by the following figure
 
 ## Examples
 
-Some example source code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful.
+Some example code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful, but you should consider that the testing code does not properly handle memory deallocation and error recovery.
 
 The most primitive example, the only one provided here for brevity:
 
@@ -135,11 +135,7 @@ $ doxygen
 
 *Please note: this file is not guaranteed to contain up-to-date information. It is advised that you download the latest release and compile doxygen documentation from its source.*
 
-### API overview
-
-This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
-
-#### Terms
+### Terms
 
 The terms used throughout the library code and documentation differ from those defined by the [GTFS reference](https://developers.google.com/transit/gtfs/reference/#term-definitions). The following table illustrates the relation between differing CGTFS terms and reference terms, and their definitions, as well as terms used in the library and abscent from the reference.
 
@@ -150,6 +146,10 @@ The terms used throughout the library code and documentation differ from those d
 | Entity (instance) | Record | A complete data structure containing information about a concrete GTFS entity (e.g. information about one route). The library uses the term *entity* to avoid ambiguity with database operations. _Note: however, *entity* is a more abstract term, thus a struct holding one entity's data is, in essense, an entity instance. This documentation may refer to structs simply as **entities** for shortness_. |
 | File | *not defined* | A `*.txt` file, a part of the feed, holding information about all the feed's *entities* of a single type. |
 | Database | n/a | A single *SQLite* database file, created using the supplied SQL schema (preferably, the creation of the database is left to the library, see the database section). |
+
+### API overview
+
+This library tries to provide a semantic and readable interface. Before release 1.0.0, the library's API is a subject to change without backwards-compatibility concerns.
 
 #### Principles
 
@@ -172,8 +172,8 @@ String values in CGTFS are stored in memory using statically allocated c-strings
 To mitigate that, all string field length definitions are located in the `xstrlengths.h` header. Actual field length definitions are heavily commented in the lower part of the file. By default, they are using `CGTFS_SL_BASE_` definitions found in the upper part of the file. There are three possible usage cases:
 
   1. All left as it is in hopes for lucky circumstances.
-  2. Definition `CGTFS_SL_MODE_PREPARATION` is uncommented, reserving an obstinate amount of memory for all fields.
-  3. Maximum length of each field type is deduced from the supposed data sources (useful if you're working with the data form a specific agency). This is left to the developer.
+  2. Definition `CGTFS_SL_MODE_PREPARATION` is uncommented, reserving an insensible amount of memory for all fields.
+  3. Maximum length of each field type is deduced from the supposed data sources (useful if you're working with the data from a specific agency). This is left to the developer.
 
 #### Structure
 
