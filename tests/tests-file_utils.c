@@ -16,7 +16,7 @@ TEST file_utils_read_header_0(void) {
         char **field_names;
         int field_count = 0;
 
-        size_t correct_field_count = 6;
+        int correct_field_count = 6;
         char *correct_field_names[] = {
             "agency_id",
             "agency_name",
@@ -29,12 +29,10 @@ TEST file_utils_read_header_0(void) {
         field_count = read_header(fp, &field_names);
         ASSERT_EQ_FMTm("Counted wrong number of fields in the header", (int)correct_field_count, field_count, "%i");
 
-        for (size_t i = 0; i < correct_field_count; i++)
+        for (int i = 0; i < correct_field_count; i++)
             ASSERT_STR_EQ(correct_field_names[i], field_names[i]);
 
-        for (size_t j = 0; j < field_count; j++)
-            free(field_names[j]);
-        free(field_names);
+        free_cstr_arr(field_names, field_count);
 
         fclose(fp);
         PASS();
@@ -49,7 +47,7 @@ TEST file_utils_read_header_1(void) {
         char **field_names;
         int field_count = 0;
 
-        size_t correct_field_count = 7;
+        int correct_field_count = 7;
         char *correct_field_names[] = {
             "route_id",
             "agency_id",
@@ -63,13 +61,10 @@ TEST file_utils_read_header_1(void) {
         field_count = read_header(fp, &field_names);
         ASSERT_EQ_FMTm("Counted wrong number of fields in the header", (int)correct_field_count, field_count, "%i");
 
-        for (size_t i = 0; i < correct_field_count; i++)
+        for (int i = 0; i < correct_field_count; i++)
             ASSERT_STR_EQ(correct_field_names[i], field_names[i]);
 
-        for (size_t j = 0; j < field_count; j++)
-            free(field_names[j]);
-        free(field_names);
-
+        free_cstr_arr(field_names, field_count);
         fclose(fp);
         PASS();
     }
@@ -80,16 +75,13 @@ TEST file_utils_read_header_2_empty(void) {
     if (fp == NULL) {
         FAILm("Couldn't open `data/empty.txt` test file");
     } else {
-        char **field_names;
+        char **field_names = NULL;
         int field_count = 0;
 
         field_count = read_header(fp, &field_names);
-        ASSERT_EQ_FMTm("Counted some fields in the header where there are none", 0, field_count, "%i");
+        ASSERT_EQ_FMTm("Counted some fields in an empty header", -1, field_count, "%i");
 
-        for (size_t j = 0; j < field_count; j++)
-            free(field_names[j]);
-        free(field_names);
-
+        free_cstr_arr(field_names, field_count);
         fclose(fp);
         PASS();
     }
@@ -102,12 +94,9 @@ TEST file_utils_read_header_3_badfile(void) {
     int field_count = 0;
 
     field_count = read_header(fp, &field_names);
-    ASSERT_EQ_FMTm("Somehow opened the file that doesn't exist", 0, field_count, "%i");
+    ASSERT_EQ_FMTm("Somehow opened the file that doesn't exist", -1, field_count, "%i");
 
-    for (size_t j = 0; j < field_count; j++)
-        free(field_names[j]);
-    free(field_names);
-
+    free_cstr_arr(field_names, field_count);
     if (fp != NULL)
         fclose(fp);
 
@@ -159,19 +148,12 @@ TEST file_utils_read_record_0(void) {
             }
             record_count++;
 
-            for (size_t j = 0; j < field_count; j++)
-                free(record_values[j]);
-            free(record_values);
+            free_cstr_arr(record_values, field_count);
         }
 
 
-        for (size_t j = 0; j < field_count; j++)
-            free(field_names[j]);
-        free(field_names);
-
-        for (size_t j = 0; j < field_count; j++)
-            free(record_values[j]);
-        free(record_values); // Free here, because read_record() allocates memory even on read failure.
+        free_cstr_arr(field_names, field_count);
+        free_cstr_arr(record_values, field_count); // Free here, because read_record() allocates memory even on read failure.
 
         fclose(fp);
         PASS();
@@ -186,16 +168,13 @@ TEST file_utils_read_record_1_empty(void) {
         char **field_names;
         int field_count = read_header(fp, &field_names);
 
+        ASSERT_EQ_FMTm("Somehow read the header of an empty file", -1, field_count, "%i");
+
         char **record_values;
         ASSERT_EQ_FMTm("Somehow read a record that doesn't exist", -1, read_record(fp, field_count, &record_values), "%i");
 
-        for (size_t j = 0; j < field_count; j++)
-            free(field_names[j]);
-        free(field_names);
-
-        for (size_t j = 0; j < field_count; j++)
-            free(record_values[j]);
-        free(record_values); // Free here, because read_record() allocates memory even on read failure.
+        free_cstr_arr(field_names, field_count);
+        free_cstr_arr(record_values, field_count); // Free here, because read_record() allocates memory even on read failure.
 
         fclose(fp);
         PASS();
@@ -208,16 +187,13 @@ TEST file_utils_read_record_2_badfile(void) {
     char **field_names;
     int field_count = read_header(fp, &field_names);
 
+    ASSERT_EQ_FMTm("Somehow read the header of a nonexisting file", -1, field_count, "%i");
+
     char **record_values;
     ASSERT_EQ_FMTm("Somehow read a record from a file that doesn't exist", -1, read_record(fp, field_count, &record_values), "%i");
 
-    for (size_t j = 0; j < field_count; j++)
-        free(field_names[j]);
-    free(field_names);
-
-    for (size_t j = 0; j < field_count; j++)
-        free(record_values[j]);
-    free(record_values); // Free here, because read_record() allocates memory even on read failure.
+    free_cstr_arr(field_names, field_count);
+    free_cstr_arr(record_values, field_count); // Free here, because read_record() allocates memory even on read failure.
 
     if (fp != NULL)
         fclose(fp);

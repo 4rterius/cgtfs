@@ -15,6 +15,11 @@ int read_all_agencies(FILE *fp, agency_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -51,6 +56,11 @@ int read_all_calendar_dates(FILE *fp, calendar_date_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
@@ -89,6 +99,11 @@ int read_all_calendar_records(FILE *fp, calendar_record_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -125,6 +140,11 @@ int read_all_fare_attributes(FILE *fp, fare_attributes_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
@@ -163,6 +183,11 @@ int read_all_fare_rules(FILE *fp, fare_rule_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -199,6 +224,11 @@ int read_all_feed_info(FILE *fp, feed_info_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
@@ -237,6 +267,11 @@ int read_all_frequencies(FILE *fp, frequency_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -273,6 +308,11 @@ int read_all_levels(FILE *fp, level_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
@@ -311,6 +351,11 @@ int read_all_pathways(FILE *fp, pathway_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -347,6 +392,11 @@ int read_all_routes(FILE *fp, route_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
@@ -385,6 +435,11 @@ int read_all_shapes(FILE *fp, shape_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -421,6 +476,11 @@ int read_all_stop_times(FILE *fp, stop_time_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
@@ -459,6 +519,11 @@ int read_all_stops(FILE *fp, stop_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -496,6 +561,11 @@ int read_all_transfers(FILE *fp, transfer_t **records) {
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
+
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
@@ -532,6 +602,11 @@ int read_all_trips(FILE *fp, trip_t **records) {
 
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
+
+    if (field_count < 0) {
+        free_cstr_arr(field_names, field_count);
+        return -1;
+    }
 
     if (lines_count < 1) {
         free_cstr_arr(field_names, field_count);

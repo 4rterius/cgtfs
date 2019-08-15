@@ -8,15 +8,17 @@ int read_header(FILE *fp, char ***field_names) {
 
     *field_names = malloc(sizeof(char *));
     if (*field_names == NULL) {
-        return 0;
+        return -1;
     }
     memset(h_field, 0, LINE_MAX_LEN);
 
-    if (fp == NULL)
-        return 0;
+    if (fp == NULL) {
+        return -1;
+    }
 
-    if (!fgets(header, LINE_MAX_LEN, fp))
-        return 0;
+    if (fgets(header, LINE_MAX_LEN, fp) == NULL) {
+        return -1;
+    }
 
     char chr;
     int chr_pos = 0;
@@ -44,6 +46,16 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
     int r_field_len = 0;
     int in_quotes = 0;  // to ignore commas in "dbl_quoted" field values
 
+    if (fields_number < 0) {
+        *record_values = NULL;
+        return -1;
+    }
+
+    if (fp == NULL) {
+        *record_values = NULL;
+        return -1;
+    }
+
     memset(r_field, 0, LINE_MAX_LEN);
 
     *record_values = malloc(fields_number * sizeof(char *));
@@ -53,11 +65,9 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
     for (unsigned i = 0; i < fields_number; i++)
         (*record_values)[i] = strdup("");
 
-    if (fp == NULL)
+    if (!fgets(record, LINE_MAX_LEN, fp)) {
         return -1;
-
-    if (!fgets(record, LINE_MAX_LEN, fp))
-        return -1;
+    }
 
     char chr;
     int chr_pos = 0;

@@ -37,7 +37,8 @@
  * @param[in]     fp             Opened file connection to read from.
  * @param[out]    field_names    Pointer to the string array to read field names into.
  *
- * @returns       0 on file reading error, number of fields on success.
+ * @returns       Number of fields on success.
+ *                On error, returns -1. If field_names != NULL, the variable must be freed.
  *
  * @ingroup       Utilities__File
  */
@@ -53,7 +54,8 @@ int read_header(FILE *fp, char ***field_names);
  * @param[in]     fields_number    Number of fields to expect.
  * @param[out]    record_values    Pointer to the string array to read record values into.
  *
- * @returns       -1 on the file reading error, 1 on success.
+ * @returns       1 on success.
+ *                On error, returns -1. If record_values != NULL, the variable must be freed.
  *
  * @ingroup       Utilities__File
  */
