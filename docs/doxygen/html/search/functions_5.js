@@ -17,6 +17,6 @@ var searchData=
   ['fetch_5fall_5ftrips_5fdb',['fetch_all_trips_db',['../a00181.html#ga53ca2b9f218c89f4f72765ebd01e5051',1,'fetching.h']]],
   ['fetch_5ffeed_5fdb',['fetch_feed_db',['../a00178.html#ga27aa50456dd81eef62ce8e56c145187c',1,'database.h']]],
   ['free_5fcstr_5farr',['free_cstr_arr',['../a00184.html#gaa7a384477fa20063340d25f2b4f2fd73',1,'mem_utils.h']]],
-  ['free_5ffeed',['free_feed',['../a00122.html#ad506bf45c542373ff523f80dd7ab8491',1,'feed.h']]],
+  ['free_5ffeed',['free_feed',['../a00156.html#gad506bf45c542373ff523f80dd7ab8491',1,'feed.h']]],
   ['free_5ffeed_5fdb',['free_feed_db',['../a00178.html#ga038548ff3d3967beaa634cc65a107f3e',1,'database.h']]]
 ];
