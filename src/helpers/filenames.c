@@ -8,9 +8,16 @@ void make_filepath(char **out, const char *dirname, const char *filename) {
     }
 
     char *_dirname = strdup(dirname);
+    if (*_dirname == NULL) {
+        *out = NULL;
+        return;
+    }
     const int res_len = strlen(dirname) + strlen(filename) + 2;
 
     *out = malloc(res_len * sizeof(char));
+    if (*out == NULL) {
+        return;
+    }
     strcpy(*out, "");
 
     char last_dirname_char = '\0';

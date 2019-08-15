@@ -39,50 +39,59 @@ The scope of this library's functionality is illustrated by the following figure
 
 Some example code is located in the `examples/` folder of the library's source code. Digging into the `tests/` folder might as well be useful, but you should consider that the testing code does not properly handle memory deallocation and error recovery.
 
-The most primitive example, the only one provided here for brevity:
+The most basic example:
 
 ```c
-#include <stdio.h>
 #include "feed.h"
 
-/**
- * Example 0: read all feed data into memory
- */
-void some_function(void) {
-    // Feed initialization.
-    //
-    // As with all entity structs (records, feed,
-    // db connection, etc.), init_T(T *) function must be called.
-    //
-    // Every such struct has to be eventually freed by free_T(T *),
-    // with the notable exception of all record entities
-    // (a unified approach to struct handling is still WIP).
-    feed_t amazing_feed;
-    init_feed(&amazing_feed);
+void some_func(void) {
+    feed_t my_feed;
+    init_feed(&my_feed);
 
-    // Feed reading.
-    //
-    // This function is a convenience wrapper for calling
-    // file-scope reading functions, which read the entire
-    // *.txt files into arrays. This function passes pointers
-    // to feed_t fields, and after reading stores the counts
-    // of each parsed record type into _count fields.
-    //
-    // Obviously, takes **a lot** of memory.
-    read_feed(&amazing_feed, "../tests/data/google_sample");
+    read_feed(&my_feed, "/path/to/unpacked/gtfs/feed");
 
-    // If a *.txt file does not exist or cannot be opened,
-    // -1 is assigned to the corresponding _count field.
-    // If the file can be opened but has no records, 0 is assigned.
-    // Otherwise, the field gets the number of records read from the file.
-    if (amazing_feed.agency_count > 0)
-        printf("The agency's name is: %s \n", amazing_feed.agencies[0].name);
+    if (my_feed.stops_count > -1)
+        printf("There are %i stop(s) in the feed!\n", my_feed.stops_count);
     else
-        perror("Failed to open agency.txt or the file has no records");
+        printf("No stops.txt file found in the feed...\n");
 
-    // Don't forget to call this function.
-    // No, really :|
-    free_feed(&amazing_feed);
+    free_feed(&my_feed);
+}
+```
+
+Database import example:
+
+```c
+#include <stdio>
+#include "feed.h"
+#include "database/database.h"
+
+#define IS_WRITABLE = 1
+
+int some_db_func(void) {
+    feed_db_t my_db;
+    feed_db_status_t res;
+
+    res = init_feed_db(&my_db, "/path/to/database/file", IS_WRITABLE);
+
+    if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    res = import_feed_db("/path/to/unpacked/gtfs/feed", &my_db);
+
+    if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
+        free_feed_db(&my_db);
+        return 0;
+    }
+
+    // Something done with the data in the database pointed to by my_db connection.
+
+    free_feed_db(&my_db);
+    return 1;
 }
 ```
 

@@ -58,7 +58,7 @@ var searchData=
   ['filename_5fseparator',['FILENAME_SEPARATOR',['../a00155.html#ga92a0667caf32b5f5eafc74bc4d684122',1,'filenames.h']]],
   ['filenames_2eh',['filenames.h',['../a00128.html',1,'']]],
   ['free_5fcstr_5farr',['free_cstr_arr',['../a00184.html#gaa7a384477fa20063340d25f2b4f2fd73',1,'mem_utils.h']]],
-  ['free_5ffeed',['free_feed',['../a00122.html#ad506bf45c542373ff523f80dd7ab8491',1,'feed.h']]],
+  ['free_5ffeed',['free_feed',['../a00156.html#gad506bf45c542373ff523f80dd7ab8491',1,'feed.h']]],
   ['free_5ffeed_5fdb',['free_feed_db',['../a00178.html#ga038548ff3d3967beaa634cc65a107f3e',1,'database.h']]],
   ['frequencies',['frequencies',['../a00156.html#a19f0204382c50210c52430cb698d5412',1,'feed_t']]],
   ['frequencies_5fcount',['frequencies_count',['../a00156.html#aa36b2b01581e8724be96857dc896c947',1,'feed_t']]],

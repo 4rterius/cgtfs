@@ -46,15 +46,23 @@ feed_db_status_t import_csv_file_db(const char *path, const char *table, feed_db
     int lines_count = count_lines(fp) - 1;
     int record_count = 0;
 
+    if (lines_count < 0) {
+        free(record_values);
+        fclose(fp);
+
+        db->error_msg = strdup("Failed to count lines in CSV file");
+        return FEED_DB_ERROR;
+    }
+
     char **field_names = NULL;
     int field_count = read_header(fp, &field_names);
 
-    if (lines_count < 0) {
+    if (field_count < 0) {
         free_cstr_arr(field_names, field_count);
         free(record_values);
         fclose(fp);
 
-        db->error_msg = strdup("No lines in the .csv file");
+        db->error_msg = strdup("Failed to read CSV file header");
         return FEED_DB_ERROR;
     }
 

@@ -108,6 +108,8 @@ int read_feed(feed_t *instance, const char *feed_directory_path);
  * Must be called after a feed instance has been used.
  *
  * @param[in,out]    feed    Initialized feed instance to free.
+ *
+ * @ingroup          Core__FeedEntity
  */
 void free_feed(feed_t *feed);
 

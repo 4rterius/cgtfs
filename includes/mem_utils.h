@@ -18,8 +18,13 @@
  * @ingroup          Utilities__Memory
  */
 inline void free_cstr_arr(char **arr, size_t sz) {
-    for (size_t i = 0; i < sz; i++)
-        free(arr[i]);
+    if (arr == NULL)
+        return;
+
+    if ((int)sz > 0)
+        for (size_t i = 0; i < sz; i++)
+            free(arr[i]);
+
     free(arr);
 }
 

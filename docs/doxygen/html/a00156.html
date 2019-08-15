@@ -86,6 +86,9 @@ Functions</h2></td></tr>
 <tr class="memitem:ga2994e392bb1b1c47a217865140f43d64"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00156.html#ga2994e392bb1b1c47a217865140f43d64">read_feed</a> (<a class="el" href="a00156.html#a00194">feed_t</a> *instance, const char *feed_directory_path)</td></tr>
 <tr class="memdesc:ga2994e392bb1b1c47a217865140f43d64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads an unpacked GTFS feed from the given folder into the given feed instance.  <a href="#ga2994e392bb1b1c47a217865140f43d64">More...</a><br /></td></tr>
 <tr class="separator:ga2994e392bb1b1c47a217865140f43d64"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:gad506bf45c542373ff523f80dd7ab8491"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00156.html#gad506bf45c542373ff523f80dd7ab8491">free_feed</a> (<a class="el" href="a00156.html#a00194">feed_t</a> *feed)</td></tr>
+<tr class="memdesc:gad506bf45c542373ff523f80dd7ab8491"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees the memory taken by the given feed structure.  <a href="#gad506bf45c542373ff523f80dd7ab8491">More...</a><br /></td></tr>
+<tr class="separator:gad506bf45c542373ff523f80dd7ab8491"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:gaded6f815865c66ff2b8d1d9fee060b30"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="a00156.html#gaded6f815865c66ff2b8d1d9fee060b30">equal_feeds</a> (const <a class="el" href="a00156.html#a00194">feed_t</a> *a, const <a class="el" href="a00156.html#a00194">feed_t</a> *b)</td></tr>
 <tr class="memdesc:gaded6f815865c66ff2b8d1d9fee060b30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compares two feed instances.  <a href="#gaded6f815865c66ff2b8d1d9fee060b30">More...</a><br /></td></tr>
 <tr class="separator:gaded6f815865c66ff2b8d1d9fee060b30"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -106,7 +109,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 <div class="textblock"><p>A GTFS feed entity that encapsulates all data of a single GTFS feed. </p>
 <p>For each of the GTFS feed files, this struct has a field for an array of the structs to store the file's records and an integer field to store the number of the file's records (-1 if no file or no records).</p>
-<p>Initialized with <a class="el" href="a00156.html#ga9decb9ade6fdf69c1c54d33d0eba0225" title="Initializes a feed structure with default values (pointers/arrays with NULLs, *_count fields with 0-s...">init_feed()</a> and freed with <a class="el" href="a00122.html#ad506bf45c542373ff523f80dd7ab8491" title="Frees the memory taken by the given feed structure. ">free_feed()</a>.</p>
+<p>Initialized with <a class="el" href="a00156.html#ga9decb9ade6fdf69c1c54d33d0eba0225" title="Initializes a feed structure with default values (pointers/arrays with NULLs, *_count fields with 0-s...">init_feed()</a> and freed with <a class="el" href="a00156.html#gad506bf45c542373ff523f80dd7ab8491" title="Frees the memory taken by the given feed structure. ">free_feed()</a>.</p>
 <dl class="section see"><dt>See also</dt><dd><a href="https://developers.google.com/transit/gtfs/reference/">https://developers.google.com/transit/gtfs/reference/</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="a00122_source.html#l00042">42</a> of file <a class="el" href="a00122_source.html">feed.h</a>.</p>
@@ -366,6 +369,35 @@ trips_count</td>
 
 </div>
 </div>
+<a id="gad506bf45c542373ff523f80dd7ab8491"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#gad506bf45c542373ff523f80dd7ab8491">&#9670;&nbsp;</a></span>free_feed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void free_feed </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="a00156.html#a00194">feed_t</a> *&#160;</td>
+          <td class="paramname"><em>feed</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p><code>#include &lt;<a class="el" href="a00122.html">includes/feed.h</a>&gt;</code></p>
+
+<p>Frees the memory taken by the given feed structure. </p>
+<p>Must be called after a feed instance has been used.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in,out]</td><td class="paramname">feed</td><td>Initialized feed instance to free. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="gaded6f815865c66ff2b8d1d9fee060b30"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#gaded6f815865c66ff2b8d1d9fee060b30">&#9670;&nbsp;</a></span>equal_feeds()</h2>
 
@@ -412,7 +444,7 @@ trips_count</td>
 <hr class="footer"/>
 <address class="footer">
   <small class="desc">
-    cgtfs 0.5.0 &mdash; documentation generated by <span title="on Wed Aug 14 2019 23:18:13">Doxygen 1.8.13</span>
+    cgtfs 0.5.0 &mdash; documentation generated by <span title="on Fri Aug 16 2019 01:05:02">Doxygen 1.8.13</span>
   </small>
   <small class="links">
     <a target="_blank" href="https://rakhack.github.io/cgtfs/" title="A pretty empty website \_(*^*)_/">Website</a>&mdash;

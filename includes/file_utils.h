@@ -20,6 +20,7 @@
 #pragma comment(lib, "User32.lib")
 #endif
 
+#include "mem_utils.h"
 
 /**
  * @def        LINE_MAX_LEN
@@ -34,10 +35,14 @@
  * Reads the next line of the file as a set of comma-separated values (partial CSV)
  * into the given string array.
  *
+ * Array passed as the last argument is initialized and allocated by the function.
+ * Once the function has returned, if field_names != NULL, the variable must be freed.
+ *
  * @param[in]     fp             Opened file connection to read from.
  * @param[out]    field_names    Pointer to the string array to read field names into.
  *
- * @returns       0 on file reading error, number of fields on success.
+ * @returns       Number of fields on success.
+ *                On error, returns -1 and sets field_names to NULL.
  *
  * @ingroup       Utilities__File
  */
@@ -49,11 +54,15 @@ int read_header(FILE *fp, char ***field_names);
  * Essentially, a CSV parser, but supports CSV only in the capacity that GTFS defines.
  * @see https://developers.google.com/transit/gtfs/reference/#file_requirements
  *
+ * Array passed as the last argument is initialized and allocated by the function.
+ * Once the function has returned, if record_values != NULL, the variable must be freed.
+ *
  * @param[in]     fp               Opened file connection to read from.
  * @param[in]     fields_number    Number of fields to expect.
  * @param[out]    record_values    Pointer to the string array to read record values into.
  *
- * @returns       -1 on the file reading error, 1 on success.
+ * @returns       1 on success.
+ *                On error, returns -1 and sets record_values to NULL.
  *
  * @ingroup       Utilities__File
  */
@@ -81,7 +90,11 @@ int count_lines(FILE *fp);
  * facading a call to a corresponding function.
  * Always returns an error if the system is not supported.
  *
- * @returns       Number of files found on success, -1 on error.
+ * Array passed as the last argument is initialized and allocated by the function.
+ * Unless the function sets it to NULL, it must be freed.
+ *
+ * @returns       Number of files found on success.
+ *                On error, returns -1 and sets file_names to NULL.
  *
  * @ingroup       Utilities__File
  */
