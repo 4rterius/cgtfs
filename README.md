@@ -51,9 +51,9 @@ void some_func(void) {
     read_feed(&my_feed, "/path/to/unpacked/gtfs/feed");
 
     if (my_feed.stops_count > -1)
-        printf("There are %i agency(s) in the feed!\n", my_feed.stops_count);
+        printf("There are %i stop(s) in the feed!\n", my_feed.stops_count);
     else
-        printf("No agency file in the feed found...\n");
+        printf("No stops.txt file found in the feed...\n");
 
     free_feed(&my_feed);
 }
