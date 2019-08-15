@@ -1,10 +1,16 @@
 #include "file_utils.h"
 
 int read_header(FILE *fp, char ***field_names) {
+    char **tmp_field_names;
     char header[LINE_MAX_LEN];
     char h_field[LINE_MAX_LEN];
     int h_field_index = 0;
     int h_field_len = 0;
+
+    if (fp == NULL) {
+        *field_names = NULL;
+        return -1;
+    }
 
     *field_names = malloc(sizeof(char *));
     if (*field_names == NULL) {
@@ -12,11 +18,9 @@ int read_header(FILE *fp, char ***field_names) {
     }
     memset(h_field, 0, LINE_MAX_LEN);
 
-    if (fp == NULL) {
-        return -1;
-    }
-
     if (fgets(header, LINE_MAX_LEN, fp) == NULL) {
+        free(*field_names);
+        *field_names = NULL;
         return -1;
     }
 
@@ -25,7 +29,13 @@ int read_header(FILE *fp, char ***field_names) {
 
     while ((chr = header[++chr_pos - 1])) {
         if (chr == ',' || chr == '\n') {
-            *field_names = realloc(*field_names, (h_field_index + 1) * sizeof(char *));
+            tmp_field_names = realloc(*field_names, (h_field_index + 1) * sizeof(char *));
+            if (tmp_field_names == NULL) {
+                free_cstr_arr(*field_names, h_field_index);
+                *field_names = NULL;
+                return -1;
+            }
+            *field_names = tmp_field_names;
             (*field_names)[h_field_index] = strdup(h_field);
 
             memset(h_field, 0, LINE_MAX_LEN);
@@ -66,6 +76,8 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
         (*record_values)[i] = strdup("");
 
     if (!fgets(record, LINE_MAX_LEN, fp)) {
+        free_cstr_arr(*record_values, fields_number);
+        *record_values = NULL;
         return -1;
     }
 
@@ -149,17 +161,21 @@ int list_txt_files(const char *dir_path, char ***file_names) {
 int __list_txt_files__unix(const char *dir_path, char ***file_names) {
     int count = 0;
     char *dotpos = NULL;
+    char **tmp_file_names;
 
     struct dirent *dir_entry;
     DIR *dir_ptr;
 
     dir_ptr = opendir(dir_path);
-    if (dir_ptr == NULL)
+    if (dir_ptr == NULL) {
+        *file_names = NULL;
         return -1;
+    }
 
     *file_names = malloc(sizeof(char *));
 
     if (*file_names == NULL) {
+        free(*file_names);
         closedir(dir_ptr);
         return -1;
     }
@@ -168,7 +184,13 @@ int __list_txt_files__unix(const char *dir_path, char ***file_names) {
         // https://stackoverflow.com/a/10347734
         dotpos = strrchr(dir_entry->d_name, '.');
         if (dotpos && !strcmp(dotpos, ".txt")) {
-            *file_names = realloc(*file_names, (count + 1) * sizeof(char *));
+            tmp_file_names = realloc(*file_names, (count + 1) * sizeof(char *));
+            if (tmp_file_names == NULL) {
+                free_cstr_arr(*file_names, count);
+                *file_names = NULL;
+                return -1;
+            }
+            *file_names = tmp_file_names;
             (*file_names)[count] = strdup(dir_entry->d_name);
             count++;
         }
@@ -183,6 +205,7 @@ int __list_txt_files__unix(const char *dir_path, char ***file_names) {
 int __list_txt_files__win(const char *dir_path, char ***file_names) {
     int count = 0;
     char *dotpos = NULL;
+    char **tmp_file_names;
 
     // OMFG MICROSOFT WHYYYY
 
@@ -206,6 +229,8 @@ int __list_txt_files__win(const char *dir_path, char ***file_names) {
     *file_names = malloc(sizeof(char *));
     if (*file_names == NULL) {
         FindClose(h_find);
+        free(*file_names);
+        *file_names = NULL;
         return -1;
     }
     do {
@@ -215,7 +240,13 @@ int __list_txt_files__win(const char *dir_path, char ***file_names) {
         // https://stackoverflow.com/a/10347734
         dotpos = strrchr(find_data.cFileName, '.');
         if (dotpos && !strcmp(dotpos, ".txt")) {
-            *file_names = realloc(*file_names, (count + 1) * sizeof(char *));
+            tmp_file_names = realloc(*file_names, (count + 1) * sizeof(char *));
+            if (tmp_file_names == NULL) {
+                free_cstr_arr(*file_names, count);
+                *file_names = NULL;
+                return -1;
+            }
+            *file_names = tmp_file_names;
             (*file_names)[count] = strdup(find_data.cFileName);
             count++;
         }

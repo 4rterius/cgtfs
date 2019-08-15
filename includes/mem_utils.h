@@ -21,13 +21,10 @@ inline void free_cstr_arr(char **arr, size_t sz) {
     if (arr == NULL)
         return;
 
-    if ((int)sz < 0) {
-        free(arr);
-        return;
-    }
+    if ((int)sz > 0)
+        for (size_t i = 0; i < sz; i++)
+            free(arr[i]);
 
-    for (size_t i = 0; i < sz; i++)
-        free(arr[i]);
     free(arr);
 }
 
