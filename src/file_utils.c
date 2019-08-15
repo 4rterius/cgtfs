@@ -38,6 +38,12 @@ int read_header(FILE *fp, char ***field_names) {
             *field_names = tmp_field_names;
             (*field_names)[h_field_index] = strdup(h_field);
 
+            if ((*field_names)[h_field_index] == NULL) {
+                free_cstr_arr(*field_names, h_field_index);
+                *field_names = NULL;
+                return -1;
+            }
+
             memset(h_field, 0, LINE_MAX_LEN);
             h_field_len = 0;
             h_field_index++;
@@ -105,6 +111,12 @@ int read_record(FILE *fp, const int fields_number, char ***record_values) {
         } else if ((chr == ',' || chr == '\n') && !in_quotes && r_field_index < fields_number) {
             free((*record_values)[r_field_index]);
             (*record_values)[r_field_index] = strdup(r_field);
+
+            if ((*record_values)[r_field_index] == NULL) {
+                free_cstr_arr(*record_values, r_field_index);
+                *record_values = NULL;
+                return -1;
+            }
 
             memset(r_field, 0, LINE_MAX_LEN);
             r_field_len = 0;
@@ -192,6 +204,12 @@ int __list_txt_files__unix(const char *dir_path, char ***file_names) {
             }
             *file_names = tmp_file_names;
             (*file_names)[count] = strdup(dir_entry->d_name);
+            if ((*file_names)[count] == NULL) {
+                free_cstr_arr(*file_names, count);
+                *file_names = NULL;
+                closedir(dir_ptr);
+                return -1;
+            }
             count++;
         }
     }
@@ -248,6 +266,12 @@ int __list_txt_files__win(const char *dir_path, char ***file_names) {
             }
             *file_names = tmp_file_names;
             (*file_names)[count] = strdup(find_data.cFileName);
+            if ((*file_names)[count] == NULL) {
+                free_cstr_arr(*file_names, count);
+                *file_names = NULL;
+                FindClose(h_find);
+                return -1;
+            }
             count++;
         }
     } while (FindNextFile(h_find, &find_data) != 0);
