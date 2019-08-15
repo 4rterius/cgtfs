@@ -112,6 +112,7 @@ int some_db_func(void) {
     res = init_feed_db(&my_db, "/path/to/database/file", IS_WRITABLE);
 
     if (res < FEED_DB_SUCCESS) {
+        puts(my_db.error_msg);
         free_feed_db(&my_db);
         return 0;
     }
