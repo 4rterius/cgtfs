@@ -64,3 +64,5 @@ third_party/sqlite3/sqlite3/
 _local/
 .vscode/
 build/
+cmake-build-debug/
+.idea/
